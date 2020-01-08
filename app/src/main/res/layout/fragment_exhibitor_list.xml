@@ -1,0 +1,132 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="exhibitorModel"
+            type="com.adsale.chinaplas.viewmodels.ExhibitorViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- top search-->
+        <ImageView
+            android:id="@+id/iv_bg_1"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@color/purple3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/et_search"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/bg_et_search"
+            android:drawableEnd="@drawable/ic_search"
+            android:hint="@string/search"
+            android:maxLines="1"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            app:layout_constraintEnd_toStartOf="@+id/iv_helper"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_helper"
+            style="@style/help_btn_style"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/et_search"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- 排序 -->
+        <TextView
+            android:id="@+id/tv_sort"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:text="@string/exhibitor_sort_by"
+            android:textColor="@color/grey_999"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_bg_1" />
+
+        <TextView
+            android:id="@+id/tv_sort_az"
+            android:layout_width="80dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="16dp"
+            android:background="@drawable/bg_btn_selected"
+            android:gravity="center"
+            android:onClick="@{()->exhibitorModel.onSortAZ()}"
+            android:text="@string/sort_by_az"
+            android:textColor="#fff"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@id/tv_sort"
+            app:layout_constraintTop_toTopOf="@id/tv_sort" />
+        <!--        android:background="@{exhibitorModel.isSortAZ?@drawable/bg_btn_selected:@drawable/bg_btn_not_selected}"-->
+        <!--展馆排序-->
+        <TextView
+            android:id="@+id/tv_sort_hall"
+            android:layout_width="80dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="16dp"
+            android:background="@drawable/bg_btn_not_selected"
+            android:gravity="center"
+            android:onClick="@{()->exhibitorModel.onSortHall()}"
+            android:text="@string/sort_by_hall"
+            android:textColor="#fff"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@id/tv_sort_az"
+            app:layout_constraintTop_toTopOf="@id/tv_sort" />
+
+        <ImageView
+            android:id="@+id/iv_filter"
+            android:layout_width="@dimen/btn_round_size"
+            android:layout_height="@dimen/btn_round_size"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/ic_filter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_bg_1" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_exhibitor"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/iv_ad"
+            app:layout_constraintTop_toBottomOf="@id/tv_sort" />
+
+        <com.adsale.chinaplas.ui.view.SideDataView
+            android:id="@+id/view_side_data"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/iv_ad"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_sort" />
+
+        <ImageView
+            android:id="@+id/iv_ad"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rv_exhibitor" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="pos"
+            type="int" />
+
+        <variable
+            name="model"
+            type="com.adsale.chinaplas.viewmodels.MainViewModel" />
+        <variable
+            name="listener"
+            type="com.adsale.chinaplas.ui.home.HomeFragment.PageClickListener" />
+
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/rl_banner"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/image_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:onClick="@{()-> listener.onClick(pos)}"
+            android:scaleType="fitXY" />
+<!--        android:onClick="@{()->model.onTopPicClick(pos)}"-->
+
+        <RelativeLayout
+            android:id="@+id/rv_countdown"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="4dp"
+            android:layout_marginTop="8dp"
+            android:visibility="gone">
+            <!--android:visibility="@{model.isCountDownShow.get()?View.VISIBLE:View.GONE}"-->
+
+            <ImageView
+                android:id="@+id/iv_cdd"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_countdown" />
+
+            <TextView
+                android:id="@+id/tv_cdd"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:paddingRight="3dp"
+                android:paddingTop="6dp"
+                android:textColor="@color/round_point_color"
+                android:textSize="20sp" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+</layout>

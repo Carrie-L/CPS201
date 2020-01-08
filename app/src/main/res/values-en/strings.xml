@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CHINAPLAS</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_download_center">Download Center</string>
+    <string name="menu_subscribe">Subscribe eNewsletter</string>
+    <string name="menu_calendar">Add to Calendar</string>
+    <string name="menu_follow">Follow Us</string>
+    <string name="menu_guide">How to use</string>
+    <string name="menu_setting">Settings</string>
+    <string name="search">Search</string>
+    <string name="mychinaplas_login_text">MYCHINAPLAS</string>
+
+    <!-- title -->
+    <string name="title_register">Visitor Registration</string>
+    <string name="title_my_ticket">My eTicket</string>
+    <string name="title_tool">My Tools</string>
+    <string name="title_floorplan">Floor Plan</string>
+    <string name="title_exhibitor_list">Exhibitor List</string>
+    <string name="title_company_info">CompanyInfo</string>
+
+    <string name="confirm">Confirm</string>
+    <string name="cancel">Cancel</string>
+    <string name="back">Back</string>
+
+
+    <string name="reg_name">Name</string>
+    <string name="reg_gender">Salutation</string>
+    <string name="reg_female">Ms</string>
+    <string name="reg_male">Mr</string>
+    <string name="reg_post_checkbox">If you want to receive the visitor badge by mail in early April, please tick the box and fill in your detailed address. (Application Deadline: Feb 14, 2020, 11:59pm, GMT +8:00) </string>
+
+
+    <string name="reg_other_hint">Others Please specify</string>
+
+    <string name="please_select">--Please select--</string>
+    <string name="verify_code">Code</string>
+    <string name="btn_send_sms_code">send verification code</string>
+    <string name="btn_sms_code_after">Re-send after %d sec</string>
+    <string name="reg_post_address2">Address line 1</string>
+    <string name="reg_post_address1">Address line 2</string>
+    <string name="reg_post_city">City</string>
+
+    <!--reg dialog-->
+    <string name="reg_company">Company</string>
+    <string name="name">Name</string>
+    <string name="reg_title">Job Title</string>
+    <string name="reg_function">Job Function</string>
+    <string name="reg_region">Country/Region</string>
+    <string name="reg_postcode">Postal Code</string>
+    <string name="address">Address</string>
+    <string name="tell">Telephone</string>
+    <string name="phone_number">Mobile Number</string>
+    <string name="email">Email</string>
+    <string name="reg_major_product">Major Product/Service</string>
+    <string name="reg_service">Category for Business Product/ Service</string>
+
+    <string name="reg_next">Next</string>
+    <string name="error_verify_code_incorrect">验证码不正确</string>
+    <string name="reg_product">Major Product / Service</string>
+    <string name="reg_service0">Category for Business Product/ Service</string>
+
+    <string name="reg_help_name">Please fill in your true identity information, otherwise your admission may be rejected.</string>
+    <string name="reg_help_pwd">Your password should be 8 characters long and contain at least one English alphabet and one number.</string>
+    <string name="reg_hint_product">Please specify company\'s major product / service in text </string>
+    <string name="reg_hint_service">Which of the following categories best describe your business products / services (May select more than one)</string>
+    <string name="reg_hint_region_code">Country/Region</string>
+    <string name="reg_hint_area_code">Area</string>
+    <string name="reg_hint_tell_no">Number</string>
+    <string name="reg_hint_ext">Ext</string>
+    <string name="reg_area_code_hint">(If there is no Area Code, please enter "0")</string>
+    <string name="reg_hint_postcode">(If there is no zip code, please enter "0")</string>
+    <string name="reg_pwd_confirm">Confirm Password</string>
+    <string name="reg_hint_pwd">Please set a password for MyCHINAPLAS account login</string>
+    <string name="reg_help_email">Friendly Reminder: To ensure a smooth pre-registration without being spammed and in order to receive the confirmation letter, receipt &amp; invoice, you are advised to submit your correct email address with a company domain and whitelist our email <![CDATA[<font color=#ff9409>no-reply@adsale-notification.com</font>]]> as well. </string>
+    <string name="reg_hint_email">Please enter the email again to confirm</string>
+    <string name="reg_email_confirm">Confirm Email</string>
+    <string name="reg_set_pwd">Set Password</string>
+    <string name="reg_post_hint">* Please review that your <![CDATA[<font color=#ff9409>postal code</font>]]>and<![CDATA[<font color=#ff9409>address</font>]]> are correct. Please inform the organizer immediately if your address is changed. </string>
+    <string name="reg_last_hint">For inquiry about the visitor pre-registration, online payment and invoice &amp; receipt issue, please feel free to contact <![CDATA[<font color=#ff9409>prereg-payment@adsale.com.hk</font>]]></string>
+
+
+    <!--    <string name="reg_toast_account_exists_1">This account already exists. Please choose to register another email or mobile number to use this offer.</string>-->
+    <!--    <string name="reg_toast_account_exists_2">This account already exists, please login the account to pre-register; or use another email or cell phone to register.</string>-->
+    <string name="reg_toast_mobile_number">Please fill in "Mobile Number"</string>
+    <string name="reg_toast_tell_area">Please fill in "Tel - area"</string>
+    <string name="reg_toast_email">Please fill in "Email"</string>
+    <string name="reg_toast_valid_email">Please fill in a valid Email</string>
+    <string name="reg_toast_valid_phone_no">Cell phone number format not correct…</string>
+
+    <string name="reg_toast_gender">Please select "Salutation"</string>
+    <string name="reg_toast_valid_name">Please don\'t key in number or symbols when entering Contact Person.</string>
+    <string name="reg_toast_company">Please fill in "Company"</string>
+    <string name="reg_toast_title">Please select  "Job Title"</string>
+    <string name="reg_toast_title_other">Please fill in "Job Title - Others (Please specify)"</string>
+    <string name="reg_toast_function">Please select "Job Function"</string>
+    <string name="reg_toast_function_other">Please fill in "Job Function - Others (Please specify)"</string>
+    <string name="reg_toast_product">Please input Your Major Product / Service</string>
+    <string name="reg_toast_service">Which of the following categories best describe your business products / services (May select more than one)</string>
+    <string name="reg_toast_valid_postcode">Please enter a valid postal code</string>
+    <string name="reg_toast_valid_postcode_cn">Please enter a Chinese Postal Code with six digits</string>
+    <string name="reg_toast_postcode_0">Please fill in "Postal Code, or mark " 0 " for not applicable"</string>
+    <string name="reg_toast_region">Please select "Country/Region"</string>
+    <string name="reg_toast_province">Please select "Province"</string>
+    <string name="reg_toast_city">Please select "City"</string>
+    <string name="reg_toast_address">Please fill in "Address"</string>
+    <string name="reg_toast_mobile_number_region">Please fill in "Mobile Number - Country/Region"</string>  <!--国家地区号-->
+    <string name="reg_toast_tell_number">Please fill in "number"</string> <!--电话号码-->
+    <!--    <string name="reg_toast_valid_tell_number">Please Please enter a valid telephone number</string>-->
+    <string name="reg_toast_mobile_number_area">Please fill in "Mobile Number - area"</string>
+    <!--    <string name="reg_toast_mobile_number_area_2">Please fill in "Mobile Number - Area, or mark " 0 " for not applicable"</string>-->
+    <!--    <string name="reg_toast_valid_mobile_number_area">Please fill in a valid "Mobile Number - Area"</string>-->
+    <string name="reg_toast_sms_code">Please fill in SMS verification code</string>
+    <!--    <string name="reg_toast_valid_mobile_number">Please fill in a valid "Mobile Number - Number"</string>  &lt;!&ndash;手机号格式&ndash;&gt;-->
+    <string name="reg_toast_service_other">Please fill in "%s"</string>
+    <string name="reg_toast_name">Please fill in "Name"</string>
+    <!--    <string name="reg_toast_other">Please fill in "Others (Please specify)"</string>  &lt;!&ndash;title/function other&ndash;&gt;-->
+    <!--    <string name="reg_toast_tell_region_code">Please fill in "number - Country/Region"</string>  &lt;!&ndash;电话-国家地区号&ndash;&gt;-->
+    <!--    <string name="reg_toast_tell_area_code">Please fill in "number - Area,or mark "0" for not applicable"</string>  &lt;!&ndash;电话 - 区号&ndash;&gt;-->
+    <string name="reg_toast_email2">E-mail does not match</string>
+    <string name="reg_toast_pwd">Please set a password for MyCHINAPLAS account login</string>
+    <string name="reg_toast_valid_pwd">Your password should be 8 characters long and contain at least one English alphabet and one number.</string>
+    <string name="reg_toast_pwd2">Password does not match</string>
+    <string name="reg_toast_agree_privacy">Please read and agree the privacy policy of The Adsale Group</string>
+
+    <string name="reg_privacy">I hereby certify that I am at least 18 years old, agree to comply with the privacy policy of The Adsale Group (the “Policy”) and confirm that I have read and understand the Policy, and I agree to the collection and use of my personal data as outlined in this Terms and Conditions, including but not limited to the use and provision of my personal data for direct marketing.
+Adsale Exhibition Services Ltd., the Organiser, reserves the rights to issue the admission badges. </string>
+
+    <string name="reg_submit">Submit</string>
+
+
+    <!--  reg pre  -->
+    <string name="reg_pre_create">Create MyCHINAPLAS Account</string>
+    <string name="reg_pre_phone"><![CDATA[<font color=#ff0000>*  </font>Mobile Number]]></string>
+    <string name="reg_pre_email"><![CDATA[<font color=#ff0000>*  </font>Email]]></string>
+    <string name="reg_pre_1">Remark: <![CDATA[<font color=#ff0000> * </font> Mandatory Fields]]></string>
+    <string name="reg_pre_2">Pre-registration system has been newly upgraded. The new system will now create a MyCHINAPLAS account simultaneously. You can review all your visitor confirmation letters and apply for an e-invoice by logging in MyCHINAPLAS via website, mobile APP &amp; Wechat.</string>
+    <string name="reg_pre_hint_phone">Mobile number only. Country code &amp; area code are not required. </string>
+    <string name="reg_pre_3">Please make sure the mobile number and email filled in are correct. The information cannot be changed after submission. </string>
+    <string name="reg_pre_4">For inquiry about the visitor pre-registration, online payment and invoice &amp; receipt issue, please feel free to contact <![CDATA[<font color=#FF6E42>prereg-payment@adsale.com.hk</font>]]></string>
+    <string name="reg_hint_input_phone_no">Please fill in Mobile Number</string>
+    <string name="reg_hint_input_email">Please fill in Email</string>
+    <string name="reg_pre_hint_login">This account already exists, please login the account to pre-register; or use another email or cell phone to register.</string>
+    <string name="reg_text_login_mychinaplas">Login MyCHINAPLAS</string>
+
+    <string name="reg_toast_submit_fail">Submit failed.</string>
+    <string name="reg_toast_submit">Submit your data now, please be patient.</string>
+
+
+    <!-- My Chinaplas -->
+    <string name="logout">Logout</string>
+    <string name="cps_get_invoice">Get Invoice</string>
+    <string name="cps_sync_exhibitor">Sync My Exhibitor</string>
+    <string name="cps_colleague_info">Registered Colleagues</string>
+    <string name="cps_my_info">Account Info</string>
+    <string name="cps_home">Home</string>
+
+    <!--logout-->
+    <string name="logout_message">Confirm logout?</string>
+    <string name="syncMessage">The records in this APP\'s "MyCHINAPLAS" will be updated with the "MyCHINAPLAS" records in CHINAPLASONLINE.com. Please confirm to proceed.</string>
+    <string name="syncSuccess">Sync success</string>
+    <string name="syncFailure">Sync failed</string>
+    <string name="syncStart">Start..</string>
+    <string name="update_map">Update</string>
+
+    <!-- My Tools-->
+    <string name="my_cps">MyChinaplas</string>
+    <string name="tool_my_exhibitor">My Exhibitor</string>
+    <string name="tool_my_schedule">My Schedule</string>
+    <string name="tool_exhibitor_history">Viewed Exhibitor History</string>
+
+
+    <string-array name="titles">
+        <item>Job Title</item>
+        <item>MANAGING DIRECTOR</item>
+        <item>AUTHORIZED PERSON</item>
+        <item>PRESIDENT / CHAIRMAN / CEO</item>
+        <item>GENERAL MANAGER</item>
+        <item>ASSISTANT GENERAL MANAGER</item>
+        <item>DIRECTOR</item>
+        <item>CHIEF ENGINEER</item>
+        <item>ASSISTANT CHIEF ENGINEER</item>
+        <item>SENIOR ENGINEER</item>
+        <item>ENGINEER</item>
+        <item>PLANT MANAGER</item>
+        <item>ASSISTANT PLANT MANAGER</item>
+        <item>MANAGER</item>
+        <item>DEPARTMENT HEAD</item>
+        <item>SUPERVISOR</item>
+        <item>OFFICER</item>
+        <item>OFFICIALS FROM MINISTRIES / GOVERNMENT DEPARTMENT</item>
+        <item>OTHERS</item>
+    </string-array>
+
+    <string-array name="departments">
+        <item>Job Function</item>
+        <item>COMPANY / MANAGEMENT</item>
+        <item>DESIGN DEPARTMENT</item>
+        <item>EQUIPMENT DEPARTMENT</item>
+        <item>PRODUCTION / TECHNICAL DEPT</item>
+        <item>PROJECT DEPARTMENT</item>
+        <item>PURCHASING DEPARTMENT</item>
+        <item>QUALITY CONTROL DEPARTMENT</item>
+        <item>R &amp; D DEPARTMENT</item>
+        <item>SALES/MARKETING DEPARTMENT</item>
+        <item>OTHERS</item>
+    </string-array>
+
+    <!-- 設置 -->
+    <string name="setting_language">Language</string>
+    <string name="setting_website">Link to websites</string>
+    <string name="setting_reset_all">Reset All Data</string>
+    <string name="setting_privacy_policy">Privacy Policy Statement</string>
+    <string name="setting_use_terms">Terms of Use</string>
+    <string name="setting_share">Share</string>
+
+    <string name="logout_confirm_letter">是否注销确认信?</string>
+
+    <string name="title_general_open">开放时间</string>
+    <string name="title_general_scope">展品范围</string>
+
+    <string name="title_sms_login">Login via SMS</string>
+    <string name="title_pwd_login">Login with password</string>
+
+    <string name="login_email">Registered Email</string>
+    <string name="login_phone">Registered Mobile Number</string>
+    <string name="login_hint_1">Mobile number only, country code &amp; area code are not required.</string>
+    <string name="login_hint_2"><![CDATA[<font color=#ff0000> * </font> Login via SMS is only available to Mainland Chinese visitors.]]></string>
+    <string name="login_password">Password</string>
+    <string name="login_send_sms_code">Send Verification Code</string>
+    <string name="toast_cps_invalid_email">Please fill in a valid Email</string>
+    <string name="toast_cps_pwd_empty">Please fill in Password</string>
+    <string name="toast_phone_empty2">Please fill in Mobile number</string>
+    <string name="toast_phone_empty">Please enter China mobile number</string>
+    <string name="toast_code_empty">Please Enter the \'Verification Code\'</string>
+    <string name="toast_login_failed">Incorrect Login Name or Password, please try again.</string>
+    <!--smd code-->
+    <string name="sms_response_0">Please do not submit too many</string>
+    <string name="sms_response_1">Send failed, please try again later</string>
+    <string name="sms_response_2">The mobile number is incorrect, please enter a valid China mobile number.</string>
+    <string name="sms_response_3">SMS is sent!</string>
+    <string name="toast_sms_error">VerificationCode is not correct</string>
+    <string name="send_countdown">Re-send after %d seconds</string>
+    <string name="title_my_chinaplas">MyCHINAPLAS</string>
+
+    <!--展商资料-->
+    <string name="exhibitor_sort_by">Sort By:</string>
+    <string name="sort_by_az">筆畫</string>
+    <string name="sort_by_hall">展館</string>
+    <string name="nodata">No related information</string>
+
+    <string name="drawer_sync">Sync</string>
+    <string name="login_first_sync">You must be logged in to sync</string>
+    <string name="title_new_tec_dtl">New Tech</string>
+
+
+
+</resources>

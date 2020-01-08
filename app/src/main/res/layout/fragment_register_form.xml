@@ -1,0 +1,773 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="pickViewModel"
+            type="com.adsale.chinaplas.viewmodels.RegPickViewModel" />
+
+        <variable
+            name="viewModel"
+            type="com.adsale.chinaplas.viewmodels.RegisterViewModel" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:id="@+id/reg_scroll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:clickable="@{viewModel.progressBarVisible?false:true}"
+                android:focusable="@{viewModel.progressBarVisible?false:true}"
+                android:focusableInTouchMode="@{viewModel.progressBarVisible?false:true}"
+                android:orientation="vertical"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp">
+
+                <!--称谓-->
+                <TextView
+                    android:id="@+id/tv_gender"
+                    style="@style/reg_tv_style"
+                    android:layout_width="wrap_content"
+                    android:drawableStart="@drawable/reg_icon_gender"
+                    android:text="@string/reg_gender"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <RadioGroup
+                    android:id="@+id/rb_gender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="64dp"
+                    android:layout_marginTop="10dp"
+                    android:gravity="end|center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingBottom="3dp"
+                    app:layout_constraintStart_toEndOf="@id/tv_gender"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <RadioButton
+                        android:id="@+id/rb_female"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:text="@string/reg_female" />
+
+                    <RadioButton
+                        android:id="@+id/rb_male"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/reg_male" />
+                </RadioGroup>
+
+                <!--姓名-->
+                <TextView
+                    android:id="@+id/tv_name"
+                    style="@style/reg_tv_style"
+                    android:drawableStart="@drawable/reg_icon_name"
+                    android:text="@string/name"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_gender" />
+
+                <EditText
+                    android:id="@+id/et_name"
+                    style="@style/reg_et_style"
+                    android:nextFocusDown="@+id/et_company"
+                    android:text="@={viewModel.name}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_name" />
+
+                <TextView
+                    android:id="@+id/tv_hint_name"
+                    style="@style/reg_tv_help_style"
+                    android:layout_width="match_parent"
+                    android:paddingStart="3dp"
+                    android:text="@string/reg_help_name"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/et_name"
+                    app:layout_constraintTop_toBottomOf="@id/et_name" />
+
+
+                <!--公司-->
+                <TextView
+                    android:id="@+id/tv_company"
+                    style="@style/reg_tv_style"
+                    android:drawableStart="@drawable/reg_icon_company"
+                    android:text="@string/reg_company"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_hint_name" />
+
+                <EditText
+                    android:id="@+id/et_company"
+                    style="@style/reg_et_style"
+                    android:nextFocusDown="@+id/spinner_title"
+                    android:text="@={viewModel.company}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_company" />
+
+                <!--职位-->
+                <TextView
+                    android:id="@+id/tv_title"
+                    style="@style/reg_tv_style"
+                    android:drawableStart="@drawable/reg_icon_title"
+                    android:text="@string/reg_title"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/et_company" />
+
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/spinner_title"
+                    style="@style/common_spinner_style2"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@drawable/reg_spinner_bg"
+                    android:entries="@array/titles"
+                    android:paddingEnd="8dp"
+                    android:popupTheme="@style/common_spinner_style2"
+                    android:theme="@style/common_spinner_style2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_title" />
+
+                <EditText
+                    android:id="@+id/et_title_other"
+                    style="@style/reg_et_style"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/reg_other_height"
+                    android:nextFocusDown="@+id/spinner_function"
+                    android:singleLine="true"
+                    android:text="@={viewModel.titleOther}"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="@id/spinner_title"
+                    app:layout_constraintStart_toStartOf="@id/spinner_title"
+                    app:layout_constraintTop_toBottomOf="@id/spinner_title"
+                    app:textHintSize="@{@string/reg_other_hint}" />
+
+                <!--职能部门-->
+                <TextView
+                    android:id="@+id/tv_function"
+                    style="@style/reg_tv_style"
+                    android:drawableStart="@drawable/reg_icon_function"
+                    android:text="@string/reg_function"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/et_title_other" />
+
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/spinner_function"
+                    style="@style/common_spinner_style2"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@drawable/reg_spinner_bg"
+                    android:entries="@array/departments"
+                    android:paddingEnd="8dp"
+                    android:popupTheme="@style/common_spinner_style2"
+                    android:theme="@style/common_spinner_style2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_function" />
+
+                <EditText
+                    android:id="@+id/et_dep_other"
+                    style="@style/reg_et_style"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/reg_other_height"
+                    android:nextFocusDown="@+id/et_product"
+                    android:singleLine="true"
+                    android:text="@={viewModel.functionOther}"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="@id/spinner_function"
+                    app:layout_constraintStart_toStartOf="@id/spinner_function"
+                    app:layout_constraintTop_toBottomOf="@id/spinner_function"
+                    app:textHintSize="@{@string/reg_other_hint}" />
+
+                <!--主营产品-->
+                <TextView
+                    android:id="@+id/tv_product"
+                    style="@style/reg_tv_style"
+                    android:drawableStart="@drawable/reg_icon_product"
+                    android:text="@string/reg_product"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/et_dep_other" />
+
+                <EditText
+                    android:id="@+id/et_product"
+                    style="@style/reg_et_style"
+                    textHintSize="@{@string/reg_hint_product}"
+                    android:nextFocusDown="@+id/et_service"
+                    android:text="@={viewModel.companyProduct}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_product" />
+
+                <!--公司业务-->
+                <TextView
+                    android:id="@+id/tv_service"
+                    style="@style/reg_tv_style"
+                    android:drawableStart="@drawable/reg_icon_service"
+                    android:text="@string/reg_service0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/et_product" />
+
+                <TextView
+                    android:id="@+id/et_service"
+                    style="@style/reg_et_style"
+                    textHintSize="@{@string/reg_hint_service}"
+                    android:background="@drawable/reg_spinner_bg"
+                    android:gravity="center_vertical"
+                    android:nextFocusDown="@+id/tv_region"
+                    android:text="@{pickViewModel.serviceText}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_service" />
+
+                <LinearLayout
+                    android:id="@+id/ll_product_others"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/reg_other_hint"
+                    android:nextFocusDown="@+id/et_area"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/et_service" />
+
+
+                <!--国家地区-->
+                <TextView
+                    android:id="@+id/tv_region"
+                    style="@style/reg_tv_style"
+                    android:drawableStart="@drawable/reg_icon_region"
+                    android:text="@string/reg_region"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/ll_product_others" />
+
+                <TextView
+                    android:id="@+id/et_area"
+                    style="@style/reg_et_style"
+                    textHintSize="@{@string/please_select}"
+                    android:background="@drawable/reg_spinner_bg"
+                    android:gravity="center_vertical"
+                    android:nextFocusDown="@+id/et_region_code"
+                    android:text="@{viewModel.regionText}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_region" />
+
+                <!--电话-->
+                <TextView
+                    android:id="@+id/tv_tell"
+                    style="@style/reg_tv_style"
+                    android:drawableStart="@drawable/reg_icon_tell"
+                    android:text="@string/tell"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/et_area" />
+
+                <EditText
+                    android:id="@+id/et_region_code"
+                    style="@style/et_reg_mobile_style"
+                    textHintSize="@{@string/reg_hint_region_code}"
+                    android:layout_width="0dp"
+                    android:imeOptions="actionNext"
+                    android:inputType="number"
+                    android:nextFocusDown="@+id/et_area_code"
+                    android:singleLine="true"
+                    android:text="@={viewModel.tellRegionCode}"
+                    android:textSize="@dimen/reg_et_size"
+                    android:theme="@style/et_line_style"
+                    app:layout_constraintEnd_toStartOf="@+id/et_area_code"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_tell" />
+
+                <EditText
+                    android:id="@+id/et_area_code"
+                    style="@style/et_reg_mobile_style"
+                    textHintSize="@{@string/reg_hint_area_code}"
+                    android:layout_width="0dp"
+                    android:layout_marginStart="16dp"
+                    android:imeOptions="actionNext"
+                    android:inputType="number"
+                    android:nextFocusDown="@+id/et_phone"
+                    android:singleLine="true"
+                    android:text="@={viewModel.tellAreaCode}"
+                    android:textSize="@dimen/reg_et_size"
+                    android:theme="@style/et_line_style"
+                    app:layout_constraintBaseline_toBaselineOf="@id/et_region_code"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/et_region_code" />
+
+                <TextView
+                    android:id="@+id/tv_hint_tell_area"
+                    style="@style/reg_tv_help_style"
+                    android:layout_width="0dp"
+                    android:text="@string/reg_area_code_hint"
+                    app:layout_constraintStart_toStartOf="@id/et_area_code"
+                    app:layout_constraintTop_toBottomOf="@id/et_area_code" />
+
+                <EditText
+                    android:id="@+id/et_tell"
+                    style="@style/et_reg_mobile_style"
+                    textHintSize="@{@string/reg_hint_tell_no}"
+                    android:layout_width="0dp"
+                    android:imeOptions="actionNext"
+                    android:inputType="phone"
+                    android:nextFocusDown="@+id/et_ext"
+                    android:singleLine="true"
+                    android:text="@={viewModel.tellNo}"
+                    android:theme="@style/et_line_style"
+                    app:layout_constraintEnd_toStartOf="@+id/et_ext"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="@id/et_region_code"
+                    app:layout_constraintTop_toBottomOf="@id/tv_hint_tell_area" />
+
+                <EditText
+                    android:id="@+id/et_ext"
+                    style="@style/et_reg_mobile_style"
+                    textHintSize="@{@string/reg_hint_ext}"
+                    android:layout_width="0dp"
+                    android:layout_marginStart="16dp"
+                    android:imeOptions="actionNext"
+                    android:inputType="number"
+                    android:nextFocusDown="@+id/et_ext"
+                    android:singleLine="true"
+                    android:text="@={viewModel.tellExt}"
+                    android:theme="@style/et_line_style"
+                    app:layout_constraintBaseline_toBaselineOf="@id/et_tell"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/et_tell" />
+
+                <!--手机-->
+                <TextView
+                    android:id="@+id/tv_mobile"
+                    style="@style/reg_tv_style"
+                    android:drawableStart="@drawable/reg_icon_mobile"
+                    android:text="@string/phone_number"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/et_ext" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layout_mobile_not_cn"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:visibility="@{viewModel.cnMobileVisible?View.GONE:View.VISIBLE}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_mobile">
+
+                    <!--国家地区号-->
+                    <EditText
+                        android:id="@+id/et_region_code_mobile1"
+                        style="@style/et_reg_mobile_style"
+                        textHintSize="@{@string/reg_hint_region_code}"
+                        android:layout_width="0dp"
+                        android:imeOptions="actionNext"
+                        android:inputType="number"
+                        android:singleLine="true"
+                        android:text="@={viewModel.tellRegionCode}"
+                        android:textSize="@dimen/reg_et_size"
+                        android:theme="@style/et_line_style"
+                        app:layout_constraintEnd_toStartOf="@+id/et_area_code_mobile1"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <!--区号-->
+                    <EditText
+                        android:id="@+id/et_area_code_mobile1"
+                        style="@style/et_reg_mobile_style"
+                        textHintSize="@{@string/reg_hint_area_code}"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:imeOptions="actionNext"
+                        android:inputType="number"
+                        android:singleLine="true"
+                        android:text="@={viewModel.mobileAreaCode}"
+                        android:textSize="@dimen/reg_et_size"
+                        android:theme="@style/et_line_style"
+                        app:layout_constraintBaseline_toBaselineOf="@id/et_region_code_mobile1"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/et_region_code_mobile1" />
+
+                    <TextView
+                        android:id="@+id/tv_hint_mobile_area"
+                        style="@style/reg_tv_help_style"
+                        android:layout_width="0dp"
+                        android:text="@string/reg_area_code_hint"
+                        app:layout_constraintStart_toStartOf="@id/et_area_code_mobile1"
+                        app:layout_constraintTop_toBottomOf="@id/et_area_code_mobile1" />
+
+                    <!--手机号-->
+                    <EditText
+                        android:id="@+id/et_mobile"
+                        style="@style/et_reg_mobile_style"
+                        textHintSize="@{@string/phone_number}"
+                        android:layout_width="match_parent"
+                        android:imeOptions="actionNext"
+                        android:inputType="number"
+                        android:singleLine="true"
+                        android:text="@={viewModel.mobileNo}"
+                        android:textSize="@dimen/reg_et_size"
+                        android:theme="@style/et_line_style"
+                        app:layout_constraintTop_toBottomOf="@id/tv_hint_mobile_area" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layout_mobile_cn"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:visibility="@{viewModel.cnMobileVisible?View.VISIBLE:View.GONE}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_mobile">
+
+                    <!--手机号-->
+                    <EditText
+                        android:id="@+id/et_mobile_cn"
+                        style="@style/et_reg_mobile_style"
+                        android:layout_width="0dp"
+                        android:imeOptions="actionNext"
+                        android:inputType="number"
+                        android:singleLine="true"
+                        android:text="@={viewModel.mobileNo}"
+                        android:theme="@style/et_line_style"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <!--验证码-->
+                    <EditText
+                        android:id="@+id/mobile_verify_code"
+                        textHintSize="@{@string/verify_code}"
+                        android:layout_width="150dp"
+                        android:layout_height="40dp"
+                        android:layout_below="@id/et_mobile_cn"
+                        android:layout_marginTop="12dp"
+                        android:singleLine="true"
+                        android:imeOptions="actionNext"
+                        android:inputType="number"
+                        android:text="@={viewModel.smsCode}"
+                        android:textSize="@dimen/reg_et_size"
+                        android:theme="@style/et_line_style"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/et_mobile_cn" />
+
+                    <TextView
+                        android:layout_width="125dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/bg_button_blue_grey"
+                        android:clickable="@{viewModel.btnSMSCodeClickable}"
+                        android:gravity="center"
+                        android:onClick="@{()->viewModel.onSendSmsCode()}"
+                        android:text="@{viewModel.btnSMSCodeClickable?@string/btn_send_sms_code:String.format(@string/btn_sms_code_after,viewModel.smsCountDownTime)}"
+                        android:textColor="#fff"
+                        app:layout_constraintBaseline_toBaselineOf="@id/mobile_verify_code"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/mobile_verify_code" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <ImageView
+                    android:id="@+id/mobile_divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="100dp"
+                    app:layout_constraintTop_toBottomOf="@id/tv_mobile" />
+
+                <!--邮箱-->
+                <TextView
+                    android:id="@+id/tv_email"
+                    style="@style/reg_tv_style"
+                    android:drawableStart="@drawable/reg_icon_email"
+                    android:text="@string/email"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/mobile_divider" />
+
+                <EditText
+                    android:id="@+id/et_email"
+                    style="@style/reg_et_style"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:inputType="none"
+                    android:nextFocusDown="@+id/et_company"
+                    android:text="@{viewModel.email}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_email" />
+
+                <TextView
+                    android:id="@+id/tv_hint_email"
+                    style="@style/reg_tv_help_style"
+                    android:layout_width="0dp"
+                    android:paddingStart="3dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/et_email"
+                    app:layout_constraintTop_toBottomOf="@id/et_email" />
+
+                <!--邮箱-->
+                <TextView
+                    android:id="@+id/tv_email2"
+                    style="@style/reg_tv_style"
+                    android:drawableStart="@drawable/reg_icon_email"
+                    android:text="@string/reg_email_confirm"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_hint_email" />
+
+                <EditText
+                    android:id="@+id/et_email2"
+                    style="@style/reg_et_style"
+                    textHintSize="@{@string/reg_hint_email}"
+                    android:nextFocusDown="@+id/et_company"
+                    android:text="@={viewModel.email2}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_email2" />
+
+                <!--密码-->
+                <TextView
+                    android:id="@+id/tv_pwd"
+                    style="@style/reg_tv_style"
+                    android:drawableStart="@drawable/reg_icon_pwd1"
+                    android:text="@string/reg_set_pwd"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/et_email2" />
+
+                <EditText
+                    android:id="@+id/et_pwd"
+                    style="@style/reg_et_style"
+                    textHintSize="@{@string/reg_hint_pwd}"
+                    android:inputType="textPassword"
+                    android:maxLength="8"
+                    android:nextFocusDown="@+id/et_company"
+                    android:text="@={viewModel.pwd}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_pwd" />
+
+                <TextView
+                    android:id="@+id/tv_hint_pwd"
+                    style="@style/reg_tv_help_style"
+                    android:layout_width="0dp"
+                    android:paddingStart="3dp"
+                    android:text="@string/reg_help_pwd"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/et_pwd"
+                    app:layout_constraintTop_toBottomOf="@id/et_pwd" />
+
+                <!--确认密码-->
+                <TextView
+                    android:id="@+id/tv_pwd2"
+                    style="@style/reg_tv_style"
+                    android:drawableStart="@drawable/reg_icon_pwd2"
+                    android:text="@string/reg_pwd_confirm"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_hint_pwd" />
+
+                <EditText
+                    android:id="@+id/et_pwd2"
+                    style="@style/reg_et_style"
+                    textHintSize="@{@string/reg_hint_pwd}"
+                    android:inputType="textPassword"
+                    android:imeOptions="actionDone"
+                    android:maxLength="8"
+                    android:text="@={viewModel.pwd2}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_pwd2" />
+
+                <!--邮寄地址-->
+                <androidx.appcompat.widget.AppCompatCheckBox
+                    android:id="@+id/cb_post"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:checked="@={viewModel.postChecked.get()}"
+                    android:paddingStart="8dp"
+                    android:text="@string/reg_post_checkbox"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/et_pwd2" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/rl_post"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="@{viewModel.postChecked?View.VISIBLE:View.GONE}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cb_post">
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guideline3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_begin="80dp" />
+
+                    <TextView
+                        android:id="@+id/tv_post_city"
+                        style="@style/reg_tv_style"
+                        android:drawableStart="@drawable/reg_icon_post_city"
+                        android:text="@string/reg_post_city"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <EditText
+                        android:id="@+id/et_post_city"
+                        style="@style/reg_et_style"
+                        android:layout_width="0dp"
+                        android:imeOptions="actionNext"
+                        android:singleLine="true"
+                        android:text="@={viewModel.postCity}"
+                        android:theme="@style/et_line_style"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_post_city" />
+
+                    <TextView
+                        android:id="@+id/tv_postcode"
+                        style="@style/reg_tv_style"
+                        android:layout_marginEnd="16dp"
+                        android:drawableStart="@drawable/reg_icon_postcode"
+                        android:text="@string/reg_postcode"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/et_post_city" />
+
+                    <EditText
+                        android:id="@+id/et_postcode"
+                        style="@style/reg_et_style"
+                        textHintSize="@{@string/reg_hint_postcode}"
+                        android:layout_width="0dp"
+                        android:imeOptions="actionNext"
+                        android:inputType="number"
+                        android:singleLine="true"
+                        android:text="@={viewModel.postcode}"
+                        android:theme="@style/et_line_style"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_postcode" />
+
+                    <TextView
+                        android:id="@+id/tv_address_dtl"
+                        style="@style/reg_tv_style"
+                        android:drawableStart="@drawable/reg_icon_address1"
+                        android:text="@string/reg_post_address1"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/et_postcode" />
+
+                    <EditText
+                        android:id="@+id/et_address_dtl"
+                        style="@style/reg_et_style"
+                        android:layout_width="0dp"
+                        android:imeOptions="actionNext"
+                        android:text="@={viewModel.postAddress1}"
+                        android:theme="@style/et_line_style"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_address_dtl" />
+
+                    <TextView
+                        android:id="@+id/tv_address_dtl2"
+                        style="@style/reg_tv_style"
+                        android:drawableStart="@drawable/reg_icon_address1"
+                        android:text="@string/reg_post_address2"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/et_address_dtl" />
+
+                    <EditText
+                        android:id="@+id/et_address_dtl2"
+                        style="@style/reg_et_style"
+                        android:layout_width="0dp"
+                        android:imeOptions="actionDone"
+                        android:text="@={viewModel.postAddress2}"
+                        android:theme="@style/et_line_style"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_address_dtl2" />
+
+                    <TextView
+                        android:id="@+id/tv_post_hint"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:textColor="@color/grey_500"
+                        android:textSize="13sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/et_address_dtl2" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.appcompat.widget.AppCompatCheckBox
+                    android:id="@+id/cb_privacy"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:checked="true"
+                    android:gravity="top"
+                    android:paddingStart="8dp"
+                    android:text="@string/reg_privacy"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/rl_post" />
+
+                <TextView
+                    android:id="@+id/btn_submit"
+                    android:layout_width="200dp"
+                    android:layout_height="48dp"
+                    android:layout_margin="16dp"
+                    android:layout_marginTop="24dp"
+                    android:background="@drawable/bg_button_pink"
+                    android:gravity="center"
+                    android:onClick="@{()->viewModel.onSubmit()}"
+                    android:text="@string/reg_submit"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cb_privacy" />
+
+                <TextView
+                    android:id="@+id/tv_last"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:text="@string/reg_last_hint"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toTopOf="@+id/guideline2"
+                    app:layout_constraintTop_toBottomOf="@id/btn_submit" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_end="64dp" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+
+        <ImageView
+            android:id="@+id/iv_reg_mask"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/skip_transparent"
+         android:visibility="gone" />
+
+        <ProgressBar
+            android:id="@+id/reg_progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <!--        android:visibility="@{viewModel.progressBarVisible?View.VISIBLE:View.GONE}"-->
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

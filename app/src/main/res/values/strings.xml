@@ -1,0 +1,279 @@
+<resources>
+    <bool name="isTablet">false</bool>
+    <string name="app_name">國際橡塑展</string>
+    <string name="menu_home">主頁</string>
+    <string name="menu_download_center">下載中心</string>
+    <string name="menu_subscribe">訂閱電子快訊</string>
+    <string name="menu_calendar">添加到日曆</string>
+    <string name="menu_follow">關注我們</string>
+    <string name="menu_guide">使用指南</string>
+    <string name="menu_setting">設置</string>
+    <string name="search">搜索</string>
+    <string name="mychinaplas_login_text">MYCHINAPLAS登錄</string>
+
+    <!-- title -->
+    <string name="title_register">觀眾預登記</string>
+    <string name="title_my_ticket">我的電子門票</string>
+    <string name="title_tool">我的工具</string>
+    <string name="title_floorplan">展馆平面图</string>
+    <string name="title_exhibitor_list">展商列表</string>
+    <string name="title_company_info">公司资料</string>
+    <string name="title_visit_tip">參觀貼士</string>
+    <string name="title_general_info">展會概覽</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="confirm">確認</string>
+    <string name="cancel">取消</string>
+    <string name="back">返回</string>
+
+
+    <string name="reg_name">姓名</string>
+    <string name="reg_gender">稱謂</string>
+    <string name="reg_female">女士</string>
+    <string name="reg_male">先生</string>
+    <string name="reg_post_checkbox">欲於4月初通過郵寄收取參觀證，請勾選方格並填寫妳的詳細地址。(申請截止：2020年2月14日晚上11時59分 (GMT +8:00))</string>
+    <string name="reg_post_hint">* 請填寫正確的<![CDATA[<font color=#ff9409>郵政編號</font>]]>和<![CDATA[<font color=#ff9409>地址資料</font>]]>。若期間有地址變更，煩請及時通知主辦方。</string>
+    <string name="reg_area_code_hint">(如沒有區號，請輸入"0")</string>
+    <string name="reg_privacy">本人已年滿18歲。本人確認已閱讀雅式集團的隱私政策，並同意此聲明所概述的收集及使用本人的個人資料，包括使用及提供個人資料以供直效營銷用途。 \n\n主辦機構保留發出參觀入場證的最終權利。</string>
+    <string name="reg_last_hint">如有與觀眾登記，網上支付及發票收據相關事宜的查詢，請發送電郵至<![CDATA[<font color=#ff9409>prereg-payment@adsale.com.hk</font>]]></string>
+
+    <string name="reg_other_hint">其他（請註明）</string>
+
+    <string name="please_select">--請選擇--</string>
+    <string name="verify_code">驗證碼</string>
+    <string name="btn_send_sms_code">獲取驗證碼</string>
+    <string name="btn_sms_code_after">%d秒後獲取</string>
+    <string name="reg_company">公司名稱</string>
+    <string name="name">姓名</string>
+    <string name="reg_title">職位</string>
+    <string name="reg_function">職能部門</string>
+    <string name="reg_region">國家/地區</string>
+    <string name="reg_postcode">郵編</string>
+    <string name="address">地址</string>
+    <string name="tell">電話</string>
+    <string name="phone_number">手機號碼</string>
+    <string name="email">郵箱</string>
+    <string name="reg_major_product">主營服務/產品</string>
+    <string name="reg_service">從事業務/行業</string>
+
+    <string name="reg_next">下一步</string>
+    <string name="error_verify_code_incorrect">手機驗證碼過期或驗證碼不存在，請重新獲取…</string>
+    <string name="reg_help_name">請以實名登記，否則無法入場。</string>
+    <string name="reg_hint_product">請列出公司主要經營的產品/ 服務（具體名稱）</string>
+    <string name="reg_product">主營產品</string>
+    <string name="reg_service0">公司業務</string>
+    <string name="reg_hint_region_code">國家/地區號</string>
+    <string name="reg_hint_area_code">區號</string>
+    <string name="reg_hint_tell_no">號碼</string>
+    <string name="reg_hint_ext">分機</string>
+    <string name="reg_hint_postcode">如沒有郵編，輸入 0</string>
+    <string name="reg_pwd_confirm">確定密碼</string>
+    <string name="reg_hint_pwd">請設置MyCHINAPLAS賬戶的登入密碼</string>
+    <string name="reg_help_email">溫馨提示：為確保閣下成功登記並收取電子確認信、收據及發票，建議填寫公司電郵，以及將我司雅式專用郵箱<![CDATA[<font color=#ff9409>no-reply@adsale-notification.com</font>]]> 列入白名單之內。</string>
+    <string name="reg_hint_email">請再次輸入電子郵箱確認</string>
+    <string name="reg_email_confirm">確認郵箱</string>
+    <string name="reg_set_pwd">設置密碼</string>
+    <string name="reg_help_pwd">妳的密碼必須設定為8個字符，並且包含最少1個英文字母和1個數字</string>
+    <string name="reg_post_address2">地址欄2</string>
+    <string name="reg_post_address1">地址欄1</string>
+    <string name="reg_post_city">城市</string>
+    <string name="reg_hint_service">請輸入公司從事業務/行業為 (可選多項)</string>
+
+    <string name="reg_toast_mobile_number">請輸入手機號碼</string>
+    <string name="reg_toast_email">請輸入電子郵箱</string>
+    <string name="reg_toast_valid_email">請輸入有效的電郵</string>
+    <string name="reg_toast_gender">請選擇稱謂</string>
+    <string name="reg_toast_name">請輸入姓名</string>
+    <string name="reg_toast_valid_name">輸入觀眾姓名時，請不要輸入數字或符號。</string>
+    <string name="reg_toast_company">請輸入公司名稱</string>
+    <string name="reg_toast_title">請選擇職位</string>
+    <string name="reg_toast_title_other">請輸入職位 - 其他 (請註明)</string>
+    <string name="reg_toast_function">請選擇職能部門</string>
+    <string name="reg_toast_function_other">請輸入職能部門 - 其他 (請註明)</string>
+    <string name="reg_toast_product">請輸入貴單位經營的主導產品/服務</string>
+    <string name="reg_toast_service">請輸入公司從事業務/行業為 (可選多項)</string>
+    <string name="reg_toast_service_other">請輸入 "%s"</string>
+    <string name="reg_toast_region">請選擇國家/地區</string>
+    <string name="reg_toast_province">請選擇省</string>
+    <string name="reg_toast_city">請選擇城市</string>
+    <string name="reg_toast_address">請輸入地址</string>
+    <string name="reg_toast_valid_postcode_cn">請輸入有效中國郵編(六位數字)</string>
+    <string name="reg_toast_postcode_0">請輸入郵編﹐ 如不適用﹐請填上 " 0 "</string>
+    <string name="reg_toast_valid_postcode">請輸入有效的郵編</string>
+    <string name="reg_toast_mobile_number_region">請輸入"國家/地區號"</string>  <!--國家地區號-->
+    <string name="reg_toast_tell_area">請輸入 "電話 - 區號"</string>  <!--國家地區號-->
+    <string name="reg_toast_tell_number">請輸入電話號碼</string> <!--電話號碼-->
+    <string name="reg_toast_mobile_number_area">請輸入 "手機號碼 - 區號"</string>
+    <string name="reg_toast_sms_code">請填寫短信驗證碼</string>
+    <string name="reg_toast_email2">電郵地址不相符</string>
+    <string name="reg_toast_pwd">請設置MyCHINAPLAS賬戶的登入密碼</string>
+    <string name="reg_toast_valid_pwd">妳的密碼必須設定為8個字符，並且包含最少1個英文字母和1個數字</string>
+    <string name="reg_toast_pwd2">密碼不相符</string>
+    <string name="reg_toast_agree_privacy">請閱讀及同意雅式集團的私隱政策</string>
+    <string name="reg_toast_submit">正在提交數據，請您耐心等待。</string>
+    <string name="reg_toast_valid_phone_no">手機號碼不正確，請重新輸入…</string>
+
+    <!--    <string name="reg_toast_valid_tell_number">Please Please enter a valid telephone number</string>-->
+    <!--    <string name="reg_toast_mobile_number_area_2">Please fill in "Mobile Number - Area, or mark " 0 " for not applicable"</string>-->
+    <!--    <string name="reg_toast_valid_mobile_number_area">Please fill in a valid "Mobile Number - Area"</string>-->
+    <!--    <string name="reg_toast_valid_mobile_number">Please fill in a valid "Mobile Number - Number"</string>  &lt;!&ndash;手機號格式&ndash;&gt;-->
+    <!--    <string name="reg_toast_other">Please fill in "Others (Please specify)"</string>  &lt;!&ndash;title/function other&ndash;&gt;-->
+    <!--    <string name="reg_toast_tell_region_code">Please fill in "number - Country/Region"</string>  &lt;!&ndash;電話-國家地區號&ndash;&gt;-->
+    <string name="reg_submit">提交</string>
+
+
+    <!--  Reg Pre         -->
+    <string name="reg_pre_create">創建MyCHINAPLAS</string>
+    <string name="reg_pre_phone"><![CDATA[<font color=#ff0000>*  </font>手機號碼]]></string>
+    <string name="reg_pre_email"><![CDATA[<font color=#ff0000>*  </font>電子郵箱]]></string>
+    <string name="reg_pre_1">備註: <![CDATA[<font color=#ff0000> * </font> 必填項]]></string>
+    <string name="reg_pre_2">預登記系統已全新改版，並同時創建MyCHINAPLAS賬戶。現在妳可通過官網、手機APP及微信登錄MyCHINAPLAS，隨時查閱預登記確認信及申請電子發票。</string>
+    <string name="reg_pre_hint_phone">只需手機號碼，國家號和區號不需填寫。</string>
+    <string name="reg_pre_3">請確保填寫的手機號碼和電郵資料正確。資料一經提交後將不能修改。</string>
+    <string name="reg_pre_4">如有關於觀眾登記,網上支付及發票收據相關的查詢,請發送電郵至 <![CDATA[<font color=#FF6E42>prereg-payment@adsale.com.hk</font>]]></string>
+    <string name="reg_hint_input_phone_no">請輸入手機號碼</string>
+    <string name="reg_hint_input_email">請輸入電子郵箱</string>
+    <string name="reg_pre_hint_login">這個賬戶已存在，請登入賬戶繼續預登記；或選擇登記另一個電郵或手機號碼。</string>
+    <string name="reg_text_login_mychinaplas">登入MyCHINAPLAS</string>
+    <string name="reg_toast_submit_fail">數據提交失敗</string>
+    <!--    <string name="reg_toast_submiting">正在提交數據</string>-->
+
+
+    <string name="logout">登出</string>
+    <string name="cps_get_invoice">獲取發票</string>
+    <string name="cps_sync_exhibitor">同步我的參展商</string>
+    <string name="cps_colleague_info">同事登記信息</string>
+    <string name="cps_my_info">我的登記信息</string>
+    <string name="cps_home">首頁</string>
+    <string name="my_cps">MyChinaplas</string>
+    <string name="tool_my_exhibitor">我的參展商</string>
+    <string name="tool_my_schedule">我的日程</string>
+    <string name="tool_exhibitor_history">展商瀏覽歷史</string>
+
+    <!-- logout -->
+    <string name="logout_message">確認登出?</string>
+    <string name="syncMessage">在應用內的 [我的CHINAPLAS] 資料，將會跟CHINAPLASONLILNE.com的 [我的CHINAPLAS] 同步，請確認繼續。</string>
+    <string name="syncStart">开始同步</string>
+    <string name="syncSuccess">同步成功</string>
+    <string name="syncFailure">同步失敗</string>
+
+
+    <!--职位-->
+    <string-array name="titles">
+        <item>職位</item>
+        <item>董事長</item>
+        <item>法人代表</item>
+        <item>總裁/主席/首席執行官</item>
+        <item>總經理</item>
+        <item>副總經理</item>
+        <item>總監</item>
+        <item>總工程師</item>
+        <item>副總工程師</item>
+        <item>高級工程師</item>
+        <item>工程師</item>
+        <item>廠長</item>
+        <item>副廠長</item>
+        <item>經理</item>
+        <item>部長</item>
+        <item>主管</item>
+        <item>主任</item>
+        <item>政府官員</item>
+        <item>其他</item>
+    </string-array>
+    <!--部門-->
+    <string-array name="departments">
+        <item>職能部門</item>
+        <item>采購部</item>
+        <item>管理層</item>
+        <item>檢測/質量控制</item>
+        <item>設備部</item>
+        <item>設計部</item>
+        <item>生產/技術部</item>
+        <item>項目部</item>
+        <item>銷售/ 市場部</item>
+        <item>研發/開發部</item>
+        <item>其他</item>
+    </string-array>
+
+    <!--设置-->
+    <string name="setting_language">語言</string>
+    <string name="setting_website">網站連結</string>
+    <string name="setting_reset_all">重置所有設定</string>
+    <string name="setting_privacy_policy">私隱政策聲明</string>
+    <string name="setting_use_terms">使用條款</string>
+    <string name="setting_share">分享</string>
+
+    <string name="logout_confirm_letter">是否注销确认信?</string>
+
+    <string name="title_general_open">开放时间</string>
+    <string name="title_general_scope">展品范围</string>
+
+    <string name="title_sms_login">短信登錄</string>
+    <string name="title_pwd_login">密碼登錄</string>
+    <string name="login_send_sms_code">發送驗證碼</string>
+    <string name="login_email">登錄電郵</string>
+    <string name="login_phone">登錄手機號碼</string>
+    <string name="login_hint_1">只需輸入手機號碼，不需填寫國家號和區號。</string>
+    <string name="login_hint_2"><![CDATA[<font color=#ff0000> * </font>短信驗證碼登錄只限中國觀眾]]></string>
+    <string name="login_password">密碼</string>
+    <string name="toast_cps_invalid_email">請輸入正確的電郵</string>
+    <string name="toast_cps_pwd_empty">請輸入密碼</string>
+    <string name="toast_code_empty">請輸入驗證碼</string>
+    <string name="toast_phone_empty">請輸入中國手機號碼</string>
+    <string name="toast_phone_empty2">請輸入手機號碼</string>
+    <string name="toast_sms_error">手机号验证码不正确，请重新输入</string>
+    <!--smd code-->
+    <string name="sms_response_0">发送失败，请勿多次提交</string>
+    <string name="sms_response_1">发送失败，请稍后再试</string>
+    <string name="sms_response_2">手机号码不正确，请输入中国国内有效的手机号码</string>
+    <string name="sms_response_3">验证码发送成功，请查收短信。</string>
+    <string name="send_countdown">%d秒后重新获取</string>
+
+    <string name="toast_login_failed">登入名称或密码不正确，请重新输入。</string>
+    <string name="title_my_chinaplas">MyCHINAPLAS</string>
+
+
+    <!--展商资料-->
+    <string name="exhibitor_sort_by">排序:</string>
+
+    <string name="sort_by_az">筆畫</string>
+    <string name="sort_by_hall">展館</string>
+    <string name="nodata">沒有相關信息</string>
+
+    <string name="drawer_sync">與官網同步</string>
+    <string name="login_first_sync">需要登錄后才能同步，是否登錄？</string>
+    <string name="title_new_tec_dtl">產品詳情</string>
+
+<!--    <string name="dialog_toast_delete">確認刪除？</string>-->
+<!--    <string name="dialog_confirm">確定</string>-->
+<!--    <string name="dialog_cancel">取消</string>-->
+<!--    <string name="toast_start_export">開始導出</string>-->
+<!--    <string name="toast_export_success">導出完成</string>-->
+<!--    <string name="favinfo_url">http://www.chinaplasonline.com/apps/2018/HTML/favinfo/EN.htm</string>-->
+<!--    <string name="dialog_go">前往</string>-->
+<!--    <string name="more">更多</string>-->
+<!--    <string name="card_save">存儲至通訊錄</string>-->
+<!--    <string name="update_map">更新</string>-->
+<!--    <string name="exception_toast_email">No email client installed.</string>-->
+<!--    <string name="exception_toast_phone">抱歉，您的設備不支持打電話。</string>-->
+<!--    <string name="select_Language">請選擇</string>-->
+<!--    <string name="title_setting">設置</string>-->
+    <!--some titles-->
+<!--    <string name="title_event">同期活動</string>-->
+<!--    <string name="title_product_category">產品類別</string>-->
+<!--    <string name="title_application">應用行業</string>-->
+<!--    <string name="title_hall">展館</string>-->
+<!--    <string name="title_region">國家/地區</string>-->
+<!--    <string name="title_login">登錄</string>-->
+<!--    <string name="title_register">觀眾預登記</string>-->
+<!--    <string name="title_register_success">我的門票</string>-->
+<!--    <string name="title_news">最新消息</string>-->
+<!--    <string name="title_exhibitor">展商名單</string>-->
+<!--    <string name="title_new_tec">首發及熱點技術</string>-->
+
+
+
+</resources>

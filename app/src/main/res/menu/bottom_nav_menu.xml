@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menu_home"
+        android:icon="@drawable/ic_home"
+        android:title="主页" />
+    <item
+        android:id="@+id/menu_exhibitors"
+        android:icon="@drawable/bottom_nav_exhibitors"
+        android:title="展商列表" />
+    <item
+        android:id="@+id/menu_floor"
+        android:icon="@drawable/bottom_nav_map"
+        android:title="平面图" />
+    <item
+        android:id="@+id/menu_tool"
+        android:icon="@drawable/bottom_nav_tool"
+        android:title="我的工具" />
+</menu>

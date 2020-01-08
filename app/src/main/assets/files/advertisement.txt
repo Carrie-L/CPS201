@@ -1,0 +1,519 @@
+{
+	"base": {
+		"baseUrl": "https://cdn.adsalecdn.com/App/2019/EPO/",
+		"startTime": "2019/01/01",
+		"endTime": "2021/01/01"
+	},
+	"D1": {
+		"isOpen": [1, 1, 1],
+		"images": ["arburg_en.jpg", "arburg_cn.jpg", "arburg_cn.jpg"],
+		"companyID": ["244671", "244671", "244671"]
+	},
+	"D2": {
+		"isOpen": [1, 1, 1],
+		"images_bottom": ["242262_en.jpg", "243787_cn.jpg", "243787_cn.jpg"],
+		"function": [1, 1, 1],
+		"pageID": ["242262", "243787", "243787"]
+	},
+	"D3": {
+		"isOpen_en": [1, 1, 1,1],
+		"isOpen_tc": [1, 1, 1],
+		"isOpen_sc": [1, 1, 1],
+		"images_banner_en": ["yuesheng_en_1024.jpg", "CircularEconomy_en_1024.jpg", "medical_banner_en.jpg","all_in_one_1024.jpg"],
+		"images_banner_tc": ["zhongyun_cn_1024.jpg", "yuchang_cn_1024.jpg", "huitong_cn.jpg"],
+		"images_banner_sc": ["zhongyun_cn_1024.jpg", "yuchang_cn_1024.jpg", "huitong_cn.jpg"],
+		"companyID_en": ["242545", "", "",""],
+		"companyID_tc": ["242262", "243819", "243354"],
+		"companyID_sc": ["242262", "243819", "243354"],
+		"function_en": [1, 2, 2,5],
+		"function_tc": [1, 1, 1],
+		"function_sc": [1, 1, 1],
+		"pageID_en": ["242545", "PlasticsRecycling", "MedicalPlastics","CurrentEventsTxt"],
+		"pageID_tc": ["242262", "243819", "243354"],
+		"pageID_sc": ["242262", "243819", "243354"]
+	},
+	"D4": [{
+			"isOpen": 1,
+			"companyID": "246568",
+			"logo": "246568_logo.png",
+			"products": [
+				"KCI_PRODUCT_1.jpg",
+				"246568_2.png",
+				"246568_3.png"
+			],
+			"about_sc": "大韩化工工业（KCI），是专业研发、生产纳米注塑PBT、PPS、PPA、高硬度PCG等高性能改性材料的专业公司，并拥有国际一流颜色检测设备，提供专业塑料配色抽粒等服务。20多年来，大韩化工在品质、创新和客户服务上享有盛誉。大韩化工的高性能材料是高分子材料领域中的主力军，与终端用户以及产业链厂商建立了丰富的合作。",
+			"about_tc": "大韩化工工业（KCI），是专业研发、生产纳米注塑PBT、PPS、PPA、高硬度PCG等高性能改性材料的专业公司，并拥有国际一流颜色检测设备，提供专业塑料配色抽粒等服务。20多年来，大韩化工在品质、创新和客户服务上享有盛誉。大韩化工的高性能材料是高分子材料领域中的主力军，与终端用户以及产业链厂商建立了丰富的合作。",
+			"about_en": "Korea Chemical Ind. is a high-performance material company that specializes in research and development, production and sales of PBT, PPS, PPA, PCG and Providing color matching services. For more than 20 years, Korean Chemical Ind. has enjoyed a reputation for quality, innovation and customer service. The high-performance materials of Korean Chemical Industry are not only the main force in the field of high-performance thermoplastic materials, but also have rich cooperation and development experience with end users and industrial chain manufacturers in the field of technology and innovation.",
+			"website": "",
+			"videoCover": "",
+			"videoLink": ""
+		},
+		{
+			"isOpen": 1,
+			"companyID": "246135",
+			"logo": "246135_logo.jpg",
+			"products": [
+				"246135_1.jpg",
+				"246135_2.jpg",
+				"246135_3.jpg"
+			],
+			"about_sc": "无锡市海普精密模具有限公司在2006年创立于无锡市滨湖区。专业从事汽车，电子，家电等零部件的注塑模与冲压模的设计及制作。公司充满年轻活力蓬勃发展，先后在2010年和2013年进入日本和欧洲市场获得不俗口碑，紧接着在2018年设立新工厂（固特精密部件（无锡）有限公司）用以进行产品的生产和研发。海普人秉承“诚信务实，品质第一，客户至上”愿在未来与更多的公司结为诤友，深入交流，共创辉煌。",
+			"about_tc": "無錫市海普精密模具有限公司在2006年創立于無錫市濱湖區。專業從事汽車，電子，家電等零部件的注塑模與衝壓模的設計及制作。公司充滿年輕活力蓬勃發展，先後在2010年和2013年進入日本和歐洲市場獲得不俗口碑，緊接著在2018年設立新工廠（固特精密部件（無錫）有限公司）用以進行産品的生産和研發。海普人秉承“誠信務實，品質第一，客戶至上”願在未來與更多的公司結爲诤友，深入交流，共創輝煌。",
+			"about_en": "Company profile: Wuxi haipu precision mold co., ltd was be found in binhu district of wuxi at 2006.It is focus on the research & development & manufacture of injection mold and punching die which are used for making the component of automotive, electronics and household appliances. Haipu always have full of passion to grow up quickly so that be known in japan at 2010, than have the approval of Europe customer at 2013, also establish a new factory called good precision components(wuxi) co.,ltd at 2018 to doing production and research. Review the past , haipu have a motto that “Be honest and earnest ,quality first, customer important.” which lead haipu to grow up stronger with business partner. The motto will not change at the future, that creating a great achievement with friends who are new and old.",
+			"website": "",
+			"videoCover": "",
+			"videoLink": ""
+		},
+		{
+			"isOpen": 1,
+			"companyID": "242545",
+			"logo": "yuesheng_logo.jpg",
+			"products": [
+				"yuesheng_product_1.jpg",
+				"yuesheng_product_2.jpg",
+				"yuesheng_product_3.jpg"
+			],
+			"about_sc": "越升公司的新型SAT系列共混造粒生产线具有更高的扭矩（12.4nm/cm）、更节能（高达30%）和更智能的控制系统（工业PC），帮助客户实现更高的产量、更好的颗粒质量、更省钱和保持客户在市场上的竞争力，可广泛应用于化工、建筑等行业。",
+			"about_tc": "越升公司的新型SAT系列共混造粒生产线具有更高的扭矩（12.4nm/cm）、更节能（高达30%）和更智能的控制系统（工业PC），帮助客户实现更高的产量、更好的颗粒质量、更省钱和保持客户在市场上的竞争力，可广泛应用于化工、建筑等行业。",
+			"about_en": "Useon's new SAT series compounding and granulating production lines with higher torque(12.4Nm/cm),  more energy saving(up to 30%), and more intelligent control system(Industrial PC) help customers achieve higher output, better quality pellets, money saving, and keeping customers' competitivity in the market,  can be widely used in chemical, construction and other industries.",
+			"website": "",
+			"videoCover": "",
+			"videoLink": ""
+		},
+		{
+			"isOpen": 1,
+			"companyID": "242908",
+			"logo": "jam_logo.jpg",
+			"products": [
+				"jam_product_1.jpg",
+				"jam_product_2.jpg",
+				"jam_product_3.jpg"
+			],
+			"about_sc": "Jam Petrochemical Company is the most prominent complex in south Pars economic zone in Iran by production and supply various grades of petrochemical products in domestic and global market and move forward on development and promotion is one of the important complexes of petrochemical industry in economic arena. \n Jam petrochemical Company, one of the biggest manufactures of polymeric and petrochemical material in the word, is proud to be here with its forever global power and distinction and welcome you all to this vast display of talent and creativity.",
+			"about_tc": "Jam Petrochemical Company is the most prominent complex in south Pars economic zone in Iran by production and supply various grades of petrochemical products in domestic and global market and move forward on development and promotion is one of the important complexes of petrochemical industry in economic arena. \n Jam petrochemical Company, one of the biggest manufactures of polymeric and petrochemical material in the word, is proud to be here with its forever global power and distinction and welcome you all to this vast display of talent and creativity.",
+			"about_en": "Jam Petrochemical Company is the most prominent complex in south Pars economic zone in Iran by production and supply various grades of petrochemical products in domestic and global market and move forward on development and promotion is one of the important complexes of petrochemical industry in economic arena. \n Jam petrochemical Company, one of the biggest manufactures of polymeric and petrochemical material in the word, is proud to be here with its forever global power and distinction and welcome you all to this vast display of talent and creativity.",
+			"website": "",
+			"videoCover": "https://cdn.adsalecdn.com/App/2019/EPO/D4/jam_video_cover.png",
+			"videoLink": "https://cdn.adsalecdn.com/App/2019/EPO/D4/jam.mp4"
+		},
+		{
+			"isOpen": 0,
+			"companyID": "242218",
+			"logo": "liwang_logo.jpg",
+			"products": [
+				"liwang_product_1.jpg",
+				"liwang_product_2.jpg",
+				"liwang_product_3.jpg"
+			],
+			"about_sc": "",
+			"about_tc": "",
+			"about_en": "",
+			"website": "",
+			"videoCover": "",
+			"videoLink": ""
+		},
+		{
+			"isOpen": 0,
+			"companyID": "243390",
+			"logo": "orpic_logo.jpg",
+			"products": [
+				"orpic_product_1.jpg",
+				"orpic_product_2.jpg",
+				"orpic_product_3.jpg"
+			],
+			"about_sc": "",
+			"about_tc": "",
+			"about_en": "",
+			"website": "",
+			"videoCover": "",
+			"videoLink": ""
+		},
+		{
+			"isOpen": 1,
+			"companyID": "245977",
+			"logo": "245977_logo.jpg",
+			"products": [
+				"245977_1.jpg",
+				"245977_2.jpg",
+				"245977_3.jpg"
+			],
+			"about_sc": "青岛佳百特是国内PVC硬质发泡领域专业的原料供应商和技术服务提供者。作为业内专业的无尘环保钙锌稳定剂，PVC专用发泡剂生产商，佳百特拥有先进的生产和检测设备，专业的研发及售后技术服务团队，公司致力于在WPC/SPC地板基材，PVC木塑墙板、生态木，PVC发泡板材，PVC异型材，管材等诸多领域，为国内外客户提供高品质的PVC助剂一站式采购平台和优质的专业技术服务。",
+			"about_tc": "青島佳百特是國內PVC硬質發泡領域專業的原料供應商和技術服務提供者。作爲業內專業的無塵環保鈣鋅穩定劑，PVC專用發泡劑生産商，佳百特擁有先進的生産和檢測設備，專業的研發及售後技術服務團隊，公司致力于在WPC/SPC地板基材，PVC木塑牆板、生態木，PVC發泡板材，PVC異型材，管材等諸多領域，爲國內外客戶提供高品質的PVC助劑一站式采購平台和優質的專業技術服務。",
+			"about_en": "Qingdao Jabetter New Material Technology Co., Ltd is a professional raw material supplier and technical service provider in the domestic PVC rigid foam field. As a professional manufacturer for dust-free environmental calcium-zinc stabilizer and PVC foaming agent , Jabetter has advanced production and testing equipment, professional R&D and after-sales technical service team. Our company is committed to WPC/SPC floor substrate, PVC-WPC wall panel, ecological wood, PVC foam sheet, PVC profile, pipe and many other fields, to provide high-quality PVC additives and professional technical services for domestic and foreign customers as a one-stop procurement platform.",
+			"website": "",
+			"videoCover": "http://cdn.adsalecdn.com/App/2019/EPO/D4/jabetter_video_cover.JPG",
+			"videoLink": "http://cdn.adsalecdn.com/App/2019/EPO/D4/jabetter.mp4"
+		},
+		{
+			"isOpen": 1,
+			"companyID": "246639",
+			"logo": "aoda_logo.jpg",
+			"products": [
+				"aoda_product_1.jpg",
+				"aoda_product_2.jpg",
+				"aoda_product_3.jpg"
+			],
+			"about_sc": "1. 高分子改性新材料及阻燃剂（环保阻燃母粒、相容剂、PP/PE改性料、玻纤改性料）广泛应用于汽车自行车配件、板材、型材、输水管道等行业。  2. 黑色母粒选用进口高色素碳黑、聚乙烯树脂及进口颜料助剂，经混炼挤出精制而成，碳黑含量30%-50%，产品高黑度、高亮度。适用行业：拉丝、吹膜、管材、片材、注塑等。",
+			"about_tc": "1. 高分子改性新材料及阻燃劑（環保阻燃母粒、相容劑、PP/PE改性料、玻纖改性料）廣泛應用于汽車自行車配件、板材、型材、輸水管道等行業。  2. 黑色母粒選用進口高色素碳黑、聚乙烯樹脂及進口顔料助劑，經混煉擠出精制而成，碳黑含量30%-50%，産品高黑度、高亮度。適用行業：拉絲、吹膜、管材、片材、注塑等。",
+			"about_en": "1. Polymer modified new materials and flame retardants (environmental protection flame retardant masterbatch, compatibilizer, PP/PE modified material, glass fiber modified material) are widely used in automobile bicycle accessories, plate, profile, water pipeline and other industries.  \n 2. The black masterbatch is made of imported high pigment carbon black, polyethylene resin and imported pigment auxiliaries, which is refined by mixing and extrusion. the content of carbon black is 30% ≤ 50%, and the product has high blackness and high brightness. Applicable industry: wire drawing, film blowing, pipe, sheet, injection molding and so on.  \n 3. Filling masterbatch series (PP/PE calcium carbonate masterbatch, nano-calcium carbonate masterbatch, defoaming masterbatch, transparent masterbatch, barium sulfate masterbatch) is suitable for the industry: blowing film, wire drawing, blow molding, plate, profile, hollow products and so on.",
+			"website": "",
+			"videoCover": "https://cdn.adsalecdn.com/App/2019/EPO/D4/aoda_video_cover.png",
+			"videoLink": "https://cdn.adsalecdn.com/App/2019/EPO/D4/aoda.mp4"
+		}
+
+	],
+	"D5": {
+		"cn": [{
+				"isOpen": 1,
+				"image": "242553_cn.jpg",
+				"imagePad": "pad_242553_cn.jpg",
+				"function": 1,
+				"companyID": "242553",
+				"PageID": "5.1D65"
+			},
+			{
+				"isOpen": 1,
+				"image": "242344_cn.jpg",
+				"imagePad": "pad_242344_cn.jpg",
+				"function": 1,
+				"companyID": "242344",
+				"PageID": "10.2G21"
+			}
+		],
+		"en": [{
+				"isOpen": 1,
+				"image": "242553_en.jpg",
+				"imagePad": "pad_242553_en.jpg",
+				"function": 1,
+				"companyID": "242553",
+				"PageID": "5.1D65"
+			},
+			{
+				"isOpen": 1,
+				"image": "243819_en.jpg",
+				"imagePad": "pad_243819_en.jpg",
+				"function": 1,
+				"companyID": "243819",
+				"PageID": "13.2M11"
+			}
+		]
+	},
+	"D6": [{
+			"half": 0,
+			"isOpen": [1],
+			"hall": "9.3",
+			"boothNo": ["9.3A29"],
+			"images": ["jabetter_cn.jpg", "jabetter_en.jpg", "jabetter_cn.jpg"],
+			"function": [1],
+			"pageID": ["245977"]
+		},
+		{
+			"half": 0,
+			"isOpen": [1],
+			"hall": "11.3",
+			"boothNo": ["11.3M45"],
+			"images": ["aoda_banner.jpg", "aoda_banner.jpg", "aoda_banner.jpg"],
+			"images_other": ["aoda_banner.jpg", "aoda_banner.jpg", "aoda_banner.jpg"],
+			"function": [1],
+			"pageID": ["246639"]
+		},
+		{
+			"half": 0,
+			"isOpen": [1],
+			"hall": "3.1",
+			"boothNo": ["3.1"],
+			"images": ["industry_d6.jpg", "industry_d6.jpg", "industry_d6.jpg"],
+			"images_other": ["industry_d6.jpg", "industry_d6.jpg", "industry_d6.jpg"],
+			"function": [2],
+			"pageID": ["FutureFactory"]
+		},
+		{
+			"half": 0,
+			"isOpen": [1],
+			"hall": "4.1",
+			"boothNo": [""],
+			"images": ["industry_d6.jpg", "industry_d6.jpg", "industry_d6.jpg"],
+			"images_other": ["industry_d6.jpg", "industry_d6.jpg", "industry_d6.jpg"],
+			"function": [2],
+			"pageID": ["FutureFactory"]
+		},
+		{
+			"half": 0,
+			"isOpen": [1],
+			"hall": "5.1",
+			"boothNo": [""],
+			"images": ["industry_d6.jpg", "industry_d6.jpg", "industry_d6.jpg"],
+			"images_other": ["industry_d6.jpg", "industry_d6.jpg", "industry_d6.jpg"],
+			"function": [2],
+			"pageID": ["FutureFactory"]
+		},
+		{
+			"half": 0,
+			"isOpen": [1],
+			"hall": "4.2",
+			"boothNo": ["4.2D01"],
+			"images": ["industry_d6.jpg", "industry_d6.jpg", "industry_d6.jpg"],
+			"images_other": ["industry_d6.jpg", "industry_d6.jpg", "industry_d6.jpg"],
+			"function": [2],
+			"pageID": ["FutureFactory"]
+		},
+		{
+			"half": 0,
+			"isOpen": [1],
+			"hall": "9.1",
+			"boothNo": [""],
+			"images": ["industry_d6.jpg", "industry_d6.jpg", "industry_d6.jpg"],
+			"images_other": ["industry_d6.jpg", "industry_d6.jpg", "industry_d6.jpg"],
+			"function": [2],
+			"pageID": ["FutureFactory"]
+		},
+		{
+			"half": 0,
+			"isOpen": [1],
+			"hall": "12.1",
+			"boothNo": [""],
+			"images": ["industry_d6.jpg", "industry_d6.jpg", "industry_d6.jpg"],
+			"images_other": ["industry_d6.jpg", "industry_d6.jpg", "industry_d6.jpg"],
+			"function": [2],
+			"pageID": ["FutureFactory"]
+		},
+		{
+			"half": 0,
+			"isOpen": [1],
+			"hall": "8.1B",
+			"boothNo": [""],
+			"images": ["CircularEconomy_1080_tc.jpg", "CircularEconomy_1080_en.jpg", "CircularEconomy_1080_sc.jpg"],
+			"images_other": ["CircularEconomy_1080_tc.jpg", "CircularEconomy_1080_en.jpg", "CircularEconomy_1080_sc.jpg"],
+			"function": [2],
+			"pageID": ["PlasticsRecycling"]
+		},
+		{
+			"half": 0,
+			"isOpen": [1],
+			"hall": "3.2",
+			"boothNo": [""],
+			"images": ["CircularEconomy_1080_tc.jpg", "CircularEconomy_1080_en.jpg", "CircularEconomy_1080_sc.jpg"],
+			"images_other": ["CircularEconomy_1080_tc.jpg", "CircularEconomy_1080_en.jpg", "CircularEconomy_1080_sc.jpg"],
+			"function": [2],
+			"pageID": ["PlasticsRecycling"]
+		},
+		{
+			"half": 0,
+			"isOpen": [1],
+			"hall": "9.2",
+			"boothNo": [""],
+			"images": ["dxi_banner_d6d7.jpg", "dxi_banner_d6d7.jpg", "dxi_banner_d6d7.jpg"],
+			"images_other": ["dxi_banner_d6d7.jpg", "dxi_banner_d6d7.jpg", "dxi_banner_d6d7.jpg"],
+			"function": [2],
+			"pageID": ["DesignInnovation"]
+		},
+		{
+			"half": 0,
+			"isOpen": [1],
+			"hall": "10.2",
+			"boothNo": [""],
+			"images": ["medical_banner_tc_1024.jpg", "medical_banner_en_1024.jpg", "medical_banner_sc_1024.jpg"],
+			"images_other": ["medical_banner_tc_1024.jpg", "medical_banner_en_1024.jpg", "medical_banner_sc_1024.jpg"],
+			"function": [2],
+			"pageID": ["MedicalPlastics"]
+		},
+		{
+			"half": 0,
+			"isOpen": [1],
+			"hall": "11.2",
+			"boothNo": [""],
+			"images": ["medical_banner_tc_1024.jpg", "medical_banner_en_1024.jpg", "medical_banner_sc_1024.jpg"],
+			"images_other": ["medical_banner_tc_1024.jpg", "medical_banner_en_1024.jpg", "medical_banner_sc_1024.jpg"],
+			"function": [2],
+			"pageID": ["MedicalPlastics"]
+		},
+		{
+			"half": 0,
+			"isOpen": [1],
+			"hall": "12.2",
+			"boothNo": [""],
+			"images": ["medical_banner_tc_1024.jpg", "medical_banner_en_1024.jpg", "medical_banner_sc_1024.jpg"],
+			"images_other": ["medical_banner_tc_1024.jpg", "medical_banner_en_1024.jpg", "medical_banner_sc_1024.jpg"],
+			"function": [2],
+			"pageID": ["MedicalPlastics"]
+		},
+		{
+			"half": 0,
+			"isOpen": [1],
+			"hall": "13.2",
+			"boothNo": [""],
+			"images": ["medical_banner_tc_1024.jpg", "medical_banner_en_1024.jpg", "medical_banner_sc_1024.jpg"],
+			"images_other": ["medical_banner_tc_1024.jpg", "medical_banner_en_1024.jpg", "medical_banner_sc_1024.jpg"],
+			"function": [2],
+			"pageID": ["MedicalPlastics"]
+		},
+		{
+			"half": 0,
+			"isOpen": [1],
+			"hall": "10.3",
+			"boothNo": [""],
+			"images": ["medical_banner_tc_1024.jpg", "medical_banner_en_1024.jpg", "medical_banner_sc_1024.jpg"],
+			"images_other": ["medical_banner_tc_1024.jpg", "medical_banner_en_1024.jpg", "medical_banner_sc_1024.jpg"],
+			"function": [2],
+			"pageID": ["MedicalPlastics"]
+		}
+
+	],
+	"D7": [{
+			"isOpen": 1,
+			"BaiduTJ": "MyAccount",
+			"images": ["sabic.jpg", "sabic.jpg", "sabic.jpg"],
+			"companyID": "245885",
+			"function": 1,
+			"PageID": "245885"
+		},
+		{
+			"isOpen": 1,
+			"BaiduTJ": "GeneralInformation",
+			"images": ["sabic.jpg", "sabic.jpg", "sabic.jpg"],
+			"companyID": "245885",
+			"function": 1,
+			"PageID": "245885"
+		},
+		{
+			"isOpen": 1,
+			"BaiduTJ": "Transportation",
+			"images": ["dxi_banner_d6d7.jpg", "dxi_banner_d6d7.jpg", "dxi_banner_d6d7.jpg"],
+			"companyID": "",
+			"function": 2,
+			"PageID": "DesignInnovation"
+		},
+		{
+			"isOpen": 0,
+			"BaiduTJ": "TravelInfoText",
+			"images": ["242553_cn.jpg", "242553_cn.jpg", "242553_cn.jpg"],
+			"companyID": "242553",
+			"function": 2,
+			"PageID": "DesignInnovation"
+		},
+		{
+			"isOpen": 0,
+			"BaiduTJ": "News",
+			"images": ["242553_cn.jpg", "242553_cn.jpg", "242553_cn.jpg"],
+			"companyID": "242553",
+			"function": 5,
+			"PageID": "Visitor"
+		},
+		{
+			"isOpen": 0,
+			"BaiduTJ": "Venue Facilities",
+			"images": ["dxi_banner_d6d7.jpg", "dxi_banner_d6d7.jpg", "dxi_banner_d6d7.jpg"],
+			"companyID": "",
+			"function": 2,
+			"PageID": "DesignInnovation"
+		},
+		{
+			"isOpen": 0,
+			"BaiduTJ": "VisitingTips",
+			"images": ["242553_cn.jpg", "242553_cn.jpg", "242553_cn.jpg"],
+			"companyID": "242553",
+			"function": 99,
+			"PageID": "MI00000052"
+		}
+	],
+	"D9": [{
+			"isOpen": [1, 1, 1],
+			"date": 21,
+			"isAm": 1,
+			"companyID": ["245975", "245975", "245975"],
+			"function": [3, 3, 3],
+			"pageID": ["2459751", "2459751", "2459751"],
+			"image_logo": ["exxon_logo_2019.jpg", "exxon_logo_2019.jpg", "exxon_logo_2019.jpg"],
+			"image_bottom_banner": ["exxon_bottom_timetable_cn.jpg", "exxon_bottom_timetable_en.jpg", "exxon_bottom_timetable_cn.jpg"],
+			"image_top_banner": ["exxon_21am_top_cn.jpg", "exxon_21am_top_en.jpg","exxon_21am_top_cn.jpg"],
+			"description": ["", "", ""]
+		},
+		{
+			"isOpen": [1, 1, 1],
+			"date": 21,
+			"isAm": 0,
+			"companyID": ["245975", "245975", "245975"],
+			"function": [3, 3, 3],
+			"pageID": ["2459752", "2459752", "2459752"],
+			"image_logo": ["exxon_logo_2019.jpg", "exxon_logo_2019.jpg", "exxon_logo_2019.jpg"],
+			"image_bottom_banner": ["exxon_bottom_timetable_cn.jpg", "exxon_bottom_timetable_en.jpg", "exxon_bottom_timetable_cn.jpg"],
+			"image_top_banner": ["exxon_21pm_top_cn.jpg", "exxon_21pm_top_en.jpg", "exxon_21pm_top_cn.jpg"],
+			"description": ["", "", ""]
+		},
+		{
+			"isOpen": [1, 1, 1],
+			"date": 22,
+			"isAm": 1,
+			"companyID": ["245975", "245975", "245975"],
+			"function": [3, 3, 3],
+			"pageID": ["2459753", "2459753", "2459753"],
+			"image_logo": ["exxon_logo_2019.jpg", "exxon_logo_2019.jpg", "exxon_logo_2019.jpg"],
+			"image_bottom_banner": ["exxon_bottom_timetable_cn.jpg", "exxon_bottom_timetable_en.jpg", "exxon_bottom_timetable_cn.jpg"],
+			"image_top_banner": ["exxon_top_22am_cn.jpg", "exxon_top_22am_en.jpg", "exxon_top_22am_cn.jpg"],
+			"description": ["", "", ""]
+		},
+		{
+			"isOpen": [1, 1, 1],
+			"date": 22,
+			"isAm": 0,
+			"companyID": ["245975", "245975", "245975"],
+			"function": [3, 3, 3],
+			"pageID": ["2459754", "2459754", "2459754"],
+			"image_logo": ["exxon_logo_2019.jpg", "exxon_logo_2019.jpg", "exxon_logo_2019.jpg"],
+			"image_bottom_banner": ["exxon_bottom_timetable_cn.jpg", "exxon_bottom_timetable_en.jpg", "exxon_bottom_timetable_cn.jpg"],
+			"image_top_banner": ["exxon_22pm_top_cn.jpg", "exxon_22pm_top_en.jpg", "exxon_22pm_top_cn.jpg"],
+			"description": ["", "", ""]
+		},
+		{
+			"isOpen": [1, 1, 1],
+			"date": 23,
+			"isAm": 1,
+			"companyID": ["", "", ""],
+			"function": [2, 2, 2],
+			"pageID": ["DesignInnovation", "DesignInnovation", "DesignInnovation"],
+			"image_logo": ["dxi_d9_23am.jpg", "dxi_d9_23am.jpg", "dxi_d9_23am.jpg"],
+			"image_bottom_banner": ["dxi_d9_23am.jpg", "dxi_d9_23am.jpg", "dxi_d9_23am.jpg"],
+			"image_top_banner": ["dxi_d9_23am.jpg", "dxi_d9_23am.jpg", "dxi_d9_23am.jpg"],
+			"description": ["", "", ""]
+		},
+		{
+			"isOpen": [1, 1, 1],
+			"date": 23,
+			"isAm": 0,
+			"companyID": ["", "", ""],
+			"function": [2, 2, 2],
+			"pageID": ["TechTalk", "TechTalk", "TechTalk"],
+			"image_logo": ["tech_d9_23pm_tc.jpg", "tech_d9_23pm_en.jpg", "tech_d9_23pm_sc.jpg"],
+			"image_bottom_banner": ["tech_d9_23pm_tc.jpg", "tech_d9_23pm_en.jpg", "tech_d9_23pm_sc.jpg"],
+			"image_top_banner": ["tech_d9_23pm_tc.jpg", "tech_d9_23pm_en.jpg", "tech_d9_23pm_sc.jpg"],
+			"description": ["", "", ""]
+		},
+		{
+			"isOpen": [0, 0, 0],
+			"date": 24,
+			"isAm": 1,
+			"companyID": ["", "", ""],
+			"function": [3, 3, 3],
+			"pageID": ["", "", ""],
+			"image_logo": ["tc.jpg", "en.jpg", "sc.jpg"],
+			"image_bottom_banner": ["tc.jpg", "en.jpg", "sc.jpg"],
+			"image_top_banner": ["tc.jpg", "en.jpg", "sc.jpg"],
+			"description": ["", "", ""]
+		},
+		{
+			"isOpen": [0, 0, 0],
+			"date": 24,
+			"isAm": 0,
+			"companyID": ["", "", ""],
+			"function": [3, 3, 3],
+			"pageID": ["", "", ""],
+			"image_logo": ["tc.jpg", "en.jpg", "sc.jpg"],
+			"image_bottom_banner": ["tc.jpg", "en.jpg", "sc.jpg"],
+			"image_top_banner": ["tc.jpg", "en.jpg", "sc.jpg"],
+			"description": ["", "", ""]
+		}
+	]
+
+
+
+}

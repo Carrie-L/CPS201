@@ -1,0 +1,365 @@
+﻿[{
+		"CategoryName_SC": "第三天展报下载",
+		"CategoryName_EN": "Day 3 Show Daily Download",
+		"CategoryName_TC": "第三天展報下載",
+		"Items": [{
+				"id": 22,
+				"FileName_SC": "化学品及原料报 (只有中文)",
+				"FileName_EN": "Chemical & Raw Materials Edition (Chinese only)",
+				"FileName_TC": "化學品及原料報 (只有中文)",
+				"Cover_SC": "https://cdn.adsalecdn.com/App/2019/PDF/CPS19_Chem_Day1.jpg",
+				"FileLink_EN": "https://cdn.adsalecdn.com/PUB/cps19onsite/cps19_chem_day3.pdf",
+				"FileLink_SC": "https://cdn.adsalecdn.com/PUB/cps19onsite/cps19_chem_day3.pdf",
+				"FileLink_TC": "https://cdn.adsalecdn.com/PUB/cps19onsite/cps19_chem_day3.pdf",
+				"FileSize_SC": "13.58M",
+				"FileSize_TC": "13.58M",
+				"FileSize_EN": "13.58M"
+			},
+			{
+				"id": 23,
+				"FileName_SC": "机械及仪器报 (只有中文) ",
+				"FileName_EN": "Machinery & Equipment Edition (Chinese only)",
+				"FileName_TC": "機械及儀器報 (只有中文)",
+				"Cover_SC": "https://cdn.adsalecdn.com/App/2019/PDF/CPS19_Mach_Day1.jpg",
+				"FileLink_EN": "https://cdn.adsalecdn.com/PUB/cps19onsite/cps19_mach_day3.pdf",
+				"FileLink_SC": "https://cdn.adsalecdn.com/PUB/cps19onsite/cps19_mach_day3.pdf",
+				"FileLink_TC": "https://cdn.adsalecdn.com/PUB/cps19onsite/cps19_mach_day3.pdf",
+				"FileSize_SC": "44.04M",
+				"FileSize_TC": "44.04M",
+				"FileSize_EN": "44.04M"
+			},
+			{
+				"id": 24,
+				"FileName_SC": "国际英文报 (只有英文) ",
+				"FileName_EN": "International Edition (English only)",
+				"FileName_TC": "國際英文報 (只有英文) ",
+				"Cover_SC": "https://cdn.adsalecdn.com/App/2019/PDF/CPS19_Intl_Day1.jpg",
+				"FileLink_EN": "https://cdn.adsalecdn.com/PUB/cps19onsite/cps19_intl_day3.pdf",
+				"FileLink_SC": "https://cdn.adsalecdn.com/PUB/cps19onsite/cps19_intl_day3.pdf",
+				"FileLink_TC": "https://cdn.adsalecdn.com/PUB/cps19onsite/cps19_intl_day3.pdf",
+				"FileSize_SC": "31.4M",
+				"FileSize_TC": "31.4M",
+				"FileSize_EN": "31.4M"
+			}
+		]
+	},
+	{
+		"CategoryName_SC": "第二天展报下载",
+		"CategoryName_EN": "Day 2 Show Daily Download",
+		"CategoryName_TC": "第二天展報下載",
+		"Items": [{
+				"id": 19,
+				"FileName_SC": "化学品及原料报 (只有中文)",
+				"FileName_EN": "Chemical & Raw Materials Edition (Chinese only)",
+				"FileName_TC": "化學品及原料報 (只有中文)",
+				"Cover_SC": "https://cdn.adsalecdn.com/App/2019/PDF/CPS19_Chem_Day1.jpg",
+				"FileLink_EN": "https://cdn.adsalecdn.com/PUB/cps19onsite/cps19_chem_day2.pdf",
+				"FileLink_SC": "https://cdn.adsalecdn.com/PUB/cps19onsite/cps19_chem_day2.pdf",
+				"FileLink_TC": "https://cdn.adsalecdn.com/PUB/cps19onsite/cps19_chem_day2.pdf",
+				"FileSize_SC": "18.9M",
+				"FileSize_TC": "18.9M",
+				"FileSize_EN": "18.9M"
+			},
+			{
+				"id": 20,
+				"FileName_SC": "机械及仪器报 (只有中文) ",
+				"FileName_EN": "Machinery & Equipment Edition (Chinese only)",
+				"FileName_TC": "機械及儀器報 (只有中文)",
+				"Cover_SC": "https://cdn.adsalecdn.com/App/2019/PDF/CPS19_Mach_Day1.jpg",
+				"FileLink_EN": "https://cdn.adsalecdn.com/PUB/cps19onsite/cps19_mach_day2.pdf",
+				"FileLink_SC": "https://cdn.adsalecdn.com/PUB/cps19onsite/cps19_mach_day2.pdf",
+				"FileLink_TC": "https://cdn.adsalecdn.com/PUB/cps19onsite/cps19_mach_day2.pdf",
+				"FileSize_SC": "64M",
+				"FileSize_TC": "64M",
+				"FileSize_EN": "64M"
+			},
+			{
+				"id": 21,
+				"FileName_SC": "国际英文报 (只有英文) ",
+				"FileName_EN": "International Edition (English only)",
+				"FileName_TC": "國際英文報 (只有英文) ",
+				"Cover_SC": "https://cdn.adsalecdn.com/App/2019/PDF/CPS19_Intl_Day1.jpg",
+				"FileLink_EN": "https://cdn.adsalecdn.com/PUB/cps19onsite/cps19_intl_day2.pdf",
+				"FileLink_SC": "https://cdn.adsalecdn.com/PUB/cps19onsite/cps19_intl_day2.pdf",
+				"FileLink_TC": "https://cdn.adsalecdn.com/PUB/cps19onsite/cps19_intl_day2.pdf",
+				"FileSize_SC": "29.3M",
+				"FileSize_TC": "29.3M",
+				"FileSize_EN": "29.3M"
+			}
+		]
+	},
+    {
+		"CategoryName_SC": "第一天展报下载",
+		"CategoryName_EN": "Day 1 Show Daily Download",
+		"CategoryName_TC": "第一天展報下載",
+		"Items": [{
+				"id": 14,
+				"FileName_SC": "化学品及原料报 (只有中文)",
+				"FileName_EN": "Chemical & Raw Materials Edition (Chinese only)",
+				"FileName_TC": "化學品及原料報 (只有中文)",
+				"Cover_SC": "https://cdn.adsalecdn.com/App/2019/PDF/CPS19_Chem_Day1.jpg",
+				"FileLink_EN": "https://cdn.adsalecdn.com/PUB/cps19onsite/cps19_chem_day1.pdf",
+				"FileLink_SC": "https://cdn.adsalecdn.com/PUB/cps19onsite/cps19_chem_day1.pdf",
+				"FileLink_TC": "https://cdn.adsalecdn.com/PUB/cps19onsite/cps19_chem_day1.pdf",
+				"FileSize_SC": "24.7M",
+				"FileSize_TC": "24.7M",
+				"FileSize_EN": "24.7M"
+			},
+
+			{
+				"id": 17,
+				"FileName_SC": "化学品及原料报 - 平面图部分 (只有中文)",
+				"FileName_EN": "Chemical & Raw Materials Edition - Floor Plan Section (Chinese only)",
+				"FileName_TC": "化學品及原料報 - 平面圖部分 (只有中文)",
+				"Cover_SC": "https://cdn.adsalecdn.com/App/2019/PDF/CPS19_Chem_Day1.jpg",
+				"FileLink_EN": "https://cdn.adsalecdn.com/PUB/cps19onsite/cps19_sd_chem_floorplan.pdf",
+				"FileLink_SC": "https://cdn.adsalecdn.com/PUB/cps19onsite/cps19_sd_chem_floorplan.pdf",
+				"FileLink_TC": "https://cdn.adsalecdn.com/PUB/cps19onsite/cps19_sd_chem_floorplan.pdf",
+				"FileSize_SC": "10.7M",
+				"FileSize_TC": "10.7M",
+				"FileSize_EN": "10.7M"
+			},
+			{
+				"id": 15,
+				"FileName_SC": "机械及仪器报 (只有中文) ",
+				"FileName_EN": "Machinery & Equipment Edition (Chinese only)",
+				"FileName_TC": "機械及儀器報 (只有中文)",
+				"Cover_SC": "https://cdn.adsalecdn.com/App/2019/PDF/CPS19_Mach_Day1.jpg",
+				"FileLink_EN": "https://cdn.adsalecdn.com/PUB/cps19onsite/cps19_mach_day1.pdf",
+				"FileLink_SC": "https://cdn.adsalecdn.com/PUB/cps19onsite/cps19_mach_day1.pdf",
+				"FileLink_TC": "https://cdn.adsalecdn.com/PUB/cps19onsite/cps19_mach_day1.pdf",
+				"FileSize_SC": "34.8M",
+				"FileSize_TC": "34.8M",
+				"FileSize_EN": "34.8M"
+			},
+			{
+				"id": 18,
+				"FileName_SC": "机械及仪器报 - 平面图部分 (只有中文)",
+				"FileName_EN": "Machinery & Equipment Edition - Floor Plan Section (Chinese only)",
+				"FileName_TC": "機械及儀器報 - 平面圖部分 (只有中文)",
+				"Cover_SC": "https://cdn.adsalecdn.com/App/2019/PDF/CPS19_Mach_Day1.jpg",
+				"FileLink_EN": "https://cdn.adsalecdn.com/PUB/cps19onsite/cps19_sd_mach_floorplan.pdf",
+				"FileLink_SC": "https://cdn.adsalecdn.com/PUB/cps19onsite/cps19_sd_mach_floorplan.pdf",
+				"FileLink_TC": "https://cdn.adsalecdn.com/PUB/cps19onsite/cps19_sd_mach_floorplan.pdf",
+				"FileSize_SC": "33.8M",
+				"FileSize_TC": "33.8M",
+				"FileSize_EN": "33.8M"
+			},
+			{
+				"id": 16,
+				"FileName_SC": "国际英文报 (只有英文) ",
+				"FileName_EN": "International Edition (English only)",
+				"FileName_TC": "國際英文報 (只有英文) ",
+				"Cover_SC": "https://cdn.adsalecdn.com/App/2019/PDF/CPS19_Intl_Day1.jpg",
+				"FileLink_EN": "https://cdn.adsalecdn.com/PUB/cps19onsite/cps19_intl_day1.pdf",
+				"FileLink_SC": "https://cdn.adsalecdn.com/PUB/cps19onsite/cps19_intl_day1.pdf",
+				"FileLink_TC": "https://cdn.adsalecdn.com/PUB/cps19onsite/cps19_intl_day1.pdf",
+				"FileSize_SC": "29.3M",
+				"FileSize_TC": "29.3M",
+				"FileSize_EN": "29.3M"
+			}
+		]
+	},
+	{
+		"CategoryName_SC": "薄膜技术指南",
+		"CategoryName_EN": "Film Tech Guidebook",
+		"CategoryName_TC": "薄膜技術指南",
+		"Items": [{
+			"id": 1,
+			"FileName_SC": "薄膜技术指南",
+			"FileName_EN": "Film Tech Guidebook",
+			"FileName_TC": "薄膜技術指南",
+			"Cover_SC": "https://www.chinaplasonline.com/CPS19/Files/Image/Content/CPS19_FT_Guidebook.jpg",
+			"FileLink_EN": "https://www.chinaplasonline.com/CPS19/Files/pdf/CPS19_FT_Guidebook.pdf",
+			"FileLink_SC": "https://www.chinaplasonline.com/CPS19/Files/pdf/CPS19_FT_Guidebook.pdf",
+			"FileLink_TC": "https://www.chinaplasonline.com/CPS19/Files/pdf/CPS19_FT_Guidebook.pdf",
+			"FileSize_SC": "5.6M",
+			"FileSize_TC": "5.6M",
+			"FileSize_EN": "5.6M"
+		}]
+	},
+	{
+		"CategoryName_SC": "参观指南",
+		"CategoryName_EN": "Visitor Guide",
+		"CategoryName_TC": "參觀指南",
+		"Items": [{
+				"id": 2,
+				"FileName_SC": "参观指南-全行业通用",
+				"FileName_EN": "Visitor Guide - All Industry",
+				"FileName_TC": "參觀指南-全行業通用",
+				"Cover_SC": "https://cdn.adsalecdn.com/App/2019/PDF/CPS19_VG_all.jpg",
+				"FileLink_EN": "https://www.chinaplasonline.com/CPS19/Files/pdf/CPS19_VG_all.pdf",
+				"FileLink_SC": "https://www.chinaplasonline.com/CPS19/Files/pdf/CPS19_VG_all.pdf",
+				"FileLink_TC": "https://www.chinaplasonline.com/CPS19/Files/pdf/CPS19_VG_all.pdf",
+				"FileSize_SC": "28.6M",
+				"FileSize_TC": "28.6M",
+				"FileSize_EN": "28.6M"
+			},
+			{
+				"id": 3,
+				"FileName_SC": "参观指南-汽车行业",
+				"FileName_EN": "Visitor Guide - Automotive Industry",
+				"FileName_TC": "參觀指南-汽車行業",
+				"Cover_SC": "https://cdn.adsalecdn.com/App/2019/PDF/CPS19_VG_AUTO.jpg",
+				"FileLink_EN": "https://www.chinaplasonline.com/CPS19/Files/pdf/CPS19_VG_AUTO.pdf",
+				"FileLink_SC": "https://www.chinaplasonline.com/CPS19/Files/pdf/CPS19_VG_AUTO.pdf",
+				"FileLink_TC": "https://www.chinaplasonline.com/CPS19/Files/pdf/CPS19_VG_AUTO.pdf",
+				"FileSize_SC": "30.3M",
+				"FileSize_TC": "30.3M",
+				"FileSize_EN": "30.3M"
+			},
+			{
+				"id": 4,
+				"FileName_SC": "参观指南-包装行业",
+				"FileName_EN": "Visitor Guide - Packaging Industry",
+				"FileName_TC": "參觀指南-包裝行業",
+				"Cover_SC": "https://cdn.adsalecdn.com/App/2019/PDF/CPS19_VG_pack.jpg",
+				"FileLink_EN": "https://www.chinaplasonline.com/CPS19/Files/pdf/CPS19_VG_EE.pdf",
+				"FileLink_SC": "https://www.chinaplasonline.com/CPS19/Files/pdf/CPS19_VG_EE.pdf",
+				"FileLink_TC": "https://www.chinaplasonline.com/CPS19/Files/pdf/CPS19_VG_EE.pdf",
+				"FileSize_SC": "30.0M",
+				"FileSize_TC": "30.0M",
+				"FileSize_EN": "30.0M"
+			},
+			{
+				"id": 5,
+				"FileName_SC": "参观指南-电子信息及电器行业",
+				"FileName_EN": "Visitor Guide - E&E, IT & Telecom Industries",
+				"FileName_TC": "參觀指南-電子信息及電器行業",
+				"Cover_SC": "https://cdn.adsalecdn.com/App/2019/PDF/CPS19_VG_EE.jpg",
+				"FileLink_EN": "https://www.chinaplasonline.com/CPS19/Files/pdf/CPS19_VG_EE.pdf",
+				"FileLink_SC": "https://www.chinaplasonline.com/CPS19/Files/pdf/CPS19_VG_EE.pdf",
+				"FileLink_TC": "https://www.chinaplasonline.com/CPS19/Files/pdf/CPS19_VG_EE.pdf",
+				"FileSize_SC": "29.3M",
+				"FileSize_TC": "29.3M",
+				"FileSize_EN": "29.3M"
+			}
+		]
+	},
+	{
+		"CategoryName_SC": "热塑性弹性体及橡胶技术指南",
+		"CategoryName_EN": "Thermoplastic Elastomers & Rubber Tech Guide",
+		"CategoryName_TC": "熱塑性彈性體及橡膠技術指南",
+		"Items": [{
+			"id": 6,
+			"FileName_SC": "热塑性弹性体及橡胶技术指南",
+			"FileName_EN": "Thermoplastic Elastomers & Rubber Tech Guides",
+			"FileName_TC": "熱塑性彈性體及橡膠技術指南",
+			"Cover_SC": "https://cdn.adsalecdn.com/App/2019/PDF/CPS19_ThermoplasticElastomersRubberTechGuide.jpg",
+			"FileLink_EN": "https://www.chinaplasonline.com/CPS19/Files/pdf/CPS19_ThermoplasticElastomersRubberTechGuide.pdf",
+			"FileLink_SC": "https://www.chinaplasonline.com/CPS19/Files/pdf/CPS19_ThermoplasticElastomersRubberTechGuide.pdf",
+			"FileLink_TC": "https://www.chinaplasonline.com/CPS19/Files/pdf/CPS19_ThermoplasticElastomersRubberTechGuide.pdf",
+			"FileSize_SC": "5.7M",
+			"FileSize_TC": "5.7M",
+			"FileSize_EN": "5.7M"
+		}]
+	},
+	{
+		"CategoryName_SC": "展会预览",
+		"CategoryName_EN": "Show Preview",
+		"CategoryName_TC": "展會預覽",
+		"Items": [{
+			"id": 7,
+			"FileName_SC": "展会预览",
+			"FileName_EN": "Show Preview",
+			"FileName_TC": "展會預覽",
+			"Cover_SC": "https://cdn.adsalecdn.com/App/2019/PDF/CPS19_ThermoplasticElastomersRubberTechGuide.jpg",
+			"FileLink_EN": "https://www.chinaplasonline.com/CPS19/Files/pdf/CPS19_ShowPreview_en.pdf",
+			"FileLink_SC": "https://www.chinaplasonline.com/CPS19/Files/pdf/CPS19_ShowPreview_sc.pdf",
+			"FileLink_TC": "https://www.chinaplasonline.com/CPS19/Files/pdf/CPS19_ShowPreview_sc.pdf",
+			"FileSize_SC": "33.4M",
+			"FileSize_TC": "33.4M",
+			"FileSize_EN": "40.6M"
+		}]
+	},
+	{
+		"CategoryName_SC": "应用行业展前快讯",
+		"CategoryName_EN": "Application Sector Flyer",
+		"CategoryName_TC": "應用行業展前快訊",
+		"Items": [{
+				"id": 8,
+				"FileName_SC": "汽车行业",
+				"FileName_EN": "Automotive Industry Flyer",
+				"FileName_TC": "汽車行業",
+				"Cover_SC": "https://cdn.adsalecdn.com/App/2019/PDF/CPS19_sectorflyer_auto.jpg",
+				"FileLink_EN": "https://www.chinaplasonline.com/CPS19/Files/pdf/CPS19_sectorflyer_auto_en.pdf",
+				"FileLink_SC": "https://www.chinaplasonline.com/CPS19/Files/pdf/CPS19_sectorflyer_auto.pdf",
+				"FileLink_TC": "https://www.chinaplasonline.com/CPS19/Files/pdf/CPS19_sectorflyer_auto.pdf",
+				"FileSize_SC": "2.2M",
+				"FileSize_TC": "2.2M",
+				"FileSize_EN": "10.7M"
+			},
+			{
+				"id": 9,
+				"FileName_SC": "建筑行业",
+				"FileName_EN": "Building & Construction Industry Flyer",
+				"FileName_TC": "建築行業",
+				"Cover_SC": "https://cdn.adsalecdn.com/App/2019/PDF/CPS19_sectorflyer_building.jpg",
+				"FileLink_EN": "https://www.chinaplasonline.com/CPS19/Files/pdf/CPS19_VG_AUTO.pdf",
+				"FileLink_SC": "https://www.chinaplasonline.com/CPS19/Files/pdf/CPS19_VG_AUTO.pdf",
+				"FileLink_TC": "https://www.chinaplasonline.com/CPS19/Files/pdf/CPS19_VG_AUTO.pdf",
+				"FileSize_SC": "30.3M",
+				"FileSize_TC": "30.3M",
+				"FileSize_EN": "30.3M"
+			},
+			{
+				"id": 10,
+				"FileName_SC": "电子信息及电器行业",
+				"FileName_EN": "E&E, IT & Telecom Industries Flyer",
+				"FileName_TC": "電子信息及電器行業",
+				"Cover_SC": "https://cdn.adsalecdn.com/App/2019/PDF/CPS19_sectorflyer_ee.jpg",
+				"FileLink_EN": "https://www.chinaplasonline.com/CPS19/Files/pdf/CPS19_sectorflyer_ee_en.pdf",
+				"FileLink_SC": "https://www.chinaplasonline.com/CPS19/Files/pdf/CPS19_sectorflyer_ee.pdf",
+				"FileLink_TC": "https://www.chinaplasonline.com/CPS19/Files/pdf/CPS19_sectorflyer_ee.pdf",
+				"FileSize_SC": "2.2M",
+				"FileSize_TC": "2.2M",
+				"FileSize_EN": "10.6M"
+			},
+			{
+				"id": 11,
+				"FileName_SC": "医疗行业",
+				"FileName_EN": "Medical Industry Flyer",
+				"FileName_TC": "醫療行業",
+				"Cover_SC": "https://cdn.adsalecdn.com/App/2019/PDF/CPS19_sectorflyer_medical.jpg",
+				"FileLink_EN": "https://www.chinaplasonline.com/CPS19/Files/pdf/CPS19_sectorflyer_medical_en.pdf",
+				"FileLink_SC": "https://www.chinaplasonline.com/CPS19/Files/pdf/CPS19_sectorflyer_medical.pdf",
+				"FileLink_TC": "https://www.chinaplasonline.com/CPS19/Files/pdf/CPS19_sectorflyer_medical.pdf",
+				"FileSize_SC": "2.4M",
+				"FileSize_TC": "2.4M",
+				"FileSize_EN": "10.2M"
+			},
+			{
+				"id": 12,
+				"FileName_SC": "包装行业",
+				"FileName_EN": "Packaging Industry Flyer",
+				"FileName_TC": "包裝行業",
+				"Cover_SC": "https://cdn.adsalecdn.com/App/2019/PDF/CPS19_sectorflyer_packaging.jpg",
+				"FileLink_EN": "https://www.chinaplasonline.com/CPS19/Files/pdf/CPS19_sectorflyer_packaging_en.pdf",
+				"FileLink_SC": "https://www.chinaplasonline.com/CPS19/Files/pdf/CPS19_sectorflyer_packaging.pdf",
+				"FileLink_TC": "https://www.chinaplasonline.com/CPS19/Files/pdf/CPS19_sectorflyer_packaging.pdf",
+				"FileSize_SC": "2.4M",
+				"FileSize_TC": "2.4M",
+				"FileSize_EN": "9.3M"
+			}
+		]
+	},
+	{
+		"CategoryName_SC": "参观小册子",
+		"CategoryName_EN": "Visitor Brochure",
+		"CategoryName_TC": "參觀小冊子",
+		"Items": [{
+			"id": 13,
+			"FileName_SC": "参观小册子",
+			"FileName_EN": "Visitor Brochure",
+			"FileName_TC": "參觀小冊子",
+			"Cover_SC": "https://cdn.adsalecdn.com/App/2019/PDF/CPS19_VisitorBrochure_sc.jpg",
+			"FileLink_EN": "https://www.chinaplasonline.com/CPS19/Files/pdf/CPS19_VisitorBrochure_en.pdf",
+			"FileLink_SC": "https://www.chinaplasonline.com/CPS19/Files/pdf/CPS19_VisitorBrochure_sc.pdf",
+			"FileLink_TC": "https://www.chinaplasonline.com/CPS19/Files/pdf/CPS19_VisitorBrochure_tc.pdf",
+			"FileSize_SC": "1.4M",
+			"FileSize_TC": "1.41M",
+			"FileSize_EN": "1.96M"
+		}]
+	}
+
+]

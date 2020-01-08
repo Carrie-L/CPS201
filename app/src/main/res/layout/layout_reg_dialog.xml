@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="regionViewModel"
+            type="com.adsale.chinaplas.viewmodels.RegRegionViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+
+        <TextView
+            android:id="@+id/tv_select"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="请选择国家/地区"
+            android:textColor="@color/textColor"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_confirm"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:gravity="center_vertical"
+            android:onClick="@{()->regionViewModel.onDialogConfirm()}"
+            android:text="确定"
+            android:textSize="16sp"
+            android:visibility="gone"
+            android:textColor="@color/colorAccent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/line1"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/line_short_height"
+            android:layout_marginTop="16dp"
+            android:background="@color/blue_grey_100"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_select" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="16dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="16dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_vertical_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="128dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_vertical_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="256dp" />
+
+        <TextView
+            android:id="@+id/tv_region"
+            style="@style/reg_dialog_label_style"
+            android:onClick="@{()->regionViewModel.labelRegionClick()}"
+            android:text="@{regionViewModel.regionText}"
+            app:layout_constraintEnd_toEndOf="@id/guideline_vertical_1"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="@id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@id/line1" />
+
+        <TextView
+            android:id="@+id/tv_province"
+            style="@style/reg_dialog_label_style"
+            android:onClick="@{()->regionViewModel.labelProvinceClick()}"
+            android:text="@{regionViewModel.provinceText}"
+            android:visibility="@{regionViewModel.provinceVisible}"
+            app:layout_constraintEnd_toEndOf="@id/guideline_vertical_2"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toEndOf="@+id/tv_region"
+            app:layout_constraintStart_toStartOf="@id/guideline_vertical_1"
+            app:layout_constraintTop_toBottomOf="@id/line1" />
+
+        <TextView
+            android:id="@+id/tv_city"
+            style="@style/reg_dialog_label_style"
+            android:layout_marginEnd="16dp"
+            android:ellipsize="start"
+            android:onClick="@{()->regionViewModel.labelCityClick()}"
+            android:text="@{regionViewModel.cityText}"
+            android:visibility="@{regionViewModel.cityVisible}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toEndOf="@+id/tv_province"
+            app:layout_constraintStart_toStartOf="@id/guideline_vertical_2"
+            app:layout_constraintTop_toBottomOf="@id/line1" />
+
+        <ImageView
+            android:id="@+id/line2"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/line_short_height"
+            android:background="@color/blue_grey_100"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_region" />
+
+        <ImageView
+            android:id="@+id/iv_index1"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="@color/colorAccent"
+            android:visibility="@{regionViewModel.indexClicked.intValue()==0?View.VISIBLE:View.GONE}"
+            app:layout_constraintEnd_toEndOf="@id/tv_region"
+            app:layout_constraintStart_toStartOf="@id/tv_region"
+            app:layout_constraintTop_toBottomOf="@id/tv_region" />
+
+        <ImageView
+            android:id="@+id/iv_index2"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="@color/colorAccent"
+            android:visibility="@{regionViewModel.indexClicked.intValue()==1?View.VISIBLE:View.GONE}"
+            app:layout_constraintEnd_toEndOf="@id/tv_province"
+            app:layout_constraintStart_toStartOf="@id/tv_province"
+            app:layout_constraintTop_toBottomOf="@id/tv_province" />
+
+        <ImageView
+            android:id="@+id/iv_index3"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="@color/colorAccent"
+            android:visibility="@{regionViewModel.indexClicked.intValue()==2?View.VISIBLE:View.GONE}"
+            app:layout_constraintEnd_toEndOf="@id/tv_city"
+            app:layout_constraintStart_toStartOf="@id/tv_city"
+            app:layout_constraintTop_toBottomOf="@id/tv_city" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintStart_toStartOf="@id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@id/line2" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

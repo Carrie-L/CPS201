@@ -1,0 +1,16 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.adsale.chinaplas.ui.webcontent.WebContentFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <WebView
+        android:id="@+id/web_content_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="56dp"
+
+        android:text="@string/hello_blank_fragment" />
+
+</FrameLayout>

@@ -1,0 +1,12 @@
+<androidx.recyclerview.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rv_tips"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="16dp"
+    android:paddingBottom="32dp"
+    android:background="@color/smoke_purple"
+    tools:context="com.adsale.chinaplas.ui.webcontent.VisitorTipFragment">
+
+
+</androidx.recyclerview.widget.RecyclerView>

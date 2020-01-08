@@ -1,0 +1,42 @@
+[
+    {
+        "function": "2",
+        "page_id": "GiftSpecial",
+        "image_en": "https://cdn.adsalecdn.com/App/2019/MainMenuImages/Day4-APP banner-mobile-640X293-EN.jpg",
+        "image_pad_en": "https://cdn.adsalecdn.com/App/2019/MainMenuImages/Day4-APP banner-mobile-640X293-EN.jpg",
+        "image_sc": "https://cdn.adsalecdn.com/App/2019/MainMenuImages/Day4-APP banner-mobile-640X293-SC.jpg",
+        "image_pad_sc": "https://cdn.adsalecdn.com/App/2019/MainMenuImages/Day4-APP banner-mobile-640X293-SC.jpg",
+        "image_tc": "https://cdn.adsalecdn.com/App/2019/MainMenuImages/Day4-APP banner-mobile-640X293-SC.jpg",
+        "image_pad_tc": "https://cdn.adsalecdn.com/App/2019/MainMenuImages/Day4-APP banner-mobile-640X293-SC.jpg"
+    },
+    {
+        "function": "2",
+        "page_id": "TechTalk",
+        "image_en": "https://cdn.adsalecdn.com/App/2019/MainMenuImages/tech_talk_en.jpg",
+        "image_pad_en": "https://cdn.adsalecdn.com/App/2019/MainMenuImages/pad_tech_talk_en.jpg",
+        "image_sc": "https://cdn.adsalecdn.com/App/2019/MainMenuImages/tech_talk_cn.jpg",
+        "image_pad_sc": "https://cdn.adsalecdn.com/App/2019/MainMenuImages/pad_tech_talk_cn.jpg",
+        "image_tc": "https://cdn.adsalecdn.com/App/2019/MainMenuImages/tech_talk_en.jpg",
+        "image_pad_tc": "https://cdn.adsalecdn.com/App/2019/MainMenuImages/pad_tech_talk_cn.jpg"
+    },
+    {
+        "function": "2",
+        "page_id": "DesignInnovation",
+        "image_en": "https://cdn.adsalecdn.com/App/2019/MainMenuImages/dxi_main_banner.jpg",
+        "image_pad_en": "https://cdn.adsalecdn.com/App/2019/MainMenuImages/pad_dxi_main_banner.jpg",
+        "image_sc": "https://cdn.adsalecdn.com/App/2019/MainMenuImages/dxi_main_banner.jpg",
+        "image_pad_sc": "https://cdn.adsalecdn.com/App/2019/MainMenuImages/pad_dxi_main_banner.jpg",
+        "image_tc": "https://cdn.adsalecdn.com/App/2019/MainMenuImages/dxi_main_banner.jpg",
+        "image_pad_tc": "https://cdn.adsalecdn.com/App/2019/MainMenuImages/pad_dxi_main_banner.jpg"
+    },
+    {
+        "function": "2",
+        "page_id": "FutureNow",
+        "image_en": "https://cdn.adsalecdn.com/App/2019/MainMenuImages/Gimmick_booth_640_en.jpg",
+        "image_pad_en": "https://cdn.adsalecdn.com/App/2019/MainMenuImages/Gimmick_booth_640_en.jpg",
+        "image_sc": "https://cdn.adsalecdn.com/App/2019/MainMenuImages/Gimmick_booth_640_sc.jpg",
+        "image_pad_sc": "https://cdn.adsalecdn.com/App/2019/MainMenuImages/Gimmick_booth_640_sc.jpg",
+        "image_tc": "https://cdn.adsalecdn.com/App/2019/MainMenuImages/Gimmick_booth_640_sc.jpg",
+        "image_pad_tc": "https://cdn.adsalecdn.com/App/2019/MainMenuImages/Gimmick_booth_640_sc.jpg"
+    }
+]

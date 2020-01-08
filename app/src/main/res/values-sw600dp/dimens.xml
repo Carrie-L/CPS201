@@ -1,0 +1,20 @@
+<resources>
+<!--    <dimen name="floor_left_width">320dp</dimen>-->
+<!--    <dimen name="loading_bottom">60dp</dimen>-->
+
+<!--    &lt;!&ndash;技术交流会&ndash;&gt;-->
+<!--    <dimen name="seminar_circle_size">56dp</dimen>-->
+
+<!--    &lt;!&ndash;字体大小, 平板比手机大一号&ndash;&gt;-->
+<!--    <dimen name="text_size_small">14sp</dimen>-->
+<!--    <dimen name="text_size_normal">16sp</dimen>-->
+<!--    <dimen name="text_size_large">18sp</dimen>-->
+<!--    <dimen name="text_size_large_18">20sp</dimen>-->
+<!--    <dimen name="text_size_large_20">22sp</dimen>-->
+
+    <dimen name="text_size">14sp</dimen>
+    <dimen name="tool_text_size">22sp</dimen>
+
+
+
+</resources>

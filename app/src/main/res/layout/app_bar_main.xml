@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="mainViewModel"
+            type="com.adsale.chinaplas.viewmodels.MainViewModel" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/white"
+        tools:context=".ui.home.MainActivity">
+
+        <!--        <FrameLayout-->
+        <!--            android:id="@+id/toolbar_frame"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            />-->
+
+        <RelativeLayout
+            android:id="@+id/rl_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/main_header">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:theme="@style/AppTheme.AppBarOverlay"
+                app:contentInsetEnd="0dp"
+                app:contentInsetLeft="0dp"
+                app:contentInsetRight="0dp"
+                app:contentInsetStart="0dp"
+                android:paddingEnd="12dp"
+                app:contentInsetStartWithNavigation="0dp">
+
+                <androidx.appcompat.widget.ActionMenuView
+                    android:id="@+id/action_menu_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/actionBarItemBackground"
+                    android:visibility="@{mainViewModel.isInnerIntent()?View.VISIBLE:View.GONE}" />
+
+                <TextView
+                    android:id="@+id/toolbar_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@{mainViewModel.title}"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:visibility="@{mainViewModel.isInnerIntent()?View.VISIBLE:View.GONE}" />
+
+            </androidx.appcompat.widget.Toolbar>
+
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="36dp"
+                android:background="@drawable/logo"
+                android:scaleType="fitCenter"
+                android:visibility="@{mainViewModel.isInnerIntent()?View.GONE:View.VISIBLE}" />
+
+            <TextView
+                android:id="@+id/et_search"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/bottom_nav_height"
+                android:layout_below="@id/logo"
+                android:gravity="center_vertical"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/bg_et_search"
+                android:drawableEnd="@drawable/ic_search"
+                android:hint="@string/search"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+         />
+<!--            android:visibility="@{mainViewModel.isInnerIntent()?View.GONE:View.VISIBLE}"-->
+
+        </RelativeLayout>
+
+        <include
+            android:id="@+id/content"
+            layout="@layout/content_main"
+            app:mainViewModel="@{mainViewModel}" />
+
+    </LinearLayout>
+
+</layout>

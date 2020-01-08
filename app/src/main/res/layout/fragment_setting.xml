@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.adsale.chinaplas.viewmodels.SettingViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            style="@style/setting_tv_style"
+            android:drawableLeft="@drawable/language"
+            android:onClick="@{()->viewModel.onLangClick()}"
+            android:text="@string/setting_language"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+<!--        <TextView-->
+<!--            style="@style/setting_tv_style"-->
+<!--            android:drawableLeft="@drawable/ic_setting_share"-->
+<!--            android:onClick="@{()->viewModel.onShare()}"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/"-->
+<!--            android:text="@string/setting_share" />-->
+
+<!--        <TextView-->
+<!--            style="@style/setting_tv_style"-->
+<!--            android:drawableLeft="@drawable/ic_setting_link"-->
+<!--            android:onClick="@{()->viewModel.onLinkWebsite()}"-->
+<!--            android:text="@string/setting_website" />-->
+
+<!--        <TextView-->
+<!--            style="@style/setting_tv_style"-->
+<!--            android:drawableLeft="@drawable/ic_setting_reset"-->
+<!--            android:onClick="@{()->viewModel.onResetAll()}"-->
+<!--            android:text="@string/setting_reset_all" />-->
+
+<!--        <TextView-->
+<!--            style="@style/setting_tv_style"-->
+<!--            android:drawableLeft="@drawable/ic_setting_privacy"-->
+<!--            android:onClick="@{()->viewModel.onPrivacy()}"-->
+<!--            android:text="@string/setting_privacy_policy" />-->
+
+<!--        <TextView-->
+<!--            style="@style/setting_tv_style"-->
+<!--            android:drawableLeft="@drawable/ic_setting_use_item"-->
+<!--            android:onClick="@{()->viewModel.onUseItems()}"-->
+<!--            android:text="@string/setting_use_terms" />-->
+
+        <!--    <TextView-->
+        <!--        android:layout_width="wrap_content"-->
+        <!--        android:layout_height="match_parent"-->
+        <!--        android:layout_gravity="bottom|end"-->
+        <!--        android:layout_margin="5dp"-->
+        <!--        android:gravity="bottom"-->
+        <!--        android:text="@{aty.version}" />-->
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

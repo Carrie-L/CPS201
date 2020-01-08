@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="obj"
+            type="com.adsale.chinaplas.data.dao.MainIcon" />
+    </data>
+
+<!--    <androidx.cardview.widget.CardView-->
+<!--        android:id="@+id/menu_card"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:cardCornerRadius="2dp"-->
+<!--        app:cardElevation="3dp">-->
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/menu_card"
+            android:background="#fff"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/menu_icon"
+                android:layout_width="@dimen/menu_size"
+                android:layout_height="@dimen/menu_size"
+                app:layout_constraintBottom_toTopOf="@+id/menu_title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed"
+                app:mainIcon="@{obj}" />
+
+            <TextView
+                android:id="@+id/menu_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/roboto"
+                android:gravity="center_horizontal"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:text="@{obj.title}"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="@dimen/text_size"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/menu_icon" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+<!--    </androidx.cardview.widget.CardView>-->
+
+</layout>

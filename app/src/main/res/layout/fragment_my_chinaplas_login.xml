@@ -1,0 +1,81 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.adsale.chinaplas.viewmodels.MyChinaplasViewModel" />
+
+        <import type="android.view.View" />2
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.adsale.chinaplas.ui.tools.MyChinaplasLoginFragment">
+
+        <TextView
+            android:id="@+id/tv_login_pwd"
+            style="@style/top_title_style"
+            android:layout_width="0dp"
+            android:onClick="@{()->viewModel.onLeftClick()}"
+            android:text="@string/title_pwd_login"
+            app:layout_constraintEnd_toStartOf="@+id/tv_login_sms"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_login_sms"
+            style="@style/top_title_style"
+            android:layout_width="0dp"
+            android:onClick="@{()->viewModel.onRightClick()}"
+            android:text="@string/title_sms_login"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/tv_login_pwd"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/view_pager_login"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_login_pwd" />
+
+
+        <ImageView
+            android:id="@+id/iv_line"
+            android:layout_width="0dp"
+            android:layout_height="5dp"
+            android:background="@color/white"
+            android:visibility="@{viewModel.barClick.intValue()==1?View.VISIBLE:View.GONE}"
+            app:layout_constraintBottom_toBottomOf="@id/tv_login_pwd"
+            app:layout_constraintEnd_toEndOf="@id/tv_login_pwd"
+            app:layout_constraintStart_toStartOf="@id/tv_login_pwd" />
+
+        <ImageView
+            android:id="@+id/iv_line_end"
+            android:layout_width="0dp"
+            android:layout_height="5dp"
+            android:background="@color/white"
+            android:visibility="@{viewModel.barClick.intValue()==2?View.VISIBLE:View.GONE}"
+            app:layout_constraintBottom_toBottomOf="@id/tv_login_sms"
+            app:layout_constraintEnd_toEndOf="@id/tv_login_sms"
+            app:layout_constraintStart_toStartOf="@id/tv_login_sms" />
+
+        <ImageView
+            android:id="@+id/iv_line2"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:background="@drawable/line_grad"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_login_pwd" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
