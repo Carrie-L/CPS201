@@ -26,5 +26,9 @@ import com.adsale.chinaplas.utils.getName
         return getName(TitleTC, TitleEN, TitleSC)
     }
 
+   override fun toString(): String {
+      return "WebContent(ParentID='$ParentID', PageID='$PageID', TitleSC='$TitleSC', TitleTC='$TitleTC', TitleEN='$TitleEN', FileName=$FileName, Icon=$Icon, Seq=$Seq, IsHidden=$IsHidden, updatedAt='$updatedAt')"
+   }
+
 
 }

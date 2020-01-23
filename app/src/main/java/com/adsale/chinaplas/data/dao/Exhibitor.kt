@@ -42,6 +42,14 @@ class Exhibitor constructor() {
     var SeqSC: String? = ""
     var HallNo: String? = ""
     var IsFavourite: Int? = 0
+        set(value) {
+            isStared.set(IsFavourite == 1)
+            field = value
+        }
+        get() {
+            isStared.set(field == 1)
+            return field
+        }
     var Note: String? = ""
     var Rate: Int? = 0
     var seqHall: Double? = 1.0    // HallNo的排序
@@ -57,6 +65,15 @@ class Exhibitor constructor() {
 //    var sort:String=""
 
 
+    fun getDescription(): String {
+        return getName(DescT!!, DescE!!, DescS!!)
+    }
+
+    fun getAddress(): String {
+        return getName(AddressT!!, AddressE!!, AddressS!!)
+    }
+
+
     /**
      * 在初始化数据时，把最后的 # 或 TBC 或 N/A 前面加上 999 或 ZZZ ，目的是为了排序的时候让它们在最后，省却还需另外排序的麻烦。
      * 因此在这一 getSort() 步骤，要将 999# 还原成 #.
@@ -64,25 +81,27 @@ class Exhibitor constructor() {
      * @return sort or hall_no
      */
     fun getSort(): String {
-        var sort:String=""
+        var sort: String = ""
         /* AZ */
         if (getCurrLanguage() == LANG_SC) {
+            sort = PYSimp!!
             if (PYSimp!!.contains("#")) {
                 sort = "#"
             }
             return sort!!
         } else if (getCurrLanguage() == LANG_EN) {
+            sort = StrokeEng!!
             if (StrokeEng!!.contains("#")) {
                 sort = "#"
             }
             return sort!!
         } else {
+            sort = StrokeTrad!!
             if (StrokeTrad!!.contains("#")) {
                 sort = "#"
             }
             return "${sort}${TRAD_STROKE}"
         }
-
 
 //        if (checkStrokeEngNull() && StrokeEng!!.contains("#")) {
 //            StrokeEng = "#"
@@ -363,7 +382,7 @@ class Exhibitor constructor() {
     }
 
     override fun toString(): String {
-        return "Exhibitor(CompanyID='$CompanyID', CompanyNameEN=$CompanyNameEN, CompanyNameTW=$CompanyNameTW, CompanyNameCN=$CompanyNameCN, BoothNo=$BoothNo, Sort=${getSort()})"
+        return "Exhibitor(CompanyID='$CompanyID', HallNo=${HallNo}, Sort=${getSort()}, IsFavourite=$IsFavourite, CompanyNameTW=$CompanyNameTW, CompanyNameCN=$CompanyNameCN, BoothNo=$BoothNo)"
     }
 
 }

@@ -11,4 +11,4 @@ data class FileControl(
     @PrimaryKey
     val PageID: String,
     val FileName: String?,
-    val updatedAt:String)
+    var updatedAt:String)

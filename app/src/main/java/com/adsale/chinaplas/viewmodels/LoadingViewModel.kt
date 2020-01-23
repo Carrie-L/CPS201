@@ -21,6 +21,7 @@ import com.adsale.chinaplas.network.CpsApi
 import com.adsale.chinaplas.rootDir
 import com.adsale.chinaplas.ui.LoadingActivity
 import com.adsale.chinaplas.utils.*
+import com.adsale.chinaplas.utils.LogUtil.i
 import com.tencent.bugly.beta.Beta
 import kotlinx.coroutines.*
 
@@ -63,9 +64,10 @@ class LoadingViewModel(private val app: Application,
         initBuglySetting()
         // down txt
         uiScope.launch(Dispatchers.IO) {
-            LogUtil.i("-------------   start download  ---------------")
+            i("-------------   start download  ---------------")
             downloadTxt(TXT_AD)
             downloadTxt(TXT_PDF)
+            // todo down mainBanner.txt
 
             downloadAllRegOptions()
 
@@ -75,13 +77,14 @@ class LoadingViewModel(private val app: Application,
             downFileControl()
 
 
-            LogUtil.i("-------------   finish download  ---------------")
+            i("-------------   finish download  ---------------")
         }
 
     }
 
-    fun sendBroadcast() {
+    fun sendBroadcast(type: String) {
         val intent = Intent(LOADING_ACTION)
+        intent.putExtra("type", type)
         app.applicationContext.sendBroadcast(intent)
     }
 
@@ -102,14 +105,15 @@ class LoadingViewModel(private val app: Application,
 
     fun onLangClick(lang: Int) {
         language.set(lang)
-        LogUtil.i("onLangClick: $lang")
+        setCurrLanguage(lang)
+        i("onLangClick: $lang")
         langChange.value = true
     }
 
     private suspend fun getRegOptionUpdateTime(): String {
         return withContext(Dispatchers.IO) {
             val updatedAt = regRepo.getRegOptionLastUpdateTime()
-            LogUtil.i("getRegOptionUpdateTime updatedAt =$updatedAt")
+            i("getRegOptionUpdateTime updatedAt =$updatedAt")
             if (!TextUtils.isEmpty(updatedAt)) {
                 timeAddOneSecond(updatedAt)
             } else {
@@ -121,7 +125,7 @@ class LoadingViewModel(private val app: Application,
     private suspend fun getCountryUpdateTime(): String {
         return withContext(Dispatchers.IO) {
             val updatedAt = regRepo.getRegOptionLastUpdateTime()
-            LogUtil.i("getCountryUpdateTime updatedAt =$updatedAt")
+            i("getCountryUpdateTime updatedAt =$updatedAt")
             if (!TextUtils.isEmpty(updatedAt)) {
                 timeAddOneSecond(updatedAt)
             } else {
@@ -133,7 +137,7 @@ class LoadingViewModel(private val app: Application,
     private suspend fun getMainIconUpdateTime(): String {
         return withContext(Dispatchers.IO) {
             val updatedAt = mainIconRepository.getMainIconLUT()
-            LogUtil.i("getMainIconUpdateTime updatedAt =$updatedAt")
+            i("getMainIconUpdateTime updatedAt =$updatedAt")
             if (!TextUtils.isEmpty(updatedAt)) timeAddOneSecond(updatedAt) else FIRST_TIME_BMOB
         }
     }
@@ -141,7 +145,7 @@ class LoadingViewModel(private val app: Application,
     private suspend fun getWebContentUpdateTime(): String {
         return withContext(Dispatchers.IO) {
             val updatedAt = webContentRepo.getLastUpdateTime()
-            LogUtil.i("getNoSqlUpdateTime updatedAt =$updatedAt")
+            i("getNoSqlUpdateTime updatedAt =$updatedAt")
             if (!TextUtils.isEmpty(updatedAt)) {
                 timeAddOneSecond(updatedAt)
             } else {
@@ -153,7 +157,7 @@ class LoadingViewModel(private val app: Application,
     private suspend fun getFileControlUpdateTime(): String {
         return withContext(Dispatchers.IO) {
             val updatedAt = webContentRepo.getFileControlLUT()
-            LogUtil.i("getFileControlUpdateTime updatedAt =$updatedAt")
+            i("getFileControlUpdateTime updatedAt =$updatedAt")
             if (!TextUtils.isEmpty(updatedAt)) {
                 timeAddOneSecond(updatedAt)
             } else {
@@ -169,7 +173,7 @@ class LoadingViewModel(private val app: Application,
         uiScope.launch {
             //            clearRegOptionData()
             val time = getRegOptionUpdateTime()
-            LogUtil.i("getRegOptionUpdateTime =$time")
+            i("getRegOptionUpdateTime =$time")
             getRegOptionsFromBmob(time)   //
         }
     }
@@ -185,22 +189,22 @@ class LoadingViewModel(private val app: Application,
                 var content = responseBody.string().replace("{\"results\":", "")
                 content = content.substring(0, content.length - 1)
 
-                LogUtil.i("content=$content")
+                i("content=$content")
 
                 val list: List<RegOptionData>? = parseListJson(RegOptionData::class.java, content)
                 withContext(Dispatchers.IO) {
                     list?.let {
-                        LogUtil.i("it=$it")
+                        i("it=$it")
                         regRepo.insertRegOptionDataAll(it)
                     }
                 }
-                LogUtil.i("getRegOptionsFromBmob: ${list?.size}")
+                i("getRegOptionsFromBmob: ${list?.size}")
                 val endMill = System.currentTimeMillis()
-                LogUtil.i("getRegOptionsFromBmob spend Time :${endMill - startMill} ms")
-                sendBroadcast()
+                i("getRegOptionsFromBmob spend Time :${endMill - startMill} ms")
+                sendBroadcast("RegOptions success")
             } catch (e: Exception) {
                 LogUtil.e("getRegOptionsFromBmob::Failure: ${e.message} ")
-                sendBroadcast()
+                sendBroadcast("RegOptions fail")
             }
         }
     }
@@ -212,22 +216,22 @@ class LoadingViewModel(private val app: Application,
         uiScope.launch {
             val startTime = System.currentTimeMillis()
             val time = getCountryUpdateTime()
-            LogUtil.i("getCountryUpdateTime =$time")
+            i("getCountryUpdateTime =$time")
 
             val count = getCountryCountFromBmob(time)
-            LogUtil.i("count =$count")
+            i("count =$count")
             if (count > 0) {
                 val max = 500 * (1 + count / 500)
-                LogUtil.i("max =$max")
+                i("max =$max")
                 for (i in 0 until max step 500) {
-                    LogUtil.i("开始下载：i=$i")
+                    i("开始下载：i=$i")
                     getCountriesFromBmob(i, time)
                 }
             }
             val endTime = System.currentTimeMillis()
-            LogUtil.i("downloadAllCountries end :${endTime - startTime} ms")
+            i("downloadAllCountries end :${endTime - startTime} ms")
 
-            sendBroadcast()
+            sendBroadcast("countrys")
         }
     }
 
@@ -245,9 +249,9 @@ class LoadingViewModel(private val app: Application,
         try {
             val content = getDeferred.await().string()
             val countEntity = parseJson(BmobCount::class.java, content)
-            LogUtil.i("getCountryCountFromBmob: $content")
+            i("getCountryCountFromBmob: $content")
             val endMill = System.currentTimeMillis()
-            LogUtil.i("getCountryCountFromBmob spend Time :${endMill - startMill} ms")
+            i("getCountryCountFromBmob spend Time :${endMill - startMill} ms")
             count = countEntity!!.count
         } catch (e: Exception) {
             LogUtil.e("getCountryCountFromBmob::Failure: ${e.message} ")
@@ -275,13 +279,13 @@ class LoadingViewModel(private val app: Application,
                 val countries: List<CountryJson>? = parseListJson(CountryJson::class.java, content)
                 withContext(Dispatchers.IO) {
                     countries?.let {
-                        LogUtil.i("insertConuntryAll")
+                        i("insertConuntryAll")
                         regRepo.insertCountryAll(it)
                     }
                 }
-                LogUtil.i("getCountriesFromBmob: ${countries?.size}")
+                i("getCountriesFromBmob: ${countries?.size}")
                 val endMill = System.currentTimeMillis()
-                LogUtil.i("getCountriesFromBmob spend Time :${endMill - startMill} ms")
+                i("getCountriesFromBmob spend Time :${endMill - startMill} ms")
             } catch (e: Exception) {
                 LogUtil.e("getCountriesFromBmob::Failure: ${e.message} ")
             }
@@ -303,6 +307,7 @@ class LoadingViewModel(private val app: Application,
     private fun downMainIcons() {
         uiScope.launch {
             val time = getMainIconUpdateTime()
+            i("getMainIconUpdateTime=$time")
             getMainIconFromBmob(time)
         }
     }
@@ -310,6 +315,7 @@ class LoadingViewModel(private val app: Application,
     private fun downWebContent() {
         uiScope.launch {
             val time = getWebContentUpdateTime()
+            i("getWebContentUpdateTime=$time")
             getWebContentFromBmob(time)
         }
     }
@@ -317,6 +323,7 @@ class LoadingViewModel(private val app: Application,
     private fun downFileControl() {
         uiScope.launch {
             val time = getFileControlUpdateTime()
+            i("getFileControlUpdateTime=$time")
             getFileControlFromBmob(time)
         }
     }
@@ -361,21 +368,21 @@ class LoadingViewModel(private val app: Application,
                 CpsApi.retrofitService.getMainIconsBmobAsync("{\"updatedAt\":{\"\$gte\":{\"__type\":\"Date\",\"iso\":\"$updatedAt\"}}}")
             try {
                 val content = getDeferred.await().string().replace("{\"results\":", "").substringBeforeLast("}", "")
-                LogUtil.i("getMainIconFromBmob :$content")
+                i("getMainIconFromBmob :$content")
                 val list: List<MainIcon>? = parseListJson(MainIcon::class.java, content)
                 withContext(Dispatchers.IO) {
                     list?.let {
-                        LogUtil.i("insertMainIconAll,,, ${it.toString()}")
+                        i("insertMainIconAll,,, ${it.toString()}")
                         mainIconRepository.insertAll(it)
                     }
                 }
                 val endMill = System.currentTimeMillis()
-                LogUtil.i("getMainIconFromBmob spend Time :${endMill - startMill} ms")
-                sendBroadcast()
+                i("getMainIconFromBmob spend Time :${endMill - startMill} ms")
+                sendBroadcast("main icon success")
             } catch (e: Exception) {
                 LogUtil.e("getMainIconFromBmob::Failure: ${e.message} ")
                 LogUtil.e(e)
-                sendBroadcast()
+                sendBroadcast("main icon fail")
             }
         }
     }
@@ -388,28 +395,21 @@ class LoadingViewModel(private val app: Application,
                     500)
             try {
                 val content = getDeferred.await().string().replace("{\"results\":", "").substringBeforeLast("}", "")
-                LogUtil.i("getWebContentFromBmob :$content")
+                i("getWebContentFromBmob :$content")
                 val webContents: List<WebContent>? = parseListJson(WebContent::class.java, content)
                 withContext(Dispatchers.IO) {
                     webContents?.let {
-                        LogUtil.i("insertWCAll,,, ${it.toString()}")
+                        i("insertWCAll,,, ${it.toString()}")
                         webContentRepo.insertWebContentAll(it)
-//                        for (entity in it) {
-//                            async {
-//                                if (!TextUtils.isEmpty(entity.FileName)) {
-//                                    downHtmlZip(entity)
-//                                }
-//                            }
-//                        }
                     }
                 }
                 val endMill = System.currentTimeMillis()
-                LogUtil.i("getWebContentFromBmob spend Time :${endMill - startMill} ms")
-                sendBroadcast()
+                i("getWebContentFromBmob spend Time :${endMill - startMill} ms")
+                sendBroadcast("webcontent succ")
             } catch (e: Exception) {
                 LogUtil.e("getWebContentFromBmob::Failure: ${e.message} ")
                 LogUtil.e(e)
-                sendBroadcast()
+                sendBroadcast("webcontent fali")
             }
         }
     }
@@ -422,11 +422,11 @@ class LoadingViewModel(private val app: Application,
                     500)
             try {
                 val content = getDeferred.await().string().replace("{\"results\":", "").substringBeforeLast("}", "")
-                LogUtil.i("getFileControlFromBmob :$content")
+                i("getFileControlFromBmob :$content")
                 val list: List<FileControl>? = parseListJson(FileControl::class.java, content)
                 withContext(Dispatchers.IO) {
                     list?.let {
-                        LogUtil.i("insertFileConAll,,, ${it.size}")
+                        i("insertFileConAll,,, ${it.size}")
                         webContentRepo.insertFileControlAll(it)
                         for (entity in it) {
                             async {
@@ -438,12 +438,12 @@ class LoadingViewModel(private val app: Application,
                     }
                 }
                 val endMill = System.currentTimeMillis()
-                LogUtil.i("getWebContentFromBmob spend Time :${endMill - startMill} ms")
-                sendBroadcast()
+                i("getFileControlFromBmob spend Time :${endMill - startMill} ms")
+                sendBroadcast("file control success")
             } catch (e: Exception) {
-                LogUtil.e("getWebContentFromBmob::Failure: ${e.message} ")
+                LogUtil.e("getFileControlFromBmob::Failure: ${e.message} ")
                 LogUtil.e(e)
-                sendBroadcast()
+                sendBroadcast("file control fail")
             }
         }
     }
@@ -453,8 +453,8 @@ class LoadingViewModel(private val app: Application,
      */
     private suspend fun downHtmlZip(entity: FileControl) {
         withContext(Dispatchers.IO) {
-            LogUtil.i("html thread: ${entity.PageID} at ${Thread.currentThread()}")
-            LogUtil.i("dir = ${entity.FileName?.substringBefore("/", "")}")
+            i("html thread: ${entity.PageID} at ${Thread.currentThread()}")
+            i("dir = ${entity.FileName?.substringBefore("/", "")}")
             try {
                 val response = CpsApi.retrofitService.downloadHtmlZip("$BASE_URL${entity.FileName}")
                     .await()
@@ -463,11 +463,21 @@ class LoadingViewModel(private val app: Application,
                     "${rootDir}${entity.FileName.substringBefore("/", "")}/",
                     webContentRepo,
                     entity.PageID)
-                LogUtil.i("isUnpackSuccess=$isUnpackSuccess")
+                i("isUnpackSuccess=$isUnpackSuccess")
 
                 when (entity.PageID) {
-                    "E001" -> updateExhibitorData()
+                    "E001" -> {
+                        updateExhibitorData()
+//                        i("parse exhibitor result= $parseResult")
+//                        if(parseResult){
+//
+//                        }
+//                        entity.updatedAt = FIRST_TIME_BMOB
+//                        webContentRepo.updateFileControlItemTime(entity)
+                    }
 //                    "Seminar"
+                    else -> {
+                    }
                 }
 
             } catch (e: java.lang.Exception) {
@@ -480,7 +490,15 @@ class LoadingViewModel(private val app: Application,
 
     private var csvHelper: CSVHelper? = null
     private fun initCsvHelper() {
-        csvHelper = CSVHelper.getInstance(exhibitorDao)
+        if (csvHelper == null) {
+            val database = CpsDatabase.getInstance(context)
+            csvHelper = CSVHelper.getInstance(exhibitorDao,
+                database.applicationDao(),
+                database.industryDao(),
+                database.regionDao(),
+                database.hallDao(),
+                database.zoneDao())
+        }
     }
 
     /**
@@ -562,32 +580,32 @@ class LoadingViewModel(private val app: Application,
     //    }
 
     fun downloadTxt(txt: String) {
-        LogUtil.i("1. start downloadTxt:$txt at thread +${Thread.currentThread()}")
+        i("1. start downloadTxt:$txt at thread +${Thread.currentThread()}")
         uiScope.launch(Dispatchers.Default) {
             //        uiScope.launch {
-            LogUtil.i("2. start downloadTxt:$txt at thread +${Thread.currentThread()}")
+            i("2. start downloadTxt:$txt at thread +${Thread.currentThread()}")
             val getDeferredAd = apiService.downTxtAsync(txt)
             try {
-                LogUtil.i("3. start downloadTxt:$txt at thread +${Thread.currentThread()}")
+                i("3. start downloadTxt:$txt at thread +${Thread.currentThread()}")
                 val responseBody = getDeferredAd.await()
-                LogUtil.i("4. start downloadTxt:$txt at thread +${Thread.currentThread()}")
+                i("4. start downloadTxt:$txt at thread +${Thread.currentThread()}")
                 val fos = context.openFileOutput(txt, Context.MODE_PRIVATE)
                 fos.write(responseBody.bytes())
-                LogUtil.i("writeTxt::: TXT_AD END")
+                i("writeTxt::: TXT_AD END")
                 fos.close()
                 responseBody.close()
             } catch (e: Exception) {
                 LogUtil.e("downloadTxt::Failure: ${e.message}")
-                sendBroadcast()
+                sendBroadcast("txt fail")
             }
             withContext(Dispatchers.Main) {
-                LogUtil.i("downloadTxt_end in uiScope:: $txt at ${Thread.currentThread()}")
-                sendBroadcast()
+                i("downloadTxt_end in uiScope:: $txt at ${Thread.currentThread()}")
+                sendBroadcast("txt success")
                 //                txtDownCount++
                 //                canIntent.value == true
             }
         }
-        LogUtil.i("method end:: $txt at ${Thread.currentThread()}")
+        i("method end:: $txt at ${Thread.currentThread()}")
     }
 
     private fun downAdTxt() {
@@ -600,17 +618,17 @@ class LoadingViewModel(private val app: Application,
 
     private lateinit var timer: CountDownTimer
     fun addCountDownTime() {
-        timer = object : CountDownTimer(2000, 1000) {
+        timer = object : CountDownTimer(3000, 1000) {
             override fun onTick(millisUntilFinished: Long) {   //  millisUntilFinished / ONE_SECOND = 4,3,2,1,0
-                LogUtil.i("**** onTick: ${millisUntilFinished / 1000}")
+                i("**** onTick: ${millisUntilFinished / 1000}")
                 adCountDownFinish.value = false
             }
 
             override fun onFinish() {
                 adCountDownFinish.value = true
-                LogUtil.i("ad count down finish ${adCountDownFinish.value}")
+                i("ad count down finish ${adCountDownFinish.value}")
                 setCountDownFinish()
-                sendBroadcast()
+                sendBroadcast("ad count down finish")
             }
         }
         timer.start()

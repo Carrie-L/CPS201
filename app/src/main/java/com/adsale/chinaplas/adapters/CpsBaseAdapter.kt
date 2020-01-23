@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.adsale.chinaplas.BR
 import com.adsale.chinaplas.utils.LogUtil
 
-abstract class CpsBaseAdapter<T>(private var list: List<T>, private val onItemClickListener: OnItemClickListener) :
+abstract class CpsBaseAdapter<T>(private var list: List<T>, private val onItemClickListener: OnItemClickListener?) :
     RecyclerView.Adapter<CpsBaseAdapter.CpsBaseViewHolder>() {
     private lateinit var binding: ViewDataBinding
 
@@ -37,8 +37,10 @@ abstract class CpsBaseAdapter<T>(private var list: List<T>, private val onItemCl
 
     override fun onBindViewHolder(holder: CpsBaseViewHolder, position: Int) {
         val item = list[position]
-        holder.itemView.setOnClickListener {
-            onItemClickListener.onClick(item, position)
+        if (onItemClickListener != null) {
+            holder.itemView.setOnClickListener {
+                onItemClickListener.onClick(item, position)
+            }
         }
         holder.bind(item)
         bindVariable(binding)

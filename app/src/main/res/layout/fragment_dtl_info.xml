@@ -1,0 +1,20 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.adsale.chinaplas.ui.exhibitors.DtlInfoFragment">
+
+    <TextView
+        android:id="@+id/tv_description"
+        android:layout_width="match_parent"
+        android:lineSpacingMultiplier="1.5"
+        android:layout_height="match_parent" />
+
+    <TextView
+        android:id="@+id/tv_no_data"
+        style="@style/no_data_style"
+        android:layout_marginTop="150dp"
+        android:visibility="gone"
+        />
+
+</FrameLayout>

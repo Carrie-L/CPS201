@@ -10,11 +10,15 @@ import com.adsale.chinaplas.utils.DATABASE_NAME
 
 /**
  * Created by Carrie on 2019/10/21.
+ * Visitor::class
  */
-@Database(entities = [MainIcon::class, CountryJson::class, RegOptionData::class, WebContent::class, FileControl::class, HtmlText::class,Exhibitor::class,
-   CompanyApplication::class , CompanyProduct::class, ExhApplication::class, ExhIndustry::class, ExhibitorZone::class, Zone::class, Country::class],
-    version = 3,
-    exportSchema = false)
+@Database(
+    entities = [MainIcon::class, CountryJson::class, RegOptionData::class, WebContent::class, FileControl::class, HtmlText::class, Exhibitor::class,
+        CompanyApplication::class, CompanyProduct::class, ExhApplication::class, ExhIndustry::class, ExhibitorZone::class, Zone::class, Country::class, Hall::class, ExhibitorHistory::class
+    ],
+    version = 4,
+    exportSchema = false
+)
 abstract class CpsDatabase : RoomDatabase() {
     abstract fun mainIconDao(): MainIconDao
     abstract fun countryDao(): CountryJsonDao
@@ -23,6 +27,11 @@ abstract class CpsDatabase : RoomDatabase() {
     abstract fun htmlTextDao(): HtmlTextDao
     abstract fun fileControlDao(): FileControlDao
     abstract fun exhibitorDao(): ExhibitorDao
+    abstract fun applicationDao(): ApplicationDao
+    abstract fun industryDao(): IndustryDao
+    abstract fun regionDao(): RegionDao
+    abstract fun hallDao(): HallDao
+    abstract fun zoneDao(): ZoneDao
 
     companion object {
         @Volatile

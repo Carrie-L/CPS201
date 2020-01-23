@@ -18,6 +18,21 @@ const val LANG_TC = 3
 
 const val TICKET = "\\!\\@\\#\$AdsaleTest321"
 
+const val BACK_DEFAULT = 1  // 默认返回, popBack
+const val BACK_CUSTOM = 2 // 自定义返回
+
+const val DRAWER_LOGIN = 101
+const val DRAWER_LOGIN_SUCCESS = 102
+const val DRAWER_LOGIN_FAIL = 103
+const val DRAWER_SYNC = 104
+const val DRAWER_LOGOUT = 105
+
+const val PRIVACY = "Privacy"
+const val USE_ITEM = "UseItem"
+
+const val CONFIRM_PDF_REGISTER = "confirm"
+const val CONFIRM_PDF_CHINAPLAS = "cpsconfirm"
+
 /**
  * TXT
  * WebContent
@@ -156,7 +171,12 @@ const val TELL_EMPTY = 3
 const val PHONE_EMPTY = 4
 const val PHONE_INVALID = 5
 const val PWD_EMPTY = 6
+const val PWD_INVALID = 61
 const val SMS_CODE_EMPTY = 7
+const val NAME_EMPTY = 8
+const val NAME_INVALID = 9
+const val COMPANY_EMPTY = 10
+
 
 const val SMS_CODE_SEND_FAIL_0 = 1000             // result = 0. 发送失败，请勿多次提交
 const val SMS_CODE_SEND_FAIL = 1001             // result = 1. 发送失败，请稍候再试
@@ -172,6 +192,21 @@ const val TYPE_HEADER = 0
 const val TYPE_SUB = 1
 const val TYPE_AD = 2
 
+const val FILTER_INDEX_ALL = 0
+const val FILTER_INDEX_KEYWORD = 1
+const val FILTER_INDEX_APPLICATION = 2
+const val FILTER_INDEX_INDUSTRY = 3
+const val FILTER_INDEX_REGION = 4
+const val FILTER_INDEX_ZONE = 5
+const val FILTER_INDEX_HALL = 6
+const val FILTER_INDEX_NEW_TECH = 7
+
+/* 展商列表Type */
+const val EXHIBITOR_ALL = "all"
+const val EXHIBITOR_FILTER = "filter"
+const val EXHIBITOR_APPLICATION = "application"
+const val EXHIBITOR_INDUSTRY = "industry"
+const val EXHIBITOR_SCHEDULE = "schedule"
 
 
 

@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="16dp"
-        tools:context="com.adsale.chinaplas.ui.tools.LoginPasswordFragment">
+        tools:context="com.adsale.chinaplas.ui.tools.mychinaplas.LoginPasswordFragment">
 
         <EditText
             android:id="@+id/et_login_email"

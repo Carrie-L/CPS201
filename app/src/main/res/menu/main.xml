@@ -24,4 +24,11 @@
         android:orderInCategory="100"
         android:title=""
         app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_ok"
+        android:icon="@drawable/ic_check_white_28dp"
+        android:orderInCategory="100"
+        android:title="ok"
+        app:showAsAction="always" />
 </menu>

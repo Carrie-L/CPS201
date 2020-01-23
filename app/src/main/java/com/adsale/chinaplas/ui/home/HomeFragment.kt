@@ -28,6 +28,7 @@ import com.adsale.chinaplas.confirmPdfPath
 import com.adsale.chinaplas.data.dao.CpsDatabase
 import com.adsale.chinaplas.data.dao.MainIcon
 import com.adsale.chinaplas.data.dao.MainIconRepository
+import com.adsale.chinaplas.data.entity.ExhibitorFilter
 import com.adsale.chinaplas.databinding.FragmentHomeBinding
 import com.adsale.chinaplas.databinding.FragmentHomePadBinding
 import com.adsale.chinaplas.databinding.HomeTopImageBinding
@@ -200,7 +201,7 @@ class HomeFragment : Fragment() {
 //            BD_VISITOR -> NavHostFragment.findNavController(this).navigate(R.id.registerWebsiteFragment)  // todo registerWebview
 //                        BD_VISITOR -> NavHostFragment.findNavController(this).navigate(HomeFragmentDirections.actionNavHomeToRegisterActivity())  /
 //            BD_EXHIBITOR_LIST -> NavHostFragment.findNavController(this).navigate(HomeFragmentDirections.actionNavHomeToMenuExhibitors())
-            BD_EXHIBITOR_LIST -> NavHostFragment.findNavController(this).navigate(R.id.exhibitorListFragment)
+            BD_EXHIBITOR_LIST -> NavHostFragment.findNavController(this).navigate(HomeFragmentDirections.actionNavHomeToMenuExhibitors())
             BD_GENERAL_INFO -> NavHostFragment.findNavController(this).navigate(HomeFragmentDirections.actionNavHomeToGeneralInfoFragment(entity.BaiDu_TJ))
             BD_VISIT_TIP -> NavHostFragment.findNavController(this).navigate(HomeFragmentDirections.actionNavHomeToVisitorTipFragment(entity.BaiDu_TJ))
 
@@ -212,26 +213,23 @@ class HomeFragment : Fragment() {
 
 
     private fun intentToRegister() {
+        // [方便测试的代码]
 //        NavHostFragment.findNavController(this)
-//            .navigate(HomeFragmentDirections.actionNavHomeToRegisterWebsiteFragment(""))
-//        return
-
-
-//        NavHostFragment.findNavController(this)
-//            .navigate(R.id.registerActivity)
+//            .navigate(HomeFragmentDirections.actionNavHomeToRegisterWebsiteFragment(
+//                "https://www.chinaplasonline.com/CPS20/PreRegSuccessPay/trad/?guid=BD9EED2344AD4D2F93C59E3F4AB13850&device=mobileapp",true
+//            ))
 //        return
 
         if (isPaySuccess()) {
             if (File(confirmPdfPath).exists()) {
                 /* open pdf */
-//                val pdfPath = "file:///android_asset/pdfjs/web/viewer.html?file=$confirmPdfPath"
                 val pdfPath = localConfirmPdfPath + confirmPdfPath
                 NavHostFragment.findNavController(this)
-                    .navigate(HomeFragmentDirections.actionNavHomeToRegisterWebsiteFragment(pdfPath))
+                    .navigate(HomeFragmentDirections.actionNavHomeToRegisterWebsiteFragment(pdfPath,true))
             } else {
                 /* down pdf */
                 NavHostFragment.findNavController(this)
-                    .navigate(HomeFragmentDirections.actionNavHomeToRegisterWebsiteFragment(getConfirmPdfUrl()))
+                    .navigate(HomeFragmentDirections.actionNavHomeToRegisterWebsiteFragment(getConfirmPdfUrl(),true))
             }
         } else {
             /* 预登记前置页，检测账户是否存在 */

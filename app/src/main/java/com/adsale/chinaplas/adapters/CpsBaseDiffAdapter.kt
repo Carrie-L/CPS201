@@ -1,5 +1,6 @@
 package com.adsale.chinaplas.adapters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -10,9 +11,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.adsale.chinaplas.BR
 
 abstract class CpsBaseDiffAdapter<T>(
-                                     private val onItemClickListener: OnItemClickListener,
-                                     diffCallback: DiffUtil.ItemCallback<T>) :
-    ListAdapter<T, CpsBaseDiffAdapter.CpsBaseDiffViewHolder>(diffCallback) {
+    private val onItemClickListener: OnItemClickListener) :
+    ListAdapter<T, CpsBaseDiffAdapter.CpsBaseDiffViewHolder>(DiffCallback()) {
     private lateinit var binding: ViewDataBinding
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CpsBaseDiffViewHolder {
@@ -60,3 +60,16 @@ abstract class CpsBaseDiffAdapter<T>(
     }
 
 }
+
+private class DiffCallback<T> : DiffUtil.ItemCallback<T>() {
+
+    override fun areItemsTheSame(oldItem: T, newItem: T): Boolean {
+        return areItemsTheSame(oldItem, newItem)
+    }
+
+    @SuppressLint("DiffUtilEquals")
+    override fun areContentsTheSame(oldItem: T, newItem: T): Boolean {
+        return oldItem == newItem
+    }
+}
+

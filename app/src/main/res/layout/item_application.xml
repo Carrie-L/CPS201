@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="obj"
+            type="com.adsale.chinaplas.data.dao.ExhApplication" />
+
+    </data>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:drawableEnd="@{obj.isSelected?@drawable/ic_choosed:null}"
+        android:gravity="center_vertical"
+        android:paddingStart="16dp"
+        android:paddingEnd="8dp"
+        android:text="@{obj.getApplicationName()}"
+        android:textColor="@color/textColor" />
+
+</layout>

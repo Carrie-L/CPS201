@@ -1,19 +1,23 @@
 package com.adsale.chinaplas.ui.webcontent
 
 
+import android.graphics.Bitmap
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.webkit.WebChromeClient
+import android.webkit.WebResourceRequest
 import android.webkit.WebView
+import android.webkit.WebViewClient
 import android.widget.ProgressBar
 import androidx.lifecycle.ViewModelProviders
 
 import com.adsale.chinaplas.R
 import com.adsale.chinaplas.data.dao.CpsDatabase
 import com.adsale.chinaplas.data.dao.MainIconRepository
+import com.adsale.chinaplas.utils.BACK_DEFAULT
 import com.adsale.chinaplas.utils.LogUtil
 import com.adsale.chinaplas.viewmodels.MainViewModel
 import com.adsale.chinaplas.viewmodels.MainViewModelFactory
@@ -57,7 +61,8 @@ class WebViewFragment : Fragment() {
         mainViewModel.title.value = title
 
         webView.loadUrl(url)
-        setProgressClient()
+//        setProgressClient()
+        setWebViewClient()
     }
 
     private fun setProgressClient() {
@@ -74,6 +79,25 @@ class WebViewFragment : Fragment() {
                     progressBar.progress = newProgress
                 }
                 super.onProgressChanged(view, newProgress)
+            }
+        }
+    }
+
+    private fun setWebViewClient() {
+        webView.webViewClient = object : WebViewClient() {
+            override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
+                super.onPageStarted(view, url, favicon)
+                progressBar.visibility=View.VISIBLE
+            }
+            override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean {
+                super.shouldOverrideUrlLoading(view, request)
+                LogUtil.i("shouldOverrideUrlLoading= ${request?.url}")
+                return false
+            }
+
+            override fun onPageFinished(view: WebView?, url: String?) {
+                super.onPageFinished(view, url)
+                progressBar.visibility=View.GONE
             }
         }
     }

@@ -4,39 +4,42 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.WebView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.adsale.chinaplas.R
+import com.adsale.chinaplas.rootDir
+import com.adsale.chinaplas.utils.getHtmName
 import com.adsale.chinaplas.viewmodels.FollowViewModel
+import java.io.File
 
 class FollowFragment : Fragment() {
-
-    private lateinit var slideshowViewModel: FollowViewModel
-//    private lateinit var mainViewModel: MainViewModel
-
-
-
+    private lateinit var webView: WebView
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        slideshowViewModel =
-            ViewModelProviders.of(this).get(FollowViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_slideshow, container, false)
-        val textView: TextView = root.findViewById(R.id.text_slideshow)
-        slideshowViewModel.text.observe(this, Observer {
-            textView.text = it
-        })
-
-
-
-//        mainViewModel = ViewModelProviders.of(this, MainViewModelFactory(requireNotNull(this.activity).application))
-//            .get(MainViewModel::class.java)
-
+        val root = inflater.inflate(R.layout.layout_web_view, container, false)
+        webView = root.findViewById(R.id.web_view)
         return root
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+        val sdPath = "file://${rootDir}WebContent/%s/${getHtmName()}"
+        val assetPath = "file:///android_asset/WebContent/%s/${getHtmName()}"
+        val path:String
+        if (File(sdPath).exists()) {
+            path = sdPath
+        } else {
+            path = assetPath
+        }
+        webView.loadUrl(String.format(path, "S005"))
+
     }
 }

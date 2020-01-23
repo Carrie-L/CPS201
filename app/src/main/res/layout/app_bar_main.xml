@@ -12,89 +12,120 @@
         <import type="android.view.View" />
     </data>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="@color/white"
-        tools:context=".ui.home.MainActivity">
+        android:layout_height="match_parent">
 
-        <!--        <FrameLayout-->
-        <!--            android:id="@+id/toolbar_frame"-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            />-->
-
-        <RelativeLayout
-            android:id="@+id/rl_toolbar"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/main_header">
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="vertical"
+            tools:context=".ui.home.MainActivity">
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
+            <!--        <FrameLayout-->
+            <!--            android:id="@+id/toolbar_frame"-->
+            <!--            android:layout_width="match_parent"-->
+            <!--            android:layout_height="wrap_content"-->
+            <!--            />-->
+
+            <RelativeLayout
+                android:id="@+id/rl_toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:theme="@style/AppTheme.AppBarOverlay"
-                app:contentInsetEnd="0dp"
-                app:contentInsetLeft="0dp"
-                app:contentInsetRight="0dp"
-                app:contentInsetStart="0dp"
-                android:paddingEnd="12dp"
-                app:contentInsetStartWithNavigation="0dp">
+                android:layout_height="wrap_content"
+                android:background="@drawable/main_header">
 
-                <androidx.appcompat.widget.ActionMenuView
-                    android:id="@+id/action_menu_view"
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:paddingEnd="12dp"
+                    android:theme="@style/AppTheme.AppBarOverlay"
+                    app:contentInsetEnd="0dp"
+                    app:contentInsetLeft="0dp"
+                    app:contentInsetRight="0dp"
+                    app:contentInsetStart="0dp"
+                    app:contentInsetStartWithNavigation="0dp">
+
+                    <androidx.appcompat.widget.ActionMenuView
+                        android:id="@+id/action_menu_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="?attr/actionBarItemBackground"
+                        android:visibility="@{mainViewModel.isInnerIntent()?View.VISIBLE:View.GONE}" />
+
+                    <TextView
+                        android:id="@+id/toolbar_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="@{mainViewModel.title}"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:visibility="@{mainViewModel.isInnerIntent()?View.VISIBLE:View.GONE}" />
+
+                </androidx.appcompat.widget.Toolbar>
+
+                <ImageView
+                    android:id="@+id/logo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="?attr/actionBarItemBackground"
-                    android:visibility="@{mainViewModel.isInnerIntent()?View.VISIBLE:View.GONE}" />
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="36dp"
+                    android:background="@drawable/logo"
+                    android:scaleType="fitCenter"
+                    android:visibility="@{mainViewModel.isInnerIntent()?View.GONE:View.VISIBLE}" />
 
                 <TextView
-                    android:id="@+id/toolbar_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="@{mainViewModel.title}"
-                    android:textColor="@color/white"
-                    android:textSize="18sp"
-                    android:visibility="@{mainViewModel.isInnerIntent()?View.VISIBLE:View.GONE}" />
+                    android:id="@+id/et_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/bottom_nav_height"
+                    android:layout_below="@id/logo"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:background="@drawable/bg_et_search"
+                    android:drawableEnd="@drawable/ic_search"
+                    android:gravity="center_vertical"
+                    android:hint="@string/search"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp" />
+                <!--            android:visibility="@{mainViewModel.isInnerIntent()?View.GONE:View.VISIBLE}"-->
 
-            </androidx.appcompat.widget.Toolbar>
+            </RelativeLayout>
 
-            <ImageView
-                android:id="@+id/logo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="36dp"
-                android:background="@drawable/logo"
-                android:scaleType="fitCenter"
-                android:visibility="@{mainViewModel.isInnerIntent()?View.GONE:View.VISIBLE}" />
+            <include
+                android:id="@+id/content"
+                layout="@layout/content_main"
+                app:mainViewModel="@{mainViewModel}" />
 
-            <TextView
-                android:id="@+id/et_search"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/bottom_nav_height"
-                android:layout_below="@id/logo"
-                android:gravity="center_vertical"
-                android:layout_marginStart="24dp"
-                android:layout_marginEnd="24dp"
-                android:background="@drawable/bg_et_search"
-                android:drawableEnd="@drawable/ic_search"
-                android:hint="@string/search"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-         />
-<!--            android:visibility="@{mainViewModel.isInnerIntent()?View.GONE:View.VISIBLE}"-->
+        </LinearLayout>
 
-        </RelativeLayout>
+        <!--        <androidx.recyclerview.widget.RecyclerView-->
+        <!--            android:id="@+id/rv_helper"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="match_parent"-->
+        <!--            android:visibility="gone"-->
+        <!--            />-->
 
-        <include
-            android:id="@+id/content"
-            layout="@layout/content_main"
-            app:mainViewModel="@{mainViewModel}" />
+        <!--        <ImageView-->
+        <!--            android:id="@+id/iv_help_close"-->
+        <!--            android:layout_width="48dp"-->
+        <!--            android:layout_height="48dp"-->
+        <!--            android:background="@drawable/btn_help_page_close"-->
+        <!--            android:layout_marginTop="12dp"-->
+        <!--            android:layout_marginEnd="12dp"-->
+        <!--            android:scaleType="centerInside"-->
+        <!--            android:layout_alignParentEnd="true"-->
+        <!--            android:visibility="gone"-->
+        <!--            />-->
 
-    </LinearLayout>
+        <com.adsale.chinaplas.ui.view.HelpView
+            android:id="@+id/help_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+
+
+    </RelativeLayout>
 
 </layout>

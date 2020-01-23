@@ -76,5 +76,10 @@ interface RegService {
     @POST(GENIUS_HELPER_ENCRYPT)
     fun apiGeniusEncrypt(@Body body: RequestBody): Deferred<RegKey>
 
+    @Headers("Content-Type:application/x-www-form-urlencoded")
+    @POST  //VISITOR_LIST_URL
+    fun getVisitorListAsync(@Url url: String): Deferred<ResponseBody>
+//    fun getVisitorListAsync(@Query("APPToken") token: String, @Query("lang") lang: String): Deferred<ResponseBody>
+
 
 }

@@ -33,12 +33,12 @@
             android:background="@color/colorPrimaryDark"
             android:fitsSystemWindows="true"
             android:theme="@style/NavigationTheme"
-            app:headerLayout="@layout/nav_header_main"
             app:itemBackground="@drawable/nav_view_item_background"
             app:itemIconTint="@color/drawer_text_color"
             app:itemTextAppearance="@style/TextAppearance.AppCompat.Medium"
             app:itemTextColor="@color/drawer_text_color"
             app:menu="@menu/activity_main_drawer" />
+<!--        app:headerLayout="@layout/nav_header_main"-->
 
     </androidx.drawerlayout.widget.DrawerLayout>
 

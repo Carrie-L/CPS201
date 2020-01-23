@@ -1,17 +1,24 @@
 package com.adsale.chinaplas.utils
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Context
 import android.content.DialogInterface
 import android.content.SharedPreferences
+import android.os.Build
+import android.os.IBinder
+import android.os.LocaleList
 import android.view.LayoutInflater
+import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import com.adsale.chinaplas.R
 import com.adsale.chinaplas.mResources
 import com.adsale.chinaplas.mSPConfig
 import com.adsale.chinaplas.mSPReg
+import com.adsale.chinaplas.utils.LogUtil.i
 import com.github.promeg.pinyinhelper.Pinyin
 import java.text.ParseException
 import java.text.SimpleDateFormat
@@ -88,6 +95,78 @@ fun getLocale(language: Int): Locale? {
     }
 }
 
+@RequiresApi(Build.VERSION_CODES.N)
+fun updateResources(context: Context): Context? {
+    val resources = context.resources
+    val locale: Locale =
+        getLocale(
+            context.getSharedPreferences(SP_CONFIG, Context.MODE_PRIVATE).getInt(
+                "current_language",
+                LANG_TC
+            )
+        )!!
+    val configuration = resources.configuration
+    configuration.setLocale(locale)
+    val localeList = LocaleList(locale)
+    LocaleList.setDefault(localeList)
+    configuration.setLocales(localeList)
+    return context.createConfigurationContext(configuration)
+}
+
+/**
+ * 获取系统的locale
+ *
+ * @return Locale对象
+ */
+fun getSystemLocale(): Locale {
+    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+        LocaleList.getDefault().get(0)
+    } else {
+        Locale.getDefault()
+    }
+}
+
+///**
+// * @param mContext
+// * @param language 0:ZhTw; 1:en;2:ZhCn;
+// */
+//private fun switchLanguage(mContext: Context, language: Int) {
+//    LogUtil.i("switchLanguage=$language")
+//    setCurrLanguage(language)
+//    val resources = mContext.resources
+//    val config = resources.configuration
+//    val dm = resources.displayMetrics
+//    val locale: Locale = getLocale(language)!!
+//    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+//        val localeList = LocaleList(locale)
+//        LocaleList.setDefault(localeList)
+//        config.setLocales(localeList)
+//        mContext.createConfigurationContext(config)
+//    } else {
+//        config.setLocale(locale)
+//    }
+//    Locale.setDefault(locale)
+//    resources.updateConfiguration(config, dm)
+//}
+
+fun switchLanguage(mContext: Context, language: Int) {
+    setCurrLanguage(language)
+    val resources = mContext.resources
+    val config = resources.configuration
+    val dm = resources.displayMetrics
+    val locale: Locale = getLocale(language)!!
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+        val localeList = LocaleList(locale)
+        LocaleList.setDefault(localeList)
+        config.setLocales(localeList)
+        mContext.createConfigurationContext(config)
+    } else {
+        config.setLocale(locale)
+    }
+    Locale.setDefault(locale)
+    resources.updateConfiguration(config, dm)
+}
+
 fun setIsTablet(bool: Boolean) {
     mSPConfig.edit().putBoolean("isTablet", bool).apply()
 }
@@ -156,6 +235,65 @@ fun getCurrentTime(): String {
     val format = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
     val date = Calendar.getInstance().time
     return format.format(date)
+}
+
+/**
+ * 获取昨天的日期
+ *
+ * @return String yyyy-MM-dd
+ */
+fun getYesterdayDate(): String {
+    val calendar = Calendar.getInstance()
+    calendar.add(Calendar.DATE, -1)
+    return SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        .format(calendar.time)
+}
+
+/**
+ * 比较三个date的值  ,是否 date1 < date < date2
+ * ad.txt
+ *
+ * @param date  current date
+ * @param date1 open date
+ * @param date2 close date
+ * @return
+ */
+fun compareDate(
+    date: String,
+    date1: String,
+    date2: String
+): Boolean {
+    val sformat =
+        SimpleDateFormat("yyyy/MM/dd", Locale.CHINA)
+    try {
+        val dt = sformat.parse(date)
+        val dt1 = sformat.parse(date1)
+        val dt2 = sformat.parse(date2)
+        val l0 = dt!!.time
+        val l1 = dt1!!.time
+        val l2 = dt2!!.time
+        i("dt=$dt, dt1=$dt1,dt2=$dt2")
+        i("lo=$l0, l1=$l1,l2=$l2")
+        if (dt.before(dt2) && dt.after(dt1)) {
+            i("compareDate：  在中间")
+        }
+        if (l0 in l1..l2) {
+            i("compareDate：  在中间 2 ")
+            return true
+        }
+        var max = l2
+        var min = l1
+        if (l1 > l2) {
+            max = l1
+            min = l2
+        }
+        if (l0 in (min + 1) until max) {
+            return true
+        }
+    } catch (exception: Exception) {
+        exception.printStackTrace()
+    }
+    return false
 }
 
 @SuppressLint("DefaultLocale")
@@ -468,6 +606,52 @@ fun getPostAddress(index: Int): String {
     return ""
 }
 
+fun resetRegisterFormData() {
+    setGuid("")
+    paySuccess(false)
+    saveConfirmPdfUrl("")
+    putLogin(false)
+    setName("")
+    setCompany("")
+    setTitleCode("")
+    setTitleText("")
+    setTitleOther("")
+    setFunctionCode("")
+    setFunctionOther("")
+    setFunctionText("")
+    setRegProduct("")
+    setRegServiceCode("")
+    mSPReg.edit().putString(REG_FORM_SERVICE_OTHER_CAR, "").apply()
+    mSPReg.edit().putString(REG_FORM_SERVICE_OTHER_PACKAGE, "").apply()
+    mSPReg.edit().putString(REG_FORM_SERVICE_OTHER_COSME, "").apply()
+    mSPReg.edit().putString(REG_FORM_SERVICE_OTHER_EE, "").apply()
+    mSPReg.edit().putString(REG_FORM_SERVICE_OTHER_MEDICAL, "").apply()
+    mSPReg.edit().putString(REG_FORM_SERVICE_OTHER_BUILD, "").apply()
+    mSPReg.edit().putString(REG_FORM_SERVICE_OTHER_LED, "").apply()
+    mSPReg.edit().putString(REG_FORM_SERVICE_OTHER_TEXT, "").apply()
+    setRegion("")
+    setProvince("")
+    setCity("")
+    setRegionCombineText("")
+    setRegProduct("")
+    setRegProduct("")
+    setTellData(1, "")
+    setTellData(2, "")
+    setTellData(3, "")
+    setTellData(4, "")
+    setTellData(5, "")
+    setTellData(6, "")
+    setEmail(1, "")
+    setEmail(2, "")
+    setPassword(1, "")
+    setPassword(2, "")
+    setIsPostChecked(false)
+    setPostCity("")
+    setPostAddress(1, "")
+    setPostAddress(2, "")
+    setPostAddress(3, "")
+}
+
 /*  正则验证 */
 fun checkYou(str: String): Boolean {
     val re = Regex("^[a-zA-Z\u4e00-\u9fa5\\s]+\$")
@@ -584,6 +768,52 @@ fun getKey(): String {
     return mSPReg.getString("my_chinaplas_key", "")!!
 }
 
+fun setMyChinaplasIsPay(text: Boolean) {
+    mSPReg.edit().putBoolean("my_chinaplas_is_pay", text).apply()
+}
+
+fun getMyChinaplasIsPay(): Boolean {
+    return mSPReg.getBoolean("my_chinaplas_is_pay", false)
+}
+
+/**
+ * 发票PDF链接，如果有，下载PDF
+ */
+fun setInvoicePdfUrl(text: String) {
+    mSPReg.edit().putString("my_chinaplas_invoice_pdf", text).apply()
+}
+
+fun getInvoicePdfUrl(): String {
+    return mSPReg.getString("my_chinaplas_invoice_pdf", "")!!
+}
+
+fun saveCPSConfirmPdfUrl(url: String) {
+    mSPReg.edit().putString("my_chinaplas_confirm_pdf_url", url).apply()
+}
+
+fun getCPSConfirmPdfUrl(): String {
+    return mSPReg.getString("my_chinaplas_confirm_pdf_url", "")!!
+}
+
+/**
+ * 发票网页链接
+ */
+fun setInvoiceUrl(text: String) {
+    mSPReg.edit().putString("my_chinaplas_invoice_pdf", text).apply()
+}
+
+fun getInvoiceUrl(): String {
+    return mSPReg.getString("my_chinaplas_invoice_pdf", "")!!
+}
+
+fun setVisitorId(text: String) {
+    mSPReg.edit().putString("my_chinaplas_invoice_pdf", text).apply()
+}
+
+fun getVisitorId(): String {
+    return mSPReg.getString("my_chinaplas_invoice_pdf", "")!!
+}
+
 fun resetLoginInfo() {
     putMyChinaplasLogin(false)
     setToken("")
@@ -592,6 +822,11 @@ fun resetLoginInfo() {
     setMemberId("")
     setMyChinaplasGuid("")
     setMyChinaplasEmail("")
+    setMyChinaplasPhone("")
+    setInvoicePdfUrl("")
+    setMyChinaplasIsPay(false)
+    setVisitorId("")
+    setInvoiceUrl("")
 }
 
 
@@ -644,7 +879,11 @@ fun alertDialogSingleConfirm(context: Context, res: Int) {
 /**
  * 确认对话框，两个按钮，确认，取消
  */
-fun alertDialogConfirmTwo(context: Context, resMsg: Int, positiveButton: DialogInterface.OnClickListener) {
+fun alertDialogConfirmTwo(
+    context: Context,
+    resMsg: Int,
+    positiveButton: DialogInterface.OnClickListener
+) {
     AlertDialog.Builder(context)
         .setMessage(resMsg)
         .setPositiveButton(context.getText(R.string.confirm), positiveButton)
@@ -725,6 +964,15 @@ fun getHtmName(): String? {
 
 fun getSpanCount(): Int {
     return if (isTablet()) 3 else 2
+}
+
+/**
+ * @param windowToken binding.root.windowToken
+ */
+fun hideInput(context: Context, windowToken: IBinder) {
+    val inputMethodManager: InputMethodManager =
+        context.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+    inputMethodManager.hideSoftInputFromWindow(windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
 }
 
 

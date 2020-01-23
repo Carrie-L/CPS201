@@ -29,11 +29,11 @@
            android:visibility="@{TextUtils.isEmpty(view.dialogLetter.get())?View.GONE:View.VISIBLE}"
            />
 
-       <TextView
-           style="@style/no_data_style"
-           android:layout_alignParentStart="true"
-           android:layout_alignParentTop="true"
-           android:visibility="@{view.isNoData.get()?View.VISIBLE:View.GONE}" />
+<!--       <TextView-->
+<!--           style="@style/no_data_style"-->
+<!--           android:layout_alignParentStart="true"-->
+<!--           android:layout_alignParentTop="true"-->
+<!--           android:visibility="@{view.isNoData.get()?View.VISIBLE:View.GONE}" />-->
 
    </RelativeLayout>
 

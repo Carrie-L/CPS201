@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="obj"
+            type="com.adsale.chinaplas.data.dao.ExhIndustry" />
+        <import type="android.view.View"/>
+
+    </data>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginEnd="33dp"
+        >
+
+        <TextView
+            android:id="@+id/tv_index"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/white_smoke"
+            android:gravity="center_vertical"
+            android:paddingEnd="16dp"
+            android:paddingStart="16dp"
+            android:text="@{obj.sort}"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16sp"
+            android:visibility="@{obj.isTypeLabel.get()?View.VISIBLE:View.GONE}" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:drawableEnd="@{obj.isSelected?@drawable/ic_choosed:null}"
+            android:gravity="center_vertical"
+            android:paddingStart="16dp"
+            android:paddingEnd="8dp"
+            android:text="@{obj.name}" />
+
+    </LinearLayout>
+
+
+</layout>

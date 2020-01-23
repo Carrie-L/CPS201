@@ -4,6 +4,7 @@ import com.adsale.chinaplas.moshi
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import kotlinx.coroutines.Deferred
 import okhttp3.OkHttpClient
+import okhttp3.RequestBody
 import okhttp3.ResponseBody
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -22,6 +23,29 @@ private val retrofit = Retrofit.Builder()
     .addCallAdapterFactory(CoroutineCallAdapterFactory())
     .baseUrl(BASE_URL)
     .build()
+
+private val client1 = OkHttpClient.Builder()
+    .connectTimeout(60, TimeUnit.SECONDS)
+    .writeTimeout(60, TimeUnit.SECONDS)
+    .readTimeout(60, TimeUnit.SECONDS)
+    .build()
+
+/**
+ * 添加超时
+ */
+private val clientRetrofit = Retrofit.Builder()
+    .addConverterFactory(MoshiConverterFactory.create(moshi))
+    .addCallAdapterFactory(CoroutineCallAdapterFactory())
+    .client(client1)
+    .baseUrl(BASE_URL)
+    .build()
+
+
+//OkHttpClient client = new OkHttpClient.Builder()
+//.connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
+//.writeTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
+//.readTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
+//.build();
 
 fun <T, E> setupRxtrofitProgress(cls: Class<T>?,
                                  baseUrl: String?,
@@ -122,6 +146,9 @@ interface ApiService {
     fun downloadHtmlZip(@Url url: String): Deferred<ResponseBody>
 
 
+    @POST(SUBSCRIBE_URL)
+    fun subcribeSubmit(@Query("lang") lang: String, @Body body: RequestBody): Deferred<ResponseBody>
+
 }
 
 
@@ -132,6 +159,10 @@ object CpsApi {
 
     val regService: RegService by lazy {
         retrofit.create(RegService::class.java)
+    }
+
+    val mcService: MyCpsService by lazy {
+        clientRetrofit.create(MyCpsService::class.java)
     }
 
 }

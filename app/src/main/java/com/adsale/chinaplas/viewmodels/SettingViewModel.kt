@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.adsale.chinaplas.utils.LogUtil
+import com.adsale.chinaplas.utils.resetLoginInfo
 
 class SettingViewModel : ViewModel() {
 
@@ -34,7 +35,7 @@ class SettingViewModel : ViewModel() {
     }
 
     fun onResetAll() {
-
+        resetLoginInfo()
     }
 
     fun onPrivacy() {

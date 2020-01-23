@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="obj"
+            type="com.adsale.chinaplas.data.dao.Exhibitor" />
+
+        <variable
+            name="viewModel"
+            type="com.adsale.chinaplas.viewmodels.ExhibitorViewModel" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_index"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:background="@color/white_smoke"
+            android:gravity="center_vertical"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:text="@{obj.getSort()}"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16sp"
+            android:visibility="@{obj.isTypeLabel.get()==0?View.VISIBLE:View.GONE}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_company"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/roboto"
+            android:paddingTop="16dp"
+            android:paddingBottom="8dp"
+            android:text="@{obj.companyName}"
+            android:textColor="@color/textColor"
+            android:textSize="@dimen/text_size"
+            app:layout_constraintTop_toBottomOf="@id/tv_index" />
+
+
+        <TextView
+            android:id="@+id/tv_booth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/roboto"
+            android:paddingBottom="16dp"
+            android:text="@{obj.boothNo}"
+            android:textColor="@color/textColor"
+            android:textSize="@dimen/text_size"
+            app:layout_constraintTop_toBottomOf="@id/tv_company" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:background="@color/grey_300"
+            app:layout_constraintTop_toBottomOf="@id/tv_booth" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

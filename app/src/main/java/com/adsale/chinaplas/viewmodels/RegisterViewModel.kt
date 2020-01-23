@@ -3,6 +3,7 @@ package com.adsale.chinaplas.viewmodels
 import android.os.CountDownTimer
 import android.text.TextUtils
 import androidx.databinding.ObservableBoolean
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel

@@ -20,6 +20,20 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 
+# Gson
+-keep class com.google.gson.stream.** { *; }
+-keepattributes EnclosingMethod
+-keep class com.adsale.chinaplas.data.**{*;} # 自定义数据模型的bean目录
+-keep class com.adsale.chinaplas.utils.**{*;}
+-keep class com.adsale.chinaplas.helper.**{*;}
+#-keep class com.adsale.chinaplas.**{*;}
+
+-keep public class * extends android.app.Activity
+-keep public class * extends android.app.Application
+-keep public class * extends android.app.Service
+-keep public class * extends android.content.BroadcastReceiver
+-keep public class * extends android.content.ContentProvider
+
 #bugly
 -dontwarn com.tencent.bugly.**
 -keep public class com.tencent.bugly.**{*;}

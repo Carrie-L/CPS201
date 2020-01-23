@@ -14,6 +14,7 @@
     <dimen name="menu_size">32dp</dimen>
 
     <dimen name="text_size">16sp</dimen>
+    <dimen name="text_small_size">14sp</dimen>
     <dimen name="tool_text_size">24sp</dimen>
 
     <dimen name="reg_other_height">40dp</dimen>
@@ -36,4 +37,5 @@
 
     <dimen name="title_size">20sp</dimen>
     <dimen name="exhibitor_item_size">18sp</dimen>
+    <dimen name="exhibitor_title_size">22sp</dimen>
 </resources>

@@ -54,8 +54,10 @@
                 android:gravity="center"
                 android:paddingRight="3dp"
                 android:paddingTop="6dp"
-                android:textColor="@color/round_point_color"
-                android:textSize="20sp" />
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                />
         </RelativeLayout>
 
     </RelativeLayout>

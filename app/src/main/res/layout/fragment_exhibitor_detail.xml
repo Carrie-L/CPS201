@@ -1,14 +1,272 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.exhibitors.ExhibitorDetailFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <data>
+
+        <variable
+            name="obj"
+            type="com.adsale.chinaplas.data.dao.Exhibitor" />
+
+        <variable
+            name="viewModel"
+            type="com.adsale.chinaplas.viewmodels.ExhibitorDtlViewModel" />
+
+        <import type="android.view.View" />
+
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
 
-</FrameLayout>
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:contentScrim="@android:color/transparent"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_dtl"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{obj.companyName}"
+                        android:textColor="#fff"
+                        android:textSize="@dimen/exhibitor_title_size" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:drawableStart="@drawable/ic_dtl_booth"
+                        android:drawablePadding="16dp"
+                        android:text="@{obj.boothNo}"
+                        android:textColor="#fff" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/exhibitor_text_margin_top"
+                        android:drawableStart="@drawable/ic_dtl_company"
+                        android:drawablePadding="16dp"
+                        android:text="@{obj.address}"
+                        android:textColor="#fff"
+                        android:visibility="@{obj.address.length()==0?View.GONE:View.VISIBLE}" />
+
+                    <TextView
+                        android:id="@+id/tv_tell"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/exhibitor_text_margin_top"
+                        android:drawableStart="@drawable/ic_dtl_tel"
+                        android:drawablePadding="16dp"
+                        android:text="@{obj.tel}"
+                        android:textColor="#fff"
+                        android:visibility="@{obj.tel.length()==0?View.GONE:View.VISIBLE}" />
+
+                    <TextView
+                        android:id="@+id/tv_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/exhibitor_text_margin_top"
+                        android:drawableStart="@drawable/ic_email_white_24dp"
+                        android:drawablePadding="16dp"
+                        android:text="@{obj.email}"
+                        android:textColor="#fff"
+                        android:visibility="@{obj.email.length()==0?View.GONE:View.VISIBLE}" />
+
+                    <TextView
+                        android:id="@+id/tv_website"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/exhibitor_text_margin_top"
+                        android:drawableStart="@drawable/ic_dtl_website"
+                        android:drawablePadding="16dp"
+                        android:text="@{obj.website}"
+                        android:textColor="#fff"
+                        android:visibility="@{obj.website.length()==0?View.GONE:View.VISIBLE}" />
+
+                    <TextView
+                        android:id="@+id/tv_add_exhibitor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@drawable/bg_transparent"
+                        android:drawableStart="@{viewModel.starExhibitor.booleanValue()?@drawable/btn_star:@drawable/ic_dtl_star}"
+                        android:drawablePadding="8dp"
+                        android:gravity="center"
+                        android:paddingStart="32dp"
+                        android:paddingEnd="32dp"
+                        android:text="@{viewModel.starExhibitor.booleanValue()?@string/add_my_exhibitor_1:@string/add_my_exhibitor}"
+                        android:textColor="#fff" />
+                    <!--                    android:onClick="@{()->viewModel.addMyExhibitor()}"-->
+
+
+                </LinearLayout>
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/dtl_pin"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:background="@drawable/bg_dtl"
+                android:visibility="visible"
+                app:layout_collapseMode="pin">
+
+                <TextView
+                    android:id="@+id/tv_pin_booth"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:drawableStart="@drawable/ic_dtl_booth"
+                    android:drawablePadding="16dp"
+                    android:gravity="center_vertical"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:text="@{obj.boothNo}"
+                    android:textColor="#fff"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_pin_star"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_pin_star"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:drawableStart="@{viewModel.starExhibitor.booleanValue()?@drawable/btn_star:@drawable/ic_dtl_star}"
+                    android:drawablePadding="16dp"
+                    android:gravity="center_vertical"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:text="@{viewModel.starExhibitor.booleanValue()?@string/add_my_exhibitor_1:@string/add_my_exhibitor}"
+                    android:textColor="#fff"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/tv_pin_booth" />
+                <!--                android:onClick="@{()->viewModel.addMyExhibitor()}"-->
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/btn_dtl_about"
+                    style="@style/exhibitor_dtl_btn_style"
+                    android:background="@{viewModel.tabIndex.intValue()==0?@drawable/bg_button_purple_light:@drawable/bg_button_purple_white}"
+                    android:onClick="@{()->viewModel.onTabClick(0)}"
+                    android:text="@string/exhi_dtl_tab_about"
+                    android:textColor="@{viewModel.tabIndex.intValue()==0?@color/white:@color/bg_purple5}"
+                    android:visibility="@{viewModel.isAD?View.VISIBLE:View.GONE}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/btn_dtl_company_info"
+                    style="@style/exhibitor_dtl_btn_style"
+                    android:background="@{viewModel.tabIndex.intValue()==1?@drawable/bg_button_purple_light:@drawable/bg_button_purple_white}"
+                    android:onClick="@{()->viewModel.onTabClick(1)}"
+                    android:text="@string/exhi_dtl_tab_info"
+                    android:textColor="@{viewModel.tabIndex.intValue()==1?@color/white:@color/bg_purple5}"
+                    android:visibility="@{viewModel.descVisible?View.VISIBLE:View.GONE}"
+                    app:layout_constraintStart_toEndOf="@id/btn_dtl_about"
+                    app:layout_constraintTop_toTopOf="parent" />
+                <!--                @drawable/bg_button_purple_white-->
+                <!--                bg_button_purple_light-->
+
+                <TextView
+                    android:id="@+id/btn_dtl_product"
+                    style="@style/exhibitor_dtl_btn_style"
+                    android:background="@{viewModel.tabIndex.intValue()==2?@drawable/bg_button_purple_light:@drawable/bg_button_purple_white}"
+                    android:onClick="@{()->viewModel.onTabClick(2)}"
+                    android:text="@string/exhi_dtl_tab_industry"
+                    android:textColor="@{viewModel.tabIndex.intValue()==2?@color/white:@color/bg_purple5}"
+                    android:visibility="@{viewModel.industryVisible?View.VISIBLE:View.GONE}"
+                    app:layout_constraintStart_toEndOf="@id/btn_dtl_company_info"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/btn_dtl_application"
+                    style="@style/exhibitor_dtl_btn_style"
+                    android:layout_marginEnd="16dp"
+                    android:background="@{viewModel.tabIndex.intValue()==3?@drawable/bg_button_purple_light:@drawable/bg_button_purple_white}"
+                    android:onClick="@{()->viewModel.onTabClick(3)}"
+                    android:text="@string/exhi_dtl_tab_application"
+                    android:textColor="@{viewModel.tabIndex.intValue()==3?@color/white:@color/bg_purple5}"
+                    android:visibility="@{viewModel.appVisible?View.VISIBLE:View.GONE}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintStart_toEndOf="@id/btn_dtl_product"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <!--                <androidx.recyclerview.widget.RecyclerView-->
+                <!--                    android:id="@+id/rv_exhibitor_dtl"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="0dp"-->
+                <!--                    android:layout_marginTop="16dp"-->
+                <!--                    android:layout_marginBottom="56dp"-->
+                <!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+                <!--                    app:layout_constraintStart_toStartOf="parent"-->
+                <!--                    app:layout_constraintTop_toBottomOf="@id/btn_dtl_company_info" />-->
+                <ImageView
+                    android:id="@+id/tab_guideline"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="52dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/view_pager_exhibitor_dtl"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tab_guideline" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.core.widget.NestedScrollView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btn_my_exhibitor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:layout_margin="16dp"
+            android:src="@drawable/ic_dtl_company"
+            android:visibility="gone"
+            app:backgroundTint="@color/colorAccent"
+            app:fabSize="normal" />
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>
+

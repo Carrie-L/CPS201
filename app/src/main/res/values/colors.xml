@@ -6,7 +6,7 @@
     <color name="colorPrimaryTrans">#8040215A</color>
     <!--    <color name="colorAccent">#49296A</color>-->
     <color name="colorAccent">#ff9409</color>
-<!--    <color name="colorAccent">#B39DDB</color>-->
+    <!--    <color name="colorAccent">#B39DDB</color>-->
     <!--    <color name="colorAccent">#FF6E42</color>-->
     <color name="bg_color">#402656</color>
     <!--    <color name="colorAccent">#D81B60</color>-->
@@ -19,6 +19,10 @@
     <color name="navBgColor">#F5F5F5</color>
     <color name="bg_purple1">#4b2e6e</color>
     <color name="bg_purple2">#724890</color>
+    <color name="bg_purple3">#492c6e</color>
+    <color name="bg_purple4">#69438c</color>
+    <color name="bg_purple5">#9c7db6</color>
+    <color name="bg_purple6">#8064a2</color>
     <color name="purple3">#ebe7fe</color>
 
     <color name="seminar_gray">#EEE9E9</color><!-- //#D3D3D3 -->
@@ -65,6 +69,7 @@
     <color name="grey_600">#757575</color>
     <color name="grey_700">#616161</color>
     <color name="grey_999">#999999</color>
+    <color name="dark_gray">#5d5657</color>
 
     <color name="blue_grey_50">#eceff1</color>
     <color name="blue_grey_100">#cfd8dc</color>

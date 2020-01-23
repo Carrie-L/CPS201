@@ -21,15 +21,13 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
-import com.adsale.chinaplas.R
-import com.adsale.chinaplas.confirmPdfPath
-import com.adsale.chinaplas.cpsDatabase
+import com.adsale.chinaplas.*
+import com.adsale.chinaplas.base.BaseFragment
 import com.adsale.chinaplas.data.dao.CpsDatabase
 import com.adsale.chinaplas.data.dao.MainIconRepository
 import com.adsale.chinaplas.data.dao.RegisterRepository
 import com.adsale.chinaplas.databinding.DialogDownloadProgressBinding
 import com.adsale.chinaplas.databinding.FragmentRegisterWebsiteBinding
-import com.adsale.chinaplas.localConfirmPdfPath
 import com.adsale.chinaplas.network.CONFIRM_URL
 import com.adsale.chinaplas.utils.*
 import com.adsale.chinaplas.utils.LogUtil.i
@@ -50,7 +48,7 @@ import java.io.File
  *
  *
  */
-class RegisterWebsiteFragment : Fragment() {
+class RegisterWebsiteFragment : BaseFragment() {
     private lateinit var binding: FragmentRegisterWebsiteBinding
     private lateinit var webview: WebView
     private lateinit var settings: WebSettings
@@ -71,29 +69,21 @@ class RegisterWebsiteFragment : Fragment() {
     private val testPDFUrl =
         "https://prereg.adsaleonline.com/Prereg/PreregPDF/SubmitAction/Preregland?encryptKey=4e1RVd%2bgH8CRpCPeuticjHIPzzWnp3h0HjwC7MJ0U77%2fHsARcMM0fCCii%2bonkke3eZsaJJQi8F6%2bfFg8SeeQkg%3d%3d"
 
-    val mainViewModel: MainViewModel by lazy {
-        ViewModelProviders.of(
-            requireActivity(), MainViewModelFactory(
-                requireActivity().application,
-                MainIconRepository.getInstance(CpsDatabase.getInstance(Bugly.applicationContext).mainIconDao()))
-        )
-            .get(MainViewModel::class.java)
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentRegisterWebsiteBinding.inflate(inflater)
+    override fun initedView(inflater: LayoutInflater) {
+        binding = FragmentRegisterWebsiteBinding.inflate(inflater,baseFrame,true)
         webview = binding.webviewRegPay
         progressBar = binding.progressBar
         settings = webview.settings
-
-        return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun initView() {
+    }
+
+    override fun initedData() {
+    }
+
+    override fun initData() {
+        isBackCustom = true
         val regRepo = RegisterRepository.getInstance(cpsDatabase.countryDao(), cpsDatabase.regOptionDao())
         viewModel = ViewModelProviders.of(requireActivity(), RegViewModelFactory(regRepo))
             .get(RegisterViewModel::class.java)
@@ -101,9 +91,8 @@ class RegisterWebsiteFragment : Fragment() {
 
         arguments?.let {
             url = RegisterWebsiteFragmentArgs.fromBundle(it).url ?: ""
+            confirmViewModel.isRegister = RegisterWebsiteFragmentArgs.fromBundle(it).isRegister
         }
-
-//        url = testPDFUrl
 
         if (TextUtils.isEmpty(url)) {
             return
@@ -122,26 +111,10 @@ class RegisterWebsiteFragment : Fragment() {
 
         webviewSetting()
         setWebViewClient()
-        setProgressClient()
         if (url.contains("pdfjs")) {
             settingPDF()  // 打开PDF
         }
         webview.loadUrl(url)
-
-//        mainViewModel.backListener = androidx.appcompat.widget.ActionMenuView.OnMenuItemClickListener {
-//            NavHostFragment.findNavController(this)
-//                .navigate(R.id.registerFragment)
-//            true
-//        }
-
-
-        mainViewModel.backClicked.observe(this, Observer { click ->
-            if (click) {
-                LogUtil.i("backClicked web")
-                NavHostFragment.findNavController(this)
-                    .navigate(R.id.registerFragment)
-            }
-        })
 
         binding.btnLogoutConfirm.setOnClickListener {
             alertDialogConfirmTwo(context!!,
@@ -155,15 +128,13 @@ class RegisterWebsiteFragment : Fragment() {
                 })
 
         }
-
-
     }
 
     private fun deletePDF() {
-        val file = File(confirmPdfPath)
+        val file = File(confirmViewModel.confirmPath())
         if (file.exists()) {
             val siDelete = file.delete()
-            i("siDelete=$siDelete, confirmPdfPath=$confirmPdfPath")
+            i("siDelete=$siDelete, confirmPdfPath=${confirmViewModel.confirmPath()}")
         }
     }
 
@@ -182,6 +153,7 @@ class RegisterWebsiteFragment : Fragment() {
         settings.allowFileAccess = true
         settings.allowFileAccessFromFileURLs = true
         settings.allowUniversalAccessFromFileURLs = true
+        binding.btnLogoutConfirm.visibility = View.VISIBLE
     }
 
     private fun setWebViewClient() {
@@ -299,9 +271,13 @@ class RegisterWebsiteFragment : Fragment() {
         loadingDialog = alertDialogProgress(context!!, "加载确认信...")
         uiScope.launch {
             val isSuccess = confirmViewModel.apiPaySuccess()
-            i("isPaySuccess=$isSuccess")
+            i("isPaySuccess=$isSuccess, regGuid=${getGuid()}, cpsGuid=${getMyChinaplasGuid()}")
             if (isSuccess) {
-                paySuccess(true)
+                if (!confirmViewModel.isRegister) {
+                    setMyChinaplasIsPay(true)
+                } else {
+                    paySuccess(true)
+                }
                 webview.loadUrl(String.format(CONFIRM_URL, lang, getGuid()))
             }
         }
@@ -321,16 +297,14 @@ class RegisterWebsiteFragment : Fragment() {
                         .show()
                     dialogBinding.dialogProgress.isIndeterminate = true
                     uiScope.launch {
-                        confirmViewModel.downloadPDF()
+                        confirmViewModel.downloadPDFAsync()
                     }
                 }
                 DOWN_FINISH -> {
                     dialog?.dismiss()
-                    Toast.makeText(context!!, "下载确认信PDF完成", Toast.LENGTH_LONG).show()
-                    if (isOpenPDF) {
-                        settingPDF()
-                        webview.loadUrl(localConfirmPdfPath + confirmPdfPath)
-                    }
+                    mSPReg.edit().putBoolean("ComfirmPDFDownload", true).apply()
+                    settingPDF()
+                    webview.loadUrl(localConfirmPdfPath + confirmViewModel.confirmPath())
                 }
             }
         })
@@ -356,6 +330,20 @@ class RegisterWebsiteFragment : Fragment() {
                 super.onProgressChanged(view, newProgress)
             }
         }
+    }
+
+    override fun back() {
+        if (confirmViewModel.isRegister) {
+            val registerFragment = requireActivity().supportFragmentManager.findFragmentById(R.id.registerFragment)
+            if(registerFragment!=null){
+                findNavController().popBackStack(R.id.registerFragment,false)
+            }else{
+                findNavController().popBackStack(R.id.nav_home, false)
+            }
+        } else {
+            findNavController().popBackStack(R.id.myLoginedFragment, false)
+        }
+        mainViewModel.resetBackDefault()
     }
 
 

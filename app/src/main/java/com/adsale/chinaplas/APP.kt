@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
 import android.content.res.AssetManager
+import android.content.res.Configuration
 import android.content.res.Resources
 import android.net.ConnectivityManager
 import android.net.Network
@@ -77,30 +78,6 @@ class APP : Application() {
 
     }
 
-    /**
-     * @param mContext
-     * @param language 0:ZhTw; 1:en;2:ZhCn;
-     */
-    private fun switchLanguage(mContext: Context, language: Int) {
-        LogUtil.i("switchLanguage=$language")
-
-        setCurrLanguage(language)
-        val resources = mContext.resources
-        val config = resources.configuration
-        val dm = resources.displayMetrics
-        val locale: Locale = getLocale(language)!!
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            val localeList = LocaleList(locale)
-            LocaleList.setDefault(localeList)
-            config.setLocales(localeList)
-            mContext.createConfigurationContext(config)
-        } else {
-            config.setLocale(locale)
-        }
-        Locale.setDefault(locale)
-        resources.updateConfiguration(config, dm)
-    }
-
     fun initSetting() {
         mSPConfig = getSharedPreferences(SP_CONFIG, Context.MODE_PRIVATE)
         mSPReg = getSharedPreferences(SP_REGISTER, Context.MODE_PRIVATE)
@@ -109,7 +86,7 @@ class APP : Application() {
         fileAbsPath = filesDir.absolutePath
         rootDir = getDir("cps20", Context.MODE_PRIVATE).absolutePath + "/"
         DB_PATH = "/data" + Environment.getDataDirectory().absolutePath + "/" + packageName + "/databases"
-        confirmPdfPath = filesDir.absolutePath + "/confirm.pdf"
+        confirmPdfPath = filesDir.absolutePath + "/${CONFIRM_PDF_REGISTER}.pdf"
     }
 
     private fun copyDbFile(dbfile: String) {
@@ -183,6 +160,19 @@ class APP : Application() {
             val activeNetwork: NetworkInfo? = cm.activeNetworkInfo
             hasNetwork = activeNetwork?.isConnectedOrConnecting == true
         }
+    }
+
+    override fun attachBaseContext(newBase: Context?) {
+        LogUtil.i("attachBaseContext")
+        super.attachBaseContext(if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N && newBase != null) {
+            updateResources(newBase)
+        } else newBase)
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration?) {
+        super.onConfigurationChanged(newConfig)
+        // 必不可少。否則平板多語言會混亂
+        switchLanguage(applicationContext, getCurrLanguage())
     }
 
 }

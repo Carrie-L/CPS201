@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="obj"
+            type="com.adsale.chinaplas.data.dao.Hall" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:drawableEnd="@{obj.isSelected?@drawable/ic_choosed:null}"
+            android:gravity="center_vertical"
+            android:paddingStart="16dp"
+            android:paddingEnd="8dp"
+            android:text="@{obj.name}"
+            android:textColor="@color/textColor" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="36dp"
+            android:gravity="center_vertical"
+            android:text="@{obj.count+@string/hall_exhibitor_count}"
+            android:textColor="@color/dark_gray" />
+
+
+    </RelativeLayout>
+
+</layout>

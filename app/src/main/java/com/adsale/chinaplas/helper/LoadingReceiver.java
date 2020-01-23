@@ -24,7 +24,17 @@ import static com.adsale.chinaplas.utils.ConstantKt.SP_CONFIG;
  */
 
 public class LoadingReceiver extends BroadcastReceiver {
-
+    private String[] items = {
+            "ad count down",
+            "ad.txt",
+            "pdf.txt",
+//            todo "mainBanner",
+            "regOptions",
+            "country",
+            "webContent",
+            "fileControl",
+            "mainIcon"
+    };
     private static final String TAG = "LoadingReceiver";
     public static final String LOADING_ACTION = "com.adsale.chinaplas.LoadingReceiver";
     private SharedPreferences sp;
@@ -39,6 +49,9 @@ public class LoadingReceiver extends BroadcastReceiver {
         boolean isTxtDownFinish = sp.getBoolean(LOADING_TXT_FINISH, false);
         boolean isWebServicesDownFinish = sp.getBoolean("webServicesDownFinish", false);
         boolean isApkDownFinish = sp.getBoolean("apkDialogFinish", false); /* 1. 没有更新时，true； 2. 有更新，点击了（不管是yes or no），true; 3. 有更新，没有点击，false   */
+
+       String type =  intent.getStringExtra("type");
+
 
 //        LogUtil.i("m1 = " + isM1ShowFinish + ", txt = " + isTxtDownFinish + ", isMainIconFinish =" + isMainIconFinish + ",isApkDownFinish=" + isApkDownFinish);
 //
@@ -73,12 +86,13 @@ public class LoadingReceiver extends BroadcastReceiver {
 //            mListener.intent("");
 //        } else
 
-
-        if (loadingSize == LOADING_SIZE && isM1ShowFinish) {
+// LOADING_SIZE
+        if (loadingSize == items.length && isM1ShowFinish) {
             mListener.intent("");
         }
 
-        Log.i("cps:LoadingReceiver", "loadingSize=" + loadingSize + ", getCountDownFinish=" + getCountDownFinish());
+//        Log.i("cps:LoadingReceiver", "loadingSize=" + loadingSize + ", getCountDownFinish=" + getCountDownFinish());
+        Log.i("cps:LoadingReceiver", "loadingSize=" + loadingSize + ", type=" + type);
 
 
     }

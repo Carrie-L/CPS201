@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">CHINAPLAS</string>
+
+    <!--添加到日历-->
+    <string name="notes">Welcome to CHINAPLAS 2020</string>
+    <string name="ask_addToCalendar">Add the show date of CHINAPLAS 2020 to your device\'s calendar?</string>
+    <string name="ok">OK</string>
+    <string name="addToCalendar_success">The show date of CHINAPLAS 2020 is added to your device\'s calendar.</string>
+    <string name="addToCalendar_fail">Save to calendar fail!</string>
+    <string name="calendar_description">The 34th International Exhibition on Plastics and Rubber Industries</string>
+    <string name="calendar_location">National Exhibition and Convention Center, Hongqiao, Shanghai (NECC) (No.333 Songze Avenue Road, Qingpu District, Shanghai, PR China)</string>
+
     <string name="menu_home">Home</string>
     <string name="menu_download_center">Download Center</string>
     <string name="menu_subscribe">Subscribe eNewsletter</string>
@@ -15,9 +25,12 @@
     <string name="title_register">Visitor Registration</string>
     <string name="title_my_ticket">My eTicket</string>
     <string name="title_tool">My Tools</string>
+    <string name="title_floor">Floor Plan</string>
     <string name="title_floorplan">Floor Plan</string>
     <string name="title_exhibitor_list">Exhibitor List</string>
     <string name="title_company_info">CompanyInfo</string>
+    <string name="title_visit_tip">Visiting Tips</string>
+    <string name="title_general_info">General Info</string>
 
     <string name="confirm">Confirm</string>
     <string name="cancel">Cancel</string>
@@ -56,7 +69,7 @@
     <string name="reg_service">Category for Business Product/ Service</string>
 
     <string name="reg_next">Next</string>
-    <string name="error_verify_code_incorrect">验证码不正确</string>
+    <string name="error_verify_code_incorrect">Code not correct</string>
     <string name="reg_product">Major Product / Service</string>
     <string name="reg_service0">Category for Business Product/ Service</string>
 
@@ -154,6 +167,8 @@ Adsale Exhibition Services Ltd., the Organiser, reserves the rights to issue the
     <string name="cps_colleague_info">Registered Colleagues</string>
     <string name="cps_my_info">Account Info</string>
     <string name="cps_home">Home</string>
+    <string name="chinaplas_pay_str1">Please settle the admission fee as soon as possible to enjoy the pre-registration privileges!</string>
+    <string name="chinaplas_pay_str2">Online Payment</string>
 
     <!--logout-->
     <string name="logout_message">Confirm logout?</string>
@@ -161,13 +176,15 @@ Adsale Exhibition Services Ltd., the Organiser, reserves the rights to issue the
     <string name="syncSuccess">Sync success</string>
     <string name="syncFailure">Sync failed</string>
     <string name="syncStart">Start..</string>
-    <string name="update_map">Update</string>
+    <!--    <string name="update_map">Update</string>-->
 
     <!-- My Tools-->
     <string name="my_cps">MyChinaplas</string>
     <string name="tool_my_exhibitor">My Exhibitor</string>
     <string name="tool_my_schedule">My Schedule</string>
     <string name="tool_exhibitor_history">Viewed Exhibitor History</string>
+    <string name="edit_schedule">Edit Schedule</string>
+    <string name="title_add_schedule">Add Schedule</string>
 
 
     <string-array name="titles">
@@ -213,11 +230,12 @@ Adsale Exhibition Services Ltd., the Organiser, reserves the rights to issue the
     <string name="setting_privacy_policy">Privacy Policy Statement</string>
     <string name="setting_use_terms">Terms of Use</string>
     <string name="setting_share">Share</string>
+    <string name="share_setting_text">CHINAPLAS APP is now ready for download!</string>
 
     <string name="logout_confirm_letter">是否注销确认信?</string>
 
-    <string name="title_general_open">开放时间</string>
-    <string name="title_general_scope">展品范围</string>
+    <string name="title_general_open">Opening Hour</string>
+    <string name="title_general_scope">Scope</string>
 
     <string name="title_sms_login">Login via SMS</string>
     <string name="title_pwd_login">Login with password</string>
@@ -245,14 +263,78 @@ Adsale Exhibition Services Ltd., the Organiser, reserves the rights to issue the
 
     <!--展商资料-->
     <string name="exhibitor_sort_by">Sort By:</string>
-    <string name="sort_by_az">筆畫</string>
-    <string name="sort_by_hall">展館</string>
+    <string name="sort_by_az">A~Z</string>
+    <string name="sort_by_hall">Hall</string>
     <string name="nodata">No related information</string>
 
     <string name="drawer_sync">Sync</string>
     <string name="login_first_sync">You must be logged in to sync</string>
     <string name="title_new_tec_dtl">New Tech</string>
 
+    <!--展商筛选-->
+    <string name="title_privacy">Privacy Policy Statement</string>
+    <string name="title_user_item">Terms of Use</string>
+
+    <string name="title_filter">Exhibitor Filter</string>
+    <string name="filter_all">All</string>
+    <string name="filter_industry">Product Category</string>
+    <string name="filter_application">Application</string>
+    <string name="filter_country">Country / Region</string>
+    <string name="filter_hall">Hall</string>
+    <string name="filter_booth">Theme Zones</string>
+    <string name="filter_keyword">Keyword</string>
+    <string name="filter_topic_collection">Thematic Showcase</string>
+    <string name="filter_new_tech">New Technology</string>
+    <string name="filter_new_tec">New &amp; Hot Tech</string>
+    <string name="filter_keyword_hint">Input keywords</string>
+    <string name="filter_highlights">Exhibits Highlights</string>
+    <string name="hall_exhibitor_count">&#160;exhibitors</string>
+
+    <string name="filter_clear_all">Clear</string>
+    <string name="filter_ok">Filter</string>
+
+    <!--展商詳情-->
+    <string name="add_my_exhibitor">Add My Exhibitor</string>
+    <string name="add_my_exhibitor_1">Added To My Exhibitor</string>
+    <string name="exhi_dtl_tab_about">About</string>
+    <string name="exhi_dtl_tab_info">Info</string>
+    <string name="exhi_dtl_tab_industry">Product</string>
+    <string name="exhi_dtl_tab_application">Application</string>
+
+    <string name="exception_toast_email">No email client installed.</string>
+    <string name="exception_toast_phone">Sorry, your device cannot make a call.</string>
+    <string name="login_first_add_exhibitor">You should login MyCHINAPLAS to bookmark the exhibitor to your favorite exhibitor list - "MyExhibitor".</string>
+
+    <!--订阅电子快讯-->
+    <string name="subscribe_str001">Subscribe</string>
+    <string name="subscribe_str002">Company</string>
+    <string name="subscribe_str003">Name</string>
+    <string name="subscribe_str005">Privacy Policy Statement</string>
+    <string name="subscribe_str004">Email</string>
+    <string name="subscribe_msg001">Please fill in "Name"</string>
+    <string name="subscribe_msg002">Please don\'t key in number or symbols when entering "Name"</string>
+    <string name="subscribe_msg003">Please fill in "Email"</string>
+    <string name="subscribe_msg004">Please fill in valid "Email"</string>
+    <string name="subscribe_msg013">Please enter a company name!</string>
+    <string name="subscribe_submit">Submit</string>
+    <string name="subscribe_reset">Reset</string>
+    <string name="subscribe_msg">Submitting data. Please wait!</string>
+    <string name="thx_dy">Thank your for subscription！</string>
+
+    <!--  -->
+    <string name="ask_clear">Would you like to reset all data settings to default value?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+
+    <!--我的参展商-->
+    <string name="no_schedule">No Schedule</string>
+    <string name="no_my_exhibitor">No Bookmarked Exhibitor. \nPlease go to \"Exhibitor list\" to add exhibitors. </string>
+<!--    <string name="no_keyword_result">If you want to get the full exhibitor list, please visit Update Center to update the exhibitor data</string>-->
+
+    <!--历史记录-->
+    <string name="today">Today</string>
+    <string name="yesterday">Yesterday</string>
+    <string name="past_records">Past</string>
 
 
 </resources>

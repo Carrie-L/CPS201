@@ -31,6 +31,8 @@ class WebContentRepository private constructor(private val webContentDao: WebCon
 
     fun insertFileControlAll(list: List<FileControl>) = fileControlDao.insertAll(list)
 
+    fun updateFileControlItemTime(entity:FileControl) = fileControlDao.getLastUpdateTime()
+
 
     companion object {
         @Volatile

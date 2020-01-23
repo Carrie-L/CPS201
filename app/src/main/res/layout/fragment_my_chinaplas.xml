@@ -9,101 +9,159 @@
 
     </data>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_my_cps"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:background="@color/smoke_purple">
 
-<!--    <ScrollView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent">-->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_my_cps"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-<!--        <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:background="@color/smoke_purple"-->
-<!--            android:paddingStart="16dp"-->
-<!--            android:paddingEnd="16dp"-->
-<!--            android:paddingBottom="80dp">-->
+<!--        <androidx.cardview.widget.CardView-->
+<!--            android:id="@+id/card_home"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent">-->
 
 <!--            <TextView-->
-<!--                android:id="@+id/tv_cps_home"-->
-<!--                style="@style/cps_tv_style"-->
-<!--                android:drawableTop="@drawable/ic_test"-->
-<!--                android:text="@string/cps_home"-->
+<!--                android:id="@+id/tv_tip_name"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:gravity="center"-->
+<!--                android:paddingTop="52dp"-->
+<!--                android:text="@{obj.title}"-->
+<!--                android:textColor="@color/colorPrimary"-->
 <!--                android:textSize="@dimen/my_cps_card_text_size"-->
-<!--                app:layout_constraintEnd_toStartOf="@+id/tv_my_cps_info"-->
-<!--                app:layout_constraintHorizontal_bias="0.5"-->
 <!--                app:layout_constraintStart_toStartOf="parent"-->
 <!--                app:layout_constraintTop_toTopOf="parent" />-->
 
-<!--            <TextView-->
-<!--                android:id="@+id/tv_my_cps_info"-->
-<!--                style="@style/cps_tv_style"-->
-<!--                android:layout_marginStart="16dp"-->
-<!--                android:drawableTop="@drawable/ic_test"-->
-<!--                android:text="@string/cps_my_info"-->
-<!--                android:textSize="@dimen/my_cps_card_text_size"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintHorizontal_bias="0.5"-->
-<!--                app:layout_constraintStart_toEndOf="@+id/tv_cps_home"-->
-<!--                app:layout_constraintTop_toTopOf="parent" />-->
+<!--            <ImageView-->
+<!--                android:id="@+id/iv_tip_icon"-->
+<!--                android:layout_width="48dp"-->
+<!--                android:layout_height="48dp"-->
+<!--                android:layout_marginBottom="52dp"-->
+<!--                app:iconRes="@{obj.icon}"-->
+<!--                app:layout_constraintBottom_toBottomOf="@id/tv_tip_name"-->
+<!--                app:layout_constraintEnd_toEndOf="@id/tv_tip_name"-->
+<!--                app:layout_constraintStart_toStartOf="@id/tv_tip_name"-->
+<!--                app:layout_constraintTop_toTopOf="@id/tv_tip_name" />-->
 
-<!--            <TextView-->
-<!--                android:id="@+id/tv_colleague_cps_info"-->
-<!--                style="@style/cps_tv_style"-->
-<!--                android:background="@drawable/bg_button_cps"-->
-<!--                android:drawableTop="@drawable/ic_test"-->
-<!--                android:text="@string/cps_colleague_info"-->
-<!--                android:textSize="@dimen/my_cps_card_text_size"-->
-<!--                app:layout_constraintEnd_toStartOf="@+id/tv_sync_exhibitor"-->
-<!--                app:layout_constraintHorizontal_bias="0.5"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toBottomOf="@id/tv_my_cps_info" />-->
+<!--        </androidx.cardview.widget.CardView>-->
 
-<!--            <TextView-->
-<!--                android:id="@+id/tv_sync_exhibitor"-->
-<!--                style="@style/cps_tv_style"-->
-<!--                android:layout_marginStart="16dp"-->
-<!--                android:background="@drawable/bg_button_cps"-->
-<!--                android:drawableTop="@drawable/ic_test"-->
-<!--                android:text="@string/cps_sync_exhibitor"-->
-<!--                android:textSize="@dimen/my_cps_card_text_size"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintHorizontal_bias="0.5"-->
-<!--                app:layout_constraintStart_toEndOf="@+id/tv_colleague_cps_info"-->
-<!--                app:layout_constraintTop_toBottomOf="@id/tv_my_cps_info" />-->
+        <TextView
+            android:id="@+id/tv_logout"
+            android:layout_width="150dp"
+            android:layout_height="28dp"
+            android:layout_marginTop="32dp"
+            android:background="@color/grey_500"
+            android:drawableStart="@drawable/ic_drawer_logout"
+            android:gravity="center"
+            android:paddingStart="36dp"
+            android:paddingEnd="36dp"
+            android:text="@string/logout"
+            android:textColor="#fff"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rv_my_cps" />
 
-<!--            <TextView-->
-<!--                android:id="@+id/tv_cps_get_invoice"-->
-<!--                style="@style/cps_tv_style"-->
-<!--                android:background="@drawable/bg_button_cps"-->
-<!--                android:drawableTop="@drawable/ic_test"-->
-<!--                android:text="@string/cps_get_invoice"-->
-<!--                android:textSize="@dimen/my_cps_card_text_size"-->
-<!--                app:layout_constraintEnd_toEndOf="@id/tv_colleague_cps_info"-->
-<!--                app:layout_constraintEnd_toStartOf="@+id/tv_cps_exit"-->
-<!--                app:layout_constraintHorizontal_bias="0.5"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toBottomOf="@id/tv_colleague_cps_info" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/tv_cps_exit"-->
-<!--                style="@style/cps_tv_style"-->
-<!--                android:layout_marginStart="16dp"-->
-<!--                android:background="@drawable/bg_button_cps"-->
-<!--                android:drawableTop="@drawable/ic_test"-->
-<!--                android:text="@string/logout"-->
-<!--                android:textSize="@dimen/my_cps_card_text_size"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintHorizontal_bias="0.5"-->
-<!--                app:layout_constraintStart_toEndOf="@+id/tv_cps_get_invoice"-->
-<!--                app:layout_constraintTop_toBottomOf="@id/tv_colleague_cps_info" />-->
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-<!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
+    <!--    <ScrollView-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent">-->
 
-<!--    </ScrollView>-->
+    <!--        <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="match_parent"-->
+    <!--            android:background="@color/smoke_purple"-->
+    <!--            android:paddingStart="16dp"-->
+    <!--            android:paddingEnd="16dp"-->
+    <!--            android:paddingBottom="80dp">-->
+
+    <!--            <TextView-->
+    <!--                android:id="@+id/tv_cps_home"-->
+    <!--                style="@style/cps_tv_style"-->
+    <!--                android:drawableTop="@drawable/ic_test"-->
+    <!--                android:text="@string/cps_home"-->
+    <!--                android:textSize="@dimen/my_cps_card_text_size"-->
+    <!--                app:layout_constraintEnd_toStartOf="@+id/tv_my_cps_info"-->
+    <!--                app:layout_constraintHorizontal_bias="0.5"-->
+    <!--                app:layout_constraintStart_toStartOf="parent"-->
+    <!--                app:layout_constraintTop_toTopOf="parent" />-->
+
+    <!--            <TextView-->
+    <!--                android:id="@+id/tv_my_cps_info"-->
+    <!--                style="@style/cps_tv_style"-->
+    <!--                android:layout_marginStart="16dp"-->
+    <!--                android:drawableTop="@drawable/ic_test"-->
+    <!--                android:text="@string/cps_my_info"-->
+    <!--                android:textSize="@dimen/my_cps_card_text_size"-->
+    <!--                app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                app:layout_constraintHorizontal_bias="0.5"-->
+    <!--                app:layout_constraintStart_toEndOf="@+id/tv_cps_home"-->
+    <!--                app:layout_constraintTop_toTopOf="parent" />-->
+
+    <!--            <TextView-->
+    <!--                android:id="@+id/tv_colleague_cps_info"-->
+    <!--                style="@style/cps_tv_style"-->
+    <!--                android:background="@drawable/bg_button_cps"-->
+    <!--                android:drawableTop="@drawable/ic_test"-->
+    <!--                android:text="@string/cps_colleague_info"-->
+    <!--                android:textSize="@dimen/my_cps_card_text_size"-->
+    <!--                app:layout_constraintEnd_toStartOf="@+id/tv_sync_exhibitor"-->
+    <!--                app:layout_constraintHorizontal_bias="0.5"-->
+    <!--                app:layout_constraintStart_toStartOf="parent"-->
+    <!--                app:layout_constraintTop_toBottomOf="@id/tv_my_cps_info" />-->
+
+    <!--            <TextView-->
+    <!--                android:id="@+id/tv_sync_exhibitor"-->
+    <!--                style="@style/cps_tv_style"-->
+    <!--                android:layout_marginStart="16dp"-->
+    <!--                android:background="@drawable/bg_button_cps"-->
+    <!--                android:drawableTop="@drawable/ic_test"-->
+    <!--                android:text="@string/cps_sync_exhibitor"-->
+    <!--                android:textSize="@dimen/my_cps_card_text_size"-->
+    <!--                app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                app:layout_constraintHorizontal_bias="0.5"-->
+    <!--                app:layout_constraintStart_toEndOf="@+id/tv_colleague_cps_info"-->
+    <!--                app:layout_constraintTop_toBottomOf="@id/tv_my_cps_info" />-->
+
+    <!--            <TextView-->
+    <!--                android:id="@+id/tv_cps_get_invoice"-->
+    <!--                style="@style/cps_tv_style"-->
+    <!--                android:background="@drawable/bg_button_cps"-->
+    <!--                android:drawableTop="@drawable/ic_test"-->
+    <!--                android:text="@string/cps_get_invoice"-->
+    <!--                android:textSize="@dimen/my_cps_card_text_size"-->
+    <!--                app:layout_constraintEnd_toEndOf="@id/tv_colleague_cps_info"-->
+    <!--                app:layout_constraintEnd_toStartOf="@+id/tv_cps_exit"-->
+    <!--                app:layout_constraintHorizontal_bias="0.5"-->
+    <!--                app:layout_constraintStart_toStartOf="parent"-->
+    <!--                app:layout_constraintTop_toBottomOf="@id/tv_colleague_cps_info" />-->
+
+    <!--            <TextView-->
+    <!--                android:id="@+id/tv_cps_exit"-->
+    <!--                style="@style/cps_tv_style"-->
+    <!--                android:layout_marginStart="16dp"-->
+    <!--                android:background="@drawable/bg_button_cps"-->
+    <!--                android:drawableTop="@drawable/ic_test"-->
+    <!--                android:text="@string/logout"-->
+    <!--                android:textSize="@dimen/my_cps_card_text_size"-->
+    <!--                app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                app:layout_constraintHorizontal_bias="0.5"-->
+    <!--                app:layout_constraintStart_toEndOf="@+id/tv_cps_get_invoice"-->
+    <!--                app:layout_constraintTop_toBottomOf="@id/tv_colleague_cps_info" />-->
+
+
+    <!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+    <!--    </ScrollView>-->
 
 
 </layout>

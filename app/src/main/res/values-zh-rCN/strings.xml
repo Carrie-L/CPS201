@@ -2,6 +2,16 @@
 <resources>
     <string name="app_name">国际橡塑展</string>
     <string name="menu_home">主页</string>
+
+    <!--添加到日历-->
+    <string name="notes">欢迎来临国际橡塑展2020</string>
+    <string name="ask_addToCalendar">确定要将展览日期存入日历表吗？</string>
+    <string name="ok">确定</string>
+    <string name="addToCalendar_success">已成功汇入行事历！</string>
+    <string name="addToCalendar_fail">汇入行事历失败！</string>
+    <string name="calendar_description">第三十四届中国国际塑料橡胶工业展览会</string>
+    <string name="calendar_location">中国‧上海‧虹桥‧国家会展中心(中国上海市青浦区崧泽大道33号)</string>
+
     <string name="menu_download_center">下载中心</string>
     <string name="menu_subscribe">订阅电子快讯</string>
     <string name="menu_calendar">添加到日历</string>
@@ -15,9 +25,12 @@
     <string name="title_register">观众预先登记</string>
     <string name="title_my_ticket">我的电子门票</string>
     <string name="title_tool">我的工具</string>
+    <string name="title_floor">平面图</string>
     <string name="title_floorplan">展馆平面图</string>
     <string name="title_exhibitor_list">展商列表</string>
     <string name="title_company_info">公司资料</string>
+    <string name="title_visit_tip">参观贴士</string>
+    <string name="title_general_info">展会概览</string>
 
     <string name="cancel">取消</string>
     <string name="confirm">确认</string>
@@ -126,6 +139,7 @@
     <string name="reg_pre_hint_phone">只需手机号码，国家号和区号不需填写。</string>
     <string name="reg_pre_3">请确保填写的手机号码和电邮资料正确。资料一经提交后将不能修改。</string>
     <string name="reg_pre_4">如有关于观众登记,网上支付及发票收据相关的查询,请发送电邮至 <![CDATA[<font color=#FF6E42>prereg-payment@adsale.com.hk</font>]]></string>
+<!--    <a href="mailto:prereg-payment@adsale.com.hk">-->
     <string name="reg_hint_input_phone_no">请输入手机号码</string>
     <string name="reg_hint_input_email">请输入电子邮箱</string>
     <string name="reg_pre_hint_login">这个账户已存在，请登入账户继续预登记；或选择登记另一个电邮或手机号码。</string>
@@ -143,6 +157,8 @@
     <string name="cps_sync_exhibitor">同步我的参展商</string>
     <string name="cps_colleague_info">登记同事信息</string>
     <string name="cps_my_info">我的登记信息</string>
+    <string name="chinaplas_pay_str1">请尽快支付预登记入场费,以享受预登记优惠!</string>
+    <string name="chinaplas_pay_str2">在线支付</string>
 
     <!-- logout -->
     <string name="logout_message">确认登出?</string>
@@ -157,7 +173,8 @@
     <string name="tool_my_exhibitor">我的参展商</string>
     <string name="tool_my_schedule">我的日程</string>
     <string name="tool_exhibitor_history">展商浏览历史</string>
-
+    <string name="title_add_schedule">添加议程</string>
+    <string name="edit_schedule">编辑议程</string>
 
     <!--职位-->
     <string-array name="titles">
@@ -203,6 +220,7 @@
     <string name="setting_privacy_policy">私隐政策声明</string>
     <string name="setting_use_terms">使用条款</string>
     <string name="setting_share">分享</string>
+    <string name="share_setting_text">国际橡塑展手机应用程式已经开放下载！</string>
 
     <string name="logout_confirm_letter">是否注销确认信?</string>
 
@@ -244,5 +262,72 @@
     <string name="drawer_sync">与官网同步</string>
     <string name="login_first_sync">需要登录后才能同步，是否登录？</string>
     <string name="title_new_tec_dtl">产品详情</string>
+
+    <!--展商筛选-->
+    <string name="title_privacy">私隐政策声明</string>
+    <string name="title_user_item">使用条款</string>
+
+    <string name="title_filter">展商筛选</string>
+    <string name="filter_all">全部</string>
+    <string name="filter_industry">产品类别</string>
+    <string name="filter_application">应用行业</string>
+    <string name="filter_country">国家/ 地区</string>
+    <string name="filter_hall">展馆</string>
+    <string name="filter_booth">专区</string>
+    <string name="filter_keyword">关键字</string>
+    <string name="filter_topic_collection">主题专集</string>
+    <string name="filter_new_tech">新品技术</string>
+    <string name="filter_new_tec">新品及热点技术</string>
+    <string name="filter_keyword_hint">输入关键字</string>
+    <string name="filter_highlights">展会亮点</string>
+    <string name="hall_exhibitor_count">家展商</string>
+
+    <string name="filter_clear_all">清空筛选条件</string>
+    <string name="filter_ok">筛选</string>
+
+    <!--展商详情-->
+    <string name="exhi_dtl_tab_about">关于</string>
+    <string name="add_my_exhibitor">加入我的参展商</string>
+    <string name="add_my_exhibitor_1">已加入我的参展商</string>
+    <string name="exhi_dtl_tab_info">公司简介</string>
+    <string name="exhi_dtl_tab_industry">产品</string>
+    <string name="exhi_dtl_tab_application">应用行业</string>
+
+    <string name="exception_toast_email">No email client installed.</string>
+    <string name="exception_toast_phone">抱歉，您的设备不支持打电话。</string>
+    <string name="login_first_add_exhibitor">您需要登录＂MyCHINAPLAS＂才能储存展商纪录到您的感兴趣展商列表＂我的参展商＂。</string>
+
+
+    <!-- 订阅电子快讯 -->
+    <string name="subscribe_str001">订阅资料</string>
+    <string name="subscribe_str002">公司名称</string>
+    <string name="subscribe_str003">姓名</string>
+    <string name="subscribe_str005">私隐政策声明</string>
+    <string name="subscribe_str004">电邮</string>
+    <string name="subscribe_msg001">请输入观众姓名！</string>
+    <string name="subscribe_msg002">输入观众姓名时，请不要输入数位或符号！</string>
+    <string name="subscribe_msg003">请输入电邮！</string>
+    <string name="subscribe_msg004">请输入有效的电邮！</string>
+    <string name="subscribe_msg013">请输入公司名称！</string>
+    <string name="subscribe_submit">递交</string>
+    <string name="subscribe_msg">正在提交数据，请稍后！</string>
+    <string name="thx_dy">感谢您的订阅</string>
+    <string name="subscribe_reset">重置</string>
+
+    <!--  -->
+    <string name="ask_clear">是否重置所有设定？</string>
+    <string name="yes">是</string>
+    <string name="no">否</string>
+
+    <!--我的参展商-->
+<!--    <string name="no_exhibitor">暂无展商资料</string>-->
+    <string name="no_schedule">暂无议程</string>
+    <string name="no_my_exhibitor">没有收藏的参展商。 \n请到\"参展商名单\"增添参展商。</string>
+
+
+    <string name="today">今日</string>
+    <string name="yesterday">昨天</string>
+    <string name="past_records">过去</string>
+
 
 </resources>

@@ -83,6 +83,7 @@ public class SideDataView extends RelativeLayout implements SideLetter.OnLetterC
         isNoData.set(mExhibitors.isEmpty());
     }
 
+
     /**
      * 如果是新技术产品列表，就调用这个方法
      */

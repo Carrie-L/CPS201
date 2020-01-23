@@ -5,10 +5,8 @@ import android.text.TextUtils
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
-import com.adsale.chinaplas.network.CHINAPLAS_CLIENT_URL
-import com.adsale.chinaplas.network.CpsApi
-import com.adsale.chinaplas.network.confirmKeyJson
-import com.adsale.chinaplas.network.getTokenJson
+import com.adsale.chinaplas.data.entity.VisitorData
+import com.adsale.chinaplas.network.*
 import com.adsale.chinaplas.utils.*
 import com.adsale.chinaplas.utils.LogUtil.i
 import kotlinx.coroutines.*
@@ -36,16 +34,97 @@ class MyChinaplasViewModel : ViewModel() {
     var progressBarVisible = MutableLiveData(false)
     var toDestination = MutableLiveData(false)
 
+    var invoiceUrl = MutableLiveData<String>()
+
     /*  -----------------  MyChinaplas 主页  ------------------------  */
+    /**
+     * 获取token
+     */
     fun getTokenAsync() {
         uiScope.launch {
             withContext(Dispatchers.IO) {
                 val requestBody = RequestBody.create(
                     MediaType.parse("application/json;charset=UTF-8"),
                     getTokenJson(getMemberId(), getMyChinaplasEmail()))
-                val response = CpsApi.regService.apiGeniusEncrypt(requestBody).await().Context
-                LogUtil.i("getTokenAsync=$response")
-                setToken(response!!)
+                try {
+                    val response = CpsApi.mcService.apiGeniusEncrypt(requestBody).await().Context
+                    i("getTokenAsync=$response")
+                    if (response != null) {
+                        setToken(response)
+                        getUserInfo()
+
+                    }
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                    LogUtil.e(e)
+                    i(e.stackTrace.toString())
+                }
+            }
+        }
+    }
+
+    /**
+     * 获取基本资料
+     */
+    private suspend fun getUserInfo(): Boolean {
+        withContext(Dispatchers.IO) {
+            try {
+                val url = String.format(VISITOR_LIST_URL, getToken(), getLangCode())
+                i("url=$url")
+                val response = CpsApi.mcService.getVisitorListAsync(url).await()
+                val content = response.string()
+                i("getUserInfo=$content")
+                val visitorData = parseJson(VisitorData::class.java, content)
+                i("\nvisitorData=${visitorData.toString()}")
+                val entity = visitorData?.Data?.get(0)
+                if (entity != null) {
+                    setMyChinaplasGuid(entity.Guid!!)
+                    setVisitorId(entity.VisitorId!!)
+                    setMyChinaplasIsPay(entity.Paid)
+                    setInvoicePdfUrl(entity.PdfUrl!!)
+                    // 保存预登记数据
+                    resetRegisterFormData()
+                    setName(entity.ContactPerson!!)
+                    setCompany(entity.Company!!)
+                    setGender(entity.SalCode!!)
+                    setTellData(1, entity.TelCountry!!)
+                    setTellData(2, entity.TelArea!!)
+                    setTellData(3, entity.TelNo!!)
+                    setTellData(4, entity.TelExt!!)
+                    setTellData(5, entity.CellArea!!)
+                    setTellData(6, entity.CellNo!!)
+                    setEmail(1, entity.Email!!)
+
+                    LogUtil.i("value =${entity.toString()} ")
+                    uiScope.launch {
+                        LogUtil.i("value =LOGIN_SUCCESS ")
+                        submitStatus.value = LOGIN_SUCCESS
+                    }
+
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+                LogUtil.e(e)
+                i(e.stackTrace.toString())
+            }
+        }
+        return false
+    }
+
+    private suspend fun getInvoiceUrlAsync() {
+        withContext(Dispatchers.IO) {
+            try {
+                val requestBody = RequestBody.create(
+                    MediaType.parse("application/json;charset=UTF-8"), confirmKeyJson(getMyChinaplasGuid()))
+                val regKey = CpsApi.regService.PreregConfirmKey(requestBody).await()
+                i("regKey=$regKey")
+                val invoiceUrl = String.format(INVOICE_URL, getLangStr(), regKey.Context)
+                i("invoiceUrl=$invoiceUrl")
+                setInvoiceUrl(invoiceUrl)
+            } catch (e: Exception) {
+                e.printStackTrace()
+                LogUtil.e(e)
+                i(e.stackTrace.toString())
             }
         }
     }
@@ -57,11 +136,13 @@ class MyChinaplasViewModel : ViewModel() {
         return withContext(Dispatchers.IO) {
             val requestBody = RequestBody.create(
                 MediaType.parse("application/json;charset=UTF-8"), getKeyAsync(guid))
-            val response = CpsApi.regService.apiGeniusEncrypt(requestBody).await().Context
-            LogUtil.i("getTokenAsync=$response")
+            val response = CpsApi.mcService.apiGeniusEncrypt(requestBody).await().Context
+            i("getTokenAsync=$response")
             response!!
         }
     }
+
+    /*  -----------------   ------------------------  */
 
 
     /*  -----------------  MyChinaplas 登录  ------------------------  */
@@ -75,10 +156,10 @@ class MyChinaplasViewModel : ViewModel() {
     }
 
     fun resetSubmitStatus() {
+        barClick.value = 0
         _submitStatus.value = 0
         toDestination.value = false
         progressBarVisible.value = false
-        barClick.value = 1
     }
 
     fun onPwdSubmit() {
@@ -90,11 +171,12 @@ class MyChinaplasViewModel : ViewModel() {
                 val result = postLogin()
                 if (result == "2") {
                     submitStatus.value = LOGIN_FAILED
+                    progressBarVisible.value = false
                 } else {
-                    submitStatus.value = LOGIN_SUCCESS
-                    setLoginSuccess(result)
+                    // 登录成功了，获取 VisitorListData
+                    setMemberId(result)
+                    getTokenAsync()
                 }
-                progressBarVisible.value = false
             }
         }
     }
@@ -110,13 +192,13 @@ class MyChinaplasViewModel : ViewModel() {
                 .add("password", password.value!!)
                 .add("lang", getLangStr())
                 .build()
-            val result = CpsApi.regService.postLogin(body).await()
-            i("postLogin = ${result}")
+            val result = CpsApi.mcService.postLogin(body).await()
+            i("postPwdLogin = ${result}")
             result
         }
     }
 
-    private var guid: String = ""
+    private var smsGuid: String = ""
     fun onSendCode() {
         if (TextUtils.isEmpty(phoneNo.value)) {
             submitStatus.value = PHONE_EMPTY
@@ -133,7 +215,7 @@ class MyChinaplasViewModel : ViewModel() {
                 "2" -> submitStatus.value = SMS_CODE_PHONE_INVALID
                 else -> {
                     submitStatus.value = SMS_CODE_SEND_SUCCESS
-                    guid = result1
+                    smsGuid = result1
 //                    setMyChinaplasGuid(guid)
                 }
             }
@@ -146,14 +228,14 @@ class MyChinaplasViewModel : ViewModel() {
         }
         uiScope.launch {
             // ① 发送验证码
-            if (TextUtils.isEmpty(guid)) {
+            if (TextUtils.isEmpty(smsGuid)) {
                 submitStatus.value = SMS_CODE_INCORRECT
                 return@launch
             }
             progressBarVisible.value = true
             // ② 检查验证码
-            i("checkCode guid=$guid")
-            val result2 = checkCodeSync(guid)
+            i("checkCode guid=$smsGuid")
+            val result2 = checkCodeSync(smsGuid)
             i("result2=$result2")
             if (!result2) {
                 submitStatus.value = SMS_CODE_INCORRECT
@@ -161,23 +243,19 @@ class MyChinaplasViewModel : ViewModel() {
                 return@launch
             }
             // ③ 提交
-            when (val result3 = postSMSLogin(guid)) {
+            when (val result3 = postSMSLogin(smsGuid)) {
                 "2" -> {
                     submitStatus.value = LOGIN_FAILED
                     progressBarVisible.value = false
+                    i("result3 login fail")
                 }
                 else -> {
-                    submitStatus.value = LOGIN_SUCCESS
-                    setLoginSuccess(result3)
+                    setMemberId(result3)
+                    getTokenAsync()
+                    i("result3 id=$result3")
                 }
             }
         }
-    }
-
-    private fun setLoginSuccess(memberId: String) {
-        setMemberId(memberId)
-        progressBarVisible.value = false
-        toDestination.value = true
     }
 
     private suspend fun sendCodeSync(): String {
@@ -188,7 +266,7 @@ class MyChinaplasViewModel : ViewModel() {
                 .add("CellNum", phoneNo.value!!)
                 .add("RLang", getLangStr())
                 .build()
-            val result = CpsApi.regService.sendSmsCodeAsync(body).await().string()
+            val result = CpsApi.mcService.sendSmsCodeAsync(body).await().string()
             i("sendCode = $result")
             result
         }
@@ -204,7 +282,7 @@ class MyChinaplasViewModel : ViewModel() {
                 .add("Url", "Mobile")
                 .build()
             try {
-                val result = CpsApi.regService.checkSmsCodeAsync(body).await()
+                val result = CpsApi.mcService.checkSmsCodeAsync(body).await()
                 i("sendCode = $result")
                 result
             } catch (e: Exception) {
@@ -226,8 +304,8 @@ class MyChinaplasViewModel : ViewModel() {
                 .add("Guid", guid)
                 .add("clienurl", String.format(CHINAPLAS_CLIENT_URL, getLangStr()))
                 .build()
-            val result = CpsApi.regService.postLogin(body).await()
-            i("postLogin = ${result}")
+            val result = CpsApi.mcService.postLogin(body).await()
+            i("postSMSLogin = ${result}")
             result
         }
     }
@@ -252,6 +330,10 @@ class MyChinaplasViewModel : ViewModel() {
         }
         if (!isSmsCheck && TextUtils.isEmpty(password.value)) {
             submitStatus.value = PWD_EMPTY
+            return true
+        }
+        if (!isSmsCheck && !TextUtils.isEmpty(password.value) && password.value!!.length < 8) {
+            submitStatus.value = PWD_INVALID
             return true
         }
         if (isSmsCheck && TextUtils.isEmpty(smsCode.value)) {

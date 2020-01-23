@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="obj"
+            type="androidx.fragment.app.Fragment" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <fragment
+            android:id="@+id/dtl_host_fragment"
+            android:name="com.adsale.chinaplas.ui.exhibitors.FilterApplicationFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+           />
+
+<!--        app:defaultNavHost="true"-->
+<!--        app:navGraph="@navigation/exhibitor_dtl_navigation"-->
+
+    </RelativeLayout>
+
+</layout>

@@ -1,12 +1,13 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
         <variable
             name="exhibitorModel"
             type="com.adsale.chinaplas.viewmodels.ExhibitorViewModel" />
+
+        <import type="android.view.View" />
 
     </data>
 
@@ -37,9 +38,11 @@
             android:maxLines="1"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
+            android:text="@={exhibitorModel.searchText}"
             app:layout_constraintEnd_toStartOf="@+id/iv_helper"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
 
         <ImageView
             android:id="@+id/iv_helper"
@@ -68,7 +71,7 @@
             android:layout_width="80dp"
             android:layout_height="24dp"
             android:layout_marginStart="16dp"
-            android:background="@drawable/bg_btn_selected"
+            android:background="@{exhibitorModel.isSortBySZ?@drawable/bg_btn_selected:@drawable/bg_btn_not_selected}"
             android:gravity="center"
             android:onClick="@{()->exhibitorModel.onSortAZ()}"
             android:text="@string/sort_by_az"
@@ -76,14 +79,14 @@
             android:textSize="14sp"
             app:layout_constraintStart_toEndOf="@id/tv_sort"
             app:layout_constraintTop_toTopOf="@id/tv_sort" />
-        <!--        android:background="@{exhibitorModel.isSortAZ?@drawable/bg_btn_selected:@drawable/bg_btn_not_selected}"-->
+
         <!--展馆排序-->
         <TextView
             android:id="@+id/tv_sort_hall"
             android:layout_width="80dp"
             android:layout_height="24dp"
             android:layout_marginStart="16dp"
-            android:background="@drawable/bg_btn_not_selected"
+            android:background="@{exhibitorModel.isSortBySZ?@drawable/bg_btn_not_selected:@drawable/bg_btn_selected}"
             android:gravity="center"
             android:onClick="@{()->exhibitorModel.onSortHall()}"
             android:text="@string/sort_by_hall"
@@ -99,30 +102,57 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/ic_filter"
+            android:onClick="@{()->exhibitorModel.navigateFilter()}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/iv_bg_1" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_exhibitor"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/view_side_data"
             app:layout_constraintBottom_toTopOf="@+id/iv_ad"
             app:layout_constraintTop_toBottomOf="@id/tv_sort" />
+        <!--        app:listData="@{exhibitorModel.exhibitors}"-->
 
-        <com.adsale.chinaplas.ui.view.SideDataView
+        <TextView
+            style="@style/no_data_style"
+            android:layout_height="0dp"
+            android:visibility="@{exhibitorModel.exhibitors.size()==0?View.VISIBLE:View.GONE}"
+            app:layout_constraintBottom_toTopOf="@+id/iv_ad"
+            app:layout_constraintTop_toBottomOf="@id/tv_sort"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
+
+<!--        <com.adsale.chinaplas.ui.view.SideDataView-->
+<!--            android:id="@+id/view_side_data"-->
+<!--            android:layout_width="32dp"-->
+<!--            android:layout_height="0dp"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            app:layout_constraintBottom_toTopOf="@+id/iv_ad"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toEndOf="@id/rv_exhibitor"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/tv_sort" />-->
+
+        <com.adsale.chinaplas.ui.view.SideBarView
             android:id="@+id/view_side_data"
-            android:layout_width="match_parent"
+            android:layout_width="32dp"
             android:layout_height="0dp"
             android:layout_marginTop="16dp"
             app:layout_constraintBottom_toTopOf="@+id/iv_ad"
             app:layout_constraintEnd_toEndOf="parent"
+            android:gravity="center_vertical"
+            app:layout_constraintStart_toEndOf="@id/rv_exhibitor"
             app:layout_constraintTop_toBottomOf="@id/tv_sort" />
 
         <ImageView
             android:id="@+id/iv_ad"
             android:layout_width="match_parent"
             android:layout_height="48dp"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/rv_exhibitor" />

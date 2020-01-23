@@ -9,8 +9,6 @@
         android:id="@+id/web_content_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingBottom="56dp"
-
-        android:text="@string/hello_blank_fragment" />
+       />
 
 </FrameLayout>

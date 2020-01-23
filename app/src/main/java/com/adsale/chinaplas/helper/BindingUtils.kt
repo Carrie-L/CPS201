@@ -13,6 +13,7 @@ import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.adsale.chinaplas.R
+import com.adsale.chinaplas.adapters.ExhibitorListAdapter
 import com.adsale.chinaplas.data.dao.Exhibitor
 import com.adsale.chinaplas.data.dao.MainIcon
 import com.adsale.chinaplas.data.dao.RegOptionData
@@ -139,8 +140,10 @@ fun ImageView.setIconRes(resId: Int) {
 @BindingAdapter("listData")
 fun bindRecyclerView(recyclerView: RecyclerView, data: List<Exhibitor>?) {
     LogUtil.i("bindRecyclerView: data=${data?.size}")
-//    val adapter = recyclerView.adapter as ExhibitorListAdapter
-//    adapter.submitList(data)
+    if( recyclerView.adapter!=null){
+//        val adapter = recyclerView.adapter as ExhibitorListAdapter
+//        adapter.submitList(data)
+    }
 }
 
 @BindingAdapter("imgUrl")

@@ -9,13 +9,13 @@ import androidx.room.PrimaryKey
 @Entity
 class CompanyApplication constructor(){
     @PrimaryKey(autoGenerate = true)
-    var id: Int = 1
+    var id: Long? = null
     var CompanyID: String? = ""
     var IndustryID: String? = ""
 
 //    constructor()
 
-    constructor(id: Int, CompanyID: String?, IndustryID: String?) :this(){
+    constructor(id: Long, CompanyID: String?, IndustryID: String?) :this(){
         this.id = id
         this.CompanyID = CompanyID
         this.IndustryID = IndustryID

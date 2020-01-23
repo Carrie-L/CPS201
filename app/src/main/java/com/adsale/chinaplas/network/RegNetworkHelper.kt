@@ -34,6 +34,8 @@ const val MY_CHINAPLAS_MY_URL =
 const val MY_CHINAPLAS_INVOICE_URL = "https://www.chinaplasonline.com/CPS20/prereginvoice/%s/?guid=%s"
 const val GENIUS_HELPER_ENCRYPT =
     "https://eform.adsale.com.hk/GeniusHelper/TestRoute/Encrypt"    // 获取 [token], 或者 [KEY]  , API相同，传递的参数格式不同。
+const val VISITOR_LIST_URL = "https://www.chinaplasonline.com/CPS20/CPSAPI/GetVistorListByMid?APPToken=%s&lang=%s"
+const val INVOICE_URL = "https://www.chinaplasonline.com/CPS20/prereginvoice/%s/?guid=%s"
 
 fun getTokenJson(memberId: String, email: String): String {
     return " {\"Context\": \"$memberId#2020-07-04T13:55:07#$email\"}"

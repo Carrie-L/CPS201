@@ -39,9 +39,7 @@ import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.tencent.bugly.Bugly
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
+import kotlinx.coroutines.*
 import java.util.*
 
 /**
@@ -150,7 +148,10 @@ class LoadingActivity : AppCompatActivity() {
                 cpsDatabase.fileControlDao())
         viewModel =
             ViewModelProviders.of(this,
-                LoadingViewModelFactory(application, registerRepository, webContentRepository,CpsDatabase.getInstance(applicationContext).exhibitorDao()))
+                LoadingViewModelFactory(application,
+                    registerRepository,
+                    webContentRepository,
+                    CpsDatabase.getInstance(applicationContext).exhibitorDao()))
                 .get(LoadingViewModel::class.java)
         binding.viewModel = viewModel
         binding.executePendingBindings()
@@ -158,6 +159,7 @@ class LoadingActivity : AppCompatActivity() {
         setDeviceType()
         setFullScreen()
         isFirstRunning = isFirstRunning()
+        i("isFirstRunning=${isFirstRunning}")
         if (isFirstRunning) {
             setupDevice()
         }
@@ -273,6 +275,18 @@ class LoadingActivity : AppCompatActivity() {
             i("mScreenHeight = $height")
             mSPConfig.edit().putInt(PAD_LEFT_MARGIN, leftMargin).putFloat("PadWidthRate", screenWidthRate)
                 .putFloat("PadHeightRate", heightRate).apply()
+        } else {
+            val rio: Float = 1080f / 1920f
+            LogUtil.i("rio=$rio")
+            val rio2 = width.toFloat() / height.toFloat()
+            LogUtil.i("rio2=$rio2")
+            if (rio2 < rio) {
+                binding.layoutBg.setBackgroundResource(R.drawable.loadingx2)
+            } else {
+                binding.layoutBg.setBackgroundResource(R.drawable.loading)
+            }
+
+
         }
 
         setScreenSize(mSPConfig, width, height) // 减去状态栏高度
@@ -326,45 +340,44 @@ class LoadingActivity : AppCompatActivity() {
             if (isFirstRunning) {
                 setNotFirstRunning()
                 switchLanguage(applicationContext, getCurrLanguage())
-            } else {
-                val intent = Intent(this@LoadingActivity, MainActivity::class.java)
-                startActivity(intent)
-                finish()
             }
+            val intent = Intent(this@LoadingActivity, MainActivity::class.java)
+            startActivity(intent)
+            finish()
             val endTime = System.currentTimeMillis()
             i("~~~~ Loading页花费时间： ${endTime - startTime} ms ~~~~")
         }
     }
 
-    /**
-     * @param mContext
-     * @param language 0:ZhTw; 1:en;2:ZhCn;
-     */
-    private fun switchLanguage(mContext: Context, language: Int) {
-        i("switchLanguage=$language")
-        setCurrLanguage(language)
-        val resources = mContext.resources
-        val config = resources.configuration
-        val dm = resources.displayMetrics
-        val locale: Locale = getLocale(language)!!
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            val localeList = LocaleList(locale)
-            LocaleList.setDefault(localeList)
-            config.setLocales(localeList)
-            mContext.createConfigurationContext(config)
-        } else {
-            config.setLocale(locale)
-        }
-        Locale.setDefault(locale)
-        resources.updateConfiguration(config, dm)
-
-//        recreate()
-        val intent = Intent(Bugly.applicationContext, MainActivity::class.java)
-        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-        startActivity(intent)
-        finish()
-        overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
-    }
+//    /**
+//     * @param mContext
+//     * @param language 0:ZhTw; 1:en;2:ZhCn;
+//     */
+//    private fun switchLanguage(mContext: Context, language: Int) {
+//        i("switchLanguage=$language")
+//        setCurrLanguage(language)
+//        val resources = mContext.resources
+//        val config = resources.configuration
+//        val dm = resources.displayMetrics
+//        val locale: Locale = getLocale(language)!!
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+//            val localeList = LocaleList(locale)
+//            LocaleList.setDefault(localeList)
+//            config.setLocales(localeList)
+//            mContext.createConfigurationContext(config)
+//        } else {
+//            config.setLocale(locale)
+//        }
+//        Locale.setDefault(locale)
+//        resources.updateConfiguration(config, dm)
+//
+////        recreate()
+////        val intent = Intent(Bugly.applicationContext, MainActivity::class.java)
+////        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+////        startActivity(intent)
+////        finish()
+////        overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
+//    }
 
     private fun setFullScreen() {
         val window = window
@@ -454,12 +467,18 @@ class LoadingActivity : AppCompatActivity() {
 
     private fun showD1() {
         LogUtil.i("=============showD1================")
+        Glide.with(applicationContext).load(R.drawable.arburg_cn).into(binding.d1)
         val animation = AnimationUtils.loadAnimation(applicationContext, R.anim.bottom_to_top)
         binding.d1.startAnimation(animation)
-        Glide.with(applicationContext).load(R.drawable.arburg_cn).into(binding.d1)
-        //倒计时2s
         viewModel.addCountDownTime()
         binding.ivClose.visibility = View.VISIBLE
+
+//        val animation = AnimationUtils.loadAnimation(applicationContext, R.anim.bottom_to_top)
+//        binding.d1.startAnimation(animation)
+//        Glide.with(applicationContext).load(R.drawable.arburg_cn).into(binding.d1)
+//        //倒计时2s
+//        viewModel.addCountDownTime()
+//        binding.ivClose.visibility = View.VISIBLE
 
         viewModel.adCountDownFinish.observe(this, Observer {
             if (viewModel.adCountDownFinish.value == true) {
@@ -468,14 +487,11 @@ class LoadingActivity : AppCompatActivity() {
                 binding.d1.visibility = View.GONE
                 val animEnd = AnimationUtils.loadAnimation(applicationContext, R.anim.fade_out)
                 binding.d1.startAnimation(animEnd)
-                mSPConfig.edit().putBoolean(LOADING_D1_FINISH, true).apply()
-                viewModel.sendBroadcast()
+//                viewModel.sendBroadcast()
                 LogUtil.i("adCountDownFinish d1 finish")
             }
         })
     }
-
-
 
 
 }

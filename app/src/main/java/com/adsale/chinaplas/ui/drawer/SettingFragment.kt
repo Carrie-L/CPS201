@@ -1,7 +1,9 @@
 package com.adsale.chinaplas.ui.drawer
 
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.LocaleList
@@ -10,12 +12,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import com.adsale.chinaplas.R
 import com.adsale.chinaplas.data.dao.CpsDatabase
 import com.adsale.chinaplas.data.dao.MainIconRepository
 import com.adsale.chinaplas.databinding.FragmentSettingBinding
+import com.adsale.chinaplas.network.CPS_URL
 import com.adsale.chinaplas.ui.home.MainActivity
 import com.adsale.chinaplas.utils.*
 import com.adsale.chinaplas.viewmodels.MainViewModel
@@ -25,55 +28,48 @@ import com.tencent.bugly.Bugly.applicationContext
 import java.util.*
 
 class SettingFragment : Fragment() {
-
     private lateinit var settingViewModel: SettingViewModel
     private lateinit var binding: FragmentSettingBinding
 
     val mainViewModel: MainViewModel by lazy {
-        val activity = requireNotNull(this) {
-            "You can only access the viewModel after onActivityCreated()"
-        }
         ViewModelProviders.of(
-            requireActivity(), MainViewModelFactory(
-                requireActivity().application,
+            requireActivity(), MainViewModelFactory(requireActivity().application,
                 MainIconRepository.getInstance(CpsDatabase.getInstance(applicationContext).mainIconDao())
             )
         )
             .get(MainViewModel::class.java)
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         binding = FragmentSettingBinding.inflate(inflater)
         settingViewModel = ViewModelProviders.of(this)[SettingViewModel::class.java]
         binding.viewModel = settingViewModel
         binding.executePendingBindings()
-
-//        val root = inflater.inflate(R.layout.fragment_setting, container, false)
-//        val textView: TextView = root.findViewById(R.id.text_tools)
-//        toolsViewModel.text.observe(this, Observer {
-//            textView.text = it
-//        })
-//        LogUtil.i("onCreateView")
-
-
         return binding.root
     }
 
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        LogUtil.i("onCreate")
-
-//        activity?.run {
-//            LogUtil.i("onCreate mainViewModel")
-//            mainViewModel = ViewModelProviders.of(requireParentFragment())[MainViewModel::class.java]
-//        }
-
-
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        LogUtil.i("onActivityCreated")
+        binding.tvLanguage.setOnClickListener {
+            alertLanguage()
+        }
+        binding.tvShare.setOnClickListener {
+            onShare()
+        }
+        binding.tvWebsite.setOnClickListener {
+            onLinkWebsite()
+        }
+        binding.tvReset.setOnClickListener {
+            onResetAll()
+        }
+        binding.tvPrivacy.setOnClickListener {
+            onPrivacy()
+        }
+        binding.tvItems.setOnClickListener {
+            onUseItems()
+        }
     }
 
     private fun alertLanguage() {
@@ -120,37 +116,59 @@ class SettingFragment : Fragment() {
         requireActivity().overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
     }
 
-    override fun onStart() {
-        super.onStart()
-        LogUtil.i("onStart")
+    private fun onShare() {
+        val sendIntent: Intent = Intent().apply {
+            action = Intent.ACTION_SEND
+            putExtra(Intent.EXTRA_TEXT, getString(R.string.share_setting_text))
+            type = "text/plain"
+        }
+        val shareIntent = Intent.createChooser(sendIntent, null)
+        startActivity(shareIntent)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        LogUtil.i("onActivityCreated")
-
-        settingViewModel.langClick.observe(this, Observer { isClick ->
-            LogUtil.i("isClick=$isClick")
-
-            if (isClick) {
-                alertLanguage()
-            }
-
-        })
+    private fun onLinkWebsite() {
+        val intent = Intent()
+        intent.action = "android.intent.action.VIEW"
+        val content_url =
+            Uri.parse(String.format(CPS_URL, getLangStr()))
+        intent.data = content_url
+        startActivity(intent)
     }
 
-    override fun onResume() {
-        super.onResume()
-        LogUtil.i("onResume")
+    private fun onResetAll() {
+        alertDialogTwoButton(context!!,
+            R.string.ask_clear,
+            R.string.yes,
+            R.string.no,
+            DialogInterface.OnClickListener { dialog, which ->
+                // todo 清空我的日程表
+//                val scheduleRepository: ScheduleRepository = ScheduleRepository.getInstance()
+//                scheduleRepository.clearAll()
+
+                // todo 清空我的参展商（本地）| 清空兴趣展商 : 查找Exhibitor表中isFavourite=1的数据，删除
+//                val exhibitorRepository: ExhibitorRepository = ExhibitorRepository.getInstance()
+//                exhibitorRepository.cancelMyExhibitor()
+//                exhibitorRepository.clearInterestedExhibitor()
+
+                // 退出登录
+                resetLoginInfo()
+                mainViewModel.isLogin.value = false
+
+                // todo 预登记资料
+                putLogin(false)
+                paySuccess(false)
+            })
     }
 
-    override fun onStop() {
-        super.onStop()
-        LogUtil.i("onStop")
+    private fun onPrivacy() {
+        findNavController().navigate(SettingFragmentDirections.actionNavSettingToWebContentFragment(PRIVACY,
+            getString(R.string.title_privacy)))
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        LogUtil.i("onDestroy")
+    private fun onUseItems() {
+        findNavController().navigate(SettingFragmentDirections.actionNavSettingToWebContentFragment(USE_ITEM,
+            getString(R.string.title_user_item)))
     }
+
+
 }

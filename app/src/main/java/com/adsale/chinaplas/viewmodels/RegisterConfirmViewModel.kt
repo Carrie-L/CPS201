@@ -7,6 +7,7 @@ import androidx.databinding.ObservableInt
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.adsale.chinaplas.confirmPdfPath
+import com.adsale.chinaplas.fileAbsPath
 import com.adsale.chinaplas.network.CpsApi
 import com.adsale.chinaplas.network.REG_CONFIRM_LATTER_URL
 import com.adsale.chinaplas.network.chargeRequestJson
@@ -30,23 +31,18 @@ const val DOWN_NOT_START = -1
 class RegisterConfirmViewModel : ViewModel() {
     private val job = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + job)
-    //    var progress = MutableLiveData(0)
     var progress = ObservableInt(0)
     var percent = ObservableField<String>()
     var isDownStatus = MutableLiveData(DOWN_NOT_START)  //  0 开始，1 完成
-//    private var confirmKey: String? = ""
+    var isRegister = true  // 默认为预登记，MyChinaplas我的登记信息过来，为false
+    var confirmPath = "${fileAbsPath}/%s.pdf"
+    var confirmKey: String? = ""
 
     init {
         LogUtil.i("!~~init RegisterConfirmViewModel~~")
-
-
     }
 
-    suspend fun apiGetCharge(payMethod: String,
-                             guid: String,
-                             lang: String,
-                             fe: String,
-                             feCode: String): String {
+    suspend fun apiGetCharge(payMethod: String, guid: String, lang: String, fe: String, feCode: String): String {
         return withContext(Dispatchers.IO) {
             val json = chargeRequestJson(payMethod, guid, lang, fe, feCode)
             val requestBody: RequestBody =
@@ -59,44 +55,59 @@ class RegisterConfirmViewModel : ViewModel() {
 
     suspend fun apiPaySuccess(): Boolean {
         return withContext(Dispatchers.IO) {
-            val requestBody: RequestBody = FormBody.Builder().add("guid", getGuid()).build()
-            CpsApi.regService.PreregPaySuccess(requestBody).await()
-                .Status != "0"
+            val requestBody: RequestBody =
+                FormBody.Builder().add("guid", if (isRegister) getGuid() else getMyChinaplasGuid()).build()
+            CpsApi.regService.PreregPaySuccess(requestBody).await().Status != "0"
         }
     }
 
     fun startDownload(guid: String) {
         uiScope.launch {
-            val startTime = System.currentTimeMillis()
-//            val guid = "89EE189A0BDB4E28B8960ED54A74BCAB"
-            val confirmKey = getConfirmKey(guid)
+            confirmKey = getConfirmKey(guid)
             LogUtil.i("key = $confirmKey")
             if (confirmKey != null) {
-                saveConfirmPdfUrl("$REG_CONFIRM_LATTER_URL$confirmKey")
-//                saveConfirmKey(confirmKey)
+                if (isRegister) {
+                    saveConfirmPdfUrl("$REG_CONFIRM_LATTER_URL$confirmKey")
+                } else {
+                    saveCPSConfirmPdfUrl("$REG_CONFIRM_LATTER_URL$confirmKey")
+                }
                 isDownStatus.value = DOWN_START
-//                downloadPDF(key)
             }
-            val endTime = System.currentTimeMillis()
-            LogUtil.i("下载pdf话费： ${endTime - startTime} ms")
         }
     }
+
+    private fun getConfirmUrl(): String {
+        return if (isRegister) getConfirmPdfUrl()
+        else getCPSConfirmPdfUrl()
+    }
+
 
     private suspend fun getConfirmKey(guid: String): String? {
         return withContext(Dispatchers.IO) {
             val requestBody = RequestBody.create(
                 MediaType.parse("application/json;charset=UTF-8"), confirmKeyJson(guid))
-            val key = CpsApi.regService.PreregConfirmKey(requestBody).await().Context
-            LogUtil.i("key = $key") // // myigZtYN9Ua4kF0UTqMUvWTD2r6D%2blNV7L9FlvSAOw0FBIX3ZelHu0uJwtA%2bcwtUb%2bpNXklMcyTIWvUsYElCAg%3d%3d
-            key
+            CpsApi.regService.PreregConfirmKey(requestBody).await().Context
         }
     }
 
-    suspend fun downloadPDF() {
-        LogUtil.i("downloadPDF:url=${getConfirmPdfUrl()}")
+    fun downloadPDF() {
+        uiScope.launch {
+            downloadPDFAsync()
+        }
+    }
+
+    fun confirmPath(): String {
+        return if (isRegister)
+            String.format(confirmPath, CONFIRM_PDF_REGISTER)
+        else
+            String.format(confirmPath, CONFIRM_PDF_CHINAPLAS)
+    }
+
+    suspend fun downloadPDFAsync() {
+        LogUtil.i("downloadPDF:url=${getConfirmUrl()}")
         withContext(Dispatchers.IO) {
             val startTime = System.currentTimeMillis()
-            DownloadTask().execute(getConfirmPdfUrl(), confirmPdfPath)
+            DownloadTask().execute(getConfirmUrl(), confirmPath())
             val endTime = System.currentTimeMillis()
             LogUtil.i("downloadPDF： ${endTime - startTime} ms")
         }

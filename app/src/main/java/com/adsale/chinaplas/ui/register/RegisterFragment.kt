@@ -28,6 +28,7 @@ import com.adsale.chinaplas.ui.dialog.RegProductDialog
 import com.adsale.chinaplas.ui.dialog.RegRegionDialog
 import com.adsale.chinaplas.utils.*
 import com.adsale.chinaplas.viewmodels.*
+import java.lang.Exception
 
 /**
  * 预登记表单页
@@ -57,7 +58,6 @@ class RegisterFragment : Fragment(), RegionSelectCallback {
         binding.tvLast.text = Html.fromHtml(getString(com.adsale.chinaplas.R.string.reg_last_hint))
         binding.tvHintEmail.text = Html.fromHtml(getString(R.string.reg_help_email))
 
-
         val fragment = requireParentFragment()
         LogUtil.i("fragment= $fragment")
 
@@ -75,8 +75,6 @@ class RegisterFragment : Fragment(), RegionSelectCallback {
         binding.lifecycleOwner = requireActivity()
 
         regionViewModel.setRegionSelectCallback(this)
-
-
 
         binding.etArea.setOnClickListener {
             LogUtil.i("click country pick")
@@ -102,14 +100,19 @@ class RegisterFragment : Fragment(), RegionSelectCallback {
         super.onActivityCreated(savedInstanceState)
         initData()
 
-//        arguments?.let {
-//            val phoneNo = RegisterFragmentArgs.fromBundle(it).phoneNo
-//            if (!TextUtils.isEmpty(phoneNo))
-//                regViewModel.mobileNo.value = phoneNo
-//            val email = RegisterFragmentArgs.fromBundle(it).email
-//            if (!TextUtils.isEmpty(email))
-//                regViewModel.email.value = email
-//        }
+        try {
+            arguments?.let {
+                val phoneNo = RegisterFragmentArgs.fromBundle(it).phoneNo
+                if (!TextUtils.isEmpty(phoneNo))
+                    regViewModel.mobileNo.value = phoneNo
+                val email = RegisterFragmentArgs.fromBundle(it).email
+                if (!TextUtils.isEmpty(email))
+                    regViewModel.email.value = email
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+            LogUtil.e(e)
+        }
 
         pickViewModel.otherService.observe(this, Observer {
             binding.llProductOthers.visibility = View.VISIBLE
@@ -156,7 +159,7 @@ class RegisterFragment : Fragment(), RegionSelectCallback {
                 // 成功返回url，跳转Fragment
                 NavHostFragment.findNavController(this).navigate(
                     RegisterFragmentDirections.actionRegisterFragmentToRegisterWebsiteFragment2(
-                        regViewModel.payUrl!!))
+                        regViewModel.payUrl!!,true))
 
 //                val webFragment = RegisterWebsiteFragment()
 //                requireActivity().supportFragmentManager.inTransaction {

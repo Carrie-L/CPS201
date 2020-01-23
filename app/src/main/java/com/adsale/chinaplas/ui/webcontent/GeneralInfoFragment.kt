@@ -1,13 +1,16 @@
 package com.adsale.chinaplas.ui.webcontent
 
 
+import android.media.Image
 import android.os.Bundle
 import android.text.Layout
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.webkit.WebView
+import android.widget.AbsListView
 import android.widget.FrameLayout
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
@@ -17,6 +20,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager.widget.ViewPager
 import com.adsale.chinaplas.R
 import com.adsale.chinaplas.adapters.CpsBaseAdapter
 import com.adsale.chinaplas.adapters.MenuAdapter
@@ -42,6 +46,8 @@ class GeneralInfoFragment : Fragment() {
     //    private lateinit var binding:GeneralInfoFragment
 //    private lateinit var webView: WebView
     private lateinit var rvHtml: RecyclerView
+    private lateinit var line1: ImageView
+    private lateinit var line2: ImageView
     private var baiduTJ: String? = "GeneralInformation"
     private var title: String? = ""
     private var path: String? = ""
@@ -64,6 +70,8 @@ class GeneralInfoFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_general_info, container, false)
 //        webView = view.findViewById(R.id.webview_general_info)
         rvHtml = view.findViewById(R.id.rv_general_info)
+        line1 = view.findViewById(R.id.iv_line)
+        line2 = view.findViewById(R.id.iv_line_end)
 
         arguments?.let {
             GeneralInfoFragmentArgs.fromBundle(it).baiduTJ?.let { parentID ->
@@ -78,30 +86,59 @@ class GeneralInfoFragment : Fragment() {
 
         view.findViewById<TextView>(R.id.general_open).setOnClickListener {
             rvHtml.scrollToPosition(0)
+            lineVisible(true)
         }
         view.findViewById<TextView>(R.id.general_scope).setOnClickListener {
             rvHtml.scrollToPosition(1)
+            lineVisible(false)
         }
 
         return view
+    }
+
+    private fun lineVisible(visible: Boolean) {
+        line1.visibility = if (visible) View.VISIBLE else View.GONE
+        line2.visibility = if (visible) View.GONE else View.VISIBLE
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         webContentRepository =
             WebContentRepository.getInstance(CpsDatabase.getInstance(context!!).webContentDao(),
-                CpsDatabase.getInstance(context!!).htmlTextDao(),CpsDatabase.getInstance(context!!).fileControlDao())
+                CpsDatabase.getInstance(context!!).htmlTextDao(), CpsDatabase.getInstance(context!!).fileControlDao())
 
         uiScope.launch {
             list.value = getPageIds()
         }
 
+        val layoutManager = LinearLayoutManager(context!!, LinearLayoutManager.HORIZONTAL, false)
         list.observe(this, Observer {
-            rvHtml.layoutManager = LinearLayoutManager(context!!, LinearLayoutManager.HORIZONTAL, false)
+            rvHtml.layoutManager = layoutManager
             rvHtml.setHasFixedSize(true)
             rvHtml.adapter = HorizontalAdapter(it)
         })
 
+        var lineVisible = true
+        rvHtml.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+                if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+
+
+                    val firstItem = layoutManager.findFirstVisibleItemPosition()
+                    val firstItem2 = layoutManager.findFirstCompletelyVisibleItemPosition()
+                    val lastItem = layoutManager.findLastVisibleItemPosition()
+                    val lastItem2 = layoutManager.findLastCompletelyVisibleItemPosition()
+                    LogUtil.i("firstItem=$firstItem, firstItem2=$firstItem2")
+                    LogUtil.i("lastItem=$lastItem, lastItem2=$lastItem2")
+                    if(lastItem2==1){
+                        lineVisible(false)
+                    }else if(firstItem2==0){
+                        lineVisible(true)
+                    }
+                }
+            }
+        })
 
     }
 

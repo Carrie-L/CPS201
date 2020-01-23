@@ -1,6 +1,16 @@
 <resources>
     <bool name="isTablet">false</bool>
     <string name="app_name">國際橡塑展</string>
+
+    <!--添加到日历-->
+    <string name="notes">歡迎來臨國際橡塑展2020</string>
+    <string name="ask_addToCalendar">確定要將展覽日期存入日曆表嗎？</string>
+    <string name="addToCalendar_success">國際橡塑展的展覽日期已經加到此裝置的日曆表。</string>
+    <string name="addToCalendar_fail">匯入行事曆失敗！</string>
+    <string name="calendar_description">第三十四屆中國國際塑料橡膠工業展覽會 </string>
+    <string name="calendar_location">中國‧上海‧虹橋‧國家會展中心(中國上海市青浦區崧澤大道333號)</string>
+    <string name="ok">確定</string>
+
     <string name="menu_home">主頁</string>
     <string name="menu_download_center">下載中心</string>
     <string name="menu_subscribe">訂閱電子快訊</string>
@@ -15,6 +25,7 @@
     <string name="title_register">觀眾預登記</string>
     <string name="title_my_ticket">我的電子門票</string>
     <string name="title_tool">我的工具</string>
+    <string name="title_floor">平面图</string>
     <string name="title_floorplan">展馆平面图</string>
     <string name="title_exhibitor_list">展商列表</string>
     <string name="title_company_info">公司资料</string>
@@ -152,6 +163,12 @@
     <string name="tool_my_exhibitor">我的參展商</string>
     <string name="tool_my_schedule">我的日程</string>
     <string name="tool_exhibitor_history">展商瀏覽歷史</string>
+    <string name="title_add_schedule">添加議程</string>
+    <string name="edit_schedule">編輯議程</string>
+
+    <string name="chinaplas_pay_str1">請儘快支付預登記入場費,以享受預登記優惠!</string>
+    <string name="chinaplas_pay_str2">在線付款</string>
+
 
     <!-- logout -->
     <string name="logout_message">確認登出?</string>
@@ -205,6 +222,7 @@
     <string name="setting_privacy_policy">私隱政策聲明</string>
     <string name="setting_use_terms">使用條款</string>
     <string name="setting_share">分享</string>
+    <string name="share_setting_text">國際橡塑展手機應用程式已經開放下載！</string>
 
     <string name="logout_confirm_letter">是否注销确认信?</string>
 
@@ -247,33 +265,82 @@
     <string name="login_first_sync">需要登錄后才能同步，是否登錄？</string>
     <string name="title_new_tec_dtl">產品詳情</string>
 
-<!--    <string name="dialog_toast_delete">確認刪除？</string>-->
-<!--    <string name="dialog_confirm">確定</string>-->
-<!--    <string name="dialog_cancel">取消</string>-->
-<!--    <string name="toast_start_export">開始導出</string>-->
-<!--    <string name="toast_export_success">導出完成</string>-->
-<!--    <string name="favinfo_url">http://www.chinaplasonline.com/apps/2018/HTML/favinfo/EN.htm</string>-->
-<!--    <string name="dialog_go">前往</string>-->
-<!--    <string name="more">更多</string>-->
-<!--    <string name="card_save">存儲至通訊錄</string>-->
-<!--    <string name="update_map">更新</string>-->
-<!--    <string name="exception_toast_email">No email client installed.</string>-->
-<!--    <string name="exception_toast_phone">抱歉，您的設備不支持打電話。</string>-->
-<!--    <string name="select_Language">請選擇</string>-->
-<!--    <string name="title_setting">設置</string>-->
+    <string name="title_privacy">私隱政策聲明</string>
+    <string name="title_user_item">使用條款</string>
+
+    <string name="title_filter">展商篩選</string>
+    <string name="filter_all">全部</string>
+    <string name="filter_industry">產品類別</string>
+    <string name="filter_application">應用行業</string>
+    <string name="filter_country">國家/ 地區</string>
+    <string name="filter_hall">展館</string>
+    <string name="filter_booth">專區</string>
+    <string name="filter_keyword">關鍵字</string>
+    <string name="filter_topic_collection">主題專集</string>
+    <string name="filter_new_tech">新品技術</string>
+    <string name="filter_new_tec">新品及熱點技術</string>
+    <string name="filter_keyword_hint">輸入關鍵字</string>
+    <string name="filter_highlights">展會亮點</string>
+    <string name="hall_exhibitor_count">家展商</string>
+
+    <string name="filter_clear_all">清空篩選條件</string>
+    <string name="filter_ok">篩選</string>
+
+    <!--展商詳情-->
+    <string name="exhi_dtl_tab_about">關於</string>
+    <string name="add_my_exhibitor">加入我的參展商</string>
+    <string name="add_my_exhibitor_1">已加入我的參展商</string>
+    <string name="exhi_dtl_tab_info">公司簡介</string>
+    <string name="exhi_dtl_tab_industry">產品</string>
+    <string name="exhi_dtl_tab_application">應用行業</string>
+
+    <string name="exception_toast_email">No email client installed.</string>
+    <string name="exception_toast_phone">抱歉，您的設備不支持打電話。</string>
+    <string name="login_first_add_exhibitor">您需要登錄＂MyCHINAPLAS＂才能儲存展商紀錄到您的感興趣展商列表＂我的參展商＂。</string>
+
+
     <!--some titles-->
-<!--    <string name="title_event">同期活動</string>-->
-<!--    <string name="title_product_category">產品類別</string>-->
-<!--    <string name="title_application">應用行業</string>-->
-<!--    <string name="title_hall">展館</string>-->
-<!--    <string name="title_region">國家/地區</string>-->
-<!--    <string name="title_login">登錄</string>-->
-<!--    <string name="title_register">觀眾預登記</string>-->
-<!--    <string name="title_register_success">我的門票</string>-->
-<!--    <string name="title_news">最新消息</string>-->
-<!--    <string name="title_exhibitor">展商名單</string>-->
-<!--    <string name="title_new_tec">首發及熱點技術</string>-->
+    <!--    <string name="title_event">同期活動</string>-->
+    <!--    <string name="title_product_category">產品類別</string>-->
+    <!--    <string name="title_application">應用行業</string>-->
+    <!--    <string name="title_hall">展館</string>-->
+    <!--    <string name="title_region">國家/地區</string>-->
+    <!--    <string name="title_login">登錄</string>-->
+    <!--    <string name="title_register">觀眾預登記</string>-->
+    <!--    <string name="title_register_success">我的門票</string>-->
+    <!--    <string name="title_news">最新消息</string>-->
+    <!--    <string name="title_exhibitor">展商名單</string>-->
+    <!--    <string name="title_new_tec">首發及熱點技術</string>-->
+
+    <!-- subscribe -->
+    <string name="subscribe_str001">訂閱資料</string>
+    <string name="subscribe_str002">公司名稱</string>
+    <string name="subscribe_str003">姓名</string>
+    <string name="subscribe_str005">私隱政策聲明</string>
+    <string name="subscribe_str004">電郵</string>
+    <string name="subscribe_submit">遞交</string>
+    <string name="subscribe_reset">重置</string>
+    <string name="thx_dy">感謝您的訂閱</string>
+    <string name="subscribe_msg">正在提交數據，請稍候！</string>
+    <string name="subscribe_msg001">請輸入"觀眾姓名"</string>
+    <string name="subscribe_msg002">輸入觀眾姓名時，請不要輸入數位或符號！</string>
+    <string name="subscribe_msg003">請輸入"電郵"</string>
+    <string name="subscribe_msg004">請輸入有效的"電郵"</string>
+    <string name="subscribe_msg013">請輸入公司名稱！</string>
 
 
+    <!-- setting -->
+    <string name="ask_clear">你想重置所有資料為預設值嗎？</string>
+    <string name="yes">是</string>
+    <string name="no">否</string>
+
+    <!--我的参展商-->
+<!--    <string name="no_exhibitor">沒有展商資料</string>-->
+    <string name="no_schedule">暫無議程</string>
+    <string name="no_my_exhibitor">沒有收藏的參展商。 \n請到\"參展商名單\"添加參展商。</string>
+
+    <string name="today">今日</string>
+    <string name="yesterday">昨日</string>
+    <string name="past_records">過去</string>
 
 </resources>

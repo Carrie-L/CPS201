@@ -1,9 +1,6 @@
 package com.adsale.chinaplas.data.dao
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.adsale.chinaplas.data.entity.CountryJson
 
 /**
@@ -21,5 +18,8 @@ interface FileControlDao {
 
     @Query("select * from FileControl")
     fun getFileControls(): List<FileControl>
+
+    @Update(onConflict = OnConflictStrategy.REPLACE)
+    fun updateFileControlItemTime(entity: FileControl)
 
 }

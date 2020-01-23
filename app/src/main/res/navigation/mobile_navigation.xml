@@ -12,11 +12,9 @@
         android:name="com.adsale.chinaplas.ui.home.HomeFragment"
         tools:layout="@layout/fragment_home">
         <action
-            android:id="@+id/action_nav_home_to_exhibitorDetailFragment"
-            app:destination="@id/exhibitorDetailFragment" />
-        <action
             android:id="@+id/action_nav_home_to_menu_exhibitors"
-            app:destination="@id/menu_exhibitors" />
+            app:destination="@id/menu_exhibitors"
+            app:launchSingleTop="true" />
         <action
             android:id="@+id/action_nav_home_to_registerActivity"
             app:destination="@id/registerActivity" />
@@ -51,13 +49,17 @@
         android:id="@+id/nav_subscribe"
         android:name="com.adsale.chinaplas.ui.drawer.SubscribeFragment"
         android:label="@string/menu_subscribe"
-        tools:layout="@layout/fragment_slideshow" />
+        tools:layout="@layout/fragment_follow">
+        <action
+            android:id="@+id/action_nav_subscribe_to_webContentFragment"
+            app:destination="@id/webContentFragment" />
+    </fragment>
 
-    <fragment
-        android:id="@+id/nav_calendar"
-        android:name="com.adsale.chinaplas.ui.drawer.SubscribeFragment"
-        android:label="@string/menu_calendar"
-        tools:layout="@layout/fragment_setting" />
+    <!--    <fragment-->
+    <!--        android:id="@+id/nav_calendar"-->
+    <!--        android:name="com.adsale.chinaplas.ui.drawer.SubscribeFragment"-->
+    <!--        android:label="@string/menu_calendar"-->
+    <!--        tools:layout="@layout/fragment_setting" />-->
 
     <fragment
         android:id="@+id/nav_follow"
@@ -65,27 +67,57 @@
         android:label="@string/menu_follow"
         tools:layout="@layout/fragment_share" />
 
-    <fragment
-        android:id="@+id/nav_guide"
-        android:name="com.adsale.chinaplas.ui.drawer.SubscribeFragment"
-        android:label="@string/menu_guide"
-        tools:layout="@layout/fragment_send" />
+    <!--    <fragment-->
+    <!--        android:id="@+id/nav_guide"-->
+    <!--        android:name="com.adsale.chinaplas.ui.drawer.SubscribeFragment"-->
+    <!--        android:label="@string/menu_guide"-->
+    <!--        tools:layout="@layout/fragment_send" />-->
 
     <fragment
         android:id="@+id/nav_setting"
         android:name="com.adsale.chinaplas.ui.drawer.SettingFragment"
         android:label="@string/menu_setting"
-        tools:layout="@layout/fragment_send" />
+        tools:layout="@layout/fragment_send">
+        <action
+            android:id="@+id/action_nav_setting_to_webContentFragment"
+            app:destination="@id/webContentFragment" />
+    </fragment>
     <fragment
         android:id="@+id/exhibitorDetailFragment"
         android:name="com.adsale.chinaplas.ui.exhibitors.ExhibitorDetailFragment"
         android:label="@string/title_company_info"
-        tools:layout="@layout/fragment_exhibitor_detail2" />
+        tools:layout="@layout/fragment_exhibitor_detail2">
+        <argument
+            android:name="companyID"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_exhibitorDetailFragment_to_exhibitorListFragment"
+            app:destination="@id/exhibitorListFragment" />
+    </fragment>
     <fragment
         android:id="@+id/menu_exhibitors"
         android:name="com.adsale.chinaplas.ui.exhibitors.ExhibitorFilterFragment"
         android:label="@string/title_exhibitor_list"
-        tools:layout="@layout/fragment_exhibitor_filter" />
+        tools:layout="@layout/fragment_exhibitor_filter">
+        <action
+            android:id="@+id/action_menu_exhibitors_to_filterApplicationFragment"
+            app:destination="@id/filterApplicationFragment" />
+        <action
+            android:id="@+id/action_menu_exhibitors_to_filterHallFragment"
+            app:destination="@id/filterHallFragment" />
+        <action
+            android:id="@+id/action_menu_exhibitors_to_filterIndustryFragment"
+            app:destination="@id/filterIndustryFragment" />
+        <action
+            android:id="@+id/action_menu_exhibitors_to_filterRegionFragment"
+            app:destination="@id/filterRegionFragment" />
+        <action
+            android:id="@+id/action_menu_exhibitors_to_filterZoneFragment"
+            app:destination="@id/filterZoneFragment" />
+        <action
+            android:id="@+id/action_menu_exhibitors_to_exhibitorListFragment"
+            app:destination="@id/exhibitorListFragment" />
+    </fragment>
     <fragment
         android:id="@+id/menu_floor"
         android:name="com.adsale.chinaplas.ui.floorplan.MapFragment"
@@ -123,6 +155,10 @@
         <action
             android:id="@+id/action_registerFragment_to_registerWebsiteFragment2"
             app:destination="@id/registerWebsiteFragment" />
+        <argument
+            android:name="phoneNo"
+            app:argType="string" />
+        <argument android:name="email" />
     </fragment>
     <dialog
         android:id="@+id/regPickDialog"
@@ -150,11 +186,11 @@
         <action
             android:id="@+id/action_registerPreFragment_to_registerFragment"
             app:destination="@id/registerFragment" />
-<!--        <argument-->
-<!--            android:name="title"-->
-<!--            android:defaultValue="@string/title_register"-->
-<!--            app:argType="string"-->
-<!--            app:nullable="true" />-->
+        <!--        <argument-->
+        <!--            android:name="title"-->
+        <!--            android:defaultValue="@string/title_register"-->
+        <!--            app:argType="string"-->
+        <!--            app:nullable="true" />-->
     </fragment>
     <fragment
         android:id="@+id/registerWebsiteFragment"
@@ -171,12 +207,15 @@
         <action
             android:id="@+id/action_registerWebsiteFragment_to_nav_home"
             app:destination="@id/nav_home" />
+        <argument
+            android:name="isRegister"
+            app:argType="boolean" />
     </fragment>
     <fragment
         android:id="@+id/myChinaplasFragment"
-        android:name="com.adsale.chinaplas.ui.tools.MyChinaplasFragment"
+        android:name="com.adsale.chinaplas.ui.tools.mychinaplas.MyChinaplasFragment"
         android:label="@string/title_my_chinaplas"
-        tools:layout="@layout/fragment_my_chinaplas" >
+        tools:layout="@layout/fragment_my_chinaplas">
         <action
             android:id="@+id/action_myChinaplasFragment_to_menu_tool"
             app:destination="@id/menu_tool" />
@@ -192,7 +231,7 @@
     <fragment
         android:id="@+id/generalInfoFragment"
         android:name="com.adsale.chinaplas.ui.webcontent.GeneralInfoFragment"
-        android:label="fragment_general_info"
+        android:label="@string/title_general_info"
         tools:layout="@layout/fragment_general_info">
         <argument
             android:name="baiduTJ"
@@ -216,7 +255,7 @@
         android:id="@+id/webContentFragment"
         android:name="com.adsale.chinaplas.ui.webcontent.WebContentFragment"
         android:label="fragment_web_content"
-        tools:layout="@layout/fragment_web_content" >
+        tools:layout="@layout/fragment_web_content">
         <argument
             android:name="pageID"
             app:argType="string"
@@ -228,17 +267,21 @@
     </fragment>
     <fragment
         android:id="@+id/myChinaplasLoginFragment"
-        android:name="com.adsale.chinaplas.ui.tools.MyChinaplasLoginFragment"
-        android:label="@string/title_my_chinaplas" />
+        android:name="com.adsale.chinaplas.ui.tools.mychinaplas.MyChinaplasLoginFragment"
+        android:label="@string/title_my_chinaplas">
+        <action
+            android:id="@+id/action_myChinaplasLoginFragment_to_menu_tool"
+            app:destination="@id/menu_tool" />
+    </fragment>
     <fragment
         android:id="@+id/loginSMSFragment"
-        android:name="com.adsale.chinaplas.ui.tools.LoginSMSFragment"
+        android:name="com.adsale.chinaplas.ui.tools.mychinaplas.LoginSMSFragment"
         android:label="LoginSMSFragment" />
     <fragment
         android:id="@+id/webViewFragment"
         android:name="com.adsale.chinaplas.ui.webcontent.WebViewFragment"
         android:label="fragment_web_view"
-        tools:layout="@layout/fragment_web_view" >
+        tools:layout="@layout/fragment_web_view">
         <argument
             android:name="url"
             app:argType="string" />
@@ -250,10 +293,143 @@
     <fragment
         android:id="@+id/exhibitorListFragment"
         android:name="com.adsale.chinaplas.ui.exhibitors.ExhibitorListFragment"
-        android:label="ExhibitorListFragment" />
+        android:label="@string/title_exhibitor_list"
+        tools:layout="@layout/fragment_exhibitor_list">
+        <argument
+            android:name="key"
+            app:argType="string" />
+        <argument
+            android:name="value"
+            app:argType="string"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_exhibitorListFragment_to_menu_exhibitors"
+            app:destination="@id/menu_exhibitors"
+            app:launchSingleTop="true" />
+        <action
+            android:id="@+id/action_exhibitorListFragment_to_exhibitorDetailFragment"
+            app:destination="@id/exhibitorDetailFragment"
+            app:launchSingleTop="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/filterApplicationFragment"
+        android:name="com.adsale.chinaplas.ui.exhibitors.FilterApplicationFragment"
+        android:label="@string/filter_application"
+        tools:layout="@layout/fragment_filter_application">
+        <argument
+            android:name="type"
+            app:argType="string"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_filterApplicationFragment_to_menu_exhibitors"
+            app:destination="@id/menu_exhibitors" />
+    </fragment>
+    <fragment
+        android:id="@+id/filterHallFragment"
+        android:name="com.adsale.chinaplas.ui.exhibitors.FilterHallFragment"
+        android:label="@string/filter_hall"
+        tools:layout="@layout/fragment_filter_hall">
+        <action
+            android:id="@+id/action_filterHallFragment_to_menu_exhibitors"
+            app:destination="@id/menu_exhibitors" />
+    </fragment>
+    <fragment
+        android:id="@+id/filterIndustryFragment"
+        android:name="com.adsale.chinaplas.ui.exhibitors.FilterIndustryFragment"
+        android:label="@string/filter_industry"
+        tools:layout="@layout/fragment_filter_industry">
+        <action
+            android:id="@+id/action_filterIndustryFragment_to_menu_exhibitors"
+            app:destination="@id/menu_exhibitors" />
+    </fragment>
+    <fragment
+        android:id="@+id/filterRegionFragment"
+        android:name="com.adsale.chinaplas.ui.exhibitors.FilterRegionFragment"
+        android:label="@string/filter_country"
+        tools:layout="@layout/fragment_filter_region" />
+    <fragment
+        android:id="@+id/filterZoneFragment"
+        android:name="com.adsale.chinaplas.ui.exhibitors.FilterZoneFragment"
+        android:label="@string/filter_booth"
+        tools:layout="@layout/fragment_filter_zone">
+        <action
+            android:id="@+id/action_filterZoneFragment_to_menu_exhibitors"
+            app:destination="@id/menu_exhibitors" />
+    </fragment>
+    <fragment
+        android:id="@+id/testFragment"
+        android:name="com.adsale.chinaplas.ui.TestFragment"
+        android:label="TestFragment" />
+    <fragment
+        android:id="@+id/dtlApplicationFragment"
+        android:name="com.adsale.chinaplas.ui.exhibitors.DtlApplicationFragment"
+        android:label="fragment_dtl_application"
+        tools:layout="@layout/fragment_dtl_application" />
+    <fragment
+        android:id="@+id/dtlAboutFragment"
+        android:name="com.adsale.chinaplas.ui.exhibitors.DtlAboutFragment"
+        android:label="fragment_dtl_about"
+        tools:layout="@layout/fragment_dtl_about" />
+    <fragment
+        android:id="@+id/dtlInfoFragment"
+        android:name="com.adsale.chinaplas.ui.exhibitors.DtlInfoFragment"
+        android:label="fragment_dtl_info"
+        tools:layout="@layout/fragment_dtl_info" />
+    <fragment
+        android:id="@+id/dtlIndustryFragment"
+        android:name="com.adsale.chinaplas.ui.exhibitors.DtlIndustryFragment"
+        android:label="fragment_dtl_industry"
+        tools:layout="@layout/fragment_dtl_industry" />
+    <fragment
+        android:id="@+id/myLoginedFragment"
+        android:name="com.adsale.chinaplas.ui.tools.mychinaplas.MyLoginedFragment"
+        android:label="@string/cps_my_info"
+        tools:layout="@layout/my_logined_fragment">
+        <action
+            android:id="@+id/action_myLoginedFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/action_myLoginedFragment_to_registerWebsiteFragment"
+            app:destination="@id/registerWebsiteFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/myExhibitorFragment"
+        android:name="com.adsale.chinaplas.ui.tools.MyExhibitorFragment"
+        android:label="@string/tool_my_exhibitor">
+        <action
+            android:id="@+id/action_myExhibitorFragment_to_exhibitorDetailFragment"
+            app:destination="@id/exhibitorDetailFragment" />
+        <action
+            android:id="@+id/action_myExhibitorFragment_to_filterHallFragment"
+            app:destination="@id/filterHallFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editScheduleFragment"
+        android:name="com.adsale.chinaplas.ui.tools.EditScheduleFragment"
+        android:label="@string/edit_schedule"
+        tools:layout="@layout/fragment_edit_schedule" />
+    <fragment
+        android:id="@+id/myScheduleFragment"
+        android:name="com.adsale.chinaplas.ui.tools.MyScheduleFragment"
+        android:label="@string/tool_my_schedule"
+        tools:layout="@layout/my_schedule_fragment" />
+    <fragment
+        android:id="@+id/exhibitorHistotyFragment"
+        android:name="com.adsale.chinaplas.ui.tools.ExhibitorHistoryFragment"
+        android:label="@string/tool_exhibitor_history"
+        tools:layout="@layout/list_exhibitor_history" >
+        <action
+            android:id="@+id/action_exhibitorHistotyFragment_to_exhibitorDetailFragment"
+            app:destination="@id/exhibitorDetailFragment" />
+    </fragment>
     <!--    <activity-->
     <!--        android:id="@+id/main2Activity"-->
     <!--        android:name="com.adsale.chinaplas.ui.test.Main2Activity"-->
     <!--        android:label="activity_main2"-->
     <!--        tools:layout="@layout/activity_main2" />-->
+
+
+
+
+
 </navigation>

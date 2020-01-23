@@ -25,23 +25,39 @@ import java.io.InputStreamReader
  * exhibitor.csv
  * <font color="#f97798">exhibitorDes.csv</font>
  */
-class CSVHelper private constructor(private val exhibitorDao: ExhibitorDao) {
+class CSVHelper private constructor(private val exhibitorDao: ExhibitorDao,
+                                    private val applicationDao: ApplicationDao,
+                                    private val industryDao: IndustryDao,
+                                    private val regionDao: RegionDao,
+                                    private val hallDao: HallDao,
+                                    private val zoneDao: ZoneDao) {
 
     companion object {
         @Volatile
         private var instance: CSVHelper? = null
 
-        fun getInstance(exhibitorDao: ExhibitorDao) =
+        fun getInstance(exhibitorDao: ExhibitorDao,
+                        applicationDao: ApplicationDao,
+                        industryDao: IndustryDao,
+                        regionDao: RegionDao,
+                        hallDao: HallDao,
+                        zoneDao: ZoneDao) =
             instance ?: synchronized(this) {
-                instance ?: CSVHelper(exhibitorDao).also { instance = it }
+                instance ?: CSVHelper(exhibitorDao,
+                    applicationDao,
+                    industryDao,
+                    regionDao,
+                    hallDao,
+                    zoneDao).also { instance = it }
             }
     }
 
-    suspend fun processExhibitorCsv() {
+    private var isExhibitorParseSuccess = true
+    suspend fun processExhibitorCsv(): Boolean {
         val startTime = System.currentTimeMillis()
         i("processExhibitorCsv......")
         withContext(Dispatchers.IO) {
-            readExhApplicationCSV("${rootDir}ExhibitorData/ExhApplication.csv")
+            readExhApplicationCSV("${rootDir}ExhibitorData/Application.csv")
             readCompanyApplicationCSV("${rootDir}ExhibitorData/CompanyApplication.csv")
             readCompanyProductCSV("${rootDir}ExhibitorData/CompanyProduct.csv")
             readExhIndustryCSV("${rootDir}ExhibitorData/Product.csv")
@@ -50,9 +66,11 @@ class CSVHelper private constructor(private val exhibitorDao: ExhibitorDao) {
             readExhibitorZoneCSV("${rootDir}ExhibitorData/ExhibitorZone.csv")
             readZoneCSV("${rootDir}ExhibitorData/Zone.csv")
             readCountryCSV("${rootDir}ExhibitorData/Country.csv")
+            readHallCSV("${rootDir}ExhibitorData/Hall.csv")
             val endTime = System.currentTimeMillis()
             i("processExhibitorCsv 导入完成：" + (endTime - startTime) + "ms")
         }
+        return isExhibitorParseSuccess
     }
 
     fun readExhibitorCSV(exhibitorPath: String, descPath: String) {
@@ -69,10 +87,12 @@ class CSVHelper private constructor(private val exhibitorDao: ExhibitorDao) {
             var line = reader.readNext()
             while (line != null) {
                 line = reader.readNext()
+                if (line == null) {
+                    break
+                }
                 entity = Exhibitor()
                 entity.parseExhibitor(line)
                 entity = processExhibitorSeq(entity)
-                LogUtil.i("entity=$entity")
                 entities.add(entity)
             }
         } catch (e: Exception) {
@@ -82,11 +102,11 @@ class CSVHelper private constructor(private val exhibitorDao: ExhibitorDao) {
             streamExhibitor.close()
         }
         val endTime = System.currentTimeMillis()
-        i("readExhibitorCSV 花费时间: ${(endTime - startTime)} ms ")
+        i("readExhibitorCSV 花费时间: ${(endTime - startTime)} ms , ${entities.size}")
 
         if (File(descPath).exists()) {
             readExhibitorDescCSV(descPath, entities)
-        }else{
+        } else {
             exhibitorDao.deleteExhibitorAll()
             exhibitorDao.insertExhibitorAll(entities)
         }
@@ -130,6 +150,9 @@ class CSVHelper private constructor(private val exhibitorDao: ExhibitorDao) {
             var line = reader.readNext()
             while (line != null) {
                 line = reader.readNext()
+                if (line == null) {
+                    break
+                }
                 entity = Exhibitor()
                 entity.parseDescription(line)
                 entities.add(entity)
@@ -187,6 +210,9 @@ class CSVHelper private constructor(private val exhibitorDao: ExhibitorDao) {
             var line = reader.readNext()
             while (line != null) {
                 line = reader.readNext()
+                if (line == null) {
+                    break
+                }
                 entity = ExhApplication()
                 entity.parser(line)
                 entities.add(entity)
@@ -194,15 +220,16 @@ class CSVHelper private constructor(private val exhibitorDao: ExhibitorDao) {
         } catch (e: Exception) {
             e.printStackTrace()
             LogUtil.e(e)
+            isExhibitorParseSuccess = false
         } finally {
             ins?.close()
         }
         val endTime = System.currentTimeMillis()
 
-        exhibitorDao.deleteApplicationAll()
-        exhibitorDao.insertApplicationAll(entities)
+        applicationDao.deleteApplicationAll()
+        applicationDao.insertApplicationAll(entities)
 
-        i("readExhApplicationCSV 花费时间: ${(endTime - startTime)} ms ")
+        i("readExhApplicationCSV 花费时间: ${(endTime - startTime)} ms , ${entities.size} ")
     }
 
     private fun readCompanyApplicationCSV(absPath: String) {
@@ -219,6 +246,9 @@ class CSVHelper private constructor(private val exhibitorDao: ExhibitorDao) {
             var line = reader.readNext()
             while (line != null) {
                 line = reader.readNext()
+                if (line == null) {
+                    break
+                }
                 entity = CompanyApplication()
                 entity.parser(line)
                 entities.add(entity)
@@ -226,15 +256,16 @@ class CSVHelper private constructor(private val exhibitorDao: ExhibitorDao) {
         } catch (e: Exception) {
             e.printStackTrace()
             LogUtil.e(e)
+            isExhibitorParseSuccess = false
         } finally {
             ins?.close()
         }
         val endTime = System.currentTimeMillis()
 
-        exhibitorDao.deleteCompanyApplicationAll()
-        exhibitorDao.insertCompanyApplicationAll(entities)
+        applicationDao.deleteCompanyApplicationAll()
+        applicationDao.insertCompanyApplicationAll(entities)
 
-        i("readCompanyApplicationCSV 花费时间: ${(endTime - startTime)} ms ")
+        i("readCompanyApplicationCSV 花费时间: ${(endTime - startTime)} ms , ${entities.size} ")
     }
 
     private fun readCompanyProductCSV(absPath: String) {
@@ -251,6 +282,9 @@ class CSVHelper private constructor(private val exhibitorDao: ExhibitorDao) {
             var line = reader.readNext()
             while (line != null) {
                 line = reader.readNext()
+                if (line == null) {
+                    break
+                }
                 entity = CompanyProduct()
                 entity.parser(line)
                 entities.add(entity)
@@ -258,15 +292,16 @@ class CSVHelper private constructor(private val exhibitorDao: ExhibitorDao) {
         } catch (e: Exception) {
             e.printStackTrace()
             LogUtil.e(e)
+            isExhibitorParseSuccess = false
         } finally {
             ins?.close()
         }
         val endTime = System.currentTimeMillis()
 
-        exhibitorDao.deleteCompanyProductAll()
-        exhibitorDao.insertCompanyProductAll(entities)
+        industryDao.deleteCompanyProductAll()
+        industryDao.insertCompanyProductAll(entities)
 
-        i("readCompanyApplicationCSV 花费时间: ${(endTime - startTime)} ms ")
+        i("readCompanyApplicationCSV 花费时间: ${(endTime - startTime)} ms  , ${entities.size}")
     }
 
     private fun readExhIndustryCSV(absPath: String) {
@@ -283,6 +318,9 @@ class CSVHelper private constructor(private val exhibitorDao: ExhibitorDao) {
             var line = reader.readNext()
             while (line != null) {
                 line = reader.readNext()
+                if (line == null) {
+                    break
+                }
                 entity = ExhIndustry()
                 entity.parser(line)
                 entities.add(entity)
@@ -290,15 +328,16 @@ class CSVHelper private constructor(private val exhibitorDao: ExhibitorDao) {
         } catch (e: Exception) {
             e.printStackTrace()
             LogUtil.e(e)
+            isExhibitorParseSuccess = false
         } finally {
             ins?.close()
         }
         val endTime = System.currentTimeMillis()
 
-        exhibitorDao.deleteIndustryAll()
-        exhibitorDao.insertIndustryAll(entities)
+        industryDao.deleteIndustryAll()
+        industryDao.insertIndustryAll(entities)
 
-        i("readExhIndustryCSV 花费时间: ${(endTime - startTime)} ms ")
+        i("readExhIndustryCSV 花费时间: ${(endTime - startTime)} ms , ${entities.size} ")
     }
 
     private fun readExhibitorZoneCSV(absPath: String) {
@@ -315,6 +354,9 @@ class CSVHelper private constructor(private val exhibitorDao: ExhibitorDao) {
             var line = reader.readNext()
             while (line != null) {
                 line = reader.readNext()
+                if (line == null) {
+                    break
+                }
                 entity = ExhibitorZone()
                 entity.parser(line)
                 entities.add(entity)
@@ -322,15 +364,16 @@ class CSVHelper private constructor(private val exhibitorDao: ExhibitorDao) {
         } catch (e: Exception) {
             e.printStackTrace()
             LogUtil.e(e)
+            isExhibitorParseSuccess = false
         } finally {
             ins?.close()
         }
         val endTime = System.currentTimeMillis()
 
-        exhibitorDao.deleteExhibitorZoneAll()
-        exhibitorDao.insertExhibitorZoneAll(entities)
+        zoneDao.deleteExhibitorZoneAll()
+        zoneDao.insertExhibitorZoneAll(entities)
 
-        i("readExhibitorZoneCSV 花费时间: ${(endTime - startTime)} ms ")
+        i("readExhibitorZoneCSV 花费时间: ${(endTime - startTime)} ms  , ${entities.size}")
     }
 
     private fun readZoneCSV(absPath: String) {
@@ -347,6 +390,9 @@ class CSVHelper private constructor(private val exhibitorDao: ExhibitorDao) {
             var line = reader.readNext()
             while (line != null) {
                 line = reader.readNext()
+                if (line == null) {
+                    break
+                }
                 entity = Zone()
                 entity.parser(line)
                 entities.add(entity)
@@ -354,15 +400,52 @@ class CSVHelper private constructor(private val exhibitorDao: ExhibitorDao) {
         } catch (e: Exception) {
             e.printStackTrace()
             LogUtil.e(e)
+            isExhibitorParseSuccess = false
         } finally {
             ins?.close()
         }
         val endTime = System.currentTimeMillis()
 
-        exhibitorDao.deleteZoneAll()
-        exhibitorDao.insertZoneAll(entities)
+        zoneDao.deleteZoneAll()
+        zoneDao.insertZoneAll(entities)
 
-        i("readZoneCSV 花费时间: ${(endTime - startTime)} ms ")
+        i("readZoneCSV 花费时间: ${(endTime - startTime)} ms , ${entities.size} ")
+    }
+
+    private fun readHallCSV(absPath: String) {
+        if (!File(absPath).exists()) {
+            return
+        }
+        val startTime = System.currentTimeMillis()
+        val entities = ArrayList<Hall>()
+        var entity: Hall
+        val reader: CSVReader
+        val ins = getFileInputStream(absPath)
+        try {
+            reader = CSVReader(InputStreamReader(ins, "UTF8"))
+            var line = reader.readNext()
+            while (line != null) {
+                line = reader.readNext()
+                if (line == null) {
+                    break
+                }
+                entity = Hall()
+                entity.parser(line)
+                entities.add(entity)
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+            LogUtil.e(e)
+            isExhibitorParseSuccess = false
+        } finally {
+            ins?.close()
+        }
+        val endTime = System.currentTimeMillis()
+
+        hallDao.deleteHallAll()
+        hallDao.insertHallAll(entities)
+
+        i("readZoneCSV 花费时间: ${(endTime - startTime)} ms , ${entities.size} ")
     }
 
     private fun readCountryCSV(absPath: String) {
@@ -379,6 +462,9 @@ class CSVHelper private constructor(private val exhibitorDao: ExhibitorDao) {
             var line = reader.readNext()
             while (line != null) {
                 line = reader.readNext()
+                if (line == null) {
+                    break
+                }
                 entity = Country()
                 entity.parser(line)
                 entities.add(entity)
@@ -386,15 +472,16 @@ class CSVHelper private constructor(private val exhibitorDao: ExhibitorDao) {
         } catch (e: Exception) {
             e.printStackTrace()
             LogUtil.e(e)
+            isExhibitorParseSuccess = false
         } finally {
             ins?.close()
         }
         val endTime = System.currentTimeMillis()
 
-        exhibitorDao.deleteCountryAll()
-        exhibitorDao.insertCountryAll(entities)
+        regionDao.deleteCountryAll()
+        regionDao.insertCountryAll(entities)
 
-        i("readCountryCSV 花费时间: ${(endTime - startTime)} ms ")
+        i("readCountryCSV 花费时间: ${(endTime - startTime)} ms , ${entities.size} ")
     }
 
 

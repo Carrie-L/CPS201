@@ -35,44 +35,44 @@
             android:layout_marginTop="0dp"
             android:drawableTop="@drawable/ic_tool_my_cps"
             android:text="@string/my_cps"
-            app:layout_constraintEnd_toStartOf="@+id/tv_my_exhibitor"
+            app:layout_constraintEnd_toStartOf="@+id/tv_my_schedule"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <!--        <TextView-->
+        <!--            android:id="@+id/tv_my_exhibitor"-->
+        <!--            style="@style/cps_tv_style"-->
+        <!--            android:layout_marginStart="16dp"-->
+        <!--            android:layout_marginTop="0dp"-->
+        <!--            android:drawableTop="@drawable/ic_tool_my_exhibitor"-->
+        <!--            android:text="@string/tool_my_exhibitor"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintHorizontal_bias="0.5"-->
+        <!--            app:layout_constraintStart_toEndOf="@+id/tv_my_cps"-->
+        <!--            app:layout_constraintTop_toTopOf="parent" />-->
+
         <TextView
-            android:id="@+id/tv_my_exhibitor"
+            android:id="@+id/tv_my_schedule"
             style="@style/cps_tv_style"
             android:layout_marginStart="16dp"
             android:layout_marginTop="0dp"
-            android:drawableTop="@drawable/ic_tool_my_exhibitor"
-            android:text="@string/tool_my_exhibitor"
+            android:background="@drawable/bg_button_cps"
+            android:drawableTop="@drawable/ic_tool_my_schedule"
+            android:text="@string/tool_my_schedule"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/tv_my_cps"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tv_my_schedule"
-            style="@style/cps_tv_style"
-            android:background="@drawable/bg_button_cps"
-            android:drawableTop="@drawable/ic_tool_my_schedule"
-            android:text="@string/tool_my_schedule"
-            app:layout_constraintEnd_toStartOf="@+id/tv_exhibitor_history"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_my_cps" />
-
-        <TextView
             android:id="@+id/tv_exhibitor_history"
             style="@style/cps_tv_style"
-            android:layout_marginStart="16dp"
             android:background="@drawable/bg_button_cps"
             android:drawableTop="@drawable/ic_tool_history"
             android:text="@string/tool_exhibitor_history"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/tv_my_schedule"
+            app:layout_constraintEnd_toEndOf="@id/tv_my_cps"
+            app:layout_constraintStart_toStartOf="@id/tv_my_cps"
             app:layout_constraintTop_toBottomOf="@id/tv_my_cps" />
 
 

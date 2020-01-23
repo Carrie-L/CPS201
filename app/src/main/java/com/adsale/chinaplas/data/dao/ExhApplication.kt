@@ -1,13 +1,19 @@
 package com.adsale.chinaplas.data.dao
 
+import androidx.databinding.ObservableBoolean
 import androidx.room.Entity
+import androidx.room.Ignore
 import androidx.room.PrimaryKey
+import com.adsale.chinaplas.utils.LANG_EN
+import com.adsale.chinaplas.utils.LANG_TC
+import com.adsale.chinaplas.utils.getCurrLanguage
+import com.adsale.chinaplas.utils.getName
 
 /**
  * Created by Carrie on 2020/1/7.
  */
 @Entity
-class ExhApplication constructor(){
+class ExhApplication constructor() {
     @PrimaryKey
     var IndustryID: String = ""
     var ApplicationEng: String? = ""
@@ -16,13 +22,24 @@ class ExhApplication constructor(){
     var TCStroke: String? = ""
     var SCPY: String? = ""
 
+    @Ignore
+    var isSelected = ObservableBoolean(false)
+
+    fun getApplicationName(): String {
+        return when (getCurrLanguage()) {
+            LANG_EN -> ApplicationEng!!
+            LANG_TC -> ApplicationTC!!
+            else -> ApplicationSC!!
+        }
+    }
+
 
     constructor(IndustryID: String,
                 ApplicationEng: String?,
                 ApplicationTC: String?,
                 ApplicationSC: String?,
                 TCStroke: String?,
-                SCPY: String?):this() {
+                SCPY: String?) : this() {
         this.IndustryID = IndustryID
         this.ApplicationEng = ApplicationEng
         this.ApplicationTC = ApplicationTC

@@ -1,20 +1,20 @@
 package com.adsale.chinaplas.ui.home
 
 import android.content.Context
-import android.content.Intent
+import android.content.DialogInterface
 import android.content.pm.ActivityInfo
-import android.graphics.Color
+import android.content.res.Configuration
 import android.os.Build
 import android.os.Bundle
-import android.os.LocaleList
-import android.view.*
-import android.view.View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-import android.view.View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+import android.view.Gravity
+import android.view.Menu
+import android.view.MenuItem
+import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.constraintlayout.widget.ConstraintSet
+import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.Observer
@@ -25,17 +25,20 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.adsale.chinaplas.R
 import com.adsale.chinaplas.data.dao.CpsDatabase
 import com.adsale.chinaplas.data.dao.MainIconRepository
 import com.adsale.chinaplas.databinding.ActivityMainBinding
+import com.adsale.chinaplas.helper.CalendarHelper
 import com.adsale.chinaplas.mSPConfig
+import com.adsale.chinaplas.ui.view.HelpView
 import com.adsale.chinaplas.utils.*
 import com.adsale.chinaplas.utils.LogUtil.i
 import com.adsale.chinaplas.viewmodels.MainViewModel
 import com.adsale.chinaplas.viewmodels.MainViewModelFactory
 import com.google.android.material.navigation.NavigationView
-import java.util.*
 
 
 /**
@@ -102,16 +105,16 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        LogUtil.i("MainActivity onCreate")
+        i("MainActivity onCreate")
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.lifecycleOwner = this
         binding.mainViewModel = mainViewModel
 
-//        initView()
-//        initData()
 
         drawerLayout = binding.drawerLayout
         navView = binding.navView
+
+
         oldLanguage = getCurrLanguage()
         init()
         initMainToolbar()
@@ -137,7 +140,7 @@ class MainActivity : AppCompatActivity() {
 //        getScreenSize()
         setLogoSize()
         initBackMenu()
-        LogUtil.i("init()")
+        i("init()")
 
 
         setupTablet()
@@ -167,15 +170,20 @@ class MainActivity : AppCompatActivity() {
 
     private fun bottomNav() {
         binding.main.content.bottomNav.setOnNavigationItemSelectedListener { menuItem ->
-            LogUtil.i("bottomNav: ${menuItem.title}")
+            i("bottomNav: ${menuItem.title}")
 
             when (menuItem.itemId) {
-                R.id.menu_home -> navController.navigate(R.id.nav_home)
-                R.id.menu_exhibitors -> navController.navigate(R.id.menu_exhibitors)
-//                R.id.menu_exhibitors -> navController.navigate(R.id.registerFragment)
-//                R.id.menu_exhibitors -> navController.navigate(R.id.registerActivity)
+                R.id.menu_home -> {
+                    navigateToHome()
+                }
+                R.id.menu_exhibitors -> {
+//                    navController.popBackStack(R.id.menu_exhibitors, false)
+                    navController.navigate(R.id.menu_exhibitors)
+                }
                 R.id.menu_floor -> navController.navigate(R.id.menu_floor)
                 R.id.menu_tool -> navController.navigate(R.id.menu_tool)
+//                R.id.menu_floor -> navController.popBackStack(R.id.menu_floor, true)
+//                R.id.menu_tool -> navController.popBackStack(R.id.menu_tool, true)
             }
             true
         }
@@ -191,9 +199,10 @@ class MainActivity : AppCompatActivity() {
 
 
         mainViewModel.backClicked.observe(this, Observer { click ->
+            mainViewModel.isChangeRightIcon.value = false
+//            mainViewModel.backRoad.value = BACK_DEFAULT
             if (click) {
-                LogUtil.i("backClicked 1")
-                navController.popBackStack()  // back
+                back()
             }
         })
 
@@ -206,10 +215,10 @@ class MainActivity : AppCompatActivity() {
 //        }
 //        actionMenuView.setOnMenuItemClickListener(mainViewModel.backListener)
 
-        actionMenuView.setOnMenuItemClickListener(androidx.appcompat.widget.ActionMenuView.OnMenuItemClickListener {
+        actionMenuView.setOnMenuItemClickListener {
             mainViewModel.backClicked.value = true
             true
-        })
+        }
 
     }
 
@@ -242,7 +251,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun initPhoneSearchSize(logoH: Int, top: Int) {
         val h: Int = (0.05 * getDisplayHeight()).toInt()
-        LogUtil.i("logo h = $h")
+        i("logo h = $h")
         val param = RelativeLayout.LayoutParams(getScreenWidth(), h)
         param.marginStart = dp2px(24f)
         param.marginEnd = dp2px(24f)
@@ -278,6 +287,7 @@ class MainActivity : AppCompatActivity() {
         try {
             menu?.findItem(R.id.action_calendar)?.isVisible = true
             menu?.findItem(R.id.action_home)?.isVisible = false
+            menu?.findItem(R.id.action_ok)?.isVisible = false
 
             mainViewModel.isInnerIntent.observe(this, Observer { isInner ->
                 if (isInner) {
@@ -299,9 +309,24 @@ class MainActivity : AppCompatActivity() {
 
         mainViewModel.title.value = supportActionBar?.title.toString()
         toolbar.title = ""   // 只显示自己添加的TextView的Title，不显示toolbar的title
+        setInnerMenuVisible()
 
+        mainViewModel.isChangeRightIcon.observe(this, Observer { change ->
+            i("isChangeRightIcon=$change")
+            if (change) {
+                menu?.findItem(R.id.action_calendar)?.isVisible = false
+                menu?.findItem(R.id.action_home)?.isVisible = false
+                menu?.findItem(R.id.action_ok)?.isVisible = true
+            } else {
+                setInnerMenuVisible()
+            }
+        })
+    }
+
+    private fun setInnerMenuVisible() {
         menu?.findItem(R.id.action_calendar)?.isVisible = false
         menu?.findItem(R.id.action_home)?.isVisible = true
+        menu?.findItem(R.id.action_ok)?.isVisible = false
     }
 
     private fun setToolbarSize(imgHeight: Int) {
@@ -337,8 +362,53 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    private fun initDrawerHeader() {
+        val headerLayout = navView.inflateHeaderView(R.layout.nav_header_main)
+//        val headBinding = NavHeaderMainBinding.inflate(layoutInflater, navView, true)
+//        mainViewModel = mainViewModel
+//        lifecycleOwner = this
+//        executePendingBindings()
+
+        val tvLogin = headerLayout.findViewById<TextView>(R.id.tv_login)
+        val ivUser = headerLayout.findViewById<ImageView>(R.id.iv_user)
+        val tvSync = headerLayout.findViewById<TextView>(R.id.tv_sync)
+        val tvLogout = headerLayout.findViewById<TextView>(R.id.tv_logout)
+
+        tvLogin.setOnClickListener {
+            i("onDrawerLogin")
+            navController.navigate(R.id.myChinaplasLoginFragment)
+            drawerLayout.closeDrawer(GravityCompat.START)
+        }
+        tvSync.setOnClickListener {
+            i("onDrawerSync")
+            Toast.makeText(applicationContext, "TBC", Toast.LENGTH_SHORT).show()
+        }
+        tvLogout.setOnClickListener {
+            i("onDrawerLogout")
+            alertDialogTwoButton(this,
+                R.string.logout_message,
+                R.string.logout,
+                R.string.cancel,
+                DialogInterface.OnClickListener { dialog, which ->
+                    resetLoginInfo()
+                    mainViewModel.isLogin.value = false
+                })
+        }
+        mainViewModel.isLogin.observe(this, Observer { login ->
+            LogUtil.i("isLogin=${login}")
+            tvLogin.visibility = if (login) View.GONE else View.VISIBLE
+            ivUser.visibility = if (login) View.VISIBLE else View.GONE
+            tvSync.visibility = if (login) View.VISIBLE else View.GONE
+            tvLogout.visibility = if (login) View.VISIBLE else View.GONE
+            LogUtil.i("tvLogin.visibility=${tvLogin.visibility}")
+            LogUtil.i("ivUser.visibility=${ivUser.visibility}")
+        })
+    }
+
     private fun initDrawer() {
-        LogUtil.i("initDrawer")
+        i("initDrawer")
+        initDrawerHeader()
+
 
         navController = findNavController(R.id.nav_host_fragment)
         appBarConfiguration =
@@ -366,29 +436,60 @@ class MainActivity : AppCompatActivity() {
                     R.id.visitorTipFragment,
                     R.id.webContentFragment,
                     R.id.myChinaplasLoginFragment,
-                    R.id.webViewFragment
+                    R.id.webViewFragment,
+                    R.id.filterApplicationFragment,
+                    R.id.exhibitorListFragment,
+                    R.id.filterHallFragment,
+                    R.id.filterIndustryFragment,
+                    R.id.filterRegionFragment,
+                    R.id.filterZoneFragment,
+                    R.id.myLoginedFragment,
+                    R.id.myExhibitorFragment,
+                    R.id.myScheduleFragment,
+                    R.id.editScheduleFragment,
+                    R.id.exhibitorHistotyFragment
                 ), drawerLayout
             )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
+//        navView.setNavigationItemSelectedListener { menuItem ->
+//            i("nav setNavigationItemSelectedListener  ******************${menuItem.title}")
+//
+//            if(menuItem.itemId == R.id.nav_calendar){
+//                i("nav nav_calendar us ******************")
+//                true  // 显示白色背景
+//            }else{
+//                false  // 不显示白色背景
+//            }
+//        }
+        navView.menu.findItem(R.id.nav_calendar).setOnMenuItemClickListener {
+            i("nav nav_calendar us ******************")
+            onAddToCalendar()
+            false  // 不显示白色背景
+        }
+        navView.menu.findItem(R.id.nav_guide).setOnMenuItemClickListener {
+            i("nav nav_guide us ******************")
+            initHelpPager()
+            drawerLayout.closeDrawer(GravityCompat.START)
+            false  // 不显示白色背景
+        }
+
+
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            if (destination.id == R.id.nav_home) {
-                initMainToolbar()
-            } else if (destination.id == R.id.exhibitorDetailFragment) {
-                LogUtil.i("destination.exhibitorDetailFragment ")
-                initInnerToolbar()
-            } else {
-                initInnerToolbar()
+            when (destination.id) {
+                R.id.nav_home -> initMainToolbar()
+                R.id.exhibitorDetailFragment -> initInnerToolbar()
+                else -> initInnerToolbar()
             }
         }
     }
 
-
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        LogUtil.i("onCreateOptionsMenu")
+        i("onCreateOptionsMenu")
         menuInflater.inflate(R.menu.main, menu)
         menu.findItem(R.id.action_home).isVisible = false  // 主页显示日历按钮，内页显示home按钮
+        menu.findItem(R.id.action_ok).isVisible = false  // 主页显示日历按钮，内页显示home按钮
         menu.findItem(R.id.action_search).isVisible = isTablet()
         this.menu = menu
         return true
@@ -396,17 +497,96 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.action_calendar -> Toast.makeText(applicationContext, "add to calendar", Toast.LENGTH_LONG).show()
-            R.id.action_home -> navController.navigate(R.id.nav_home)  // 返回主界面
+            R.id.action_calendar -> {
+                onAddToCalendar()
+            }
+            R.id.action_home -> {  // 返回主界面
+                navigateToHome()
+            }
             R.id.action_search -> navController.navigate(R.id.globalSearchFragment)
+            R.id.action_ok -> mainViewModel.onOkButtonClick()
         }
         return super.onOptionsItemSelected(item)
     }
 
+    private fun onAddToCalendar() {
+        CalendarHelper.getInstance(this).addToCalendar()
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (PermissionUtil.getGrantResults(grantResults) && requestCode == PermissionUtil.PMS_CODE_READ_CALENDAR) {
+            i("onRequestPermissionsResult：  有讀取日曆權限")
+            onAddToCalendar()
+        }
+        if (PermissionUtil.getGrantResults(grantResults) && requestCode == PermissionUtil.PMS_CODE_WRITE_CALENDAR) {
+            i("onRequestPermissionsResult：  有寫日曆權限")
+            onAddToCalendar()
+        }
+    }
+
+    private fun navigateToHome() {
+        navController.popBackStack(R.id.nav_home, false)   // 跳到该Fragment, 并且弹出它之上的其他Fragment
+        mainViewModel.resetBackDefault()
+        hideInput(applicationContext, binding.root.windowToken)
+    }
+
     override fun onSupportNavigateUp(): Boolean {
+        i("onSupportNavigateUp")
         val navController =
             findNavController(R.id.nav_host_fragment)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+    }
+
+    private lateinit var helpView: HelpView
+    private var isHelperInited = false
+
+    private fun initHelpPager() {
+        if (!isHelperInited) {
+            helpView = binding.main.helpView
+            isHelperInited = true
+        }
+        helpView.visibility = View.VISIBLE
+    }
+
+    private fun back() {
+        i("==backClicked==backRoad=${mainViewModel.backRoad.value}")
+        if (mainViewModel.backRoad.value == BACK_DEFAULT) {
+            i("backClicked popBackStack")
+            navController.popBackStack()  // back
+        } else {
+            i("==backClicked:: backCustom ==true")
+            mainViewModel.backCustom.value = true
+        }
+    }
+
+    override fun onBackPressed() {
+        val navDestination = navController.currentDestination
+        if (navDestination == null
+            || (navDestination.id == R.id.nav_home)
+        ) {
+            super.onBackPressed()
+            i("HOME 退出")
+        } else {
+            back()
+        }
+    }
+
+    override fun attachBaseContext(newBase: Context?) {
+        super.attachBaseContext(
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N && newBase != null) {
+                updateResources(newBase)
+            } else newBase
+        )
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        switchLanguage(applicationContext, getCurrLanguage())
     }
 
 

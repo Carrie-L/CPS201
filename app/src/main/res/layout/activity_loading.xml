@@ -13,6 +13,7 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_bg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/loading"
@@ -31,14 +32,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_end="265dp" />
+            app:layout_constraintGuide_end="56dp" />
 
         <Button
             android:id="@+id/btn_sc"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_marginTop="5dp"
-            android:background="@drawable/bttn_simp"
+            android:background="@drawable/btn_sc"
             android:onClick="@{()->viewModel.onLangClick(2)}"
             android:visibility="@{viewModel.language.intValue()== -1?View.VISIBLE:View.GONE}"
             app:layout_constraintBottom_toTopOf="@id/guideline"
@@ -50,9 +51,9 @@
         <Button
             android:id="@+id/btn_tc"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bttn_trad"
-            android:onClick="@{()->viewModel.onLangClick(0)}"
+            android:layout_height="40dp"
+            android:background="@drawable/btn_tc"
+            android:onClick="@{()->viewModel.onLangClick(3)}"
             android:visibility="@{viewModel.language.intValue()==-1?View.VISIBLE:View.GONE}"
             app:layout_constraintBaseline_toBaselineOf="@id/btn_sc"
             app:layout_constraintEnd_toStartOf="@+id/btn_en"
@@ -63,8 +64,8 @@
         <Button
             android:id="@+id/btn_en"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bttn_eng"
+            android:layout_height="40dp"
+            android:background="@drawable/btn_en"
             android:onClick="@{()->viewModel.onLangClick(1)}"
             android:visibility="@{viewModel.language.intValue()==-1?View.VISIBLE:View.GONE}"
             app:layout_constraintBaseline_toBaselineOf="@id/btn_sc"
@@ -72,6 +73,17 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/btn_tc"
             tools:layout_editor_absoluteY="587dp" />
+
+        <ProgressBar
+            android:id="@+id/pb_loading"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{viewModel.language.intValue()== -1?View.GONE:View.VISIBLE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/d1"
@@ -91,16 +103,7 @@
             app:layout_constraintTop_toTopOf="@id/d1"
             app:srcCompat="@drawable/ic_close_circle" />
 
-        <ProgressBar
-            android:id="@+id/pb_loading"
-            style="?android:attr/progressBarStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="@{viewModel.language.intValue()== -1?View.GONE:View.VISIBLE}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

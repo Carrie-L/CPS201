@@ -7,6 +7,8 @@ import android.os.LocaleList
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
+import androidx.navigation.fragment.findNavController
 import com.adsale.chinaplas.R
 import com.adsale.chinaplas.data.dao.CpsDatabase
 import com.adsale.chinaplas.data.dao.MainIcon
@@ -20,6 +22,7 @@ import com.adsale.chinaplas.network.CpsApi
 import com.adsale.chinaplas.network.DownloadTask
 import com.adsale.chinaplas.network.REG_CONFIRM_LATTER_URL
 import com.adsale.chinaplas.network.confirmKeyJson
+import com.adsale.chinaplas.ui.tools.mychinaplas.MyChinaplasLoginFragmentDirections
 import com.adsale.chinaplas.utils.*
 import kotlinx.coroutines.*
 import okhttp3.RequestBody
@@ -32,12 +35,18 @@ import java.util.*
 class MainViewModel(val app: Application, val mainRepository: MainIconRepository) : AndroidViewModel(app) {
     private val context = app.applicationContext
     var isInnerIntent = MutableLiveData<Boolean>(false)
+    var isChangeRightIcon = MutableLiveData<Boolean>(false)
     var title = MutableLiveData<String>()
     //    var language = MutableLiveData(0)
+
+    var fragmentStacks = mutableListOf<Int>()
+
+    /*  调用 popBack */
     var backClicked = MutableLiveData(false)
-
-    var backListener: androidx.appcompat.widget.ActionMenuView.OnMenuItemClickListener? = null
-
+    /* 设置返回方式，默认为 popBack */
+    var backRoad = MutableLiveData(BACK_DEFAULT)
+    /* 当 backRoad = BACK_CUSTOM 时，监听，调用自定义方法 */
+    var backCustom = MutableLiveData(false)
 
     val mainIcons = MutableLiveData<List<MainIcon>>()
     //    var _mainIcons = MutableLiveData<MutableList<MainIcon>>()
@@ -65,8 +74,11 @@ class MainViewModel(val app: Application, val mainRepository: MainIconRepository
     val rvMenuHeight: LiveData<Int>
         get() = _rvMenuHeight
 
+    /*侧边栏登录*/
+    var isLogin = MutableLiveData<Boolean>()
 
     init {
+        isLogin.value = isMyChinaplasLogin()
         LogUtil.i("MainViewModel init~~~~~~~~~~~~~~~")
         //        initMainIcons()
         regRepo = RegisterRepository.getInstance(CpsDatabase.getInstance(context).countryDao(),
@@ -233,6 +245,25 @@ class MainViewModel(val app: Application, val mainRepository: MainIconRepository
         isInnerIntent.value = boolean
     }
 
+    fun onOkButtonClick() {
+        LogUtil.i("onOkButtonClick")
+//        okClicked.value = true
+        backClicked.value = true
+        isChangeRightIcon.value = false
+    }
+
+    fun onDrawerLogin() {
+        LogUtil.i("onDrawerLogin")
+    }
+
+    fun onDrawerSync() {
+        LogUtil.i("onDrawerSync")
+    }
+
+    fun onDrawerLogout() {
+        LogUtil.i("onDrawerLogout")
+    }
+
     fun onTopPicClick(pos: Int) {
         LogUtil.i("onTopPicClick:$pos")
     }
@@ -348,5 +379,61 @@ class MainViewModel(val app: Application, val mainRepository: MainIconRepository
         }
 
     }
+
+    /**
+     * 更改了back 方式后，要还原成默认返回
+     */
+    fun resetBackDefault() {
+        backRoad.value = BACK_DEFAULT
+        backCustom.value = false
+    }
+
+    fun addFragmentID(fragmentId: Int) {
+        fragmentStacks.add(fragmentId)
+    }
+
+    fun findFragmentId(fragmentId: Int): Boolean {
+        var findFragmentId = false
+        for ((i, id) in fragmentStacks.withIndex()) {
+            if (id == fragmentId) {
+                fragmentStacks.removeAt(i)
+                LogUtil.i("findFragmentId")
+                findFragmentId = true
+                break
+            }
+        }
+        return findFragmentId
+    }
+
+    fun removeFragmentId(fragmentId: Int) {
+        for ((i, id) in fragmentStacks.withIndex()) {
+            if (id == fragmentId) {
+                fragmentStacks.removeAt(i)
+                LogUtil.i("removeFragmentId")
+                break
+            }
+        }
+    }
+
+    /**
+     * 找到当前FragmentId， 并且把它之上的所有element id 从list移出。
+     * 因为会调用 [findNavController().popBackStack(R.id.menu_tool, false)] 方法
+     */
+    fun findFragmentIdAndRemoveAllBeforeIt(fragmentId: Int): Boolean {
+        var findFragmentId = false
+        val stackTemps = mutableListOf<Int>()
+        for ((i, id) in fragmentStacks.withIndex()) {
+            stackTemps.add(id)
+            if (id == fragmentId) {
+                fragmentStacks.removeAll(stackTemps)
+                LogUtil.i("findFragmentId")
+                findFragmentId = true
+                break
+            }
+        }
+        return findFragmentId
+    }
+
+
 
 }

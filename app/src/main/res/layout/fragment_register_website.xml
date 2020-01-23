@@ -16,6 +16,7 @@
             android:id="@+id/webview_reg_pay"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginBottom="88dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -46,6 +47,7 @@
             android:layout_marginBottom="72dp"
             android:background="@color/grey_500"
             android:text="注销确认信"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

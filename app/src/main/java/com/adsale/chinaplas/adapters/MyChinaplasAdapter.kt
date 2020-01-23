@@ -44,9 +44,9 @@ class MyChinaplasAdapter(list: List<MyChinaplasEntity>, listener: OnItemClickLis
                 param.marginStart = margin / 2
                 param.marginEnd = margin
             }
+            param.topMargin = dp2px(16f)
         }
         (holder.binding as ItemMyChinaplasBinding).itemCpsLayout.layoutParams = param
-
     }
 
     override fun getLayoutIdForPosition(position: Int): Int {

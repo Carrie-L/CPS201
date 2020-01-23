@@ -15,52 +15,62 @@
         android:layout_height="match_parent">
 
         <TextView
+            android:id="@+id/tv_language"
             style="@style/setting_tv_style"
             android:drawableLeft="@drawable/language"
-            android:onClick="@{()->viewModel.onLangClick()}"
             android:text="@string/setting_language"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-<!--        <TextView-->
-<!--            style="@style/setting_tv_style"-->
-<!--            android:drawableLeft="@drawable/ic_setting_share"-->
-<!--            android:onClick="@{()->viewModel.onShare()}"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@id/"-->
-<!--            android:text="@string/setting_share" />-->
+        <TextView
+            android:id="@+id/tv_share"
+            style="@style/setting_tv_style"
+            android:drawableLeft="@drawable/ic_setting_share"
+            android:text="@string/setting_share"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_language" />
 
-<!--        <TextView-->
-<!--            style="@style/setting_tv_style"-->
-<!--            android:drawableLeft="@drawable/ic_setting_link"-->
-<!--            android:onClick="@{()->viewModel.onLinkWebsite()}"-->
-<!--            android:text="@string/setting_website" />-->
+        <TextView
+            android:id="@+id/tv_website"
+            style="@style/setting_tv_style"
+            android:drawableLeft="@drawable/ic_setting_link"
+            android:text="@string/setting_website"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_share" />
 
-<!--        <TextView-->
-<!--            style="@style/setting_tv_style"-->
-<!--            android:drawableLeft="@drawable/ic_setting_reset"-->
-<!--            android:onClick="@{()->viewModel.onResetAll()}"-->
-<!--            android:text="@string/setting_reset_all" />-->
+        <TextView
+            android:id="@+id/tv_reset"
+            style="@style/setting_tv_style"
+            android:drawableLeft="@drawable/ic_setting_reset"
+            android:text="@string/setting_reset_all"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_website" />
 
-<!--        <TextView-->
-<!--            style="@style/setting_tv_style"-->
-<!--            android:drawableLeft="@drawable/ic_setting_privacy"-->
-<!--            android:onClick="@{()->viewModel.onPrivacy()}"-->
-<!--            android:text="@string/setting_privacy_policy" />-->
+        <TextView
+            android:id="@+id/tv_privacy"
+            style="@style/setting_tv_style"
+            android:drawableLeft="@drawable/ic_setting_privacy"
+            android:text="@string/setting_privacy_policy"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_reset" />
 
-<!--        <TextView-->
-<!--            style="@style/setting_tv_style"-->
-<!--            android:drawableLeft="@drawable/ic_setting_use_item"-->
-<!--            android:onClick="@{()->viewModel.onUseItems()}"-->
-<!--            android:text="@string/setting_use_terms" />-->
+        <TextView
+            android:id="@+id/tv_items"
+            style="@style/setting_tv_style"
+            android:drawableLeft="@drawable/ic_setting_use_item"
+            android:text="@string/setting_use_terms"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_privacy" />
 
-        <!--    <TextView-->
-        <!--        android:layout_width="wrap_content"-->
-        <!--        android:layout_height="match_parent"-->
-        <!--        android:layout_gravity="bottom|end"-->
-        <!--        android:layout_margin="5dp"-->
-        <!--        android:gravity="bottom"-->
-        <!--        android:text="@{aty.version}" />-->
+        <TextView
+            android:id="@+id/tv_version"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="5dp"
+            android:gravity="bottom"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

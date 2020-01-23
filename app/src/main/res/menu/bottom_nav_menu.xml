@@ -5,17 +5,17 @@
     <item
         android:id="@+id/menu_home"
         android:icon="@drawable/ic_home"
-        android:title="主页" />
+        android:title="@string/menu_home" />
     <item
         android:id="@+id/menu_exhibitors"
         android:icon="@drawable/bottom_nav_exhibitors"
-        android:title="展商列表" />
+        android:title="@string/title_exhibitor_list" />
     <item
         android:id="@+id/menu_floor"
         android:icon="@drawable/bottom_nav_map"
-        android:title="平面图" />
+        android:title="@string/title_floor" />
     <item
         android:id="@+id/menu_tool"
         android:icon="@drawable/bottom_nav_tool"
-        android:title="我的工具" />
+        android:title="@string/title_tool" />
 </menu>
