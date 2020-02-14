@@ -31,6 +31,9 @@
     <string name="title_company_info">CompanyInfo</string>
     <string name="title_visit_tip">Visiting Tips</string>
     <string name="title_general_info">General Info</string>
+    <string name="title_concurrent_event">Concurrent Event</string>
+    <string name="title_seminar">Technical Seminar</string>
+    <string name="title_event_seminar">Events &amp; Seminars</string>
 
     <string name="confirm">Confirm</string>
     <string name="cancel">Cancel</string>
@@ -329,12 +332,13 @@ Adsale Exhibition Services Ltd., the Organiser, reserves the rights to issue the
     <!--我的参展商-->
     <string name="no_schedule">No Schedule</string>
     <string name="no_my_exhibitor">No Bookmarked Exhibitor. \nPlease go to \"Exhibitor list\" to add exhibitors. </string>
-<!--    <string name="no_keyword_result">If you want to get the full exhibitor list, please visit Update Center to update the exhibitor data</string>-->
+    <!--    <string name="no_keyword_result">If you want to get the full exhibitor list, please visit Update Center to update the exhibitor data</string>-->
 
     <!--历史记录-->
     <string name="today">Today</string>
     <string name="yesterday">Yesterday</string>
     <string name="past_records">Past</string>
+    <string name="event_tab_all">All</string>
 
 
 </resources>

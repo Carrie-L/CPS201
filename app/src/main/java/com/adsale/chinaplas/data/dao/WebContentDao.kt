@@ -19,7 +19,6 @@ interface WebContentDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(list: List<WebContent>)
 
-
     @Query("select * from WebContent where ParentID=:parentID")
     fun getWebContents(parentID: String): MutableList<WebContent>
 

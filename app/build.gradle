@@ -44,7 +44,7 @@ android {
         checkReleaseBuilds false
         abortOnError false
     }
-    
+
     signingConfigs {
         release {
             keyAlias 'chinaplas'
@@ -89,6 +89,12 @@ android {
     }
     compileOptions {
         sourceCompatibility = 1.8
+    }
+
+    // MAP
+    packagingOptions {
+        doNotStrip "*/*/libvad.dnn.so"
+        doNotStrip "*/*/libbd_easr_s1_merge_normal_20151216.dat.so"
     }
 
 }
@@ -169,5 +175,8 @@ dependencies {
     implementation 'com.pingxx:pingpp-android-alipay:15.6.5' // 使用支付宝时添加
     implementation 'com.pingxx:pingpp-android-upacp:3.4.8' // 使用银联支付时添加
 
+    // MAP
+    implementation(name: "h5calllibpalmap-release", ext: "aar")
+    implementation 'org.altbeacon:android-beacon-library:2.9.2'
 
 }

@@ -14,9 +14,10 @@ import com.adsale.chinaplas.utils.DATABASE_NAME
  */
 @Database(
     entities = [MainIcon::class, CountryJson::class, RegOptionData::class, WebContent::class, FileControl::class, HtmlText::class, Exhibitor::class,
-        CompanyApplication::class, CompanyProduct::class, ExhApplication::class, ExhIndustry::class, ExhibitorZone::class, Zone::class, Country::class, Hall::class, ExhibitorHistory::class
+        CompanyApplication::class, CompanyProduct::class, ExhApplication::class, ExhIndustry::class, ExhibitorZone::class, Zone::class, Country::class, Hall::class, ExhibitorHistory::class,
+        ConcurrentEvent::class
     ],
-    version = 4,
+    version = 7,
     exportSchema = false
 )
 abstract class CpsDatabase : RoomDatabase() {
@@ -32,6 +33,7 @@ abstract class CpsDatabase : RoomDatabase() {
     abstract fun regionDao(): RegionDao
     abstract fun hallDao(): HallDao
     abstract fun zoneDao(): ZoneDao
+    abstract fun eventDao(): EventDao
 
     companion object {
         @Volatile

@@ -69,7 +69,8 @@ class ExhibitorHistoryViewModel(private val exhibitorDao: ExhibitorDao) : ViewMo
 
     private suspend fun getYesterdayFromDB(): List<ExhibitorHistory> {
         return withContext(Dispatchers.IO) {
-            exhibitorDao.getRecentHistories(getYesterdayDate())
+            i("getYesterdayDate=${getYesterdayDate()}")
+            exhibitorDao.getRecentHistories("%${getYesterdayDate()}%")
         }
     }
 

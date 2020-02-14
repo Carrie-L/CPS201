@@ -1,0 +1,111 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.adsale.chinaplas.viewmodels.SeminarViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <TextView
+            android:id="@+id/tv_tab_1"
+            style="@style/event_date_tab_style"
+            android:background="@{model.btnClick.intValue()==1?@color/tab_color_2:@color/tab_color_1}"
+            android:onClick="@{()->model.onFunctionClick(1)}"
+            android:text="@string/event_date_1"
+            app:layout_constraintEnd_toStartOf="@+id/tv_tab_2"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_tab_2"
+            style="@style/event_date_tab_style"
+            android:background="@{model.btnClick.intValue()==2?@color/tab_color_2:@color/tab_color_1}"
+            android:onClick="@{()->model.onFunctionClick(2)}"
+            android:text="@string/event_date_2"
+            app:layout_constraintEnd_toStartOf="@+id/tv_tab_3"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/tv_tab_1"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_tab_3"
+            style="@style/event_date_tab_style"
+            android:background="@{model.btnClick.intValue()==3?@color/tab_color_2:@color/tab_color_1}"
+            android:onClick="@{()->model.onFunctionClick(3)}"
+            android:text="@string/event_date_3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/tv_tab_2"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!--bar-->
+        <RelativeLayout
+            android:id="@+id/function_bar"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:gravity="center_vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_tab_1">
+
+            <TextView
+                android:id="@+id/tv_am"
+                android:layout_width="75dp"
+                android:layout_height="28dp"
+                android:layout_marginStart="16dp"
+                android:background="@drawable/bg_btn_selected"
+                android:gravity="center"
+                android:onClick="@{()->model.onFunctionClick(1)}"
+                android:text="上午"
+                android:textColor="#fff" />
+
+            <TextView
+                android:id="@+id/tv_pm"
+                android:layout_width="75dp"
+                android:layout_height="28dp"
+                android:layout_marginStart="16dp"
+                android:layout_toRightOf="@id/tv_am"
+                android:background="@drawable/bg_btn_not_selected"
+                android:gravity="center"
+                android:onClick="@{()->model.onFunctionClick(2)}"
+                android:text="下午"
+                android:textColor="#fff" />
+
+            <ImageView
+                android:id="@+id/btn_reset"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_alignParentRight="true"
+                android:visibility="gone"
+                android:src="@drawable/ic_setting_reset" />
+
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/grey_200"
+               android:layout_marginTop="40dp"
+                />
+
+        </RelativeLayout>
+
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/seminar_view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/function_bar" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -447,7 +447,8 @@ class MainActivity : AppCompatActivity() {
                     R.id.myExhibitorFragment,
                     R.id.myScheduleFragment,
                     R.id.editScheduleFragment,
-                    R.id.exhibitorHistotyFragment
+                    R.id.exhibitorHistotyFragment,
+                    R.id.eventSeminarFragment
                 ), drawerLayout
             )
         setupActionBarWithNavController(navController, appBarConfiguration)

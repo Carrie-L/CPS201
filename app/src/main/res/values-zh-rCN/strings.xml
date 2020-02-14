@@ -31,6 +31,9 @@
     <string name="title_company_info">公司资料</string>
     <string name="title_visit_tip">参观贴士</string>
     <string name="title_general_info">展会概览</string>
+    <string name="title_concurrent_event">同期活动</string>
+    <string name="title_seminar">技术交流会</string>
+    <string name="title_event_seminar">活动及会议</string>
 
     <string name="cancel">取消</string>
     <string name="confirm">确认</string>
@@ -328,6 +331,7 @@
     <string name="today">今日</string>
     <string name="yesterday">昨天</string>
     <string name="past_records">过去</string>
+    <string name="event_tab_all">总览</string>
 
 
 </resources>

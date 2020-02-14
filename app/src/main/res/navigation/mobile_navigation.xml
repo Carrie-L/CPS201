@@ -422,6 +422,93 @@
             android:id="@+id/action_exhibitorHistotyFragment_to_exhibitorDetailFragment"
             app:destination="@id/exhibitorDetailFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/concurrentEventFragment"
+        android:name="com.adsale.chinaplas.ui.events.ConcurrentEventFragment"
+        android:label="ConcurrentEventFragment" >
+        <action
+            android:id="@+id/action_concurrentEventFragment_to_webContentFragment"
+            app:destination="@id/webContentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/eventAllFragment"
+        android:name="com.adsale.chinaplas.ui.events.EventAllFragment"
+        android:label="EventAllFragment" >
+        <action
+            android:id="@+id/action_eventAllFragment_to_webContentFragment"
+            app:destination="@id/webContentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/baseEventFragment"
+        android:name="com.adsale.chinaplas.ui.events.BaseEventFragment"
+        android:label="fragment_base_event"
+        tools:layout="@layout/fragment_base_event" >
+        <action
+            android:id="@+id/action_baseEventFragment_to_webContentFragment"
+            app:destination="@id/webContentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/eventFourFragment"
+        android:name="com.adsale.chinaplas.ui.events.EventFourFragment"
+        android:label="fragment_event_five"
+        tools:layout="@layout/fragment_event_five" >
+        <action
+            android:id="@+id/action_eventFourFragment_to_webContentFragment"
+            app:destination="@id/webContentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/eventOneFragment"
+        android:name="com.adsale.chinaplas.ui.events.EventOneFragment"
+        android:label="fragment_event_one"
+        tools:layout="@layout/fragment_event_one" >
+        <action
+            android:id="@+id/action_eventOneFragment_to_webContentFragment"
+            app:destination="@id/webContentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/eventThreeFragment"
+        android:name="com.adsale.chinaplas.ui.events.EventThreeFragment"
+        android:label="fragment_event_three"
+        tools:layout="@layout/fragment_event_three" >
+        <action
+            android:id="@+id/action_eventThreeFragment_to_webContentFragment"
+            app:destination="@id/webContentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/eventTwoFragment"
+        android:name="com.adsale.chinaplas.ui.events.EventTwoFragment"
+        android:label="fragment_event_two"
+        tools:layout="@layout/fragment_event_two" >
+        <action
+            android:id="@+id/action_eventTwoFragment_to_webContentFragment"
+            app:destination="@id/webContentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/eventSeminarFragment"
+        android:name="com.adsale.chinaplas.ui.events.EventSeminarFragment"
+        android:label="@string/title_event_seminar"
+        tools:layout="@layout/fragment_event_seminar" >
+        <action
+            android:id="@+id/action_eventSeminarFragment_to_webContentFragment"
+            app:destination="@id/webContentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/seminarFragment"
+        android:name="com.adsale.chinaplas.ui.events.SeminarFragment"
+        android:label="fragment_seminar"
+        tools:layout="@layout/fragment_seminar" >
+        <action
+            android:id="@+id/action_seminarFragment_to_seminarDetailFragment"
+            app:destination="@id/seminarDetailFragment" />
+        <action
+            android:id="@+id/action_seminarFragment_to_seminarDetailFragment2"
+            app:destination="@id/seminarDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/seminarDetailFragment"
+        android:name="com.adsale.chinaplas.ui.events.SeminarDetailFragment"
+        android:label="fragment_seminar_detail"
+        tools:layout="@layout/fragment_seminar_detail" />
     <!--    <activity-->
     <!--        android:id="@+id/main2Activity"-->
     <!--        android:name="com.adsale.chinaplas.ui.test.Main2Activity"-->

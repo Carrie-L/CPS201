@@ -8,7 +8,7 @@
             name="viewModel"
             type="com.adsale.chinaplas.viewmodels.MyChinaplasViewModel" />
 
-        <import type="android.view.View" />2
+        <import type="android.view.View" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

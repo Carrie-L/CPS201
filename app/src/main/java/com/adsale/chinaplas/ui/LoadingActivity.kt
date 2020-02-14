@@ -140,18 +140,26 @@ class LoadingActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         beginTime = System.currentTimeMillis()
         binding = DataBindingUtil.setContentView(this, R.layout.activity_loading)
-        registerRepository = RegisterRepository.getInstance(cpsDatabase.countryDao(), cpsDatabase.regOptionDao())
+        registerRepository =
+            RegisterRepository.getInstance(cpsDatabase.countryDao(), cpsDatabase.regOptionDao())
         noSQLRepository = NoSQLRepository.getInstance(cpsDatabase.mainIconDao())
         val webContentRepository =
-            WebContentRepository.getInstance(cpsDatabase.webContentDao(),
+            WebContentRepository.getInstance(
+                cpsDatabase.webContentDao(),
                 cpsDatabase.htmlTextDao(),
-                cpsDatabase.fileControlDao())
+                cpsDatabase.fileControlDao()
+            )
         viewModel =
-            ViewModelProviders.of(this,
-                LoadingViewModelFactory(application,
+            ViewModelProviders.of(
+                this,
+                LoadingViewModelFactory(
+                    application,
                     registerRepository,
                     webContentRepository,
-                    CpsDatabase.getInstance(applicationContext).exhibitorDao()))
+                    CpsDatabase.getInstance(applicationContext).exhibitorDao(),
+                    EventRepository.getInstance(CpsDatabase.getInstance(applicationContext).eventDao())
+                )
+            )
                 .get(LoadingViewModel::class.java)
         binding.viewModel = viewModel
         binding.executePendingBindings()
@@ -173,7 +181,8 @@ class LoadingActivity : AppCompatActivity() {
         registerBroadcastReceiver()
 
         if (hasNetwork) {
-            val testUrl = "https://cdn-adsalecdn.oss-cn-shenzhen.aliyuncs.com/App/2020/MainIcon/main_1.png"
+            val testUrl =
+                "https://cdn-adsalecdn.oss-cn-shenzhen.aliyuncs.com/App/2020/MainIcon/main_1.png"
             Glide.with(this).load(Uri.parse(testUrl)).listener(requestListener).into(binding.ivTest)
         } else {
             showD1()
@@ -273,7 +282,8 @@ class LoadingActivity : AppCompatActivity() {
             i("heightRate = $heightRate,screenWidthRate = $screenWidthRate")
             width = contentWidth
             i("mScreenHeight = $height")
-            mSPConfig.edit().putInt(PAD_LEFT_MARGIN, leftMargin).putFloat("PadWidthRate", screenWidthRate)
+            mSPConfig.edit().putInt(PAD_LEFT_MARGIN, leftMargin)
+                .putFloat("PadWidthRate", screenWidthRate)
                 .putFloat("PadHeightRate", heightRate).apply()
         } else {
             val rio: Float = 1080f / 1920f
@@ -392,21 +402,25 @@ class LoadingActivity : AppCompatActivity() {
     }
 
     private var requestListener: RequestListener<Drawable> = object : RequestListener<Drawable> {
-        override fun onLoadFailed(e: GlideException?,
-                                  model: Any,
-                                  target: Target<Drawable>,
-                                  isFirstResource: Boolean): Boolean {
+        override fun onLoadFailed(
+            e: GlideException?,
+            model: Any,
+            target: Target<Drawable>,
+            isFirstResource: Boolean
+        ): Boolean {
             i("_____________________requestListener: onLoadFailed :" + e!!.message)
             hasNetwork = false
             showD1()
             return false
         }
 
-        override fun onResourceReady(resource: Drawable,
-                                     model: Any,
-                                     target: Target<Drawable>,
-                                     dataSource: DataSource,
-                                     isFirstResource: Boolean): Boolean {
+        override fun onResourceReady(
+            resource: Drawable,
+            model: Any,
+            target: Target<Drawable>,
+            dataSource: DataSource,
+            isFirstResource: Boolean
+        ): Boolean {
             hasNetwork = true
             if (!isFirstRunning) {
                 i("_____________________requestListener: showD1")

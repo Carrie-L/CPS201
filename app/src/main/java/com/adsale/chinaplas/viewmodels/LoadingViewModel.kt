@@ -29,10 +29,13 @@ import kotlinx.coroutines.*
 /**
  * Created by Carrie on 2019/10/17.
  */
-class LoadingViewModel(private val app: Application,
-                       private val regRepo: RegisterRepository,
-                       private val webContentRepo: WebContentRepository,
-                       private val exhibitorDao: ExhibitorDao) : AndroidViewModel(app) {
+class LoadingViewModel(
+    private val app: Application,
+    private val regRepo: RegisterRepository,
+    private val webContentRepo: WebContentRepository,
+    private val exhibitorDao: ExhibitorDao,
+    private val eventRepo: EventRepository
+) : AndroidViewModel(app) {
     private var context: Context = app.applicationContext
     var langChange = MutableLiveData<Boolean>()
     var language = ObservableField(-1)
@@ -49,7 +52,8 @@ class LoadingViewModel(private val app: Application,
     private val job = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + job)
 
-    private val mainIconRepository: MainIconRepository = MainIconRepository.getInstance(cpsDatabase.mainIconDao())
+    private val mainIconRepository: MainIconRepository =
+        MainIconRepository.getInstance(cpsDatabase.mainIconDao())
 
 
     init {
@@ -69,12 +73,13 @@ class LoadingViewModel(private val app: Application,
             downloadTxt(TXT_PDF)
             // todo down mainBanner.txt
 
-            downloadAllRegOptions()
+//            downloadAllRegOptions()
 
             downloadAllCountries()
             downMainIcons()
             downWebContent()
             downFileControl()
+            downConcorrentEvent()
 
 
             i("-------------   finish download  ---------------")
@@ -166,6 +171,18 @@ class LoadingViewModel(private val app: Application,
         }
     }
 
+    private suspend fun getConcurrentEventUpdateTime(): String {
+        return withContext(Dispatchers.IO) {
+            val updatedAt = eventRepo.getLastUpdateTime()
+            i("getFileControlUpdateTime updatedAt =$updatedAt")
+            if (!TextUtils.isEmpty(updatedAt)) {
+                timeAddOneSecond(updatedAt)
+            } else {
+                FIRST_TIME_BMOB
+            }
+        }
+    }
+
     /**
      * 下载所有bmob RegOptionData
      */
@@ -182,8 +199,10 @@ class LoadingViewModel(private val app: Application,
         uiScope.launch {
             val startMill = System.currentTimeMillis()
             val getDeferred =
-                CpsApi.retrofitService.getProductsAsync("{\"updatedAt\":{\"\$gte\":{\"__type\":\"Date\",\"iso\":\"$updatedAt\"}}}",
-                    500)
+                CpsApi.retrofitService.getProductsAsync(
+                    "{\"updatedAt\":{\"\$gte\":{\"__type\":\"Date\",\"iso\":\"$updatedAt\"}}}",
+                    500
+                )
             try {
                 val responseBody = getDeferred.await()
                 var content = responseBody.string().replace("{\"results\":", "")
@@ -243,9 +262,11 @@ class LoadingViewModel(private val app: Application,
         var count = 5
         val startMill = System.currentTimeMillis()
         val getDeferred =
-            CpsApi.retrofitService.getCountryCountAsync("{\"updatedAt\":{\"\$gte\":{\"__type\":\"Date\",\"iso\":\"$updatedAt\"}}}",
+            CpsApi.retrofitService.getCountryCountAsync(
+                "{\"updatedAt\":{\"\$gte\":{\"__type\":\"Date\",\"iso\":\"$updatedAt\"}}}",
                 0,
-                1)
+                1
+            )
         try {
             val content = getDeferred.await().string()
             val countEntity = parseJson(BmobCount::class.java, content)
@@ -269,9 +290,11 @@ class LoadingViewModel(private val app: Application,
         uiScope.launch {
             val startMill = System.currentTimeMillis()
             val getDeferred =
-                CpsApi.retrofitService.getCountryAsync("{\"updatedAt\":{\"\$gte\":{\"__type\":\"Date\",\"iso\":\"$updatedAt\"}}}",
+                CpsApi.retrofitService.getCountryAsync(
+                    "{\"updatedAt\":{\"\$gte\":{\"__type\":\"Date\",\"iso\":\"$updatedAt\"}}}",
                     500,
-                    skip)
+                    skip
+                )
             try {
                 val responseBody = getDeferred.await()
                 var content = responseBody.string().replace("{\"results\":", "")
@@ -328,6 +351,14 @@ class LoadingViewModel(private val app: Application,
         }
     }
 
+    private fun downConcorrentEvent() {
+        uiScope.launch {
+            val time = getConcurrentEventUpdateTime()
+            i("getFileControlUpdateTime=$time")
+            getEventsFromBmob(time)
+        }
+    }
+
 
     /**
      * 分页查询
@@ -367,7 +398,8 @@ class LoadingViewModel(private val app: Application,
             val getDeferred =
                 CpsApi.retrofitService.getMainIconsBmobAsync("{\"updatedAt\":{\"\$gte\":{\"__type\":\"Date\",\"iso\":\"$updatedAt\"}}}")
             try {
-                val content = getDeferred.await().string().replace("{\"results\":", "").substringBeforeLast("}", "")
+                val content = getDeferred.await().string().replace("{\"results\":", "")
+                    .substringBeforeLast("}", "")
                 i("getMainIconFromBmob :$content")
                 val list: List<MainIcon>? = parseListJson(MainIcon::class.java, content)
                 withContext(Dispatchers.IO) {
@@ -391,10 +423,13 @@ class LoadingViewModel(private val app: Application,
         uiScope.launch {
             val startMill = System.currentTimeMillis()
             val getDeferred =
-                CpsApi.retrofitService.getWebContentsAsync("{\"updatedAt\":{\"\$gte\":{\"__type\":\"Date\",\"iso\":\"$updatedAt\"}}}",
-                    500)
+                CpsApi.retrofitService.getWebContentsAsync(
+                    "{\"updatedAt\":{\"\$gte\":{\"__type\":\"Date\",\"iso\":\"$updatedAt\"}}}",
+                    500
+                )
             try {
-                val content = getDeferred.await().string().replace("{\"results\":", "").substringBeforeLast("}", "")
+                val content = getDeferred.await().string().replace("{\"results\":", "")
+                    .substringBeforeLast("}", "")
                 i("getWebContentFromBmob :$content")
                 val webContents: List<WebContent>? = parseListJson(WebContent::class.java, content)
                 withContext(Dispatchers.IO) {
@@ -418,10 +453,13 @@ class LoadingViewModel(private val app: Application,
         uiScope.launch {
             val startMill = System.currentTimeMillis()
             val getDeferred =
-                CpsApi.retrofitService.getFileControlAsync("{\"updatedAt\":{\"\$gte\":{\"__type\":\"Date\",\"iso\":\"$updatedAt\"}}}",
-                    500)
+                CpsApi.retrofitService.getFileControlAsync(
+                    "{\"updatedAt\":{\"\$gte\":{\"__type\":\"Date\",\"iso\":\"$updatedAt\"}}}",
+                    500
+                )
             try {
-                val content = getDeferred.await().string().replace("{\"results\":", "").substringBeforeLast("}", "")
+                val content = getDeferred.await().string().replace("{\"results\":", "")
+                    .substringBeforeLast("}", "")
                 i("getFileControlFromBmob :$content")
                 val list: List<FileControl>? = parseListJson(FileControl::class.java, content)
                 withContext(Dispatchers.IO) {
@@ -448,6 +486,37 @@ class LoadingViewModel(private val app: Application,
         }
     }
 
+    private fun getEventsFromBmob(updatedAt: String) {
+        uiScope.launch {
+            val startMill = System.currentTimeMillis()
+            val getDeferred =
+                CpsApi.retrofitService.getEventAsync(
+                    "{\"updatedAt\":{\"\$gte\":{\"__type\":\"Date\",\"iso\":\"$updatedAt\"}}}",
+                    500
+                )
+            try {
+                val content = getDeferred.await().string().replace("{\"results\":", "")
+                    .substringBeforeLast("}", "")
+                i("getEventsFromBmob :$content")
+                val concurrentEvents: List<ConcurrentEvent>? =
+                    parseListJson(ConcurrentEvent::class.java, content)
+                withContext(Dispatchers.IO) {
+                    concurrentEvents?.let {
+                        i("insertWCAll,,, ${it.toString()}")
+                        eventRepo.insertAll(it)
+                    }
+                }
+                val endMill = System.currentTimeMillis()
+                i("getEventsFromBmob spend Time :${endMill - startMill} ms")
+                sendBroadcast("event succ")
+            } catch (e: Exception) {
+                LogUtil.e("getEventsFromBmob::Failure: ${e.message} ")
+                LogUtil.e(e)
+                sendBroadcast("event bmob fail")
+            }
+        }
+    }
+
     /**
      * 下载，将更新时间插入数据库
      */
@@ -458,11 +527,13 @@ class LoadingViewModel(private val app: Application,
             try {
                 val response = CpsApi.retrofitService.downloadHtmlZip("$BASE_URL${entity.FileName}")
                     .await()
-                val isUnpackSuccess = unpackZip(entity.FileName!!,
+                val isUnpackSuccess = unpackZip(
+                    entity.FileName!!,
                     response.byteStream(),
                     "${rootDir}${entity.FileName.substringBefore("/", "")}/",
                     webContentRepo,
-                    entity.PageID)
+                    entity.PageID
+                )
                 i("isUnpackSuccess=$isUnpackSuccess")
 
                 when (entity.PageID) {
@@ -492,12 +563,14 @@ class LoadingViewModel(private val app: Application,
     private fun initCsvHelper() {
         if (csvHelper == null) {
             val database = CpsDatabase.getInstance(context)
-            csvHelper = CSVHelper.getInstance(exhibitorDao,
+            csvHelper = CSVHelper.getInstance(
+                exhibitorDao,
                 database.applicationDao(),
                 database.industryDao(),
                 database.regionDao(),
                 database.hallDao(),
-                database.zoneDao())
+                database.zoneDao()
+            )
         }
     }
 

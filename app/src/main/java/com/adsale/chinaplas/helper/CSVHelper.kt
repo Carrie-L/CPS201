@@ -516,4 +516,41 @@ class CSVHelper private constructor(private val exhibitorDao: ExhibitorDao,
         LogUtil.i("readMainIconCsv: ${list.size}")
         return list
     }
+
+    /* 技术交流会 */
+    private fun readSeminarInfoCSV(absPath: String) {
+        if (!File(absPath).exists()) {
+            return
+        }
+        val startTime = System.currentTimeMillis()
+        val entities = ArrayList<ExhApplication>()
+        var entity: ExhApplication
+        val reader: CSVReader
+        val ins = getFileInputStream(absPath)
+        try {
+            reader = CSVReader(InputStreamReader(ins, "UTF8"))
+            var line = reader.readNext()
+            while (line != null) {
+                line = reader.readNext()
+                if (line == null) {
+                    break
+                }
+                entity = ExhApplication()
+                entity.parser(line)
+                entities.add(entity)
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+            LogUtil.e(e)
+            isExhibitorParseSuccess = false
+        } finally {
+            ins?.close()
+        }
+        val endTime = System.currentTimeMillis()
+
+        applicationDao.deleteApplicationAll()
+        applicationDao.insertApplicationAll(entities)
+
+        i("readExhApplicationCSV 花费时间: ${(endTime - startTime)} ms , ${entities.size} ")
+    }
 }

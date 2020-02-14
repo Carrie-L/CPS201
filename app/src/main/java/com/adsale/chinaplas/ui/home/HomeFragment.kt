@@ -71,7 +71,11 @@ class HomeFragment : Fragment() {
     private var job = Job()
     private var uiScope = CoroutineScope(Dispatchers.Main + job)
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         if (lastView == null) {
             if (!isTablet()) {
                 initPhoneViews(inflater, container)
@@ -106,7 +110,7 @@ class HomeFragment : Fragment() {
             })
 
 //            val rvHeight = (0.39 * getDisplayHeight()).toInt()
-            if(!isTablet()){
+            if (!isTablet()) {
                 initPhoneTopBannerSize()
             }
 
@@ -149,7 +153,8 @@ class HomeFragment : Fragment() {
 
     private fun initTabletViews(inflater: LayoutInflater, container: ViewGroup?) {
         i("onCreateView pad init !!!")
-        tabletBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_home_pad, container, false)
+        tabletBinding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_home_pad, container, false)
         lastView = tabletBinding.root
 
         viewPager = tabletBinding.viewPager
@@ -201,15 +206,22 @@ class HomeFragment : Fragment() {
 //            BD_VISITOR -> NavHostFragment.findNavController(this).navigate(R.id.registerWebsiteFragment)  // todo registerWebview
 //                        BD_VISITOR -> NavHostFragment.findNavController(this).navigate(HomeFragmentDirections.actionNavHomeToRegisterActivity())  /
 //            BD_EXHIBITOR_LIST -> NavHostFragment.findNavController(this).navigate(HomeFragmentDirections.actionNavHomeToMenuExhibitors())
-            BD_EXHIBITOR_LIST -> NavHostFragment.findNavController(this).navigate(HomeFragmentDirections.actionNavHomeToMenuExhibitors())
-            BD_GENERAL_INFO -> NavHostFragment.findNavController(this).navigate(HomeFragmentDirections.actionNavHomeToGeneralInfoFragment(entity.BaiDu_TJ))
-            BD_VISIT_TIP -> NavHostFragment.findNavController(this).navigate(HomeFragmentDirections.actionNavHomeToVisitorTipFragment(entity.BaiDu_TJ))
-
+            BD_EXHIBITOR_LIST -> NavHostFragment.findNavController(this).navigate(
+                HomeFragmentDirections.actionNavHomeToMenuExhibitors()
+            )
+            BD_GENERAL_INFO -> NavHostFragment.findNavController(this).navigate(
+                HomeFragmentDirections.actionNavHomeToGeneralInfoFragment(entity.BaiDu_TJ)
+            )
+            BD_VISIT_TIP -> NavHostFragment.findNavController(this).navigate(
+                HomeFragmentDirections.actionNavHomeToVisitorTipFragment(
+                    entity.BaiDu_TJ
+                )
+            )
+//            BD_EVENT -> NavHostFragment.findNavController(this).navigate(HomeFragmentDirections.ac)
+            BD_EVENT -> findNavController().navigate(R.id.eventSeminarFragment)
         }
 
     }
-
-
 
 
     private fun intentToRegister() {
@@ -225,11 +237,21 @@ class HomeFragment : Fragment() {
                 /* open pdf */
                 val pdfPath = localConfirmPdfPath + confirmPdfPath
                 NavHostFragment.findNavController(this)
-                    .navigate(HomeFragmentDirections.actionNavHomeToRegisterWebsiteFragment(pdfPath,true))
+                    .navigate(
+                        HomeFragmentDirections.actionNavHomeToRegisterWebsiteFragment(
+                            pdfPath,
+                            true
+                        )
+                    )
             } else {
                 /* down pdf */
                 NavHostFragment.findNavController(this)
-                    .navigate(HomeFragmentDirections.actionNavHomeToRegisterWebsiteFragment(getConfirmPdfUrl(),true))
+                    .navigate(
+                        HomeFragmentDirections.actionNavHomeToRegisterWebsiteFragment(
+                            getConfirmPdfUrl(),
+                            true
+                        )
+                    )
             }
         } else {
             /* 预登记前置页，检测账户是否存在 */
@@ -238,7 +260,7 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun intentGeneralInfo(){
+    private fun intentGeneralInfo() {
 
     }
 
@@ -310,7 +332,11 @@ class HomeFragment : Fragment() {
 
     private val mPageChangeListener = object : ViewPager.OnPageChangeListener {
 
-        override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
+        override fun onPageScrolled(
+            position: Int,
+            positionOffset: Float,
+            positionOffsetPixels: Int
+        ) {
 
         }
 
@@ -345,7 +371,12 @@ class HomeFragment : Fragment() {
             recyclerView.layoutParams = param
         }
         recyclerView.addItemDecoration(object : RecyclerView.ItemDecoration() {
-            override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
+            override fun getItemOffsets(
+                outRect: Rect,
+                view: View,
+                parent: RecyclerView,
+                state: RecyclerView.State
+            ) {
                 super.getItemOffsets(outRect, view, parent, state)
                 outRect.bottom = dp2px(1.5f)
                 outRect.left = dp2px(1.5f)
@@ -353,9 +384,11 @@ class HomeFragment : Fragment() {
         })
         mainViewModel.mainIcons.observe(this, Observer {
             i("mainIcons.observe - set adapter")
-            adapter = MenuAdapter(mainViewModel.mainIcons.value!!, MenuAdapter.OnClickListener { mainIcon ->
-                processMenuIntent(mainIcon)
-            })
+            adapter = MenuAdapter(
+                mainViewModel.mainIcons.value!!,
+                MenuAdapter.OnClickListener { mainIcon ->
+                    processMenuIntent(mainIcon)
+                })
             recyclerView.adapter = adapter
         })
 

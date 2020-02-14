@@ -89,5 +89,10 @@
     <color name="orange_50">#fbe9e7</color>
     <color name="light_green">#A4DAD9</color>
 
+    <color name="tab_color_1">#9f6eb0</color>
+    <color name="tab_color_2">#8a5c9d</color>
+    <color name="tab_color_3">#4d2e71</color>
+    <color name="tab_color_4">#6e468d</color>
+
 
 </resources>

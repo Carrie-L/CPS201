@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="obj"
+            type="com.adsale.chinaplas.data.dao.ConcurrentEvent" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+       >
+
+        <TextView
+            android:text="@{obj.title}"
+            style="@style/item_title_18sp_style"
+            android:id="@+id/tv_event_title"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_event_date"
+            style="@style/event_item_sub_style"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_event_title"
+            android:text="@{obj.date}"
+            android:layout_marginStart="16dp"
+            android:drawableStart="@drawable/ic_event_date"
+            />
+
+        <TextView
+            android:id="@+id/tv_event_time"
+            style="@style/event_item_sub_style"
+            android:layout_marginStart="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_event_date"
+            android:text="@{obj.duration}"
+            android:drawableStart="@drawable/ic_event_time"
+            />
+
+        <TextView
+            android:id="@+id/tv_event_location"
+            style="@style/event_item_sub_style"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_event_time"
+            android:text="@{obj.venue}"
+            android:layout_marginStart="16dp"
+            android:drawableStart="@drawable/ic_event_venue"
+            />
+
+        <ImageView
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_event_location"
+            android:layout_width="match_parent"
+            android:background="@color/grey_500"
+            android:layout_marginTop="16dp"
+            android:layout_height="1dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

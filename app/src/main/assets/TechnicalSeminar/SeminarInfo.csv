@@ -1,0 +1,124 @@
+ID|EventID|CompanyID|Booth|Date|Time|Hall|RoomNo|PresentCompany|Topic|Speaker|langID|OrderFull|OrderMob|InApplications
+1|2425611|242561|2.1R31|2019.5.22|14:00-16:00|2.1|Huacheng|CPM Extrusion Group|High Performance Elements Used in Twin Screw Extruder in High Molecular PE, and Ring Extruder in New Energy Vehicle|Mr. Joerg Mayer-Lutz - Sales Manager|1252|0|0|1,5,999
+2|2429941|242994|11.2L31|2019.5.22|10:00-12:00|11.2|9|Kuraray Trading (Shanghai) Co., Ltd.|Kuraray's Solutions to TPE Industry: <br />1. Styrenic Thermoplastic Elastomer - SEPTON™ High Molecular Weight Grade <br />2. Acrylic Block Copolymer - KURARITY™ for Surface Protective Film|-|1252|9|9|1,2,3,4,5,6
+3|2428821|242882|10.2G11|2019.5.22|14:00-16:00|10.2|11|1. SABIC <br />2. Sinopec Maoming Petrochemical Company|1. SABIC Dedicated Solutions for Thin Wall Packaging <br />2. Development and Application of Transparent Polypropylene Products|1. Mr. Calvin Chong - TWP MDTS Engineer <br />2. Mr. Jie Tan - Senior Engineer|1252|11|11|2
+4|2433871|243387|10.2A61|2019.5.22|10:00-12:00|10.2|5|Emery Oleochemicals|Innovative, Green Additives to Improve Our Environment|1. Dr. Harald Klein - Global Platform Head, Green Polymer Additives <br />2. Dr. Sascha Simon - Global Head New Business Development, Green Polymer Additives <br />3. Dr. Christian Mueller - Global Technical Market Manager, Green Polymer Additives|1252|5|5|1,2,4
+5|2422141|242214|13.2E41|2019.5.22|14:00-16:00|13.2|12|Top Polymer|1. Topolymer Innovative TPE Solution in Wet-grip Applications <br />2. Topolymer Innovative Bio-based TPE Solutions|1. Mr. Hunter Deng - R&D Manger <br />2. Mr. Glen Wu - R&D Manager|1252|12|12|1,2,3,5,6
+6|2421811|242181|11.2A41|2019.5.21|14:00-16:00|11.2|12|BASF Colors & Effect Co., Ltd.|1. Stretching Color Space, Inspired by Pantone® Living Coral <br />2. New Products Launch|1. Ms. Calla JIANG - Senior Commercial Industry Manager, AP <br />2. Mr. Roger REN, Technical Industry Manager, AP|1252|12|12|1,2,3,6
+7|2440221|244022|11.2J15|2019.5.21|14:00-16:00|11.2|11|ADEKA (China) Co., Ltd.|1. Nucleation and Clarification Technologies for Polypropylene Thermoforming Applications <br />2. Advanced Halogen-Free Flame Retardant System for Polyolefin Applications with Additive Combination Technology <br />3. Plasticizers for Rubbers - Introduction of ADK CIZER RS Series|1. Mr. Simizu - Technical Engineer <br />2. Mr. Yokoyama - Technical Engineer <br />3. Mr. Sengoku - Technical Engineer|1252|11|11|1,2,3,4,5
+8|2428031|242803|9.2L01|2019.5.22|14:00-16:00|9.2|Baiyun|Farrel Pomini|The Advantages of Processing Carbon Black Masterbatch Applications, Including Conductive Black, on Continuous Mixer|Mr. Alex Ho - Sales Engineer|1252|0|0|1,2,3,4,5,6
+9|2463251|246325|9.3D39|2019.5.22|10:00-12:00|9.3|11|Weihai CY Dendrimer Technology Co., Ltd.|Application of Dendrimer Additives in Plastics|Dr. Wusong Li - General Manager|1252|11|11|1,2,3,999
+10|2433111|243311|2.2E31|2019.5.22|10:00-12:00|2.2|Baiyun|Jiashan Speck Pumps Systemtechnik Co., Ltd.|Discussion on Industry 4.0 of Traditional Industries in the New Situation|1. Mr. Steve Che - Sales Manager <br />2. Mr. Yong Chen - Sales Manager (Agent)|1252|0|0|5,999
+11|2423441|242344|10.2G21|2019.5.22|10:00-12:00|10.2|6|Borouge Pte Ltd|1. Building a More Flexible Plastic with Innovative Solutions <br />2. Anteo™, the New Ingredient for Complete Success|1. Mr. Albert Ou - Senior ADE, Rigid Packaging <br />2. Mr. Allan Yu - Senior ADE, Flexible Packaging|1252|6|6|2,999
+12|2432011|243201|12.2B41|2019.5.22|14:00-16:00|12.2|1|Hyosung Chemical Corporation|1. New Products of HYOSUNG CHEMICAL PP in the Vietnam Plant <br />2. PP-R / PP-B that Meets the New GB/T Standards|-|1252|1|1|1,2,3,4,5
+13|2423442|242344|10.2G21|2019.5.22|14:00-16:00|10.2|6|Borouge Pte Ltd|Advanced Plastics for Future Piping Applications|1. Mr. Chen Huilong - Senior ADE <br />2. Mr. Yu Xinwen - Senior ADE <br />3. Mr. Fang Dongyu - Marketing Manager|1252|6|6|4,999
+14|2432581|243258|10.2G07|2019.5.22|14:00-16:00|10.2|2|TSRC Corporation|1. TSRC SEBS Development for Medical Application <br />2. New Application Center in Shanghai|1. Mr. Norman Huang - Principle Chemist, Technical Service, R&D <br />2. Dr. Albert Shih - Sr. Manager of Application Research Center, R&D <br />3. Dr. Ching Ting - Sr. Asst. Vice President, R&D (English speaker)|1252|2|2|5
+15|2438041|243804|10.2P31|2019.5.21|14:00-16:00|10.2|6|Huntsman Tecnoelastomeri|Total Solution for Hot Casting Polyurethane Industrial Wheels|Mr. Sky Ge - Techno-Commercial Manager|1252|6|6|1
+16|2421812|242181|11.2A41|2019.5.22|14:00-16:00|11.2|9|BASF (China) Company Ltd.|BASF Ultrason® (PESU, PPSU, PSU) High Performance Polymers in Diversified Markets|BASF Specialty Polymers (Ultrason® Team)|1252|9|9|1,2,3,5,6,999
+17|2438361|243836|10.2A01|2019.5.21|14:00-16:00|10.2|9|BYK Additives (Shanghai) Co., Ltd.|New Flame Retardant Additive as Synergist for Aluminum - and Magnesium Hydroxide in Halogen Free Flame Retardant Compounds|1. Mr. Jochen Wilms - Global End Use Manager <br />2. Mr. Steven Ling - Technical Service Manager|1252|9|9|1,2,3,4
+18|2447441|244744|10.2L67|2019.5.23|10:00-12:00|10.2|4|ICIS|1. North American Polyolefins Overview <br />2. Impact of North American Polyethylene Inflow on Asian PE Markets <br />3. China Polyolefins Supply and Demand Change during 2018 - 2019|-|1252|4|4|1,2,3,4,5,6
+19|2462221|246222|9.2B44|2019.5.23|10:00-12:00|9.2|12|K industries GmbH|Presentation of a New Technology for Transverse Direction of Biaxial Stretched Plastic Film|Dr. Wolfgang Pinegger|1252|12|12|2
+20|2443181|244318|12.2D51|2019.5.21|10:00-12:00|12.2|5|Momentive Performace Martrial|Optical Enhancements, Economic Flame Retardancy and Improved Surface Properties - Empower Your Plastics Possibilities with Silicones|Dr. Roy U. Rojas Wahl - Application Development Engineer|1252|5|5|1,2,3
+21|2426141|242614|11.2A31|2019.5.22|14:00-16:00|11.2|5|DuPont China Holding Co., Ltd. |1. DuPont AHEAD (Accelerating Hybrid-Electric Autonomous Driving) Initiative Introduction <br />2. DuPont Connectivity Solutions <br />3. DuPont 3D Printing Solutions|1. Mr. Sean Liu - AP Automotive Marketing Manager <br />2. Mr. Richard Chang - AP Electrical & Electronics Marketing Manager <br />3. Mr. Eric Feng - AP Industrial & Consumer Application Development Manager|1252|5|5|1,3,999
+22|2423611|242361|5.1R41|2019.5.21|14:00-16:00|5.1|Huacheng|Sodick Co., Ltd.|1. Introduction of Latest and Advanced Molding Examples by V-LINE Molding Machine (Automotive Parts, LSR, 5G) and Metal 3D Printer <br />2. Case Studies of Molding Innovation by Three-Dimensional Cooling Water Piping Mold and Future Prospects|1. Mr. Chen Qi - Assistant Department Manager <br />2. Mr. Liu Peng De - Supervisor|1252|0|0|1,3,5
+23|2470511|247051||2019.5.22|10:00-12:00||2|LCY Chemical Corp.|1. Polypropylene Solution to Environment-Friendly Tendency and Healthcare Application <br />2. Globalene TPV: Solutions for Weatherseals in Automotive|1. Mr. Kan-Che Hsu - Engineer <br />2. Mr. Colin Lin - Engineer <br />3. Mr. Nison Hsiao - Engineer|1252|2|2|1,2,4,5
+24|2458854|245885||2019.5.22|14:00-16:00||10|SABIC|SABIC Innovative and Advanced Flexible Packaging Solutions: Enhancing Your Packaging Integrity and Functionality|1. Mr. Huang Jianfeng - Sr. Engineer <br />2. Mr. Lu Hang - Sr. Engineer|1252|10|10|2
+25|2476362|247636||2019.5.23|10:00-12:00||10|Audia Elastomers|New Application with TPS in Automotive, TPV Substitution|1. Mr. Jevons Yu - General Manager <br />2. Mr. Derrick Yan - Marketing Development Manager|1252|10|10|1
+26|2470512|247051||2019.5.22|10:00-12:00||1|LCY Chemical Corp.|1. Thermoplastic Elastomer Apply to Film Modified and Elastic Film Application <br />2. Novel Thermoplastic Composite Materials on Foaming Application|Mr. Li Yu-Yan - Engineer|1252|1|1|2,5,999
+27|2435751|243575|10.2R41|2019.5.23|10:00-12:00|10.2|9|Sibur|Sibur Rubbers. New IIR, HIIR Production|1. Ms. Rebecca Chen - Sales Manager <br />2. Mr. Peter Niu - Technical Support Manager|1252|9|9|1,4,5
+28|2459751|245975||2019.5.21|10:00-12:00||4|ExxonMobil Chemical|Plastic Enhancements with Oppera™ Modifiers|-|1252|4|4|2
+29|2459752|245975||2019.5.21|14:00-16:00||4|ExxonMobil Chemical|Innovative and Sustainable Flexible Packaging Solution|Ms. Risa Wang - North Asia Polyethylene Application Development Engineer|1252|4|4|2
+30|2459753|245975||2019.5.22|10:00-12:00||4|ExxonMobil Chemical|New Product, New Solution in Flexible Packaging|Mr. Johnson Jiang - PE Senior Staff, Customer Development|1252|4|4|2
+31|2459754|245975||2019.5.22|14:00-16:00||4|ExxonMobil Chemical|ExxonMobil High Performance PE Providing One-Stop Solution for Petrochemical Palletized Packaging|1. Ms. Sindy Wang - Customer Development Specialist <br />2. Mr. Qiao Qiao - Customer Development Engineer|1252|4|4|2
+32|2459755|245975||2019.5.21|14:00-16:00||5|ExxonMobil Chemical|Discovering the Power of Elastomers Together|Ms. Nicole Xing - Application Development Engineer|1252|5|5|1,2,999
+33|2466071|246607|10.3S01|2019.5.23|10:00-12:00|10.3|5|Clariant|1. Clariant Exolit OP Flame Retardants Help Ensure Fire Safety in E-mobility <br />2. Latest Developments in Polymers Stabilization for Transportation and for E-Mobility <br />3. Higher Efficiency in Converting Polymers into Automotive Parts by the Use of Clariant’s Waxes|1. Ms. Lexi Dai - Technical Marketing Engineer BL Flame Retardants <br />2. Mr. Stevie Huang - Marketing Manager of Enginnering Polymers BL Performance Addtives Greater China <br />3. Ms. Megan Mao - Regional Techinical Segment Manager Plastics APAC BL Advance Surface Solutions|1252|5|5|1,3
+34|2421791|242179|10.2J41|2019.5.22|10:00-12:00|10.2|12|Dow Plastics Additives|1. Flexible Acrylic Resin <br />2. New Processing Aid in PVC <br />3. Other New Plastics Additives|1. Mr. Gergely Nagy - Global Business Director <br />2. Mr. Drake Ian - R&D, Technical Service Director <br />3. Mr. Felix Zhang - APAC Technical Service Manager|1252|12|12|1,2,3,4,5,6
+35|2470261|247026|9.2L17|2019.5.23|10:00-12:00|9.2|Huacheng|U.S. Commercial Service Guangzhou, U.S. Consulate General in Guangzhou|USA Day Plastics Processing Innovation Technology Seminar|-|1252|0|0|1,2,3,4,5,6
+36|2421813|242181|11.2A41|2019.5.23|14:00-16:00|11.2|10|BASF|1. Ultraform® Products and Industrial Application <br />2. BASF PU Solution for Industrial Industry|1. Mr. Noah CHENG - Application Development Manager <br />2. Mr. Shao Li WANG - Technical Sales|1252|10|10|1,2,3,4,5,6
+37|2458851|245885||2019.5.21|10:00-12:00||10|SABIC|SABIC Engineering Thermoplastic Solutions for the Fast-Developing Electronics and Electrical Applications|1. Mr. Steven Song - Lead Scientist <br />2. Mr. Jerry Yang - Sr. Scientist|1252|10|10|3
+38|2458852|245885||2019.5.21|14:00-16:00||10|SABIC|SABIC Advanced PP Compound Technologies for Consumer Products|Ms. Helen Ye - Sr. Scientist |1252|10|10|3
+39|2475661|247566||2019.5.21|10:00-12:00||2|Sinopec|Press Conference on New Products and New Applications of Sinopec Synthetic Resins|-|1252|2|2|1,2,3,4,5,6,999
+40|2458853|245885||2019.5.22|10:00-12:00||10|SABIC|SABIC Comprehensive Plastic Solutions to Address Evolving Needs of the Home Appliance Industry|1. Ms. Helen Ye - Sr. Scientist <br />2. Mr. Jerry Yang - Sr. Scientist|1252|10|10|3
+41|2476361|247636||2019.5.21|10:00-12:00||9|Audia Elastomers|Optimized Solutions of TPE Bonding / Adhesion|1. Mr. Jevons Yu - General Manager <br />2. Mr. Shaokun Wen - Product Manager|1252|9|9|1,3,4,999
+42|2425611|242561|2.1R31|2019.5.22|14:00-16:00|2.1|花城|CPM 擠出集團|雙螺杆擠出機高性能螺紋原料在高分子量聚乙烯中的優勢, 及行星擠出機在新能源汽車輪胎橡膠領域的應用|Joerg Mayer-Lutz 先生 - 銷售經理|950|0|0|1,5,999
+43|2429941|242994|11.2L31|2019.5.22|10:00-12:00|11.2|9|可樂麗貿易 (上海) 有限公司|可樂麗對於 TPE 行業的解決方案: <br />1. 苯乙烯類熱塑性彈性體 - SEPTON™ 的高分子量牌號 <br />2. 丙烯酸嵌段共聚物 - KURARITY™ 在表面保護膜的應用|-|950|9|9|1,2,3,4,5,6
+44|2428821|242882|10.2G11|2019.5.22|14:00-16:00|10.2|11|1. 沙特基礎工業公司  <br />2. 中國石油化工股份有限公司茂名分公司|1. 沙特基礎建設公司於薄壁包裝的專用解決方案 <br />2. 透明聚丙烯產品開發及應用|1. 張德輝 先生 - 薄壁包裝市場開發及技術支援工程師 <br />2. 譚捷 先生 - 茂名石化研究院高級工程師|950|11|11|2
+45|2433871|243387|10.2A61|2019.5.22|10:00-12:00|10.2|5|意慕利油脂化學|使用創新綠色添加劑, 改善我們的環境|1. Harald Klein 博士 - 全球部門主管, 塑料添加劑部 <br />2. Sascha Simon 博士 - 全球新業務開發主管, 塑料添加劑部 <br />3. Christian Mueller 博士 - 全球技術市場經理, 塑料添加劑部|950|5|5|1,2,4
+46|2422141|242214|13.2E41|2019.5.22|14:00-16:00|13.2|12|頂塑企業|1. Topolymer TPE 在濕式止滑領域的創新應用 <br />2. Topolymer 生物基熱塑性彈性體的創新解決方案|1. 鄧正閏 先生 - R&D 經理 <br />2. 鄔慧榮 先生 - R&D 經理|950|12|12|1,2,3,5,6
+47|2421811|242181|11.2A41|2019.5.21|14:00-16:00|11.2|12|巴斯夫顏料 (上海) 有限公司|1. 突破顏色空間 - 由潘通 2019 年度色談開…… <br />2. 新產品上線|1. 江冰 女士 - 亞太區資深商業管理經理 <br />2. 任青江 先生 - 亞太區技術管理經理|950|12|12|1,2,3,6
+48|2440221|244022|11.2J15|2019.5.21|14:00-16:00|11.2|11|艾迪科 (中國) 投資有限公司|1. 成核劑及透明劑在 PP 熱成型上的活用 <br />2. 關於高端無鹵阻燃體系聚烯烴的無限可能 <br />3. 橡膠用增塑劑 - ADK CIZER RS 系列產品介紹|1. 清水 先生 - 技術工程師 <br />2. 橫山 先生 - 技術工程師 <br />3. 仙石 先生 - 技術工程師|950|11|11|1,2,3,4,5
+49|2428031|242803|9.2L01|2019.5.22|14:00-16:00|9.2|白雲|法雷爾波米尼|連續混煉機在加工炭黑母料、包括導電炭黑方面的優勢|何 先生 - 銷售工程師|950|0|0|1,2,3,4,5,6
+50|2463251|246325|9.3D39|2019.5.22|10:00-12:00|9.3|11|威海晨源分子新材料有限公司|新型樹枝狀大分子助劑在塑料中的應用|李武松 博士 - 總經理|950|11|11|1,2,3,999
+51|2433111|243311|2.2E31|2019.5.22|10:00-12:00|2.2|白雲|嘉善司倍克泵業有限公司|新形勢下傳統行業的工業 4.0 討論|1. 車雲傑 先生 - 業務經 <br />2. 陳勇 先生 - 業務經理 (代理)|950|0|0|5,999
+52|2423441|242344|10.2G21|2019.5.22|10:00-12:00|10.2|6|博禄私人有限公司|1. 創新解決方案構建更加靈活的塑料 <br />2. ANTEO™ 源于創新, 歸於完美|1. 歐賢齊 先生 - 資深硬包方案開發工程師 <br />2. 禹慶凱 先生 - 資深軟包方案開發工程師|950|6|6|2,999
+53|2432011|243201|12.2B41|2019.5.22|14:00-16:00|12.2|1|曉星化學|1. 曉星化學 PP 越南工廠生產的新產品 <br />2. PP-R / PP-B 符合新的 GB/T 標準|-|950|1|1|1,2,3,4,5
+54|2423442|242344|10.2G21|2019.5.22|14:00-16:00|10.2|6|博禄私人有限公司|用於未來管道基礎設施的先進塑料解決方案|1. 陳會龍 先生 - 高級應用工程師 <br />2. 余新文 先生 - 高級應用工程師 <br />3. 方東宇 先生 - 市場經理|950|6|6|4,999
+55|2432581|243258|10.2G07|2019.5.22|14:00-16:00|10.2|2|台橡股份有限公司|1. 台橡 SEBS 於醫療領域的應用 <br />2. 台橡新上海應用研究中心簡介|1. 黃羣翰 先生 - 主任化學師/ 技術服務組/ 研究發展處 <br />2. 施希弦 博士 - 資深經理/ 應用研究中心/ 研究發展處 <br />3. 丁晴 博士 - 資深協理/ 研究開發處 (英文講者)|950|2|2|5
+56|2438041|243804|10.2P31|2019.5.21|14:00-16:00|10.2|6|亨斯邁特諾|熱澆註聚氨酯工業滾輪整體解決方案|葛晨 先生 - 技術及商務經理|950|6|6|1
+57|2421812|242181|11.2A41|2019.5.22|14:00-16:00|11.2|9|巴斯夫 (中國) 有限公司|BASF Ultrason® (PESU, PPSU, PSU) 高性能塑料多樣化的市場的應用|BASF 特種聚合物部門 (Ultrason® 團隊)|950|9|9|1,2,3,5,6,999
+58|2438361|243836|10.2A01|2019.5.21|14:00-16:00|10.2|9|畢克助劑 (上海) 有限公司|低煙無鹵阻燃料中氫氧化鋁和氫氧化鎂的協效劑|1. Jochen Wilms 先生 - 全球應用經理 <br />2. 凌盛 先生 - 技術服務經理|950|9|9|1,2,3,4
+59|2447441|244744|10.2L67|2019.5.23|10:00-12:00|10.2|4|安迅思|1. 北美聚烯烴市場概述 <br />2. 北美 PE 貨源的流入對於亞洲市場的影響 <br />3. 2018 - 2019 年中國聚烯烴市場供需變化趨勢|-|950|4|4|1,2,3,4,5,6
+60|2462221|246222|9.2B44|2019.5.23|10:00-12:00|9.2|12|K industries GmbH|Presentation of a New Technology for Transverse Direction of Biaxial Stretched Plastic Film|Wolfgang Pinegger 博士|950|12|12|2
+61|2443181|244318|12.2D51|2019.5.21|10:00-12:00|12.2|5|邁圖 (上海) 貿易有限公司|更強光學效果, 更高阻燃效應, 更優表面性能 - 有機硅賦予塑料新可能|Dr. Roy U. Rojas Wahl - Application Development Engineer|950|5|5|1,2,3
+62|2426141|242614|11.2A31|2019.5.22|14:00-16:00|11.2|5|杜邦中國集團有限公司|1. 杜邦 AHEAD (加速混動自動駕駛進程) 項目簡介 <br />2. 杜邦創新互聯科技解決方案 <br />3. 杜邦高性能 3D 打印解決方案|1. 劉洋 先生 - 亞太區汽車市場經理 <br />2. 張乃淳 先生 - 亞太區電子電氣市場經理 <br />3. 馮嘉 先生 - 亞太區工業和消費品應用開發經理|950|5|5|1,3,999
+63|2423611|242361|5.1R41|2019.5.21|14:00-16:00|5.1|花城|沙迪克國際貿易 (深圳) 有限公司|1. 金屬 3D 打印機的成形革新應用和 V-LINE 注塑成形機的最新 <br />2. 先進成形案例介紹|1. 陳琦 先生 - 部長補佐 <br />2. 劉鵬德 先生 - 主任|950|0|0|1,3,5
+64|2470511|247051||2019.5.22|10:00-12:00||2|李長榮化學工業股份有限公司|1. 因應環境友善趨勢與醫療照護應用的聚丙烯產品方案 <br />2. Globalene TPV 在車用密封材料上的解決方案 |1. 許綱哲 先生 - 工程師 <br />2. 林谷錫 先生 - 工程師 <br />3. 蕭宇呈 先生 - 工程師|950|2|2|1,2,4,5
+65|2458854|245885||2019.5.22|14:00-16:00||10|沙特基礎工業公司|沙特基礎工業公司創新軟包裝解決方案: 增加包裝的完整性與功能性|1. 黃劍鋒 先生 - 高級技術工程師 <br />2. 路航 先生 - 高級技術工程師|950|10|10|2
+66|2476362|247636||2019.5.23|10:00-12:00||10|美國奧世達彈性體|TPS 替代 TPV 在汽車行業的新應用|1. 俞弘強 先生 - 總經理 <br />2. 顔龍 先生 - 市場開發經理|950|10|10|1
+67|2470512|247051||2019.5.22|10:00-12:00||1|李長榮化學工業股份有限公司|1. 熱可塑性彈性體於薄膜改質與彈性膜之應用 <br />2. 熱可塑性複合材料於發泡材之創新應用|利宇晏 先生 - 工程師|950|1|1|2,5,999
+68|2435751|243575|10.2R41|2019.5.23|10:00-12:00|10.2|9|西布爾集團|西布爾橡膠 - 全新鹵化與普通丁基橡膠產能|1. 陳蓓蓓 女士 - 銷售經理 <br />2. 牛國臣 先生 - 技術經理|950|9|9|1,4,5
+69|2459751|245975||2019.5.21|10:00-12:00||4|埃克森美孚化工|Oppera™ 改性劑用於增強塑膠製品的性能|-|950|4|4|2
+70|2459752|245975||2019.5.21|14:00-16:00||4|埃克森美孚化工|可持續發展創新包裝解決方案|王熙芮 女士 - 北亞區聚乙烯應用開發工程師|950|4|4|2
+71|2459753|245975||2019.5.22|10:00-12:00||4|埃克森美孚化工|針對軟包裝的新產品及解決方案|蔣國治 先生 - 聚乙烯技術資深工程師|950|4|4|2
+72|2459754|245975||2019.5.22|14:00-16:00||4|埃克森美孚化工|埃克森美孚高性能聚乙烯為石化托盤提供一體化解決方案|1. 王馨迪 女士 - 客戶開發專員 <br />2. 喬橋 先生 - 客戶開發工程師|950|4|4|2
+73|2459755|245975||2019.5.21|14:00-16:00||5|埃克森美孚化工|共同探索彈性體的奧秘|刑妍 女士 - 應用開發工程師|950|5|5|1,2,999
+74|2466071|246607|10.3S01|2019.5.23|10:00-12:00|10.3|5|科萊恩|1. 科萊恩阻燃劑為電動汽車防火安全保駕護航 <br />2. 運輸系統和電動汽車聚合物穩定性技術的最新進展 <br />3. 科萊恩蠟粉在塑料加工成汽車部件過程中的加工高效性|1. 戴瑩瑩 女士 - 阻燃劑技術市場工程師 <br />2. 黃華隆 先生 - 大中華區工程塑膠聚合市場經理 <br />3. 毛亞琴 女士 - 先進表面解決方案亞太區技術經理|950|5|5|1,3
+75|2421791|242179|10.2J41|2019.5.22|10:00-12:00|10.2|12|陶氏化學塑料添加劑業務|1. 柔性丙烯酸酯樹脂 <br />2. 用于 PVC 中新型加工助劑 <br />3. 其它新型塑料添加劑|1. Gergely Nagy 先生 - 全球業務總監 <br />2. Drake Ian 先生 - 研發, 技術總監 <br />3. 張輝 先生 - 亞太區技術服務經理|950|12|12|1,2,3,4,5,6
+76|2470261|247026|9.2L17|2019.5.23|10:00-12:00|9.2|花城|美國駐廣州總領事館商務處|「美國日」塑料加工創新技術研討會|-|950|0|0|1,2,3,4,5,6
+77|2421813|242181|11.2A41|2019.5.23|14:00-16:00|11.2|10|巴斯夫聚氨酯特種產品 (中國) 有限公司|1. Ultraform® 產品和工業應用介紹 <br />2. BASF PU 工業行業解決方案|1. 成海粟 先生 - 應用開發經理 <br />2. 汪紹禮 先生 - 技術銷售|950|10|10|1,2,3,4,5,6
+78|2458851|245885||2019.5.21|10:00-12:00||10|沙特基礎工業公司|沙特基礎工業公司工程塑料方案在快速發展的電子和電氣行業中的應用|1. 宋武平 先生 - 高級研究員 <br />2. 楊春華 先生 - 研究員|950|10|10|3
+79|2458852|245885||2019.5.21|14:00-16:00||10|沙特基礎工業公司|沙特基礎工業公司針對消費品應用的先進改性聚丙烯産品|葉鐵英 女士 - 研究員|950|10|10|3
+80|2475661|247566||2019.5.21|10:00-12:00||2|中國石化|中國石化合成樹脂新產品新應用發佈會|-|950|2|2|1,2,3,4,5,6,999
+81|2458853|245885||2019.5.22|10:00-12:00||10|沙特基礎工業公司|沙特基礎工業公司全面塑料方案以應對家電行業不斷變化的需求|1. 葉鐵英 女士 - 研究員 <br />2. 楊春華 先生 - 研究員|950|10|10|3
+82|2476361|247636||2019.5.21|10:00-12:00||9|美國奧世達彈性體|TPE 包膠的優化解決方案|1. 俞弘強 先生 - 總經理 <br />2. 溫韶坤 先生 - 産品經理|950|9|9|1,3,4,999
+83|2425611|242561|2.1R31|2019.5.22|14:00-16:00|2.1|花城|CPM 挤出集团|双螺杆挤出机高性能螺纹原料在高分子量聚乙烯中的优势, 及行星挤出机在新能源汽车轮胎橡胶领域的应用|Joerg Mayer-Lutz 先生 - 销售经理|936|0|0|1,5,999
+84|2429941|242994|11.2L31|2019.5.22|10:00-12:00|11.2|9|可乐丽贸易 (上海) 有限公司|可乐丽对于 TPE 行业的解决方案: <br />1. 苯乙烯类热塑性弹性体 - SEPTON™ 的高分子量牌号 <br />2. 丙烯酸嵌段共聚物 - KURARITY™ 在表面保护膜的应用|-|936|9|9|1,2,3,4,5,6
+85|2428821|242882|10.2G11|2019.5.22|14:00-16:00|10.2|11|1. 沙特基础工业公司 <br />2. 中国石油化工股份有限公司茂名分公司|1. 沙特基础建设公司于薄壁包装的专用解决方案 <br />2. 透明聚丙烯产品开发及应用|1. 张德辉 先生 - 薄壁包装市场开发及技术支援工程师 <br />2. 谭捷 先生 - 茂名石化研究院高级工程师|936|11|11|2
+86|2433871|243387|10.2A61|2019.5.22|10:00-12:00|10.2|5|意慕利油脂化学|使用创新绿色添加剂, 改善我们的环境|1. Harald Klein 博士 - 全球部门主管, 塑料添加剂部 <br />2. Sascha Simon 博士 - 全球新业务开发主管, 塑料添加剂部 <br />3. Christian Mueller 博士 - 全球技术市场经理, 塑料添加剂部|936|5|5|1,2,4
+87|2422141|242214|13.2E41|2019.5.22|14:00-16:00|13.2|12|顶塑企业|1. Topolymer TPE 在湿式止滑领域的创新应用 <br />2. Topolymer 生物基热塑性弹性体的创新解决方案|1. 邓正闰 先生 - R&D 经理 <br />2. 邬慧荣 先生 - R&D 经理|936|12|12|1,2,3,5,6
+88|2421811|242181|11.2A41|2019.5.21|14:00-16:00|11.2|12|巴斯夫颜料 (上海) 有限公司|1. 突破颜色空间 - 由潘通 2019 年度色谈开…… <br />2. 新产品上线|1. 江冰 女士 - 亚太区资深商业管理经理 <br />2. 任青江 先生 - 亚太区技术管理经理|936|12|12|1,2,3,6
+89|2440221|244022|11.2J15|2019.5.21|14:00-16:00|11.2|11|艾迪科 (中国) 投资有限公司|1. 成核剂及透明剂在 PP 热成型上的活用 <br />2. 关于高端无卤阻燃体系聚烯烃的无限可能 <br />3. 橡胶用增塑剂 - ADK CIZER RS 系列产品介绍|1. 清水 先生 - 技术工程师 <br />2. 横山 先生 - 技术工程师 <br />3. 仙石 先生 - 技术工程师|936|11|11|1,2,3,4,5
+90|2428031|242803|9.2L01|2019.5.22|14:00-16:00|9.2|白云|法雷尔波米尼|连续混炼机在加工炭黑母料、包括导电炭黑方面的优势|何 先生 - 销售工程师|936|0|0|1,2,3,4,5,6
+91|2463251|246325|9.3D39|2019.5.22|10:00-12:00|9.3|11|威海晨源分子新材料有限公司|新型树枝状大分子助剂在塑料中的应用|李武松 博士 - 总经理|936|11|11|1,2,3,999
+92|2433111|243311|2.2E31|2019.5.22|10:00-12:00|2.2|白云|嘉善司倍克泵业有限公司|新形势下传统行业的工业 4.0 讨论|1. 车云杰 先生 - 业务经理 <br />2. 陈勇 先生 - 业务经理 (代理)|936|0|0|5,999
+93|2423441|242344|10.2G21|2019.5.22|10:00-12:00|10.2|6|博禄私人有限公司|1. 创新解决方案构建更加灵活的塑料 <br />2. ANTEO™ 源于创新, 归于完美|1. 欧贤齐 先生 - 资深硬包方案开发工程师 <br />2. 禹庆凯 先生 - 资深软包方案开发工程师|936|6|6|2,999
+94|2432011|243201|12.2B41|2019.5.22|14:00-16:00|12.2|1|晓星化学|1. 晓星化学 PP 越南工厂生产的新产品 <br />2. PP-R / PP-B 符合新的 GB/T 标准|-|936|1|1|1,2,3,4,5
+95|2423442|242344|10.2G21|2019.5.22|14:00-16:00|10.2|6|博禄私人有限公司|用于未来管道基础设施的先进塑料解决方案|1. 陈会龙 先生 - 高级应用工程师 <br />2. 余新文 先生 - 高级应用工程师 <br />3. 方东宇 先生 - 市场经理|936|6|6|4,999
+96|2432581|243258|10.2G07|2019.5.22|14:00-16:00|10.2|2|台橡股份有限公司|1. 台橡 SEBS 于医疗领域的应用 <br />2. 台橡新上海应用研究中心简介|1. 黄羣翰 先生 - 主任化学师/ 技术服务组/ 研究发展处 <br />2. 施希弦 博士 - 资深经理/ 应用研究中心/ 研究发展处 <br />3. 丁晴 博士 - 资深协理/ 研究开发处 (英文讲者)|936|2|2|5
+97|2438041|243804|10.2P31|2019.5.21|14:00-16:00|10.2|6|亨斯迈特诺|热浇注聚氨酯工业滚轮整体解决方案|葛晨 先生 - 技术及商务经理|936|6|6|1
+98|2421812|242181|11.2A41|2019.5.22|14:00-16:00|11.2|9|巴斯夫 (中国) 有限公司|BASF Ultrason® (PESU, PPSU, PSU) 高性能塑料多样化的市场的应用|BASF 特种聚合物部门 (Ultrason® 团队)|936|9|9|1,2,3,5,6,999
+99|2438361|243836|10.2A01|2019.5.21|14:00-16:00|10.2|9|毕克助剂 (上海) 有限公司|低烟无卤阻燃料中氢氧化铝和氢氧化镁的协效剂|1. Jochen Wilms 先生 - 全球应用经理 <br />2. 凌盛 先生 - 技术服务经理|936|9|9|1,2,3,4
+100|2447441|244744|10.2L67|2019.5.23|10:00-12:00|10.2|4|安迅思|1. 北美聚烯烃市场概述 <br />2. 北美 PE 货源的流入对于亚洲市场的影响 <br />3. 2018 - 2019 年中国聚烯烃市场供需变化趋势|-|936|4|4|1,2,3,4,5,6
+101|2462221|246222|9.2B44|2019.5.23|10:00-12:00|9.2|12|K industries GmbH|Presentation of a New Technology for Transverse Direction of Biaxial Stretched Plastic Film|Wolfgang Pinegger 博士|936|12|12|2
+102|2443181|244318|12.2D51|2019.5.21|10:00-12:00|12.2|5|迈图 (上海) 贸易有限公司|更强光学效果, 更高阻燃效应, 更优表面性能 - 有机硅赋予塑料新可能|Dr. Roy U. Rojas Wahl - Application Development Engineer|936|5|5|1,2,3
+103|2426141|242614|11.2A31|2019.5.22|14:00-16:00|11.2|5|杜邦中国集团有限公司|1. 杜邦 AHEAD (加速混动自动驾驶进程) 项目简介 <br />2. 杜邦创新互联科技解决方案 <br />3. 杜邦高性能 3D 打印解决方案|1. 刘洋 先生 - 亚太区汽车市场经理 <br />2. 张乃淳 先生 - 亚太区电子电气市场经理 <br />3. 冯嘉 先生 - 亚太区工业和消费品应用开发经理|936|5|5|1,3,999
+104|2423611|242361|5.1R41|2019.5.21|14:00-16:00|5.1|花城|沙迪克国际贸易 (深圳) 有限公司|1. 金属 3D 打印机的成形革新应用和 V-LINE 注塑成形机的最新 <br />2. 先进成形案例介绍|1. 陈琦 先生 - 部長補佐 <br />2. 刘鹏德 先生 - 主任|936|0|0|1,3,5
+105|2470511|247051||2019.5.22|10:00-12:00||2|李长荣化学工业股份有限公司|1. 因应环境友善趋势与医疗照护应用的聚丙烯产品方案 <br />2. Globalene TPV 在车用密封材料上的解决方案 |1. 许纲哲 先生 - 工程师 <br />2. 林谷锡 先生 - 工程师 <br />3. 萧宇呈 先生 - 工程师|936|2|2|1,2,4,5
+106|2458854|245885||2019.5.22|14:00-16:00||10|沙特基础工业公司|沙特基础工业公司创新软包装解决方案: 增加包装的完整性与功能性|1. 黄剑锋 先生 - 高级技术工程师 <br />2. 路航 先生 - 高级技术工程师|936|10|10|2
+107|2476362|247636||2019.5.23|10:00-12:00||10|美国奥世达弹性体|TPS 替代 TPV 在汽车行业的新应用|1. 俞弘强 先生 - 总经理 <br />2. 颜龙 先生 - 市场开发经理|936|10|10|1
+108|2470512|247051||2019.5.22|10:00-12:00||1|李长荣化学工业股份有限公司|1. 热可塑性弹性体于薄膜改质与弹性膜之应用 <br />2. 热可塑性复合材料于发泡材之创新应用|利宇晏 先生 - 工程师|936|1|1|2,5,999
+109|2435751|243575|10.2R41|2019.5.23|10:00-12:00|10.2|9|西布尔集团|西布尔橡胶 - 全新卤化与普通丁基橡胶产能|1. 陈蓓蓓 女士 - 销售经理 <br />2. 牛国臣 先生 - 技术经理|936|9|9|1,4,5
+110|2459751|245975||2019.5.21|10:00-12:00||4|埃克森美孚化工|Oppera™ 改性剂用于增强塑料制品的性能|-|936|4|4|2
+111|2459752|245975||2019.5.21|14:00-16:00||4|埃克森美孚化工|可持续发展创新包装解决方案|王熙芮 女士 - 北亚区聚乙烯应用开发工程师|936|4|4|2
+112|2459753|245975||2019.5.22|10:00-12:00||4|埃克森美孚化工|针对软包装的新产品及解决方案|蒋国治 先生 - 聚乙烯技术资深工程师|936|4|4|2
+113|2459754|245975||2019.5.22|14:00-16:00||4|埃克森美孚化工|埃克森美孚高性能聚乙烯为石化托盘提供一体化解决方案|1. 王馨迪 女士 - 客户开发专员 <br />2. 乔桥 先生 - 客户开发工程师|936|4|4|2
+114|2459755|245975||2019.5.21|14:00-16:00||5|埃克森美孚化工|共同探索弹性体的奥秘|刑妍 女士 - 应用开发工程师|936|5|5|1,2,999
+115|2466071|246607|10.3S01|2019.5.23|10:00-12:00|10.3|5|科莱恩|1. 科莱恩阻燃剂为电动汽车防火安全保驾护航 <br />2. 运输系统和电动汽车聚合物稳定性技术的最新进展 <br />3. 科莱恩蜡粉在塑料加工成汽车部件过程中的加工高效性|1. 戴莹莹 女士 - 阻燃剂技术市场工程师 <br />2. 黄华隆 先生 - 大中华区工程塑胶聚合市场经理 <br />3. 毛亚琴 女士 - 先进表面解决方案亚太区技术经理|936|5|5|1,3
+116|2421791|242179|10.2J41|2019.5.22|10:00-12:00|10.2|12|陶氏化学塑料添加剂业务|1. 柔性丙烯酸酯树脂 <br />2. 用于 PVC 中新型加工助剂 <br />3. 其它新型塑料添加剂|1. Gergely Nagy 先生 - 全球业务总监 <br />2. Drake Ian 先生 - 研发, 技术总监 <br />3. 张辉 先生 - 亚太区技术服务经理|936|12|12|1,2,3,4,5,6
+117|2470261|247026|9.2L17|2019.5.23|10:00-12:00|9.2|花城|美国驻广州总领事馆商务处|「美国日」塑料加工创新技术研讨会|-|936|0|0|1,2,3,4,5,6
+118|2421813|242181|11.2A41|2019.5.23|14:00-16:00|11.2|10|巴斯夫聚氨酯特种产品 (中国) 有限公司|1. Ultraform® 产品和工业应用介绍 <br />2. BASF PU 工业行业解决方案|1. 成海粟 先生 - 应用开发经理 <br />2. 汪绍礼 先生 - 技术销售|936|10|10|1,2,3,4,5,6
+119|2458851|245885||2019.5.21|10:00-12:00||10|沙特基础工业公司|沙特基础工业公司工程塑料方案在快速发展的电子和电气行业中的应用|1. 宋武平 先生 - 高级研究员 <br />2. 杨春华 先生 - 研究员|936|10|10|3
+120|2458852|245885||2019.5.21|14:00-16:00||10|沙特基础工业公司|沙特基础工业公司针对消费品应用的先进改性聚丙烯产品|叶铁英 女士 - 研究员|936|10|10|3
+121|2475661|247566||2019.5.21|10:00-12:00||2|中国石化|中国石化合成树脂新产品新应用发布会|-|936|2|2|1,2,3,4,5,6,999
+122|2458853|245885||2019.5.22|10:00-12:00||10|沙特基础工业公司|沙特基础工业公司全面塑料方案以应对家电行业不断变化的需求|1. 叶铁英 女士 - 研究员 <br />2. 杨春华 先生 - 研究员|936|10|10|3
+123|2476361|247636||2019.5.21|10:00-12:00||9|美国奥世达弹性体|TPE 包胶的优化解决方案|1. 俞弘强 先生 - 总经理 <br />2. 温韶坤 先生 - 产品经理|936|9|9|1,3,4,999

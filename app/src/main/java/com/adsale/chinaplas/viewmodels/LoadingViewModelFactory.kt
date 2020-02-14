@@ -10,10 +10,10 @@ import com.adsale.chinaplas.data.dao.*
  */
 @Suppress("UNCHECKED_CAST")
 class LoadingViewModelFactory(val app: Application, private val regRepo: RegisterRepository, private val wcRepository: WebContentRepository,
-                              private val exhibitorDao: ExhibitorDao) : ViewModelProvider.Factory {
+                              private val exhibitorDao: ExhibitorDao,private val eventRepository: EventRepository) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(LoadingViewModel::class.java))
-            return LoadingViewModel(app, regRepo, wcRepository,exhibitorDao) as T
+            return LoadingViewModel(app, regRepo, wcRepository,exhibitorDao,eventRepository) as T
         throw IllegalArgumentException("Unable to construct viewmodel")
     }
 

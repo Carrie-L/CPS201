@@ -5,6 +5,10 @@ package com.adsale.chinaplas.utils
  */
 // 2020.4.21-24  展会日期
 const val SHOW_DATE_1ST = "2020-4-21"
+const val DATE_1 = 21
+const val DATE_2 = 22
+const val DATE_3 = 23
+const val DATE_4 = 24
 
 const val DATABASE_NAME = "cps20.db"
 
