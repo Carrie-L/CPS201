@@ -1,0 +1,95 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.adsale.chinaplas.viewmodels.SeminarViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/function_bar"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tv_am"
+                android:layout_width="72dp"
+                android:layout_height="24dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="16dp"
+                android:background="@{model.currentIsAm.booleanValue()?@drawable/bg_btn_selected:@drawable/bg_btn_not_selected}"
+                android:gravity="center"
+                android:onClick="@{()->model.onAmClick()}"
+                android:text="@string/seminar_am"
+                android:textColor="#fff" />
+
+            <TextView
+                android:id="@+id/tv_pm"
+                android:layout_width="72dp"
+                android:layout_height="24dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="16dp"
+                android:layout_toRightOf="@id/tv_am"
+                android:background="@{model.currentIsAm.booleanValue()?@drawable/bg_btn_not_selected:@drawable/bg_btn_selected}"
+                android:gravity="center"
+                android:onClick="@{()->model.onPmClick()}"
+                android:text="@string/seminar_pm"
+                android:textColor="#fff" />
+
+            <ImageView
+                android:id="@+id/iv_seminar_reset"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="14dp"
+                android:background="@drawable/iv_seminar_reset"
+                android:onClick="@{()->model.onFunctionClick(4)}" />
+
+            <ImageView
+                android:id="@+id/iv_seminar_map"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="8dp"
+                android:layout_toStartOf="@id/iv_seminar_reset"
+                android:onClick="@{()->model.onFunctionClick(5)}"
+                android:src="@drawable/iv_seminar_map" />
+
+            <ImageView
+                android:id="@+id/iv_seminar_filter"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="8dp"
+                android:layout_toStartOf="@id/iv_seminar_map"
+                android:onClick="@{()->model.onFunctionClick(6)}"
+                android:src="@drawable/ic_filter_48" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_alignParentBottom="true"
+                android:background="@color/grey_200" />
+
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/seminar_recycler_view_base"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/function_bar" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,6 +1,5 @@
 package com.adsale.chinaplas.data.dao
 
-import android.app.Application
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
@@ -15,9 +14,10 @@ import com.adsale.chinaplas.utils.DATABASE_NAME
 @Database(
     entities = [MainIcon::class, CountryJson::class, RegOptionData::class, WebContent::class, FileControl::class, HtmlText::class, Exhibitor::class,
         CompanyApplication::class, CompanyProduct::class, ExhApplication::class, ExhIndustry::class, ExhibitorZone::class, Zone::class, Country::class, Hall::class, ExhibitorHistory::class,
-        ConcurrentEvent::class
+        ConcurrentEvent::class, SeminarInfo::class, SeminarSpeaker::class, EventApplication::class,
+        NewtechProductImage::class, NewtechProductInfo::class, NewtechCategoryID::class, NewtechCategorySub::class, NewtechProductsID::class, NewtechArea::class
     ],
-    version = 7,
+    version = 1,
     exportSchema = false
 )
 abstract class CpsDatabase : RoomDatabase() {
@@ -34,6 +34,9 @@ abstract class CpsDatabase : RoomDatabase() {
     abstract fun hallDao(): HallDao
     abstract fun zoneDao(): ZoneDao
     abstract fun eventDao(): EventDao
+    abstract fun seminarDao(): SeminarDao
+    abstract fun eventApplicationDao(): EventApplicationDao
+    abstract fun newtechDao(): NewtechDao
 
     companion object {
         @Volatile

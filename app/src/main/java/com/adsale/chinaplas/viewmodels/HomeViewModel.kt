@@ -25,11 +25,19 @@ class HomeViewModel() : ViewModel() {
     companion object {
         private const val ONE_SECOND = 1000L
         private const val COUNTDOWN_TIME = 5000L   // viewpager 5s 自动滚动到下一张
+        private const val D2_COUNTDOWN_TIME = 2000L   // 2s 自动滚动到下一张
     }
 
+    // TOP BANNER
     private var _rollNext = MutableLiveData<Boolean>()
     val rollNext: LiveData<Boolean> = _rollNext
     private lateinit var timer: CountDownTimer
+
+    // D2
+//    private var _d2RollNext = MutableLiveData<Boolean>()
+//    val d2RollNext: LiveData<Boolean> = _d2RollNext
+    var d2RollIndex = MutableLiveData(-1)
+    private lateinit var d2Timer: CountDownTimer
 
     // The internal MutableLiveData String that stores the most recent response
     private val _response = MutableLiveData<ByteArray>()
@@ -50,6 +58,7 @@ class HomeViewModel() : ViewModel() {
         LogUtil.i(">>> home view model init")
         //        parseMainBannerTxt("$fileAbsPath/MainBannerInfo.txt")
         addCountDownTime()
+        addD2CountDownTime()
     }
 
     fun downloadTxt(fileName: String) {
@@ -66,10 +75,6 @@ class HomeViewModel() : ViewModel() {
             }
         }
     }
-
-
-
-
 
 
     fun getMainIcons() {
@@ -125,7 +130,7 @@ class HomeViewModel() : ViewModel() {
     //    }
 
     /**
-     * 倒计时
+     * Top banner 倒计时
      */
     private fun addCountDownTime() {
         timer = object : CountDownTimer(COUNTDOWN_TIME, ONE_SECOND) {
@@ -145,6 +150,9 @@ class HomeViewModel() : ViewModel() {
     fun stopTimer() {
         _rollNext.value = false
         timer.cancel()
+
+        d2RollIndex.value = -1
+        d2Timer.cancel()
     }
 
     fun startTimer() {
@@ -152,6 +160,42 @@ class HomeViewModel() : ViewModel() {
             LogUtil.i("* startTimer *")
             timer.start()
             _rollNext.value = true
+        }
+    }
+
+    // D2 广告计时
+    var adIndex = 0
+
+    private fun addD2CountDownTime() {
+        d2Timer = object : CountDownTimer(D2_COUNTDOWN_TIME, ONE_SECOND) {
+            override fun onTick(millisUntilFinished: Long) {   //  millisUntilFinished / ONE_SECOND = 4,3,2,1,0
+            }
+
+            override fun onFinish() {
+                adIndex++
+                if (adIndex == adSize) {
+                    adIndex = 0
+                }
+                d2RollIndex.value = adIndex
+                LogUtil.i("*****adIndex=$adIndex")
+
+                addD2CountDownTime()  // 无限轮播
+            }
+        }
+        d2Timer.start()
+    }
+
+    private var adSize = 0
+    fun setD2Size(size: Int) {
+        adSize = size
+    }
+
+    fun startD2Timer() {
+
+        if (d2RollIndex.value == -1) {
+            LogUtil.i("* startTimer *")
+            d2Timer.start()
+//            d2RollIndex.value = 0
         }
     }
 

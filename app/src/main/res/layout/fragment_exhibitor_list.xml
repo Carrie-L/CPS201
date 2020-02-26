@@ -113,7 +113,7 @@
             android:layout_marginTop="16dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/view_side_data"
-            app:layout_constraintBottom_toTopOf="@+id/iv_ad"
+            app:layout_constraintBottom_toTopOf="@+id/rv_ad"
             app:layout_constraintTop_toBottomOf="@id/tv_sort" />
         <!--        app:listData="@{exhibitorModel.exhibitors}"-->
 
@@ -121,38 +121,26 @@
             style="@style/no_data_style"
             android:layout_height="0dp"
             android:visibility="@{exhibitorModel.exhibitors.size()==0?View.VISIBLE:View.GONE}"
-            app:layout_constraintBottom_toTopOf="@+id/iv_ad"
+            app:layout_constraintBottom_toTopOf="@+id/rv_ad"
             app:layout_constraintTop_toBottomOf="@id/tv_sort"
             app:layout_constraintStart_toStartOf="parent"
             />
-
-
-<!--        <com.adsale.chinaplas.ui.view.SideDataView-->
-<!--            android:id="@+id/view_side_data"-->
-<!--            android:layout_width="32dp"-->
-<!--            android:layout_height="0dp"-->
-<!--            android:layout_marginTop="16dp"-->
-<!--            app:layout_constraintBottom_toTopOf="@+id/iv_ad"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toEndOf="@id/rv_exhibitor"-->
-<!--            app:layout_constraintTop_toBottomOf="@id/tv_sort" />-->
 
         <com.adsale.chinaplas.ui.view.SideBarView
             android:id="@+id/view_side_data"
             android:layout_width="32dp"
             android:layout_height="0dp"
             android:layout_marginTop="16dp"
-            app:layout_constraintBottom_toTopOf="@+id/iv_ad"
+            app:layout_constraintBottom_toTopOf="@+id/rv_ad"
             app:layout_constraintEnd_toEndOf="parent"
             android:gravity="center_vertical"
             app:layout_constraintStart_toEndOf="@id/rv_exhibitor"
             app:layout_constraintTop_toBottomOf="@id/tv_sort" />
 
-        <ImageView
-            android:id="@+id/iv_ad"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_ad"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:visibility="gone"
+            android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/rv_exhibitor" />

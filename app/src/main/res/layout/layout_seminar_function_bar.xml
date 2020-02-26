@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.adsale.chinaplas.viewmodels.SeminarViewModel" />
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/function_bar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv_am"
+            android:layout_width="72dp"
+            android:layout_height="24dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="16dp"
+            android:background="@{model.currentIsAm.booleanValue()?@drawable/bg_btn_selected:@drawable/bg_btn_not_selected}"
+            android:gravity="center"
+            android:onClick="@{()->model.onAmClick()}"
+            android:text="@string/seminar_am"
+            android:textColor="#fff" />
+
+        <TextView
+            android:id="@+id/tv_pm"
+            android:layout_width="72dp"
+            android:layout_height="24dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="16dp"
+            android:layout_toRightOf="@id/tv_am"
+            android:background="@{model.currentIsAm.booleanValue()?@drawable/bg_btn_not_selected:@drawable/bg_btn_selected}"
+            android:gravity="center"
+            android:onClick="@{()->model.onPmClick()}"
+            android:text="@string/seminar_pm"
+            android:textColor="#fff" />
+
+        <ImageView
+            android:id="@+id/btn_reset"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/ic_setting_reset"
+            android:visibility="gone" />
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/grey_200" />
+
+    </RelativeLayout>
+
+</layout>

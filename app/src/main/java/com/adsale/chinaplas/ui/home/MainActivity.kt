@@ -25,8 +25,6 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.adsale.chinaplas.R
 import com.adsale.chinaplas.data.dao.CpsDatabase
 import com.adsale.chinaplas.data.dao.MainIconRepository
@@ -448,7 +446,13 @@ class MainActivity : AppCompatActivity() {
                     R.id.myScheduleFragment,
                     R.id.editScheduleFragment,
                     R.id.exhibitorHistotyFragment,
-                    R.id.eventSeminarFragment
+                    R.id.eventSeminarFragment,
+                    R.id.seminarDetailFragment,
+                    R.id.eventDetailFragment,
+                    R.id.newtechListFragment,
+                    R.id.newtechFilterFragment,
+                    R.id.newtechDetailFragment,
+                    R.id.newtechDetailFragment
                 ), drawerLayout
             )
         setupActionBarWithNavController(navController, appBarConfiguration)

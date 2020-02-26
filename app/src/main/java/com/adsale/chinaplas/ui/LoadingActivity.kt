@@ -1,33 +1,31 @@
 package com.adsale.chinaplas.ui
 
-import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.content.pm.ActivityInfo
-import android.content.res.Resources
 import android.graphics.Color
 import android.graphics.Point
 import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.os.LocaleList
-import android.telephony.TelephonyManager
 import android.view.View
 import android.view.WindowManager
 import android.view.animation.AnimationUtils
-import android.widget.LinearLayout
-import android.widget.RelativeLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import com.adsale.chinaplas.*
+import com.adsale.chinaplas.R
+import com.adsale.chinaplas.cpsDatabase
 import com.adsale.chinaplas.data.dao.*
 import com.adsale.chinaplas.databinding.ActivityLoadingBinding
+import com.adsale.chinaplas.hasNetwork
+import com.adsale.chinaplas.helper.ADHelper
 import com.adsale.chinaplas.helper.LoadingReceiver
 import com.adsale.chinaplas.helper.LoadingReceiver.LOADING_ACTION
+import com.adsale.chinaplas.mSPConfig
 import com.adsale.chinaplas.ui.home.MainActivity
 import com.adsale.chinaplas.utils.*
 import com.adsale.chinaplas.utils.LogUtil.i
@@ -35,12 +33,14 @@ import com.adsale.chinaplas.viewmodels.LoadingViewModel
 import com.adsale.chinaplas.viewmodels.LoadingViewModelFactory
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
+import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.Target
-import com.tencent.bugly.Bugly
-import kotlinx.coroutines.*
-import java.util.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 
 /**
  *  设置全屏
@@ -157,7 +157,10 @@ class LoadingActivity : AppCompatActivity() {
                     registerRepository,
                     webContentRepository,
                     CpsDatabase.getInstance(applicationContext).exhibitorDao(),
-                    EventRepository.getInstance(CpsDatabase.getInstance(applicationContext).eventDao())
+                    EventRepository.getInstance(
+                        CpsDatabase.getInstance(applicationContext).eventDao(),
+                        CpsDatabase.getInstance(applicationContext).eventApplicationDao()
+                    )
                 )
             )
                 .get(LoadingViewModel::class.java)
@@ -481,24 +484,19 @@ class LoadingActivity : AppCompatActivity() {
 
     private fun showD1() {
         LogUtil.i("=============showD1================")
-        Glide.with(applicationContext).load(R.drawable.arburg_cn).into(binding.d1)
-        val animation = AnimationUtils.loadAnimation(applicationContext, R.anim.bottom_to_top)
-        binding.d1.startAnimation(animation)
-        viewModel.addCountDownTime()
-        binding.ivClose.visibility = View.VISIBLE
-
+        val adHelper = ADHelper.getInstance(application)
+        val options = RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.RESOURCE)
+        Glide.with(applicationContext).load(adHelper.d1ImageUrl()).apply(options).into(binding.d1)
 //        val animation = AnimationUtils.loadAnimation(applicationContext, R.anim.bottom_to_top)
 //        binding.d1.startAnimation(animation)
-//        Glide.with(applicationContext).load(R.drawable.arburg_cn).into(binding.d1)
-//        //倒计时2s
-//        viewModel.addCountDownTime()
-//        binding.ivClose.visibility = View.VISIBLE
+        binding.ivClose.visibility = View.VISIBLE
+        viewModel.addCountDownTime()
 
         viewModel.adCountDownFinish.observe(this, Observer {
             if (viewModel.adCountDownFinish.value == true) {
                 mSPConfig.edit().putBoolean(LOADING_D1_FINISH, true).apply()
                 binding.ivClose.visibility = View.GONE
-                binding.d1.visibility = View.GONE
+//                binding.d1.visibility = View.GONE
                 val animEnd = AnimationUtils.loadAnimation(applicationContext, R.anim.fade_out)
                 binding.d1.startAnimation(animEnd)
 //                viewModel.sendBroadcast()

@@ -1,0 +1,35 @@
+MainTypeId|SubNameEn|SubNameTc|SubNameSc|CategoryId|OrderId|SCSort|TCSort|ENSort
+APT|Aerospace, Aviation, Railway Transport|航天、航空、軌道交通|航天、航空、轨道交通|9|90|3|3|1
+APT|Automotive|汽車|汽车|2|20|5|5|2
+APT|Building & Construction|建築|建筑|3|30|4|4|3
+APT|Daily Chemicals|日用化工|日用化工|7|70|6|6|4
+APT|Electronic Products, Electrical Appliances, IT &Telecommunication|電子信息及電器|电子信息及电器|4|40|2|2|5
+APT|Food & Beverage|食品飲料|食品饮料|6|60|7|7|6
+APT|LED Lighting |LED 照明|LED 照明|8|80|11|11|7
+APT|Medical|醫療|医疗|5|50|10|10|8
+APT|New Energy|新能源|新能源|10|100|8|8|9
+APT|Packaging|包裝|包装|1|10|1|1|10
+APT|Sports & Leisure|運動休閒|运动休闲|11|110|9|9|11
+PRD|Additives, Colour Pigment & Masterbatch, Auxiliaries|添加劑、顏料及色母粒、輔料|添加剂、颜料及色母粒、辅料|AB|10|13|13|1
+PRD|Anciliary & Test Equipment, 3D Printing Machines & Materials|輔助及測量設備、3D打印器材及軟件|辅助及测量设备、3D打印器材及软件|V|20|5|5|2
+PRD|Automation Technology|自動化科技|自动化科技|AF|30|16|16|3
+PRD|Bioplastics|生物塑料|生物塑料|AG|40|12|12|4
+PRD|Blow Molding Machine|吹塑機|吹塑机|S|50|3|3|5
+PRD|Composite & Reinforcement Fibres or Materials|複合及增強纖維或材料|复合及增强纤维或材料|AA|60|4|4|6
+PRD|Extruders & Extrusion Lines|擠出機及擠出生產線|挤出机及挤出生产线|R|70|7|7|7
+PRD|General Plastics, Engineering Plastics, High Performance Plastics|通用塑料、工程塑料、高性能特種塑料|通用塑料、工程塑料、高性能特种塑料|Z|80|14|14|8
+PRD|Injection Molding Machines|注塑機|注塑机|Q|90|17|17|9
+PRD|Machinery & Plant for Packaging, Decorating, Printing & Marking|包裝、裝潢、印刷、印標及標貼機械及設備|包装、装潢、印刷、印标及标贴机械及设备|X|100|2|2|10
+PRD|Machines & Equipment for Preprocessing and Recycling|預加工、回收利用機械及設備|预加工、回收利用机械及设备|W|110|15|15|11
+PRD|Molds & Dies|模具|模具|T|120|9|9|12
+PRD|Others|其他|其他|AE|999|10|10|13
+PRD|Parts & Components, Presses & Machinery for Foam, Reactive or Reinforced Resins, Welding Machines|零部件、壓機/泡沫、反應或增強樹脂機械、焊機 |零部件、压机/泡沫、反应或增强树脂机械、焊机|U|130|8|8|14
+PRD|Post Processing and Other Processing Machine|後加工機械、其它加工機械|后加工机械、其它加工机械|Y|140|6|6|15
+PRD|Recycled Plastics|再生塑料|再生塑料|AH|150|18|18|16
+PRD|Semi-finished Products|半製成品|半制成品|AD|160|1|1|17
+PRD|Thermoplastics Elastomers & Rubber|熱塑性彈性體及橡膠|热塑性弹性体及橡胶|AC|170|11|11|18
+THS|Medical Plastics Technologies|醫用塑料技術|医用塑料技术|O|30|2|2|2
+THS| Japanese Innovations|瀛聚創新|瀛聚创新|N|20|1|1|1
+AREA|World Premiere|全球新品|全球新品|World|1|1|1|1
+AREA|Asian Premiere|亞洲新品|亚洲新品|Asia|2|2|2|2
+AREA|China Premiere|中國新品|中国新品|China|3|3|3|3

@@ -49,7 +49,8 @@ android {
         release {
             keyAlias 'chinaplas'
             keyPassword 'adsalepeople'
-            storeFile file('E:/项目文档/CPS19/logo/adsale.DS_Store')
+//            storeFile file('E:/项目文档/CPS19/logo/adsale.DS_Store')
+            storeFile file('F:/CPS20/adsale.DS_Store')
             storePassword 'adsalepeople'
         }
     }

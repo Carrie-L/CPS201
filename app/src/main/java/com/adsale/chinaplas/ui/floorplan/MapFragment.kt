@@ -3,11 +3,9 @@ package com.adsale.chinaplas.ui.floorplan
 
 import android.graphics.Bitmap
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.webkit.WebViewClient
 import androidx.fragment.app.Fragment
 import cn.palmap.h5calllibpalmap.JavaScriptCall
 import cn.palmap.h5calllibpalmap.X5WebView
@@ -63,6 +61,11 @@ open class MapFragment : Fragment() {
 
         }
 
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        webCall?.destroy()
     }
 
 

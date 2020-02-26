@@ -102,6 +102,11 @@ class FilterView : LinearLayout {
                     FILTER_INDEX_REGION -> viewModel.regionFilters.value = filters
                     FILTER_INDEX_HALL -> viewModel.hallFilters.value = filters
                     FILTER_INDEX_ZONE -> viewModel.zoneFilters.value = filters
+
+                    FILTER_INDEX_NEWTECH_PRO -> viewModel.newProdFilters.value = filters
+                    FILTER_INDEX_NEWTECH_APPL -> viewModel.newApplFilters.value = filters
+                    FILTER_INDEX_NEWTECH_THEME -> viewModel.themeFilters.value = filters
+                    FILTER_INDEX_NEWTECH_NEW -> viewModel.newFilters.value = filters
                 }
                 recyclerView.visibility = if (filters.isNotEmpty()) View.VISIBLE else View.GONE
                 adapter?.setList(filters)

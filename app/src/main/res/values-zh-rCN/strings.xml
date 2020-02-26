@@ -142,7 +142,7 @@
     <string name="reg_pre_hint_phone">只需手机号码，国家号和区号不需填写。</string>
     <string name="reg_pre_3">请确保填写的手机号码和电邮资料正确。资料一经提交后将不能修改。</string>
     <string name="reg_pre_4">如有关于观众登记,网上支付及发票收据相关的查询,请发送电邮至 <![CDATA[<font color=#FF6E42>prereg-payment@adsale.com.hk</font>]]></string>
-<!--    <a href="mailto:prereg-payment@adsale.com.hk">-->
+    <!--    <a href="mailto:prereg-payment@adsale.com.hk">-->
     <string name="reg_hint_input_phone_no">请输入手机号码</string>
     <string name="reg_hint_input_email">请输入电子邮箱</string>
     <string name="reg_pre_hint_login">这个账户已存在，请登入账户继续预登记；或选择登记另一个电邮或手机号码。</string>
@@ -323,7 +323,7 @@
     <string name="no">否</string>
 
     <!--我的参展商-->
-<!--    <string name="no_exhibitor">暂无展商资料</string>-->
+    <!--    <string name="no_exhibitor">暂无展商资料</string>-->
     <string name="no_schedule">暂无议程</string>
     <string name="no_my_exhibitor">没有收藏的参展商。 \n请到\"参展商名单\"增添参展商。</string>
 
@@ -331,7 +331,31 @@
     <string name="today">今日</string>
     <string name="yesterday">昨天</string>
     <string name="past_records">过去</string>
-    <string name="event_tab_all">总览</string>
 
+    <!--同期活动-->
+    <string name="event_tab_all">总览</string>
+    <string name="seminar_pm">下午</string>
+    <string name="seminar_am">上午</string>
+
+    <!-- 技術交流會詳情頁 -->
+    <string name="title_technical_seminar">技术交流会</string>
+    <string name="seminar_information">技术交流会概要</string>
+    <string name="seminar_speaker">演讲者资料</string>
+    <string name="seminar_contact">联络资料</string>
+    <string name="seminar_email">演讲者邮箱</string>
+    <string name="seminar_tel">演讲者电话</string>
+    <string name="seminar_date">日期：%s</string>
+    <string name="seminar_time">时段：%s</string>
+    <string name="seminar_section">展馆：%s</string>
+    <string name="seminar_zone">区：%s</string>
+    <string name="seminar_roomNO">会议室房号：%s</string>
+    <string name="seminar_booth">展台号：%s</string>
+    <string name="seminar_booth_">展台号：-</string>
+    <string name="seminar_language">演讲语言</string>
+
+    <!--新技术产品-->
+    <string name="filter_product">产品</string>
+    <string name="filter_applications">应用</string>
+    <string name="new_tec_ad">广告商产品</string>
 
 </resources>

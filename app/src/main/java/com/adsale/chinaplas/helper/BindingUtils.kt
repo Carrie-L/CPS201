@@ -13,19 +13,22 @@ import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.adsale.chinaplas.R
-import com.adsale.chinaplas.adapters.ExhibitorListAdapter
 import com.adsale.chinaplas.data.dao.Exhibitor
 import com.adsale.chinaplas.data.dao.MainIcon
 import com.adsale.chinaplas.data.dao.RegOptionData
 import com.adsale.chinaplas.data.entity.CountryJson
 import com.adsale.chinaplas.hasNetwork
+import com.adsale.chinaplas.network.AD_BASE_URL
 import com.adsale.chinaplas.network.BASE_URL
+import com.adsale.chinaplas.network.NEW_TECH_BASE_URL
 import com.adsale.chinaplas.rootDir
-import com.adsale.chinaplas.utils.LogUtil
 import com.adsale.chinaplas.utils.LogUtil.i
+import com.baidu.speech.utils.LogUtil
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import java.io.File
+
 
 /**
  * Created by Carrie on 2019/10/18.
@@ -93,7 +96,7 @@ fun TextView.textSize(hint: String) {
 fun setImagePath(imageView: ImageView,
                  absolutePath: String,
                  options: RequestOptions?) {
-    i( "absolutePath=$absolutePath")
+    i("absolutePath=$absolutePath")
     if (TextUtils.isEmpty(absolutePath)) {
         return
     }
@@ -105,7 +108,7 @@ fun setImagePath(imageView: ImageView,
 
 @BindingAdapter("itemTextColor")
 fun setItemColor(textView: TextView, item: CountryJson) {
-    LogUtil.i("setItemColor pressed: ${item.isChecked.get()}, ${item.getName()}")
+    i("setItemColor pressed: ${item.isChecked.get()}, ${item.getName()}")
     if (item.isChecked.get()!!) {
         textView.setTextColor(textView.resources.getColor(R.color.colorAccent))
     } else {
@@ -139,8 +142,8 @@ fun ImageView.setIconRes(resId: Int) {
 
 @BindingAdapter("listData")
 fun bindRecyclerView(recyclerView: RecyclerView, data: List<Exhibitor>?) {
-    LogUtil.i("bindRecyclerView: data=${data?.size}")
-    if( recyclerView.adapter!=null){
+    i("bindRecyclerView: data=${data?.size}")
+    if (recyclerView.adapter != null) {
 //        val adapter = recyclerView.adapter as ExhibitorListAdapter
 //        adapter.submitList(data)
     }
@@ -157,6 +160,51 @@ fun setImgUrl(imageView: ImageView, url: String) {
         Glide.with(imageView.context).load("file:///android_asset/MainIcon/$url").into(imageView)
         i("menu: asset: $url")
     }
+}
+
+/*技术交流会*/
+//@BindingAdapter({"listImage","options"})
+@BindingAdapter("listImage")
+fun ImageView.setListImage(imageName: String) {
+    if (imageName.isNotEmpty()) {
+        Glide.with(context)
+            .load("${NEW_TECH_BASE_URL}100/$imageName")
+            .apply(RequestOptions().diskCacheStrategy(DiskCacheStrategy.RESOURCE))
+            .thumbnail(0.1f)
+            .into(this)
+    }
+}
+
+@BindingAdapter("image")
+fun ImageView.setImage(imageName: String?) {
+    LogUtil.i("imageName=$imageName")
+    if (imageName != null && imageName.isNotEmpty()) {
+        Glide.with(context)
+            .load("${NEW_TECH_BASE_URL}$imageName")
+            .apply(RequestOptions().diskCacheStrategy(DiskCacheStrategy.RESOURCE))
+            .thumbnail(0.7f)
+            .into(this)
+    }
+}
+
+@BindingAdapter("imageUrl")
+fun ImageView.setImageUrl(url: String?) {
+    LogUtil.i("setImageUrl: url=$url")
+    if (url != null && url.isNotEmpty()) {
+        Glide.with(context)
+            .load(url)
+            .apply(RequestOptions().diskCacheStrategy(DiskCacheStrategy.RESOURCE))
+            .into(this)
+    }
+}
+
+@BindingAdapter("adImageUrl")
+fun ImageView.setAdImageUrl(image: String) {
+    LogUtil.i("setAdImageUrl: $AD_BASE_URL${image}")
+    Glide.with(context)
+        .load("$AD_BASE_URL${image}")
+        .apply(RequestOptions().diskCacheStrategy(DiskCacheStrategy.RESOURCE))
+        .into(this)
 }
 
 

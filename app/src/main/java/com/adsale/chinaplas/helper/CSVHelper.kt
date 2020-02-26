@@ -3,10 +3,8 @@ package com.adsale.chinaplas.helper
 import android.text.TextUtils
 import com.adsale.chinaplas.data.dao.*
 import com.adsale.chinaplas.rootDir
-import com.adsale.chinaplas.utils.LogUtil
+import com.adsale.chinaplas.utils.*
 import com.adsale.chinaplas.utils.LogUtil.i
-import com.adsale.chinaplas.utils.getFileInputStream
-import com.adsale.chinaplas.utils.getFirstChar
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.io.File
@@ -30,7 +28,10 @@ class CSVHelper private constructor(private val exhibitorDao: ExhibitorDao,
                                     private val industryDao: IndustryDao,
                                     private val regionDao: RegionDao,
                                     private val hallDao: HallDao,
-                                    private val zoneDao: ZoneDao) {
+                                    private val zoneDao: ZoneDao,
+                                    private val seminarDao: SeminarDao,
+                                    private val newtechDao: NewtechDao
+) {
 
     companion object {
         @Volatile
@@ -41,14 +42,19 @@ class CSVHelper private constructor(private val exhibitorDao: ExhibitorDao,
                         industryDao: IndustryDao,
                         regionDao: RegionDao,
                         hallDao: HallDao,
-                        zoneDao: ZoneDao) =
+                        zoneDao: ZoneDao,
+                        seminarDao: SeminarDao,
+                        newtechDao: NewtechDao
+        ) =
             instance ?: synchronized(this) {
                 instance ?: CSVHelper(exhibitorDao,
                     applicationDao,
                     industryDao,
                     regionDao,
                     hallDao,
-                    zoneDao).also { instance = it }
+                    zoneDao, seminarDao,
+                    newtechDao
+                ).also { instance = it }
             }
     }
 
@@ -517,16 +523,34 @@ class CSVHelper private constructor(private val exhibitorDao: ExhibitorDao,
         return list
     }
 
+    suspend fun parseSeminarCsv() {
+        withContext(Dispatchers.IO) {
+            readSeminarInfoCSV("TechnicalSeminar/SeminarInfo.csv")
+            readSeminarSpeakCSV("TechnicalSeminar/SeminarSpeaker.csv")
+        }
+    }
+
+    suspend fun getSeminars(): List<SeminarInfo> {
+        return withContext(Dispatchers.IO) {
+            seminarDao.getSeminarAmList(getLangCode(), "%22%")
+        }
+    }
+
+
     /* 技术交流会 */
     private fun readSeminarInfoCSV(absPath: String) {
-        if (!File(absPath).exists()) {
-            return
+        LogUtil.i("readSeminarInfoCSV: $absPath")
+        val ins: InputStream
+        if (!File("${rootDir}$absPath").exists()) {
+            ins = getAssetInputStream(absPath)
+        } else {
+            ins = getFileInputStream("${rootDir}$absPath")
         }
         val startTime = System.currentTimeMillis()
-        val entities = ArrayList<ExhApplication>()
-        var entity: ExhApplication
+        val entities = ArrayList<SeminarInfo>()
+        var entity: SeminarInfo
         val reader: CSVReader
-        val ins = getFileInputStream(absPath)
+//        val ins = getFileInputStream(absPath)
         try {
             reader = CSVReader(InputStreamReader(ins, "UTF8"))
             var line = reader.readNext()
@@ -535,7 +559,45 @@ class CSVHelper private constructor(private val exhibitorDao: ExhibitorDao,
                 if (line == null) {
                     break
                 }
-                entity = ExhApplication()
+                entity = SeminarInfo()
+                entity.parser(line)
+                entities.add(entity)
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+            LogUtil.e(e)
+        } finally {
+            ins?.close()
+        }
+        val endTime = System.currentTimeMillis()
+
+        seminarDao.deleteSeminarInfoAll()
+        seminarDao.insertSeminarInfoAll(entities)
+
+        i("readSeminarInfoCSV 花费时间: ${(endTime - startTime)} ms , ${entities.size} ,, ${entities.toString()}")
+    }
+
+    private fun readSeminarSpeakCSV(absPath: String) {
+        val ins: InputStream
+        if (!File("${rootDir}$absPath").exists()) {
+            ins = getAssetInputStream(absPath)
+        } else {
+            ins = getFileInputStream("${rootDir}$absPath")
+        }
+        val startTime = System.currentTimeMillis()
+        val entities = ArrayList<SeminarSpeaker>()
+        var entity: SeminarSpeaker
+        val reader: CSVReader
+
+        try {
+            reader = CSVReader(InputStreamReader(ins, "UTF8"))
+            var line = reader.readNext()
+            while (line != null) {
+                line = reader.readNext()
+                if (line == null) {
+                    break
+                }
+                entity = SeminarSpeaker()
                 entity.parser(line)
                 entities.add(entity)
             }
@@ -548,9 +610,252 @@ class CSVHelper private constructor(private val exhibitorDao: ExhibitorDao,
         }
         val endTime = System.currentTimeMillis()
 
-        applicationDao.deleteApplicationAll()
-        applicationDao.insertApplicationAll(entities)
+        seminarDao.deleteSeminarSpeakerAll()
+        seminarDao.insertSeminarSpeakAll(entities)
 
-        i("readExhApplicationCSV 花费时间: ${(endTime - startTime)} ms , ${entities.size} ")
+        i("readSeminarSpeakCSV 花费时间: ${(endTime - startTime)} ms , ${entities.size} ")
     }
+
+
+    /*  ￥￥￥￥￥￥￥￥￥♥♥♥  新技术产品  ♥♥♥￥￥￥￥￥￥￥￥￥￥￥￥￥￥ */
+    suspend fun parseNewTechCsv() {
+        withContext(Dispatchers.IO) {
+            readCategoryIDCSV("NewTech/CategoryID.csv")
+            readCategorySubCSV("NewTech/CategorySub.csv")
+            readProductInfoCSV("NewTech/NewProductInfo.csv")
+            readProductIDCSV("NewTech/ProductID.csv")
+            readProductImageCSV("NewTech/ProductImage.csv")
+            readNewtechAreaCSV("NewTech/NewProductAndArea.csv")
+        }
+    }
+
+
+    private fun readCategoryIDCSV(absPath: String) {
+        val ins: InputStream
+        if (!File("${rootDir}$absPath").exists()) {
+            ins = getAssetInputStream(absPath)
+        } else {
+            ins = getFileInputStream("${rootDir}$absPath")
+        }
+        val startTime = System.currentTimeMillis()
+        val entities = ArrayList<NewtechCategoryID>()
+        var entity: NewtechCategoryID
+        val reader: CSVReader
+
+        try {
+            reader = CSVReader(InputStreamReader(ins, "UTF8"))
+            var line = reader.readNext()
+            while (line != null) {
+                line = reader.readNext()
+                if (line == null) {
+                    break
+                }
+                entity = NewtechCategoryID()
+                entity.parser(line)
+                entities.add(entity)
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+            LogUtil.e(e)
+        } finally {
+            ins.close()
+        }
+        val endTime = System.currentTimeMillis()
+
+        newtechDao.deleteCategoryIDAll()
+        newtechDao.insertCategoryIDAll(entities)
+
+        i("readCategoryIDCSV 花费时间: ${(endTime - startTime)} ms , ${entities.size} ")
+    }
+
+    private fun readCategorySubCSV(absPath: String) {
+        val ins: InputStream
+        if (!File("${rootDir}$absPath").exists()) {
+            ins = getAssetInputStream(absPath)
+        } else {
+            ins = getFileInputStream("${rootDir}$absPath")
+        }
+        val startTime = System.currentTimeMillis()
+        val entities = ArrayList<NewtechCategorySub>()
+        var entity: NewtechCategorySub
+        val reader: CSVReader
+
+        try {
+            reader = CSVReader(InputStreamReader(ins, "UTF8"))
+            var line = reader.readNext()
+            while (line != null) {
+                line = reader.readNext()
+                if (line == null) {
+                    break
+                }
+                entity = NewtechCategorySub()
+                entity.parser(line)
+                entities.add(entity)
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+            LogUtil.e(e)
+        } finally {
+            ins.close()
+        }
+        val endTime = System.currentTimeMillis()
+
+        newtechDao.deleteCategorySubAll()
+        newtechDao.insertCategorySubAll(entities)
+
+        i("readCategorySubCSV 花费时间: ${(endTime - startTime)} ms , ${entities.size} ")
+    }
+
+    private fun readProductInfoCSV(absPath: String) {
+        val ins: InputStream
+        if (!File("${rootDir}$absPath").exists()) {
+            ins = getAssetInputStream(absPath)
+        } else {
+            ins = getFileInputStream("${rootDir}$absPath")
+        }
+        val startTime = System.currentTimeMillis()
+        val entities = ArrayList<NewtechProductInfo>()
+        var entity: NewtechProductInfo
+        val reader: CSVReader
+
+        try {
+            reader = CSVReader(InputStreamReader(ins, "UTF8"))
+            var line = reader.readNext()
+            while (line != null) {
+                line = reader.readNext()
+                if (line == null) {
+                    break
+                }
+                entity = NewtechProductInfo()
+                entity.parser(line)
+                entities.add(entity)
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+            LogUtil.e(e)
+        } finally {
+            ins.close()
+        }
+        val endTime = System.currentTimeMillis()
+
+        newtechDao.deleteProductInfoAll()
+        newtechDao.insertProductInfoAll(entities)
+
+        i("readProductInfoCSV 花费时间: ${(endTime - startTime)} ms , ${entities.size} ")
+    }
+
+    private fun readProductIDCSV(absPath: String) {
+        val ins: InputStream
+        if (!File("${rootDir}$absPath").exists()) {
+            ins = getAssetInputStream(absPath)
+        } else {
+            ins = getFileInputStream("${rootDir}$absPath")
+        }
+        val startTime = System.currentTimeMillis()
+        val entities = ArrayList<NewtechProductsID>()
+        var entity: NewtechProductsID
+        val reader: CSVReader
+
+        try {
+            reader = CSVReader(InputStreamReader(ins, "UTF8"))
+            var line = reader.readNext()
+            while (line != null) {
+                line = reader.readNext()
+                if (line == null) {
+                    break
+                }
+                entity = NewtechProductsID()
+                entity.parser(line)
+                entities.add(entity)
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+            LogUtil.e(e)
+        } finally {
+            ins.close()
+        }
+        val endTime = System.currentTimeMillis()
+
+        newtechDao.deleteProductsIDAll()
+        newtechDao.insertProductsIDAll(entities)
+
+        i("NewtechProductsID 花费时间: ${(endTime - startTime)} ms , ${entities.size} ")
+    }
+
+    private fun readProductImageCSV(absPath: String) {
+        val ins: InputStream
+        if (!File("${rootDir}$absPath").exists()) {
+            ins = getAssetInputStream(absPath)
+        } else {
+            ins = getFileInputStream("${rootDir}$absPath")
+        }
+        val startTime = System.currentTimeMillis()
+        val entities = ArrayList<NewtechProductImage>()
+        var entity: NewtechProductImage
+        val reader: CSVReader
+
+        try {
+            reader = CSVReader(InputStreamReader(ins, "UTF8"))
+            var line = reader.readNext()
+            while (line != null) {
+                line = reader.readNext()
+                if (line == null) {
+                    break
+                }
+                entity = NewtechProductImage()
+                entity.parser(line)
+                entities.add(entity)
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+            LogUtil.e(e)
+        } finally {
+            ins.close()
+        }
+        val endTime = System.currentTimeMillis()
+
+        newtechDao.deleteProductImageDAll()
+        newtechDao.insertProductImageAll(entities)
+
+        i("readProductImageCSV 花费时间: ${(endTime - startTime)} ms , ${entities.size} ")
+    }
+
+    private fun readNewtechAreaCSV(absPath: String) {
+        val ins: InputStream
+        if (!File("${rootDir}$absPath").exists()) {
+            ins = getAssetInputStream(absPath)
+        } else {
+            ins = getFileInputStream("${rootDir}$absPath")
+        }
+        val startTime = System.currentTimeMillis()
+        val entities = ArrayList<NewtechArea>()
+        var entity: NewtechArea
+        val reader: CSVReader
+
+        try {
+            reader = CSVReader(InputStreamReader(ins, "UTF8"))
+            var line = reader.readNext()
+            while (line != null) {
+                line = reader.readNext()
+                if (line == null) {
+                    break
+                }
+                entity = NewtechArea()
+                entity.parser(line)
+                entities.add(entity)
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+            LogUtil.e(e)
+        } finally {
+            ins.close()
+        }
+        val endTime = System.currentTimeMillis()
+
+        newtechDao.deleteAreaAll()
+        newtechDao.insertAreaAll(entities)
+
+        i("readNewtechAreaCSV 花费时间: ${(endTime - startTime)} ms , ${entities.size} ")
+    }
+
 }

@@ -1,45 +1,577 @@
 <!DOCTYPE html>
-<html lang="zh-CN" dir="ltr">
+<html dir="ltr" lang="en">
 <head>
-<title></title>
-<style>
+    <title></title>
+    <style>
+* {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+*, *::before, *::after {
+	box-sizing: border-box;
+}
+.container {
+	width: 100%;
+	padding-right: 15px;
+	padding-left: 15px;
+	margin-right: auto;
+	margin-left: auto;
+}
+/* @media all and (max-width:576px) */
+.container, .full-header#header .container, .container-fullwidth {
+	width: 100% !important;
+}
+.container {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+.p_bottom_20 {
+	padding-bottom: 20px;
+}
+.m_top_20 {
+	margin-top: 20px;
+}
+.m_bottom_30 {
+	margin-bottom: 30px;
+}
+.i_bg_fff {
+	background: #ffffff;
+	border-radius: 4px;
+}
+#content .container {
+	position: relative;
+}
+.m_left_10 {
+	margin-left: 10px;
+}
+.m_right_10 {
+	margin-right: 10px;
+}
+.i_content_bg {
+	background: #f2f3f5;
+}
+.col_full {
+	width: 100%;
+}
+.postcontent, .sidebar, .col_full, .col_half, .col_one_third, .col_two_third, .col_three_fourth, .col_one_fourth, .col_one_fifth, .col_two_fifth, .col_three_fifth, .col_four_fifth, .col_one_sixth, .col_five_sixth {
+	display: block;
+	position: relative;
+	margin-right: 4%;
+	margin-bottom: 50px;
+	float: left;
+}
+.col_full {
+	clear: both;
+	float: none;
+	margin-right: 0px;
+}
+/* @media all and (max-width:1249px) */
+.postcontent, .postcontent.bothsidebar, .sidebar, .col_full, .col_half, .col_one_third, .col_two_third, .col_three_fourth, .col_one_fourth, .col_one_fifth, .col_two_fifth, .col_three_fifth, .col_four_fifth, .col_one_sixth, .col_five_sixth {
+	width: 100%;
+	margin-right: 0px;
+	float: none;
+	margin-bottom: 50px !important;
+}
+/* @media all and (max-width:768px) */
+.postcontent, .postcontent.bothsidebar, .sidebar, .col_full, .col_half, .col_one_third, .col_two_third, .col_three_fourth, .col_one_fourth, .col_one_fifth, .col_two_fifth, .col_three_fifth, .col_four_fifth, .col_one_sixth, .col_five_sixth {
+	width: 100%;
+	margin-right: 0px;
+	float: none;
+	margin-bottom: 50px !important;
+}
+.i_tit_18 {
+	font-size: 18px;
+	font-weight: bold;
+	color: #2e2e2e;
+}
+.col-1, .col-2, .col-3, .col-4, .col-5, .col-s5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12, .col, .col-auto, .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm, .col-sm-auto, .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12, .col-md, .col-md-auto, .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg, .col-lg-auto, .col-xl-1, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl, .col-xl-auto {
+	position: relative;
+	width: 100%;
+	min-height: 1px;
+	padding-right: 15px;
+	padding-left: 15px;
+}
+.col-6 {
+	-webkit-box-flex: 0;
+	-ms-flex: 0 0 50%;
+	flex: 0 0 50%;
+	max-width: 50%;
+}
+div[class*='col'] {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+article, aside, dialog, figcaption, figure, footer, header, hgroup, main, nav, section {
+	display: block;
+}
+.p_top_30 {
+	padding-top: 30px;
+}
+#content {
+	position: relative;
+	overflow: hidden;
+	background-color: #f2f3f5;
+}
+#wrapper {
+	position: relative;
+	float: none;
+	width: 1220px;
+	margin: 0 auto;
+	box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+	-moz-box-shadow: 0 0 10px rgba(0,0,0,0.1);
+	-webkit-box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+/* @media all and (max-width:992px) */
+#wrapper {
+	width: 100%;
+	margin: 0;
+	box-shadow: none;
+}
+/* @media all and (max-width:768px) */
+#wrapper {
+	width: 100% !important;
+}
+.stretched #wrapper {
+	width: 100%;
+	margin: 0;
+	box-shadow: none;
+}
+body:not(.no-transition) #wrapper, .animsition-overlay {
+	position: relative;
+	opacity: 0;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+}
+.wsmenucontainer {
+	background-size: cover;
+	overflow: hidden;
+	background-attachment: fixed;
+	background-position: 50% 0;
+	background-repeat: no-repeat;
+}
+/* @media only screen and (max-width:1255px) */
+.wsmenucontainer {
+	background-attachment: local;
+	background-position: 33% 0%;
+}
+/* @media only screen and (max-width:1255px) */
+.wsmenucontainer {
+	-webkit-transition: all 0.25s ease-in-out;
+	-moz-transition: all 0.25s ease-in-out;
+	-o-transition: all 0.25s ease-in-out;
+	-ms-transition: all 0.25s ease-in-out;
+	transition: all 0.25s ease-in-out;
+}
+.wsmenucontainer {
+	background-color: #fff;
+}
+body {
+	margin: 0;
+	font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.5;
+	color: #212529;
+	text-align: left;
+	background-color: #fff;
+}
+body, .dropdown-menu {
+	font-size: 0.87rem;
+}
+body {
+	line-height: 1.5;
+	color: #000;
+	font-family: "Lato","Arial",sans-serif;
+}
+/* @media all and (max-width:768px) */
+body {
+	padding: 0 !important;
+}
+/* @media only screen and (max-width:1255px) */
+body {
+	height: 100%;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+body {
+	font-family: "Microsoft Yahei",Arial,Helvetica,Arial,sans-serif !important;
+	color: #2e2e2e !important;
+	font-size: 16px;
+}
+body, small, #primary-menu ul ul li > a, .wp-caption, .feature-box.fbox-center.fbox-italic p, .skills li .progress-percent .counter, .nav-tree ul ul a {
+	font-family: Arial,Helvetica,sans-serif !important;
+	color: #2e2e2e;
+	font-size: 16px;
+}
+body {
+	line-height: 1.5;
+	font-size: 1rem;
+}
+body.is-canvi-ready {
+	overflow-x: hidden;
+}
+html {
+	font-family: sans-serif;
+	line-height: 1.15;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	-ms-overflow-style: scrollbar;
+	-webkit-tap-highlight-color: transparent;
+}
+/* @media only screen and (max-width:1255px) */
+html {
+	-webkit-overflow-scrolling: touch;
+}
+:root {
+	--blue:  #007bff;
+	--indigo:  #6610f2;
+	--purple:  #6f42c1;
+	--pink:  #e83e8c;
+	--red:  #dc3545;
+	--orange:  #fd7e14;
+	--yellow:  #ffc107;
+	--green:  #28a745;
+	--teal:  #20c997;
+	--cyan:  #17a2b8;
+	--white:  #fff;
+	--gray:  #6c757d;
+	--gray-dark:  #343a40;
+	--primary:  #007bff;
+	--secondary:  #6c757d;
+	--success:  #28a745;
+	--info:  #17a2b8;
+	--warning:  #ffc107;
+	--danger:  #dc3545;
+	--light:  #f8f9fa;
+	--dark:  #343a40;
+	--breakpoint-xs:  0;
+	--breakpoint-sm:  576px;
+	--breakpoint-md:  768px;
+	--breakpoint-lg:  1250px;
+	--font-family-sans-serif:  -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+	--font-family-monospace:  SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+:root {
+	--home:  #FF8600;
+	--travel:  #6f42c1;
+	--tech:  #007bff;
+	--fashion:  #e83e8c;
+	--sports:  #dc3545;
+	--lifestyle:  #13a774;
+	--food:  #17a2b8;
+	--market:  #ffc107
+;
+}
+.p_bottom_30 {
+	padding-bottom: 30px;
+}
+.row {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	margin-right: -15px;
+	margin-left: -15px;
+}
+.row {
+	margin-left: 0px;
+	margin-right: 0px;
+}
+.p_top_20 {
+	padding-top: 20px;
+}
+.m_left_20 {
+	margin-left: 20px;
+}
+.m_right_20 {
+	margin-right: 20px;
+}
+.d-none {
+	display: none !important;
+}
+.col-12 {
+	-webkit-box-flex: 0;
+	-ms-flex: 0 0 100%;
+	flex: 0 0 100%;
+	max-width: 100%;
+}
+.font-weight-normal {
+	font-weight: 400 !important;
+}
+table {
+	border-collapse: collapse;
+}
+p, pre, ul, ol, dl, dd, blockquote, address, table, fieldset, form {
+	margin-bottom: 30px;
+}
+table {
+	margin-bottom: 0px;
+}
+a {
+	color: #007bff;
+	text-decoration: none;
+	background-color: transparent;
+	-webkit-text-decoration-skip: objects;
+}
+a {
+	text-decoration: none !important;
+	color: #000;
+}
+a {
+	text-decoration: none !important;
+}
+a {
+	-webkit-transition: 0.2s;
+	transition: 0.2s;
+}
+a {
+	text-decoration: none;
+}
+img {
+	vertical-align: middle;
+	border-style: none;
+}
+img {
+	max-width: 100%;
+}
+a, img {
+	border: 0;
+}
 a {
 	color: #e7380d;
 }
+a img {
+	border: none;
+}
+img.alignnone, img.aligncenter, div.alignnone, div.aligncenter {
+	display: block;
+	margin: 10px 0;
+	float: none;
+}
+img.aligncenter, div.aligncenter, div.aligncenter img {
+	margin-left: auto;
+	margin-right: auto;
+	clear: both;
+}
 
-</style>
+    </style>
 </head>
-<body>
-<div class="contactInfoDiv col-12">
-        <p>
-            <strong>For visiting enquiry: </strong><br>
-            <a class="telHref a_NoHover" href="tel:+(852) 2516 3305" t_label="ContactUs_Tel_Enq" data-webres="Lbl_Enq_Tel_Visiting">(852) 2516 3305</a>
-        </p>
-        <p>
-            <strong data-webres="Lbl_Enq_Exhibting">For exhibiting enquiry: </strong><br>
-            <a class="telHref a_NoHover" href="tel:+(852) 2516 3554" t_label="ContactUs_Tel_Visit_1" data-webres="Lbl_Enq_Tel_Exhibting">(852) 2516 3554</a> / <a class="a_NoHover" href="tel:+(852) 2516 3558" t_label="ContactUs_Tel_Visit_2">(852) 2516 3558</a>
-        </p>
-            <p>
-                <strong data-webres="Lbl_CS_Visiting">For exhibiting enquiry: </strong><br>
-                <a class="telHref a_NoHover" href="tel:+(852) 2516 3514 " t_label="ContactUs_Tel_CS">(852) 2516 3514 </a> / <a class="a_NoHover" href="tel:+ (852) 2516 3359" t_label="ContactUs_Tel_CS_2"> (852) 2516 3359</a>/ <a class="a_NoHover" href="tel:+ (86) 21 3325 5649" t_label="ContactUs_Tel_CS_2">(86) 21 3325 5649</a>
-            </p>
-
-        <p>
-            <strong data-webres="Lbl_Enq_HKHeadquarter">Hong Kong Headquarter</strong><br data-webres="Lbl_Enq_Addr_HK_1">
-            Adsale Exhibition Services Limited<br data-webres="Lbl_Enq_Addr_HK_2">
-            6th Floor, 321 Java Road,North Point, Hong Kong<br>
-            <a href="mailto:chinaplas@adsale.com.hk" t_label="ContactUs_Email_HK">chinaplas@adsale.com.hk</a><br>
-        </p>
-        <p>
-            <strong data-webres="Lbl_Enq_OtherOffices">Other Offices</strong><br data-webres="Lbl_Enq_Office_BJ">
-            Beijing:<br>
-            <a href="mailto:info@bj.adsale.com.hk" t_label="ContactUs_Email_BJ" data-webres="Lbl_Enq_Office_SH">info@bj.adsale.com.hk</a><br>
-            Shanghai:<br>
-            <a href="mailto:info@sh.adsale.com.hk" t_label="ContactUs_Email_SH" data-webres="ContactUs_Email_SH">info@sh.adsale.com.hk</a><br>
-            Shenzhen:<br>
-            <a href="mailto:info@sz.adsale.com.hk" t_label="ContactUs_Email_SZ" data-webres="ContactUs_Email_SZ">info@sz.adsale.com.hk</a><br>
-            Singapore:<br>
-            <a href="mailto:info@sg.adsale.com.hk" t_label="ContactUs_Email_Singapore">info@sg.adsale.com.hk</a><br>
-        </p>
+<body class="stretched is-canvi-ready device-xs" data-loader-timeout="2000" id="body">
+<div class="wsmenucontainer" style="min-width: 520px;">
+    <div class="clearfix i_content_bg" id="wrapper" style="opacity: 1; animation-duration: 1500ms;">
+        <section class="" id="content" style="margin-bottom: 0px;">
+            <div class="container clearfix topmargin-sm" style="margin-bottom:20px;">
+                <div class="col_full ">
+                    <div class="i_content_bg ">
+                        <div class="m_left_10 m_right_10">
+                            <div class="container m_bottom_30 p_bottom_20">
+                                <div class="container m_bottom_30 m_top_20 p_bottom_30 i_bg_fff">
+                                    <div class=" m_left_20 m_right_20 p_top_20">
+                                        <!--Banner for desktop / tablet-->
+                                        <div class="d-none d-md-block">
+                                            <img alt="" src="images/Social_Media_Banner_lg.jpg"
+                                                 style="margin:auto;"/>
+                                        </div>
+                                        <!--Banner for mobile : display full-width for the banner (cancel the container's effect) -->
+                                        <div class="d-md-none"
+                                             style="margin-top: -30px; margin-left: -20px; margin-right: -20px;">
+                                            <img alt="" src="images/Social_Media_Banner_sm.jpg"
+                                                 style="margin:auto;"/>
+                                        </div>
+                                        <div class="row col-12 i_tit_18 font-weight-normal p_top_20"
+                                             style="line-height:30px;">
+                                            Want to know the most updated information about
+                                            CHINAPLAS? Follow us on our social media platforms now
+                                            and get the lastest news of the show! We are also
+                                            looking forward to your voice, your views &amp; comments
+                                            on our interesting posts!Feel free to chat with us if
+                                            you have any ideas or questions!
+                                        </div>
+                                        <!-- -->
+                                        <div class="row">
+                                            <div class="col-lg-4 col-md-4 col-6">
+                                                <table style="margin:auto;">
+                                                    <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <a href="https://www.facebook.com/Chinaplas/"
+                                                               t_label="link_111_fb"
+                                                               target="_blank "><img alt=""
+                                                                                     class="socialIcon aligncenter"
+                                                                                     src="images/icon_fb.jpg"
+                                                                                     style="max-width:150px;"/></a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <a href="https://www.facebook.com/Chinaplas/"
+                                                               t_label="link_111_fb"
+                                                               target="_blank"><img alt=""
+                                                                                    class="aligncenter"
+                                                                                    src="images/icon_fb2_sc.jpg"/></a>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="col-lg-4 col-md-4 col-6">
+                                                <table style="margin:auto;">
+                                                    <tbody>
+                                                    <tr>
+                                                        <td><a href="https://twitter.com/CHINAPLAS"
+                                                               t_label="link_111_twitter"
+                                                               target="_blank"><img alt=""
+                                                                                    class="socialIcon aligncenter"
+                                                                                    src="images/icon_twitter.jpg"
+                                                                                    style="max-width:150px;"/></a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><a href="https://twitter.com/CHINAPLAS"
+                                                               t_label="link_111_twitter"
+                                                               target="_blank"><img alt=""
+                                                                                    class="aligncenter"
+                                                                                    src="images/icon_twitter2_sc.jpg"/></a>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="col-lg-4 col-md-4 col-6">
+                                                <table style="margin:auto;">
+                                                    <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <a href="https://www.linkedin.com/showcase/chinaplas"
+                                                               t_label="link_111_linkedin"
+                                                               target="_blank"><img alt=""
+                                                                                    class="socialIcon aligncenter"
+                                                                                    src="images/icon_linkedin.jpg"
+                                                                                    style="max-width:150px;"/></a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <a href="https://www.linkedin.com/showcase/chinaplas"
+                                                               t_label="link_111_linkedin"
+                                                               target="_blank"><img alt=""
+                                                                                    class="aligncenter"
+                                                                                    src="images/icon_linkedin2_sc.jpg"/></a>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="col-lg-4 col-md-4 col-6">
+                                                <table style="margin:auto;">
+                                                    <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <a href="https://www.instagram.com/chinaplas_1983/"
+                                                               t_label="link_111_instagram"
+                                                               target="_blank"><img alt=""
+                                                                                    class="socialIcon aligncenter"
+                                                                                    src="images/icon_instagram.jpg"
+                                                                                    style="max-width:150px;"/></a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <a href="https://www.instagram.com/chinaplas_1983/"
+                                                               t_label="link_111_instagram"
+                                                               target="_blank"><img alt=""
+                                                                                    class="aligncenter"
+                                                                                    src="images/icon_instagram2_sc.jpg"/></a>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="col-lg-4 col-md-4 col-6">
+                                                <table style="margin:auto;">
+                                                    <tbody>
+                                                    <tr>
+                                                        <td><a class="showWeChatQR" href="#"
+                                                               t_label="link_111_WeChat"><img alt=""
+                                                                                              class="socialIcon aligncenter"
+                                                                                              id="wechatMedia"
+                                                                                              src="images/icon_wechat.jpg"
+                                                                                              style="cursor:pointer; max-width:150px;"/></a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><a class="showWeChatQR" href="#"
+                                                               t_label="link_111_WeChat"><img alt=""
+                                                                                              class="aligncenter"
+                                                                                              id="wechatMedia"
+                                                                                              src="images/icon_wechat2.jpg"
+                                                                                              style="cursor:pointer;"/></a>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="col-lg-4 col-md-4 col-6">
+                                                <table style="margin:auto;">
+                                                    <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <a href="https://www.weibo.com/chinaplas"
+                                                               t_label="link_111_weibo"
+                                                               target="_blank"><img alt=""
+                                                                                    class="socialIcon aligncenter"
+                                                                                    src="images/icon_weibo.jpg"
+                                                                                    style="max-width:150px;"/></a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <a href="https://www.weibo.com/chinaplas"
+                                                               t_label="link_111_weibo"
+                                                               target="_blank"><img alt=""
+                                                                                    class="aligncenter"
+                                                                                    src="images/icon_weibo2.jpg"/></a>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="col-lg-4 col-md-4 col-6">
+                                                <table style="margin:auto;">
+                                                    <tbody>
+                                                    <tr>
+                                                        <td><a href="https://youtu.be/xRLzXFF-nIo"
+                                                               t_label="link_111_youtube"
+                                                               target="_blank"><img alt=""
+                                                                                    class="socialIcon aligncenter"
+                                                                                    src="images/icon_youtube.jpg"
+                                                                                    style="max-width:150px;"/></a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><a href="https://youtu.be/xRLzXFF-nIo"
+                                                               t_label="link_111_youtube"
+                                                               target="_blank"><img alt=""
+                                                                                    class="aligncenter"
+                                                                                    src="images/icon_youtube2.jpg"/></a>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <!-- -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
+</div>
+</body>
 </html>

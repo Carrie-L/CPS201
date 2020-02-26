@@ -27,7 +27,7 @@ class ExhibitorFilter(var index: Int,
     }
 
     override fun toString(): String {
-        return "ExhibitorFilter(index=$index, id=$id, filter=$filter)"
+        return "$id"
     }
 
     companion object CREATOR : Parcelable.Creator<ExhibitorFilter> {

@@ -41,5 +41,17 @@ interface ApplicationDao {
     @Query("DELETE FROM CompanyApplication")
     fun deleteCompanyApplicationAll()
 
+    /*   ------Event Application------   */
+    @Query("select Max(updatedAt) from EventApplication")
+    fun getEVLastUpdateTime(): String
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertEVAll(list: List<EventApplication>)
+
+    @Query("select * from EventApplication order by SortCN")
+    fun getEVCNList(): List<EventApplication>
+
+    @Query("select * from EventApplication order by SortEN")
+    fun getEVENList(): List<EventApplication>
 
 }

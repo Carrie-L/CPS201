@@ -1,18 +1,13 @@
 package com.adsale.chinaplas.viewmodels
 
 import android.app.Application
-import android.content.DialogInterface
+import android.os.CountDownTimer
 import androidx.databinding.ObservableBoolean
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
-import androidx.navigation.fragment.findNavController
-import com.adsale.chinaplas.R
 import com.adsale.chinaplas.data.dao.Exhibitor
-import com.adsale.chinaplas.data.dao.ExhibitorHistory
 import com.adsale.chinaplas.data.dao.ExhibitorRepository
 import com.adsale.chinaplas.data.entity.KV
-import com.adsale.chinaplas.ui.view.RecyclerViewScrollTo
 import com.adsale.chinaplas.utils.*
 import com.adsale.chinaplas.utils.LogUtil.i
 import kotlinx.coroutines.*
@@ -61,7 +56,7 @@ class ExhibitorViewModel(
     var starDialog = MutableLiveData(false)
 
     init {
-
+        adCountDownTime()
     }
 
     fun getExhibitorList(type: String, value: String) {
@@ -284,8 +279,49 @@ class ExhibitorViewModel(
         if (!isSortBySZ.get()) {
             sideTemps.sort()
         }
-        LogUtil.i("sideTemps 1st = ${sideTemps.size},  ${sideTemps.toString()}")
+        i("sideTemps 1st = ${sideTemps.size},  ${sideTemps.toString()}")
         return sideTemps
+    }
+
+    private lateinit var adTimer: CountDownTimer
+    var adRollIndex = MutableLiveData(-1)
+    var adIndex: Int = 0
+    private fun adCountDownTime() {
+        adTimer = object : CountDownTimer(2000L, 1000) {
+            override fun onTick(millisUntilFinished: Long) {   //  millisUntilFinished / ONE_SECOND = 4,3,2,1,0
+            }
+
+            override fun onFinish() {
+                LogUtil.i("d3 adSize=$adSize")
+                adIndex++
+                if (adIndex == adSize) {
+                    adIndex = 0
+                }
+                adRollIndex.value = adIndex
+                i("*****d3 adIndex=$adIndex")
+
+                adCountDownTime()  // 无限轮播
+            }
+        }
+        adTimer.start()
+    }
+
+    private var adSize = 0
+    fun setD3Size(size: Int) {
+        adSize = size
+    }
+
+    fun startAdTimer() {
+        if (adRollIndex.value == -1) {
+            i("* startTimer *")
+            adTimer.start()
+//            adRollIndex.value = 0
+        }
+    }
+
+    fun stopTimer() {
+        adRollIndex.value = -1
+        adTimer.cancel()
     }
 
 

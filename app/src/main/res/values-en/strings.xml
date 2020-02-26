@@ -338,7 +338,32 @@ Adsale Exhibition Services Ltd., the Organiser, reserves the rights to issue the
     <string name="today">Today</string>
     <string name="yesterday">Yesterday</string>
     <string name="past_records">Past</string>
-    <string name="event_tab_all">All</string>
 
+    <!--同期的活动-->
+    <string name="event_tab_all">All</string>
+    <string name="seminar_pm">PM</string>
+    <string name="seminar_am">AM</string>
+
+    <!-- 技術交流會詳情頁 -->
+    <string name="title_technical_seminar">Technical Seminar</string>
+    <string name="seminar_information">Technical Seminar Abstract</string>
+    <string name="seminar_speaker">Speaker</string>
+    <string name="seminar_contact">Contact Info</string>
+    <string name="seminar_email">Email</string>
+    <string name="seminar_tel">Tel</string>
+    <string name="seminar_date">Date：%s</string>
+    <string name="seminar_time">Session：%s</string>
+    <string name="seminar_section">Hall：%s</string>
+    <string name="seminar_zone">Zone：%s</string>
+    <string name="seminar_roomNO">Seminar Room：%s</string>
+    <string name="seminar_booth">Booth：%s</string>
+    <string name="seminar_booth_">Booth：-</string>
+    <string name="seminar_language">Speaking Language</string>
+
+
+    <!--新技术产品-->
+    <string name="filter_product">Product</string>
+    <string name="filter_applications">Applications</string>
+    <string name="new_tec_ad">Ad Product</string>
 
 </resources>

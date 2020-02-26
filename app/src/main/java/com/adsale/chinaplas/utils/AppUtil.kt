@@ -975,6 +975,50 @@ fun hideInput(context: Context, windowToken: IBinder) {
     inputMethodManager.hideSoftInputFromWindow(windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
 }
 
+/*同期活动，技术交流会 item id*/
+fun setItemEventID(pageId: String) {
+    mSPConfig.edit().putString("concurrent_event_id", pageId).apply()
+}
+
+fun getItemEventID(): String {
+    return mSPConfig.getString("concurrent_event_id", "")!!
+}
+
+fun setItemSeminarEventID(eventId: Int) {
+    mSPConfig.edit().putInt("seminar_event_id", eventId).apply()
+}
+
+fun getItemSeminarEventID(): Int {
+    return mSPConfig.getInt("seminar_event_id", 0)
+}
+
+/* 同期活动 应用行业筛选ids */
+fun setSPEventFilter(filter: String) {
+    mSPConfig.edit().putString("event_filter", filter).apply()
+}
+
+fun getSPEventFilter(): String {
+    return mSPConfig.getString("event_filter", "")!!
+}
+
+fun setSPSeminarFilter(filter: String) {
+    mSPConfig.edit().putString("seminar_filter", filter).apply()
+}
+
+fun getSPSeminarFilter(): String {
+    return mSPConfig.getString("seminar_filter", "")!!
+}
 
 
+/*  ========== 广告次序  ============    */
+/**
+ * 当前显示的广告index
+ */
+fun setD3CurrentIndex(currentIndex: Int) {
+    mSPConfig.edit().putInt("d3_current_index", currentIndex).apply()
+}
+
+fun getD3CurrentIndex(): Int {
+    return mSPConfig.getInt("d3_current_index", -1)
+}
 

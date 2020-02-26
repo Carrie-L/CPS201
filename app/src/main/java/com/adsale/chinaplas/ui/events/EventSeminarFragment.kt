@@ -1,27 +1,23 @@
 package com.adsale.chinaplas.ui.events
 
 
-import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.FrameLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.viewpager.widget.ViewPager
 import com.adsale.chinaplas.R
 import com.adsale.chinaplas.base.BaseFragment
 import com.adsale.chinaplas.data.dao.CpsDatabase
 import com.adsale.chinaplas.data.dao.EventRepository
 import com.adsale.chinaplas.databinding.FragmentEventSeminarBinding
-import com.adsale.chinaplas.databinding.FragmentMyChinaplasLoginBinding
-import com.adsale.chinaplas.ui.tools.mychinaplas.MyChinaplasLoginFragment
+import com.adsale.chinaplas.utils.setSPEventFilter
+import com.adsale.chinaplas.utils.setSPSeminarFilter
 import com.adsale.chinaplas.viewmodels.EventViewModel
 import com.adsale.chinaplas.viewmodels.EventViewModelFactory
+import com.baidu.speech.utils.LogUtil
 
 /**
  * A simple [Fragment] subclass.
@@ -32,14 +28,26 @@ class EventSeminarFragment : BaseFragment() {
     private lateinit var contentFrame: FrameLayout
     private lateinit var eventFragment: ConcurrentEventFragment
     private lateinit var seminarFragment: SeminarFragment
+    private var isAddedEvent = false
+    private var isAddedSeminar = false
+
+//    override fun onCreateView(
+//        inflater: LayoutInflater,
+//        container: ViewGroup?,
+//        savedInstanceState: Bundle?
+//    ): View? {
+//        val binding = FragmentEventSeminarBinding.inflate(inflater)
+//        contentFrame = binding.eventFrameContent
+//        return binding.root
+//    }
 
     override fun initedView(inflater: LayoutInflater) {
         val binding = FragmentEventSeminarBinding.inflate(inflater, baseFrame, true)
 //        viewPager = binding.viewPagerEvent
         contentFrame = binding.eventFrameContent
-
         val eventRepository =
-            EventRepository.getInstance(CpsDatabase.getInstance(requireContext()).eventDao())
+            EventRepository.getInstance(CpsDatabase.getInstance(requireContext()).eventDao(),
+                CpsDatabase.getInstance(requireContext()).eventApplicationDao())
         eventViewModel = ViewModelProviders.of(this, EventViewModelFactory(eventRepository))
             .get(EventViewModel::class.java)
 
@@ -52,40 +60,26 @@ class EventSeminarFragment : BaseFragment() {
     }
 
     private fun initContentFrame() {
-        eventFragment = ConcurrentEventFragment.getInstance()
-        seminarFragment = SeminarFragment.getInstance()
+        LogUtil.i("initContentFrame~~~")
+        eventFragment = ConcurrentEventFragment()
+        seminarFragment = SeminarFragment()
+
+        val fm = fragmentManager!!
 
         eventViewModel.tabClickIndex.observe(this, Observer {
+            LogUtil.i("tabClickIndex observe=$it")
             when (it) {
                 1 -> {
-                    val fm =  requireActivity().supportFragmentManager
                     val tr = fm.beginTransaction()
-                    tr.add(R.id.event_frame_content,eventFragment)
-                    tr.commit()
-//                    requireActivity().supportFragmentManager.inTransaction {
-//                     add(R.id.event_frame_content,fragmentManager)
-////                        show(eventFragment)
-//                    }
+                    tr.replace(R.id.event_frame_content, eventFragment).commitAllowingStateLoss()
                 }
                 2 -> {
-                    val fm =  requireActivity().supportFragmentManager
                     val tr = fm.beginTransaction()
-                    tr.add(R.id.event_frame_content,seminarFragment)
-                    tr.commit()
-//                    requireActivity().supportFragmentManager.inTransaction {
-//                        add(seminarFragment, "seminar")
-////                        show(seminarFragment)
-//                    }
+                    tr.replace(R.id.event_frame_content, seminarFragment).commitAllowingStateLoss()
                 }
             }
         })
 
-    }
-
-    private inline fun FragmentManager.inTransaction(func: FragmentTransaction.() -> Unit) {
-        val fragmentTransaction = beginTransaction()
-        fragmentTransaction.func()
-        fragmentTransaction.commit()
     }
 
     private fun initViewPager() {
@@ -107,12 +101,10 @@ class EventSeminarFragment : BaseFragment() {
     }
 
     override fun initedData() {
-        initContentFrame()
-
     }
 
     override fun initData() {
-
+        initContentFrame()
     }
 
     override fun back() {
@@ -133,5 +125,13 @@ class EventSeminarFragment : BaseFragment() {
         }
     }
 
+    override fun onDetach() {
+        super.onDetach()
+        isAddedEvent = false
+        isAddedSeminar = false
+        setSPEventFilter("")
+        setSPSeminarFilter("")
+        LogUtil.i("onDetach")
+    }
 
 }

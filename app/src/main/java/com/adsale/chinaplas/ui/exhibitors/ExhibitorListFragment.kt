@@ -9,21 +9,28 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.Observer
+import androidx.lifecycle.OnLifecycleEvent
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.adsale.chinaplas.R
+import com.adsale.chinaplas.adapters.ADScrollAdapter
 import com.adsale.chinaplas.adapters.ExhibitorListAdapter
 import com.adsale.chinaplas.adapters.OnItemClickListener
 import com.adsale.chinaplas.data.dao.CpsDatabase
 import com.adsale.chinaplas.data.dao.Exhibitor
 import com.adsale.chinaplas.data.dao.ExhibitorRepository
 import com.adsale.chinaplas.data.dao.MainIconRepository
+import com.adsale.chinaplas.data.entity.Property
 import com.adsale.chinaplas.databinding.FragmentExhibitorListBinding
+import com.adsale.chinaplas.helper.ADHelper
 import com.adsale.chinaplas.ui.view.RecyclerViewScrollTo
 import com.adsale.chinaplas.ui.view.SideBarView
 import com.adsale.chinaplas.utils.*
@@ -73,6 +80,7 @@ class ExhibitorListFragment : Fragment() {
     private var isViewInited = false
     private var lastView: View? = null
     private lateinit var sideBarView: SideBarView
+    private lateinit var rvD3: RecyclerView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -134,10 +142,16 @@ class ExhibitorListFragment : Fragment() {
                     exhibitorViewModel.finishNavigateFilter()
                 }
             })
-
-
+            showD3()
         }
         search()
+
+        exhibitorViewModel.adRollIndex.observe(this, Observer {
+            if (it != -1) {
+                LogUtil.i("d3RollIndex: it=$it")
+                rvD3.smoothScrollToPosition(it)
+            }
+        })
 
         /**
          *
@@ -246,26 +260,6 @@ class ExhibitorListFragment : Fragment() {
                 exhibitorViewModel.queryExhibitorsLocal(text.toLowerCase(Locale.ENGLISH))
             }
         })
-
-
-//        binding.etSearch.addTextChangedListener(object : TextWatcher {
-//            override fun afterTextChanged(s: Editable?) {
-//                LogUtil.i("afterTextChanged--${s.toString()}")
-//                if (TextUtils.isEmpty(s.toString())) {
-//                    exhibitorViewModel.resetList()
-//                } else {
-//                    exhibitorViewModel.queryExhibitorsLocal(s.toString().toLowerCase(Locale.ENGLISH))
-//                }
-//            }
-//
-//            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-//
-//            }
-//
-//            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-//            }
-//
-//        })
     }
 
     private val itemClickListener = OnItemClickListener { entity, pos ->
@@ -280,6 +274,37 @@ class ExhibitorListFragment : Fragment() {
             )
         )
 //        binding.etSearch.setText("")
+    }
+
+    private fun showD3() {
+        rvD3 = binding.rvAd
+        val layoutManager = LinearLayoutManager(requireContext())
+        layoutManager.orientation = LinearLayoutManager.HORIZONTAL
+        rvD3.setHasFixedSize(true)
+        rvD3.layoutManager = layoutManager
+        val snapHelper = PagerSnapHelper()
+        snapHelper.attachToRecyclerView(rvD3)
+
+        val adHelper = ADHelper.getInstance(requireActivity().application)
+
+        val params = ConstraintLayout.LayoutParams(getScreenWidth(), adHelper.getADHeight())
+        params.bottomToBottom = ConstraintLayout.LayoutParams.MATCH_CONSTRAINT
+        params.topToBottom = R.id.rv_exhibitor
+        rvD3.layoutParams = params
+
+        val list = adHelper.d3Property()
+        val adapter = ADScrollAdapter(list, OnItemClickListener { entity, pos ->
+            entity as Property
+            findNavController().navigate(
+                ExhibitorListFragmentDirections.actionExhibitorListFragmentToExhibitorDetailFragment(
+                    entity.pageID
+                )
+            )
+        })
+        rvD3.adapter = adapter
+
+        exhibitorViewModel.setD3Size(list.size)
+        exhibitorViewModel.startAdTimer()
     }
 
     private fun hideInput() {
@@ -357,6 +382,24 @@ class ExhibitorListFragment : Fragment() {
             }
         }
 
+    }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
+    override fun onPause() {
+        super.onPause()
+        exhibitorViewModel.stopTimer()
+    }
+
+//    @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
+//    override fun onStop() {
+//        super.onStop()
+//        exhibitorViewModel.stopTimer()
+//    }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_START)
+    override fun onStart() {
+        super.onStart()
+        exhibitorViewModel.startAdTimer()
     }
 
 }

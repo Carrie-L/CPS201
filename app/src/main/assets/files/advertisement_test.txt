@@ -1,0 +1,58 @@
+{
+    "base": {
+        "baseUrl": "https://cdn.adsalecdn.com/App/2020/EPO/",
+        "startTime": "2020/02/01",
+        "endTime": "2021/01/01"
+    },
+    "D1": {
+        "isOpen": [
+            1,
+            1,
+            1
+        ],
+        "images": [
+            "arburg_en.jpg",
+            "arburg_cn.jpg",
+            "arburg_cn.jpg"
+        ],
+        "companyID": [
+            "259905",
+            "259905",
+            "259905"
+        ]
+    },
+    "D2": {
+        "cn": [
+            {
+                "isOpen": 1,
+                "image": "d2_yuchang_cn.jpg",
+                "function": 1,
+                "pageID": "259905"
+            },
+            {
+                "isOpen": 1,
+                "image": "d2_yuchang_cn.jpg",
+                "function": 1,
+                "pageID": "259509"
+            }
+        ],
+        "en": [
+            {
+                "isOpen": 1,
+                "image": "d2_yuchang_en.jpg",
+                "function": 1,
+                "pageID": "261128"
+            },
+            {
+                "isOpen": 1,
+                "image": "d2_yuchang_en.jpg",
+                "function": 1,
+                "pageID": "258223"
+            }
+        ]
+    },
+    "D3":{
+
+
+    }
+}

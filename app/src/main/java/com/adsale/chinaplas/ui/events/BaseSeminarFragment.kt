@@ -2,78 +2,114 @@ package com.adsale.chinaplas.ui.events
 
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-
 import com.adsale.chinaplas.R
-import com.adsale.chinaplas.adapters.CpsBaseAdapter
+import com.adsale.chinaplas.SeminarAdapter
 import com.adsale.chinaplas.adapters.OnItemClickListener
-import com.adsale.chinaplas.base.BaseFragment
-import com.adsale.chinaplas.data.dao.ConcurrentEvent
 import com.adsale.chinaplas.data.dao.CpsDatabase
-import com.adsale.chinaplas.data.dao.EventRepository
-import com.adsale.chinaplas.viewmodels.EventViewModel
-import com.adsale.chinaplas.viewmodels.EventViewModelFactory
+import com.adsale.chinaplas.data.dao.SeminarInfo
+import com.adsale.chinaplas.data.dao.SeminarRepository
+import com.adsale.chinaplas.databinding.FragmentBaseSeminarBinding
+import com.adsale.chinaplas.ui.exhibitors.APPLICATION_SEMINAR
+import com.adsale.chinaplas.utils.setItemSeminarEventID
+import com.adsale.chinaplas.utils.setSPSeminarFilter
+import com.adsale.chinaplas.viewmodels.*
 import com.baidu.speech.utils.LogUtil
 
 /**
  * A simple [Fragment] subclass.
  */
-abstract class BaseSeminarFragment : BaseFragment() {
+abstract class BaseSeminarFragment : Fragment() {
     protected lateinit var recyclerView: RecyclerView
-    protected lateinit var eventViewModel: EventViewModel
-    protected lateinit var adapter: EventAdapter
-    protected var layoutId: Int = R.layout.item_event_part
-    protected lateinit var itemClickListener:OnItemClickListener
+    protected lateinit var seminarViewModel: SeminarViewModel
+    protected lateinit var adapter: SeminarAdapter
+    protected lateinit var binding: FragmentBaseSeminarBinding
+    protected var CURRENT_DATE_INDEX: Int = 1  // 1:第一天，2 第二天, 3 第三天
+    private lateinit var mView: View
 
-    override fun initedView(inflater: LayoutInflater) {
-        val view = inflater.inflate(R.layout.layout_recycler_view, baseFrame, true)
-        recyclerView = view.findViewById(R.id.recycler_view)
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        binding = FragmentBaseSeminarBinding.inflate(inflater)
+        recyclerView = binding.seminarRecyclerViewBase
+        mView = binding.root
+        return mView
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        initView()
+        initData()
+    }
+
+    private fun initView() {
         recyclerView.setHasFixedSize(true)
-    }
-
-    override fun initView() {
-    }
-
-    override fun initedData() {
-        val eventRepository =
-            EventRepository.getInstance(CpsDatabase.getInstance(requireContext()).eventDao())
-        eventViewModel = ViewModelProviders.of(this, EventViewModelFactory(eventRepository))
-            .get(EventViewModel::class.java)
-        adapter = EventAdapter(listOf(), itemClickListener)
+        adapter = SeminarAdapter(listOf(), itemClickListener)
         recyclerView.adapter = adapter
     }
 
-    override fun initData() {
-        eventViewModel.events.observe(this, Observer {
+    private fun initData() {
+        seminarViewModel = ViewModelProviders.of(this, SeminarViewModelFactory(
+            SeminarRepository.getInstance(CpsDatabase.getInstance(requireContext()).seminarDao())
+        )).get(SeminarViewModel::class.java)
+        binding.model = seminarViewModel
+        binding.lifecycleOwner = this
+
+        init()
+
+        seminarViewModel.currentDateSelect.value = CURRENT_DATE_INDEX
+        seminarViewModel.getSeminarTimeList(true)
+
+        seminarViewModel.seminarList.observe(this, Observer {
             adapter.setList(it)
+        })
+
+        seminarViewModel.btnClick.observe(this, Observer {
+            when (it) {
+                SEMINAR_FILTER -> {
+                    val currentDes = findNavController().currentDestination!!
+                    if (currentDes.id == R.id.eventSeminarFragment) {
+                        Navigation.findNavController(mView)
+                            .navigate(EventSeminarFragmentDirections.actionEventSeminarFragmentToFilterApplicationFragment(
+                                APPLICATION_SEMINAR))
+                    } else {
+                        LogUtil.i("!   currentDes=${currentDes.label}")
+                    }
+                }
+                SEMINAR_MAP -> ""
+                SEMINAR_RESET -> {
+                    setSPSeminarFilter("")
+                    seminarViewModel.getSeminarTimeList(true)
+                }
+            }
         })
     }
 
-    override fun back() {
-    }
-
-//    private val itemClickListener = OnItemClickListener { entity, pos ->
-//        LogUtil.i("item: $pos")
-////        findNavController().navigate(Concurr.actionBaseEventFragmentToWebContentFragment("PlasticsRecycling",getString(R.string.title_concurrent_event)))
+//    override fun onResume() {
+//        super.onResume()
+//        LogUtil.i("onResume")
+//
+//        val filters = getSPSeminarFilter()
+//        if (filters.isNotEmpty()) {
+//            LogUtil.i("getSPSeminarFilter=$filters")
+//
+//            seminarViewModel.getOverallEvents()
+//        }
+//
 //    }
 
-    inner class EventAdapter(
-        private val list: List<ConcurrentEvent>,
-        itemClickListener: OnItemClickListener
-    ) : CpsBaseAdapter<ConcurrentEvent>(list, itemClickListener) {
-        override fun getLayoutIdForPosition(position: Int): Int {
-            return layoutId
-        }
+    abstract fun init()
+
+    private val itemClickListener = OnItemClickListener { entity, pos ->
+        entity as SeminarInfo
+        setItemSeminarEventID(entity.EventID!!)
+        findNavController().navigate(R.id.seminarDetailFragment)
     }
 
 

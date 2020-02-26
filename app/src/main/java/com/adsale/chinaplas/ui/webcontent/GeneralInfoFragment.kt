@@ -1,40 +1,38 @@
 package com.adsale.chinaplas.ui.webcontent
 
 
-import android.media.Image
 import android.os.Bundle
-import android.text.Layout
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.webkit.WebView
-import android.widget.AbsListView
-import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager.widget.ViewPager
 import com.adsale.chinaplas.R
-import com.adsale.chinaplas.adapters.CpsBaseAdapter
-import com.adsale.chinaplas.adapters.MenuAdapter
 import com.adsale.chinaplas.data.dao.CpsDatabase
-import com.adsale.chinaplas.data.dao.HtmlText
 import com.adsale.chinaplas.data.dao.MainIconRepository
 import com.adsale.chinaplas.data.dao.WebContentRepository
-import com.adsale.chinaplas.databinding.ItemMenuBinding
+import com.adsale.chinaplas.helper.ADHelper
+import com.adsale.chinaplas.helper.D5_GENERATION
 import com.adsale.chinaplas.rootDir
 import com.adsale.chinaplas.utils.LogUtil
 import com.adsale.chinaplas.utils.LogUtil.i
 import com.adsale.chinaplas.utils.getHtmName
+import com.adsale.chinaplas.utils.getScreenWidth
+import com.adsale.chinaplas.utils.setItemEventID
 import com.adsale.chinaplas.viewmodels.MainViewModel
 import com.adsale.chinaplas.viewmodels.MainViewModelFactory
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.RequestOptions
 import com.tencent.bugly.Bugly
 import kotlinx.coroutines.*
 import java.io.File
@@ -57,6 +55,8 @@ class GeneralInfoFragment : Fragment() {
     private var job = Job()
     private val uiScope = CoroutineScope(job + Dispatchers.Main)
 
+    private lateinit var ivD5: ImageView
+
     val mainViewModel: MainViewModel by lazy {
         ViewModelProviders.of(requireActivity(), MainViewModelFactory(requireActivity().application,
             MainIconRepository.getInstance(CpsDatabase.getInstance(Bugly.applicationContext).mainIconDao()))
@@ -72,6 +72,7 @@ class GeneralInfoFragment : Fragment() {
         rvHtml = view.findViewById(R.id.rv_general_info)
         line1 = view.findViewById(R.id.iv_line)
         line2 = view.findViewById(R.id.iv_line_end)
+        ivD5 = view.findViewById(R.id.iv_d5)
 
         arguments?.let {
             GeneralInfoFragmentArgs.fromBundle(it).baiduTJ?.let { parentID ->
@@ -131,20 +132,48 @@ class GeneralInfoFragment : Fragment() {
                     val lastItem2 = layoutManager.findLastCompletelyVisibleItemPosition()
                     LogUtil.i("firstItem=$firstItem, firstItem2=$firstItem2")
                     LogUtil.i("lastItem=$lastItem, lastItem2=$lastItem2")
-                    if(lastItem2==1){
+                    if (lastItem2 == 1) {
                         lineVisible(false)
-                    }else if(firstItem2==0){
+                    } else if (firstItem2 == 0) {
                         lineVisible(true)
                     }
                 }
             }
         })
 
+        showD5()
+
     }
 
     private suspend fun getPageIds(): List<String> {
         return withContext(Dispatchers.IO) {
             webContentRepository.getPageIDs(baiduTJ!!)
+        }
+    }
+
+    private fun showD5() {
+        val adHelper = ADHelper.getInstance(requireActivity().application)
+        val property = adHelper.d5Property(D5_GENERATION)
+        if (property.pageID.isEmpty() || !adHelper.isD5Open()) {
+            ivD5.visibility = View.GONE
+            return
+        }
+        val params = ConstraintLayout.LayoutParams(getScreenWidth(), adHelper.getADHeight())
+        params.bottomToBottom = ConstraintLayout.LayoutParams.MATCH_CONSTRAINT
+        params.topToBottom = R.id.rv_general_info
+        ivD5.layoutParams = params
+
+        val options = RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.RESOURCE)
+        Glide.with(this).load(adHelper.d5ImageUrl(D5_GENERATION)).apply(options).into(ivD5)
+
+        ivD5.setOnClickListener {
+            when (property.function) {
+                1 -> findNavController().navigate(GeneralInfoFragmentDirections.actionToExhibitorDetailFragment(property.pageID))
+                2 -> { // 同期活动
+                    setItemEventID(property.pageID)
+                    findNavController().navigate(R.id.eventDetailFragment)
+                }
+            }
         }
     }
 

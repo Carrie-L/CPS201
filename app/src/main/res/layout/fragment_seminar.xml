@@ -13,7 +13,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
         <TextView
             android:id="@+id/tv_tab_1"
             style="@style/event_date_tab_style"
@@ -47,55 +46,56 @@
             app:layout_constraintStart_toEndOf="@+id/tv_tab_2"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <!--bar-->
-        <RelativeLayout
-            android:id="@+id/function_bar"
-            android:layout_width="match_parent"
-            android:layout_height="64dp"
-            android:gravity="center_vertical"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_tab_1">
+        <!--        &lt;!&ndash;bar&ndash;&gt;-->
+        <!--        <RelativeLayout-->
+        <!--            android:id="@+id/function_bar"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="56dp"-->
+        <!--            android:visibility="gone"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@id/tv_tab_1">-->
 
-            <TextView
-                android:id="@+id/tv_am"
-                android:layout_width="75dp"
-                android:layout_height="28dp"
-                android:layout_marginStart="16dp"
-                android:background="@drawable/bg_btn_selected"
-                android:gravity="center"
-                android:onClick="@{()->model.onFunctionClick(1)}"
-                android:text="上午"
-                android:textColor="#fff" />
+        <!--            <TextView-->
+        <!--                android:id="@+id/tv_am"-->
+        <!--                android:layout_width="72dp"-->
+        <!--                android:layout_height="24dp"-->
+        <!--                android:layout_centerVertical="true"-->
+        <!--                android:layout_marginStart="16dp"-->
+        <!--                android:background="@{model.currentIsAm.booleanValue()?@drawable/bg_btn_selected:@drawable/bg_btn_not_selected}"-->
+        <!--                android:gravity="center"-->
+        <!--                android:onClick="@{()->model.onAmClick()}"-->
+        <!--                android:text="@string/seminar_am"-->
+        <!--                android:textColor="#fff" />-->
 
-            <TextView
-                android:id="@+id/tv_pm"
-                android:layout_width="75dp"
-                android:layout_height="28dp"
-                android:layout_marginStart="16dp"
-                android:layout_toRightOf="@id/tv_am"
-                android:background="@drawable/bg_btn_not_selected"
-                android:gravity="center"
-                android:onClick="@{()->model.onFunctionClick(2)}"
-                android:text="下午"
-                android:textColor="#fff" />
+        <!--            <TextView-->
+        <!--                android:id="@+id/tv_pm"-->
+        <!--                android:layout_width="72dp"-->
+        <!--                android:layout_height="24dp"-->
+        <!--                android:layout_centerVertical="true"-->
+        <!--                android:layout_marginStart="16dp"-->
+        <!--                android:layout_toRightOf="@id/tv_am"-->
+        <!--                android:background="@{model.currentIsAm.booleanValue()?@drawable/bg_btn_not_selected:@drawable/bg_btn_selected}"-->
+        <!--                android:gravity="center"-->
+        <!--                android:onClick="@{()->model.onPmClick()}"-->
+        <!--                android:text="@string/seminar_pm"-->
+        <!--                android:textColor="#fff" />-->
 
-            <ImageView
-                android:id="@+id/btn_reset"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_alignParentRight="true"
-                android:visibility="gone"
-                android:src="@drawable/ic_setting_reset" />
+        <!--            <ImageView-->
+        <!--                android:id="@+id/btn_reset"-->
+        <!--                android:layout_width="48dp"-->
+        <!--                android:layout_height="48dp"-->
+        <!--                android:layout_alignParentRight="true"-->
+        <!--                android:src="@drawable/ic_setting_reset"-->
+        <!--                android:visibility="gone" />-->
 
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/grey_200"
-               android:layout_marginTop="40dp"
-                />
+        <!--            <ImageView-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="1dp"-->
+        <!--                android:layout_alignParentBottom="true"-->
+        <!--                android:background="@color/grey_200" />-->
 
-        </RelativeLayout>
+        <!--        </RelativeLayout>-->
 
 
         <androidx.viewpager.widget.ViewPager
@@ -103,7 +103,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/function_bar" />
+            app:layout_constraintTop_toBottomOf="@id/tv_tab_1" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

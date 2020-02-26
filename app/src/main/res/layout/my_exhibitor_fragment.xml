@@ -7,7 +7,8 @@
         <variable
             name="viewModel"
             type="com.adsale.chinaplas.viewmodels.MyExhibitorViewModel" />
-        <import type="android.view.View"/>
+
+        <import type="android.view.View" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
@@ -20,6 +21,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
+        <ImageView
+            android:id="@+id/iv_help"
+            style="@style/help_btn_style"
+            android:layout_margin="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             style="@style/no_data_style"
             android:text="@string/no_my_exhibitor"
@@ -27,7 +35,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/btn_hall"
@@ -37,10 +44,10 @@
             android:layout_alignParentBottom="true"
             android:layout_margin="16dp"
             android:src="@drawable/ic_location"
-            app:backgroundTint="@color/colorPrimaryDark"
+            android:visibility="visible"
+            app:backgroundTint="@color/colorAccent"
             app:fabSize="normal"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -52,9 +59,9 @@
             android:layout_marginRight="16dp"
             android:layout_marginBottom="16dp"
             android:src="@drawable/ic_synchro"
-            app:backgroundTint="@color/colorPrimaryDark"
+            android:visibility="visible"
+            app:backgroundTint="@color/colorAccent"
             app:fabSize="normal"
-            android:visibility="gone"
             app:layout_constraintBottom_toTopOf="@id/btn_hall"
             app:layout_constraintEnd_toEndOf="parent" />
 

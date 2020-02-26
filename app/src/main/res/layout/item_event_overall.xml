@@ -10,55 +10,50 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-       >
+        android:layout_height="wrap_content">
 
         <TextView
-            android:text="@{obj.title}"
-            style="@style/item_title_18sp_style"
             android:id="@+id/tv_event_title"
+            style="@style/item_title_18sp_style"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
+            android:text="@{obj.title}"
+            android:textColor="@color/colorPrimaryDark"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_event_date"
             style="@style/event_item_sub_style"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_event_title"
-            android:text="@{obj.date}"
             android:layout_marginStart="16dp"
             android:drawableStart="@drawable/ic_event_date"
-            />
+            android:text="@{obj.date}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_event_title" />
 
         <TextView
             android:id="@+id/tv_event_time"
             style="@style/event_item_sub_style"
             android:layout_marginStart="16dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_event_date"
-            android:text="@{obj.duration}"
             android:drawableStart="@drawable/ic_event_time"
-            />
+            android:text="@{obj.duration}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_event_date" />
 
         <TextView
             android:id="@+id/tv_event_location"
             style="@style/event_item_sub_style"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_event_time"
-            android:text="@{obj.venue}"
             android:layout_marginStart="16dp"
             android:drawableStart="@drawable/ic_event_venue"
-            />
+            android:text="@{obj.venue}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_event_time" />
 
         <ImageView
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_event_location"
-            android:layout_width="match_parent"
-            android:background="@color/grey_500"
+            style="@style/event_list_line_style"
             android:layout_marginTop="16dp"
-            android:layout_height="1dp"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_event_location" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

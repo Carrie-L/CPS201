@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -40,16 +39,24 @@
             android:background="@color/grey_200"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:layout_constraintTop_toBottomOf="@id/ll_indicator"
-            app:layout_constraintBottom_toTopOf="@+id/iv_ad"
+            app:layout_constraintBottom_toTopOf="@+id/recycler_view_d2"
             app:spanCount="3" />
 
-        <ImageView
-            android:id="@+id/iv_ad"
+        <!--        <androidx.viewpager.widget.ViewPager-->
+        <!--            android:id="@+id/ad_pager"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@id/rv_menu" />-->
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_d2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/rv_menu" />
-<!--        android:layout_marginBottom="56dp"-->
+
+        <!--        android:layout_marginBottom="56dp"-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

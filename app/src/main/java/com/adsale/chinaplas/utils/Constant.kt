@@ -205,6 +205,12 @@ const val FILTER_INDEX_ZONE = 5
 const val FILTER_INDEX_HALL = 6
 const val FILTER_INDEX_NEW_TECH = 7
 
+
+const val FILTER_INDEX_NEWTECH_PRO = 101   // 新技术产品 - 产品
+const val FILTER_INDEX_NEWTECH_APPL = 102   // 新技术产品 - 应用
+const val FILTER_INDEX_NEWTECH_THEME = 103   // 新技术产品 - 主题专集
+const val FILTER_INDEX_NEWTECH_NEW = 104  // 新技术产品 - 新品技术
+
 /* 展商列表Type */
 const val EXHIBITOR_ALL = "all"
 const val EXHIBITOR_FILTER = "filter"

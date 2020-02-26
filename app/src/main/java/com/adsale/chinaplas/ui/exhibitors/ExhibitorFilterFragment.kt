@@ -8,10 +8,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import android.widget.ImageView
 import android.widget.ScrollView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.NavHostFragment
@@ -22,12 +22,16 @@ import com.adsale.chinaplas.data.dao.MainIconRepository
 import com.adsale.chinaplas.data.entity.ExhibitorFilter
 import com.adsale.chinaplas.data.entity.KV
 import com.adsale.chinaplas.databinding.FragmentExhibitorFilterBinding
+import com.adsale.chinaplas.helper.ADHelper
 import com.adsale.chinaplas.ui.view.FilterView
 import com.adsale.chinaplas.utils.*
 import com.adsale.chinaplas.viewmodels.FilterViewModel
 import com.adsale.chinaplas.viewmodels.FilterViewModelFactory
 import com.adsale.chinaplas.viewmodels.MainViewModel
 import com.adsale.chinaplas.viewmodels.MainViewModelFactory
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.RequestOptions
 
 /**
  *
@@ -46,6 +50,8 @@ class ExhibitorFilterFragment : Fragment() {
     private lateinit var zoneView: FilterView
     private lateinit var hallView: FilterView
 
+    private lateinit var ivD3: ImageView
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -61,6 +67,8 @@ class ExhibitorFilterFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         mainViewModel.isChangeRightIcon.value = false
+
+        showD3()
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -89,6 +97,7 @@ class ExhibitorFilterFragment : Fragment() {
             initFilterView()
             itemClick()
             isViewInited = true
+
         }
         observeFilters()
 
@@ -228,6 +237,33 @@ class ExhibitorFilterFragment : Fragment() {
             hideInput()
             navController.navigate(R.id.filterHallFragment)
         }
+    }
+
+    private fun showD3() {
+        d3Height()
+        generateD3()
+    }
+
+    private fun d3Height() {
+        ivD3 = binding.ivD3
+        val adHeight = getScreenWidth() * IMG_HEIGHT / IMG_WIDTH
+        val params = ConstraintLayout.LayoutParams(getScreenWidth(), adHeight)
+        params.bottomToBottom = ConstraintLayout.LayoutParams.MATCH_CONSTRAINT
+        ivD3.layoutParams = params
+    }
+
+    private fun generateD3() {
+        val adHelper = ADHelper.getInstance(requireActivity().application)
+        val d3 = adHelper.getCurrentD3()
+
+        val options = RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.RESOURCE)
+        Glide.with(this).load("${adHelper.baseUrl}${d3.imageName()}").apply(options).into(ivD3)
+        LogUtil.i("d3 url = ${adHelper.baseUrl}${d3.imageName()}")
+
+        ivD3.setOnClickListener {
+            findNavController().navigate(ExhibitorFilterFragmentDirections.actionToExhibitorDetailFragment(d3.pageID))
+        }
+
     }
 
     override fun onDestroy() {

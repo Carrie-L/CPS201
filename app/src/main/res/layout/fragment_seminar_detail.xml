@@ -1,13 +1,222 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.adsale.chinaplas.ui.events.SeminarDetailFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <data>
+
+        <variable
+            name="info"
+            type="com.adsale.chinaplas.data.dao.SeminarInfo" />
+
+        <variable
+            name="speaker"
+            type="com.adsale.chinaplas.data.dao.SeminarSpeaker" />
+
+        <import type="android.view.View" />
+
+
+        <import type="android.text.TextUtils" />
+    </data>
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
 
-</FrameLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context="com.adsale.chinaplas.ui.events.SeminarDetailFragment">
+
+            <ImageView
+                android:id="@+id/iv_ad_banner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_vertical_bar"
+                android:layout_width="8dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="15dp"
+                android:background="@color/colorAccent"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_seminar_room"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_ad_banner" />
+
+            <TextView
+                android:id="@+id/tv_seminar_topic"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/roboto"
+                android:lineSpacingExtra="8dp"
+                android:text="@{info.getTopicR()}"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/iv_vertical_bar"
+                app:layout_constraintTop_toBottomOf="@id/iv_ad_banner" />
+
+            <TextView
+                android:id="@+id/tv_seminar_company"
+                style="@style/seminaldtl_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="16dp"
+                android:text="@{info.presentCompany}"
+                android:textColor="@color/colorAccent"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/tv_seminar_topic"
+                app:layout_constraintTop_toBottomOf="@id/tv_seminar_topic" />
+
+            <TextView
+                android:id="@+id/tv_seminar_booth"
+                style="@style/seminaldtl_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="16dp"
+                android:text="@{info.isNoIntentCompany?@string/seminar_booth_:String.format(@string/seminar_booth,info.booth)}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/tv_seminar_topic"
+                app:layout_constraintTop_toBottomOf="@id/tv_seminar_company" />
+
+            <TextView
+                android:id="@+id/tv_seminar_date"
+                style="@style/seminaldtl_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="@{String.format(@string/seminar_date,info.date)}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/tv_seminar_topic"
+                app:layout_constraintTop_toBottomOf="@id/tv_seminar_booth" />
+
+            <TextView
+                android:id="@+id/tv_seminar_time"
+                style="@style/seminaldtl_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="@{String.format(@string/seminar_time,info.time)}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/tv_seminar_topic"
+                app:layout_constraintTop_toBottomOf="@id/tv_seminar_date" />
+
+            <TextView
+                android:id="@+id/tv_seminar_room"
+                style="@style/seminaldtl_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="@{String.format(@string/seminar_roomNO,info.roomNo)}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/tv_seminar_topic"
+                app:layout_constraintTop_toBottomOf="@id/tv_seminar_time" />
+
+            <!--下部分-->
+            <!--技术交流会概要-->
+            <TextView
+                android:id="@+id/tv_seminar_bar1"
+                style="@style/seminal_dtl_bar_style"
+                android:text="@string/seminar_information"
+                android:visibility="@{TextUtils.isEmpty(speaker.seminarsummary)?View.GONE:View.VISIBLE}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_seminar_room" />
+
+            <TextView
+                android:id="@+id/tv_seminar_info"
+                style="@style/seminal_dtl_text_style"
+                android:text="@{speaker.seminarsummary}"
+                android:visibility="@{TextUtils.isEmpty(speaker.seminarsummary)?View.GONE:View.VISIBLE}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_seminar_bar1" />
+
+            <!--演讲者资料-->
+            <TextView
+                android:id="@+id/tv_seminar_bar2"
+                style="@style/seminal_dtl_bar_style"
+                android:text="@string/seminar_speaker"
+                android:visibility="@{speaker.speakerName.length()==0?View.GONE:View.VISIBLE}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_seminar_info" />
+
+            <TextView
+                android:id="@+id/tv_seminar_speaker"
+                style="@style/seminal_dtl_text_style"
+                android:text="@{speaker.speakerName}"
+                android:visibility="@{speaker.speakerName.length()==0?View.GONE:View.VISIBLE}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_seminar_bar2" />
+
+            <!--演讲语言-->
+            <TextView
+                android:id="@+id/tv_seminar_bar3"
+                style="@style/seminal_dtl_bar_style"
+                android:text="@string/seminar_language"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_seminar_speaker" />
+
+            <TextView
+                android:id="@+id/tv_seminar_language"
+                style="@style/seminal_dtl_text_style"
+                android:text="中文"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_seminar_bar3" />
+
+            <!--联络资料-->
+            <TextView
+                android:id="@+id/tv_seminar_bar4"
+                style="@style/seminal_dtl_bar_style"
+                android:text="@string/seminar_contact"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_seminar_language" />
+
+            <TextView
+                android:id="@+id/tv_seminar_contact"
+                style="@style/seminal_dtl_text_style"
+                android:text="@{speaker.ContactPerson}"
+                android:visibility="@{speaker.contactPerson.length()==0 ?View.GONE:View.VISIBLE}"
+
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_seminar_bar4" />
+            <!--            android:visibility="@{TextUtils.isEmpty(speaker.contactPerson) && }"-->
+            <!--            &amp;speaker.tel.length()==0 &amp; speaker.email.length()==0-->
+
+            <TextView
+                android:id="@+id/tv_seminar_tel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:paddingStart="33dp"
+                android:text="@{speaker.tel}"
+                android:visibility="@{speaker.tel.length()==0?View.GONE:View.VISIBLE}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_seminar_contact" />
+
+            <TextView
+                android:id="@+id/tv_seminar_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:paddingStart="33dp"
+                android:text="@{speaker.email}"
+                android:visibility="@{speaker.email.length()==0?View.GONE:View.VISIBLE}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_seminar_tel" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</layout>

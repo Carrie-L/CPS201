@@ -9,18 +9,35 @@ import androidx.room.PrimaryKey
 @Entity
 class SeminarSpeaker {
     @PrimaryKey
-     var EventID: Int = 0
-     var CompanyID: String? = null
-     var Seminarsummary: String? = null
-     var SpeakerPhoto: String? = null
-     var SpeakerName: String? = null
-     var SpeakerPosition: String? = null
-     var SpeakerInfo: String? = null
-     var Language: String? = null
-     var FreeParticipation: String? = null
-     var ContactPerson: String? = null
-     var Email: String? = null
-     var Tel: String? = null
-     var LangID: String? = null
-     var ID: Int? = null
+    var EventID: Int = 0
+    var CompanyID: String? = ""
+    var Seminarsummary: String? = ""
+    var SpeakerPhoto: String? = ""
+    var SpeakerName: String? = ""
+    var SpeakerPosition: String? = ""
+    var SpeakerInfo: String? = ""
+    var Language: String? = ""
+    var FreeParticipation: String? = ""
+    var ContactPerson: String? = ""
+    var Email: String? = ""
+    var Tel: String? = ""
+    var LangID: String? = ""
+    var ID: Int? = 0
+
+    fun parser(strings: Array<String>) {
+        this.EventID = Integer.valueOf(strings[0])
+        this.CompanyID = strings[1]
+        this.Seminarsummary = strings[2]
+        this.SpeakerPhoto = strings[3]
+        this.SpeakerName = strings[4]
+        this.SpeakerPosition = strings[5]
+        this.SpeakerInfo = strings[6]
+        this.Language = strings[7]
+        this.FreeParticipation = strings[8]
+        this.ContactPerson = strings[9]
+        this.Email = strings[10]
+        this.Tel = strings[11]
+        this.LangID = strings[12]
+        this.ID = Integer.valueOf(strings[13])
+    }
 }

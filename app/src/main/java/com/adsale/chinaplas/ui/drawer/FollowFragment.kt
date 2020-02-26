@@ -5,14 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.webkit.WebView
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import com.adsale.chinaplas.R
 import com.adsale.chinaplas.rootDir
+import com.adsale.chinaplas.utils.LogUtil
 import com.adsale.chinaplas.utils.getHtmName
-import com.adsale.chinaplas.viewmodels.FollowViewModel
 import java.io.File
 
 class FollowFragment : Fragment() {
@@ -31,13 +28,15 @@ class FollowFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        val sdPath = "file://${rootDir}WebContent/%s/${getHtmName()}"
+        val sdPath = "file://${rootDir}WebContent1/%s/${getHtmName()}"
         val assetPath = "file:///android_asset/WebContent/%s/${getHtmName()}"
         val path:String
         if (File(sdPath).exists()) {
             path = sdPath
+            LogUtil.i("sdPath exists = $sdPath")
         } else {
             path = assetPath
+            LogUtil.i("assetPath exists = $sdPath")
         }
         webView.loadUrl(String.format(path, "S005"))
 

@@ -11,27 +11,33 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.constraintlayout.widget.ConstraintSet
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.Observer
+import androidx.lifecycle.OnLifecycleEvent
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.ViewPager
 import com.adsale.chinaplas.R
+import com.adsale.chinaplas.adapters.ADScrollAdapter
 import com.adsale.chinaplas.adapters.AdViewPagerAdapter
 import com.adsale.chinaplas.adapters.MenuAdapter
+import com.adsale.chinaplas.adapters.OnItemClickListener
 import com.adsale.chinaplas.confirmPdfPath
 import com.adsale.chinaplas.data.dao.CpsDatabase
 import com.adsale.chinaplas.data.dao.MainIcon
 import com.adsale.chinaplas.data.dao.MainIconRepository
-import com.adsale.chinaplas.data.entity.ExhibitorFilter
+import com.adsale.chinaplas.data.entity.Property
 import com.adsale.chinaplas.databinding.FragmentHomeBinding
 import com.adsale.chinaplas.databinding.FragmentHomePadBinding
 import com.adsale.chinaplas.databinding.HomeTopImageBinding
+import com.adsale.chinaplas.helper.ADHelper
 import com.adsale.chinaplas.localConfirmPdfPath
 import com.adsale.chinaplas.utils.*
 import com.adsale.chinaplas.utils.LogUtil.i
@@ -59,7 +65,9 @@ class HomeFragment : Fragment() {
     private lateinit var viewPager: ViewPager
     private lateinit var vpindicator: LinearLayout
     private lateinit var recyclerView: RecyclerView
-    private lateinit var ivAd: ImageView
+    //    private lateinit var ivAd: ImageView
+    private lateinit var adPager: ViewPager
+    private lateinit var d2RecyclerView: RecyclerView
 
     private lateinit var mainViewModel: MainViewModel
     private lateinit var viewPagerAdater: AdViewPagerAdapter
@@ -138,7 +146,8 @@ class HomeFragment : Fragment() {
         viewPager = phoneBinding.viewPager
         vpindicator = phoneBinding.llIndicator
         recyclerView = phoneBinding.rvMenu
-        ivAd = phoneBinding.ivAd
+//        adPager = phoneBinding.adPager
+        d2RecyclerView = phoneBinding.recyclerViewD2
     }
 
     private fun initViewModel() {
@@ -160,7 +169,7 @@ class HomeFragment : Fragment() {
         viewPager = tabletBinding.viewPager
         vpindicator = tabletBinding.llIndicator
         recyclerView = tabletBinding.rvMenu
-        ivAd = tabletBinding.ivAd
+        adPager = tabletBinding.adPager
 
         initPadTopBannerSize()
     }
@@ -216,6 +225,9 @@ class HomeFragment : Fragment() {
                 HomeFragmentDirections.actionNavHomeToVisitorTipFragment(
                     entity.BaiDu_TJ
                 )
+            )
+            BD_NEW_TECH -> NavHostFragment.findNavController(this).navigate(
+                R.id.newtechListFragment
             )
 //            BD_EVENT -> NavHostFragment.findNavController(this).navigate(HomeFragmentDirections.ac)
             BD_EVENT -> findNavController().navigate(R.id.eventSeminarFragment)
@@ -401,25 +413,65 @@ class HomeFragment : Fragment() {
     }
 
     private fun bottomAd() {
-//        val adHeight = getScreenWidth() * IMG_HEIGHT / IMG_WIDTH
-//        i("adHeight=$adHeight")
+        val adHeight = getScreenWidth() * IMG_HEIGHT / IMG_WIDTH
+        i("adHeight=$adHeight,,, d1Height= ${mainViewModel.d1Height.value!!}")
         val params = ConstraintLayout.LayoutParams(getScreenWidth(), mainViewModel.d1Height.value!!)
         if (isTablet()) {
             params.topToBottom = R.id.viewPager
+            adPager.layoutParams = params
         } else {
             params.topToBottom = R.id.rv_menu
             if (mainViewModel.dlMargin > 0) {
                 params.topMargin = mainViewModel.dlMargin / 2
             }
+            d2RecyclerView.layoutParams = params
         }
-        ivAd.layoutParams = params
-        Glide.with(mContext).load("file:///android_asset/main/d2.jpg").into(ivAd)
+
+        initAdView()
+    }
+
+    private fun initAdView() {
+//        getD2Images()
+        d2View()
+    }
+
+    private fun d2View() {
+        val linearLayoutManager = LinearLayoutManager(requireContext())
+        linearLayoutManager.orientation = LinearLayoutManager.HORIZONTAL
+        d2RecyclerView.layoutManager = linearLayoutManager
+        d2RecyclerView.setHasFixedSize(true)
+        val pagerSnapHelper = PagerSnapHelper()
+        pagerSnapHelper.attachToRecyclerView(d2RecyclerView)
+
+        val adHelper = ADHelper.getInstance(requireActivity().application)
+        val list = adHelper.d2Property()
+        i("ad list = ${list.size}")
+
+        val d2Adapter = ADScrollAdapter(list, OnItemClickListener { entity, pos ->
+            entity as Property
+            findNavController().navigate(
+                HomeFragmentDirections.actionToExhibitorDetailFragment(
+                    entity.pageID
+                )
+            )
+        })
+        d2RecyclerView.adapter = d2Adapter
+
+        homeViewModel.setD2Size(list.size)
+        homeViewModel.startD2Timer()
+        homeViewModel.d2RollIndex.observe(this, Observer {
+            if (it > -1) {
+                i("d2RollIndex: it=$it")
+                d2RecyclerView.smoothScrollToPosition(it)
+            }
+        })
     }
 
     override fun onStart() {
         super.onStart()
         i("onStart")
-        homeViewModel.startTimer()
+//        homeViewModel.startTimer()
+//        homeViewModel.startD2Timer()
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -427,16 +479,29 @@ class HomeFragment : Fragment() {
         i("onActivityCreated")
     }
 
+    @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
     override fun onResume() {
         super.onResume()
         i("onResume")
+        homeViewModel.startTimer()
+        homeViewModel.startD2Timer()
+    }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
+    override fun onPause() {
+        super.onPause()
+
+        i("home onPause")
+
+        homeViewModel.stopTimer()
+
     }
 
     override fun onStop() {
         super.onStop()
         i("onStop")
 
-        homeViewModel.stopTimer()
+//        homeViewModel.stopTimer()
 
     }
 

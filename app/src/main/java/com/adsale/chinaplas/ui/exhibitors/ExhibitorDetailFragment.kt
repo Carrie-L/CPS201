@@ -11,7 +11,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -22,13 +21,12 @@ import com.adsale.chinaplas.R
 import com.adsale.chinaplas.adapters.ExhibitorDtlAdapter
 import com.adsale.chinaplas.data.dao.CpsDatabase
 import com.adsale.chinaplas.data.dao.ExhibitorRepository
-import com.adsale.chinaplas.databinding.FragmentExhibitorDetailBinding
-import com.adsale.chinaplas.base.BaseFragment
 import com.adsale.chinaplas.data.dao.MainIconRepository
 import com.adsale.chinaplas.data.entity.KV
+import com.adsale.chinaplas.databinding.FragmentExhibitorDetailBinding
+import com.adsale.chinaplas.helper.ADHelper
 import com.adsale.chinaplas.utils.LogUtil
 import com.adsale.chinaplas.utils.alertDialogConfirmTwo
-import com.adsale.chinaplas.utils.isLogin
 import com.adsale.chinaplas.utils.isMyChinaplasLogin
 import com.adsale.chinaplas.viewmodels.*
 import com.google.android.material.appbar.AppBarLayout
@@ -49,6 +47,7 @@ class ExhibitorDetailFragment : Fragment() {
     private val kvs = mutableListOf<KV>()  /*  K: viewpager position; V: tabIndex */
     private var posIndex = 0
     private lateinit var dtlPin: ConstraintLayout
+    private lateinit var adHelper: ADHelper
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -56,7 +55,20 @@ class ExhibitorDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         LogUtil.i("initedView")
-        binding = FragmentExhibitorDetailBinding.inflate(inflater, container, false)
+        adHelper = ADHelper.getInstance(requireActivity().application)
+//        arguments?.let {
+//            companyID = ExhibitorDetailFragmentArgs.fromBundle(it).companyID
+//            if (!TextUtils.isEmpty(companyID)) {
+//             val d6 =  adHelper.getD6(companyID)
+//                if(d6==null || !adHelper.isD6Open()){
+//                    binding = FragmentExhibitorDetailBinding.inflate(inflater, container, false)
+//                }else{
+//                    binding = FragmentExhibitorDetailAdBinding.inflate(inflater, container, false)
+//                }
+//            }
+//        }
+
+
         pager = binding.viewPagerExhibitorDtl
         dtlPin = binding.dtlPin
         return binding.root
@@ -64,6 +76,12 @@ class ExhibitorDetailFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        arguments?.let {
+            companyID = ExhibitorDetailFragmentArgs.fromBundle(it).companyID
+            if (TextUtils.isEmpty(companyID)) {
+                return
+            }
+        }
         mainViewModel = ViewModelProviders.of(
             requireActivity(), MainViewModelFactory(
                 requireActivity().application,
@@ -76,12 +94,7 @@ class ExhibitorDetailFragment : Fragment() {
 
     fun initedData() {
         LogUtil.i("initedData")
-        arguments?.let {
-            companyID = ExhibitorDetailFragmentArgs.fromBundle(it).companyID
-            if (TextUtils.isEmpty(companyID)) {
-                return
-            }
-        }
+
         val exhibitorRepository =
             ExhibitorRepository.getInstance(
                 CpsDatabase.getInstance(requireContext()).exhibitorDao(),

@@ -149,6 +149,14 @@ interface ApiService {
     @GET("https://api2.bmob.cn/1/classes/ConcurrentEvent")
     fun getEventAsync(@Query("where") where: String, @Query("limit") limit: Int): Deferred<ResponseBody>
 
+    @Headers(
+        "Content-Type:application/json",
+        "X-Bmob-Application-Id:1300daedb47114d5ebc6412a1ac1b9c1",
+        "X-Bmob-REST-API-Key:c9ecff6e1b4a7cd653a225b27494d467"
+    )
+    @GET("https://api2.bmob.cn/1/classes/EventApplication")
+    fun getEventApplicationAsync(@Query("where") where: String, @Query("limit") limit: Int): Deferred<ResponseBody>
+
     @GET
     fun downloadHtmlZip(@Url url: String): Deferred<ResponseBody>
 

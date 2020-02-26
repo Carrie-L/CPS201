@@ -37,6 +37,9 @@
         <action
             android:id="@+id/action_nav_home_to_globalSearchFragment"
             app:destination="@id/globalSearchFragment" />
+        <action
+            android:id="@+id/action_to_exhibitorDetailFragment"
+            app:destination="@id/exhibitorDetailFragment" />
     </fragment>
 
     <fragment
@@ -117,6 +120,9 @@
         <action
             android:id="@+id/action_menu_exhibitors_to_exhibitorListFragment"
             app:destination="@id/exhibitorListFragment" />
+        <action
+            android:id="@+id/action_to_exhibitorDetailFragment"
+            app:destination="@id/exhibitorDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/menu_floor"
@@ -222,6 +228,12 @@
         <action
             android:id="@+id/action_myChinaplasFragment_to_webViewFragment"
             app:destination="@id/webViewFragment" />
+        <action
+            android:id="@+id/action_to_exhibitorDetailFragment"
+            app:destination="@id/exhibitorDetailFragment" />
+        <action
+            android:id="@+id/action_to_eventDetailFragment"
+            app:destination="@id/eventDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/globalSearchFragment"
@@ -237,6 +249,12 @@
             android:name="baiduTJ"
             app:argType="string"
             app:nullable="true" />
+        <action
+            android:id="@+id/action_to_exhibitorDetailFragment"
+            app:destination="@id/exhibitorDetailFragment" />
+        <action
+            android:id="@+id/action_to_eventDetailFragment"
+            app:destination="@id/eventDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/visitorTipFragment"
@@ -250,6 +268,12 @@
         <action
             android:id="@+id/action_visitorTipFragment_to_webContentFragment"
             app:destination="@id/webContentFragment" />
+        <action
+            android:id="@+id/action_to_exhibitorDetailFragment"
+            app:destination="@id/exhibitorDetailFragment" />
+        <action
+            android:id="@+id/action_to_eventDetailFragment"
+            app:destination="@id/eventDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/webContentFragment"
@@ -417,7 +441,7 @@
         android:id="@+id/exhibitorHistotyFragment"
         android:name="com.adsale.chinaplas.ui.tools.ExhibitorHistoryFragment"
         android:label="@string/tool_exhibitor_history"
-        tools:layout="@layout/list_exhibitor_history" >
+        tools:layout="@layout/list_exhibitor_history">
         <action
             android:id="@+id/action_exhibitorHistotyFragment_to_exhibitorDetailFragment"
             app:destination="@id/exhibitorDetailFragment" />
@@ -425,15 +449,15 @@
     <fragment
         android:id="@+id/concurrentEventFragment"
         android:name="com.adsale.chinaplas.ui.events.ConcurrentEventFragment"
-        android:label="ConcurrentEventFragment" >
+        android:label="ConcurrentEventFragment">
         <action
-            android:id="@+id/action_concurrentEventFragment_to_webContentFragment"
-            app:destination="@id/webContentFragment" />
+            android:id="@+id/action_concurrentEventFragment_to_filterApplicationFragment"
+            app:destination="@id/filterApplicationFragment" />
     </fragment>
     <fragment
         android:id="@+id/eventAllFragment"
         android:name="com.adsale.chinaplas.ui.events.EventAllFragment"
-        android:label="EventAllFragment" >
+        android:label="EventAllFragment">
         <action
             android:id="@+id/action_eventAllFragment_to_webContentFragment"
             app:destination="@id/webContentFragment" />
@@ -442,7 +466,7 @@
         android:id="@+id/baseEventFragment"
         android:name="com.adsale.chinaplas.ui.events.BaseEventFragment"
         android:label="fragment_base_event"
-        tools:layout="@layout/fragment_base_event" >
+        tools:layout="@layout/fragment_base_event">
         <action
             android:id="@+id/action_baseEventFragment_to_webContentFragment"
             app:destination="@id/webContentFragment" />
@@ -451,7 +475,7 @@
         android:id="@+id/eventFourFragment"
         android:name="com.adsale.chinaplas.ui.events.EventFourFragment"
         android:label="fragment_event_five"
-        tools:layout="@layout/fragment_event_five" >
+        tools:layout="@layout/fragment_event_five">
         <action
             android:id="@+id/action_eventFourFragment_to_webContentFragment"
             app:destination="@id/webContentFragment" />
@@ -460,7 +484,7 @@
         android:id="@+id/eventOneFragment"
         android:name="com.adsale.chinaplas.ui.events.EventOneFragment"
         android:label="fragment_event_one"
-        tools:layout="@layout/fragment_event_one" >
+        tools:layout="@layout/fragment_event_one">
         <action
             android:id="@+id/action_eventOneFragment_to_webContentFragment"
             app:destination="@id/webContentFragment" />
@@ -469,7 +493,7 @@
         android:id="@+id/eventThreeFragment"
         android:name="com.adsale.chinaplas.ui.events.EventThreeFragment"
         android:label="fragment_event_three"
-        tools:layout="@layout/fragment_event_three" >
+        tools:layout="@layout/fragment_event_three">
         <action
             android:id="@+id/action_eventThreeFragment_to_webContentFragment"
             app:destination="@id/webContentFragment" />
@@ -478,7 +502,7 @@
         android:id="@+id/eventTwoFragment"
         android:name="com.adsale.chinaplas.ui.events.EventTwoFragment"
         android:label="fragment_event_two"
-        tools:layout="@layout/fragment_event_two" >
+        tools:layout="@layout/fragment_event_two">
         <action
             android:id="@+id/action_eventTwoFragment_to_webContentFragment"
             app:destination="@id/webContentFragment" />
@@ -487,16 +511,25 @@
         android:id="@+id/eventSeminarFragment"
         android:name="com.adsale.chinaplas.ui.events.EventSeminarFragment"
         android:label="@string/title_event_seminar"
-        tools:layout="@layout/fragment_event_seminar" >
+        tools:layout="@layout/fragment_event_seminar">
         <action
             android:id="@+id/action_eventSeminarFragment_to_webContentFragment"
             app:destination="@id/webContentFragment" />
+        <action
+            android:id="@+id/action_eventSeminarFragment_to_filterApplicationFragment"
+            app:destination="@id/filterApplicationFragment" />
+        <action
+            android:id="@+id/action_to_exhibitorDetailFragment"
+            app:destination="@id/exhibitorDetailFragment" />
+        <action
+            android:id="@+id/action_to_eventDetailFragment"
+            app:destination="@id/eventDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/seminarFragment"
         android:name="com.adsale.chinaplas.ui.events.SeminarFragment"
         android:label="fragment_seminar"
-        tools:layout="@layout/fragment_seminar" >
+        tools:layout="@layout/fragment_seminar">
         <action
             android:id="@+id/action_seminarFragment_to_seminarDetailFragment"
             app:destination="@id/seminarDetailFragment" />
@@ -507,16 +540,52 @@
     <fragment
         android:id="@+id/seminarDetailFragment"
         android:name="com.adsale.chinaplas.ui.events.SeminarDetailFragment"
-        android:label="fragment_seminar_detail"
+        android:label="@string/title_technical_seminar"
         tools:layout="@layout/fragment_seminar_detail" />
+    <fragment
+        android:id="@+id/eventDetailFragment"
+        android:name="com.adsale.chinaplas.ui.events.EventDetailFragment"
+        android:label="@string/title_concurrent_event"
+        tools:layout="@layout/fragment_event_detail" />
+    <fragment
+        android:id="@+id/newtechListFragment"
+        android:name="com.adsale.chinaplas.ui.newtech.NewtechListFragment"
+        android:label="@string/filter_new_tec">
+        <action
+            android:id="@+id/action_newtechListFragment_to_newtechDetailFragment"
+            app:destination="@id/newtechDetailFragment" />
+        <argument
+            android:name="filter"
+            app:argType="string"
+            app:nullable="true" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/newtechDetailFragment"
+        android:name="com.adsale.chinaplas.ui.newtech.NewtechDetailFragment"
+        android:label="@string/filter_new_tec"
+        tools:layout="@layout/fragment_newtech_detail">
+        <argument
+            android:name="id"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/newtechFilterFragment"
+        android:name="com.adsale.chinaplas.ui.newtech.NewtechFilterFragment"
+        android:label="@string/filter_ok">
+
+        <action
+            android:id="@+id/action_newtechFilterFragment_to_filterApplicationFragment"
+            app:destination="@id/filterApplicationFragment" />
+        <action
+            android:id="@+id/action_newtechFilterFragment_to_newtechListFragment"
+            app:destination="@id/newtechListFragment" />
+    </fragment>
     <!--    <activity-->
     <!--        android:id="@+id/main2Activity"-->
     <!--        android:name="com.adsale.chinaplas.ui.test.Main2Activity"-->
     <!--        android:label="activity_main2"-->
     <!--        tools:layout="@layout/activity_main2" />-->
-
-
-
 
 
 </navigation>

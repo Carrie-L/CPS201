@@ -2,12 +2,11 @@ package com.adsale.chinaplas.ui.tools.mychinaplas
 
 
 import android.content.DialogInterface
-import android.os.Bundle
-import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.Toast
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.NavHostFragment
@@ -17,15 +16,17 @@ import com.adsale.chinaplas.R
 import com.adsale.chinaplas.adapters.MyChinaplasAdapter
 import com.adsale.chinaplas.adapters.OnItemClickListener
 import com.adsale.chinaplas.base.BaseFragment
-import com.adsale.chinaplas.data.dao.CpsDatabase
-import com.adsale.chinaplas.data.dao.MainIconRepository
 import com.adsale.chinaplas.data.entity.MyChinaplasEntity
 import com.adsale.chinaplas.databinding.FragmentMyChinaplasBinding
+import com.adsale.chinaplas.helper.ADHelper
+import com.adsale.chinaplas.helper.D5_GENERATION
+import com.adsale.chinaplas.helper.D5_MYCHINAPLAS
 import com.adsale.chinaplas.network.MY_CHINAPLAS_HOME_URL
 import com.adsale.chinaplas.utils.*
-import com.adsale.chinaplas.viewmodels.MainViewModel
-import com.adsale.chinaplas.viewmodels.MainViewModelFactory
 import com.adsale.chinaplas.viewmodels.MyChinaplasViewModel
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.RequestOptions
 
 /**
  * A simple [Fragment] subclass.
@@ -41,9 +42,11 @@ class MyChinaplasFragment : BaseFragment() {
     }
 
     private lateinit var binding: FragmentMyChinaplasBinding
+    private lateinit var ivD5: ImageView
 
     override fun initedView(inflater: LayoutInflater) {
         binding = FragmentMyChinaplasBinding.inflate(inflater, baseFrame, true)
+        ivD5 = binding.ivD5
     }
 
     override fun initView() {
@@ -81,6 +84,8 @@ class MyChinaplasFragment : BaseFragment() {
         binding.tvLogout.setOnClickListener {
             logout()
         }
+
+        showD5()
     }
 
     override fun initData() {
@@ -167,6 +172,32 @@ class MyChinaplasFragment : BaseFragment() {
                 }
                 LogUtil.i("logout::: findLoginFragment=$findLoginFragment")
             })
+    }
+
+    private fun showD5() {
+        val adHelper = ADHelper.getInstance(requireActivity().application)
+        val property = adHelper.d5Property(D5_MYCHINAPLAS)
+        if (property.pageID.isEmpty() || !adHelper.isD5Open()) {
+            ivD5.visibility = View.GONE
+            return
+        }
+        val params = ConstraintLayout.LayoutParams(getScreenWidth(), adHelper.getADHeight())
+        params.bottomToBottom = ConstraintLayout.LayoutParams.MATCH_CONSTRAINT
+        params.topToBottom = R.id.tv_logout
+        ivD5.layoutParams = params
+
+        val options = RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.RESOURCE)
+        Glide.with(this).load(adHelper.d5ImageUrl(D5_GENERATION)).apply(options).into(ivD5)
+
+        ivD5.setOnClickListener {
+            when (property.function) {
+                1 -> findNavController().navigate(MyChinaplasFragmentDirections.actionToExhibitorDetailFragment(property.pageID))
+                2 -> { // 同期活动
+                    setItemEventID(property.pageID)
+                    findNavController().navigate(R.id.eventDetailFragment)
+                }
+            }
+        }
     }
 
 

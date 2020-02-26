@@ -3,8 +3,8 @@ package com.adsale.chinaplas.utils
 import android.content.Context
 import android.text.TextUtils
 import com.adsale.chinaplas.data.dao.HtmlText
-import com.adsale.chinaplas.data.dao.WebContent
 import com.adsale.chinaplas.data.dao.WebContentRepository
+import com.adsale.chinaplas.fileAbsPath
 import com.adsale.chinaplas.mAssetManager
 import com.adsale.chinaplas.moshi
 import com.adsale.chinaplas.utils.LogUtil.e
@@ -15,12 +15,22 @@ import java.io.*
 import java.util.zip.ZipEntry
 import java.util.zip.ZipInputStream
 
+
 /**
  * Created by Carrie on 2019/10/18.
  */
 
 
 /*  ------------------------ File   --------------------------              */
+
+fun readFilesDirFile(fileName: String): String {
+    if (File(fileAbsPath + fileName).exists()) {
+        return readFile(fileAbsPath + fileName)
+    } else {
+        return readAssetFile("files/$fileName")
+    }
+}
+
 /**
  * 读取文件内容
  * @param absPath 文件的绝对路径
@@ -63,7 +73,7 @@ fun writeFile(context: Context, bytes: ByteArray, fileName: String) {
 fun writeFile(inputStream: InputStream, path: String): Boolean {
 //    val sPath =
 //        Environment.getExternalStorageDirectory().toString() + "/com.adsale.chinaplas/DocumentsPDF/" + fileName
-    LogUtil.i("path:>>>>$path")
+    i("path:>>>>$path")
     val file = File(path)
     return try {
         var outputStream: OutputStream? = null
@@ -103,7 +113,7 @@ fun unpackZip(zipname: String,
               zipPath: String,
               webContentRepository: WebContentRepository,
               pageID: String): Boolean {
-    LogUtil.i("zipPath=$zipPath")
+    i("zipPath=$zipPath")
     val startTime = System.currentTimeMillis()
     val file = File(zipPath)
     if (!file.exists()) {
@@ -131,7 +141,7 @@ fun unpackZip(zipname: String,
                         fmd.mkdirs()
                         continue
                     }
-                    LogUtil.i("filename=$filename")
+                    i("filename=$filename")
                     val fout = FileOutputStream(zipPath + filename)
                     while (zis.read(buffer).also { count = it } != -1) {
                         if (filename.endsWith("txt")) {
@@ -143,7 +153,7 @@ fun unpackZip(zipname: String,
                     fout.close()
 
                     if (filename.endsWith("txt")) {
-                        LogUtil.i(" 插入数据库htmltxt: $pageID")
+                        i(" 插入数据库htmltxt: $pageID")
                         val htmlText = HtmlText(pageID, sbTxt.toString())
                         webContentRepository.insertItemHtmlText(htmlText)
                     }
@@ -191,6 +201,17 @@ fun <T> parseJson(clz: Class<T>, content: String): T? {
     return jsonAdapter.fromJson(content)
 }
 
+/**
+ * 文件在 getFilesDir目录下， App.filesDir
+ *
+ * @param fileName 相对路径 e.g.: "advertisement_2019.txt" || "appContents.txt"
+ */
+fun <T> parseFileJson(clz: Class<T>, fileName: String): T? {
+    i("parseAssetFile: $fileName")
+    val content = readFilesDirFile(fileName)
+    return parseJson(clz, content)
+}
+
 /*  -----------------↑↑↑    MoShi Parse Json End↑  ↑↑↑   --------------------------              */
 
 /*  ----------------  ↓↓↓  substring   ↓↓↓  -------------------              */
@@ -203,7 +224,7 @@ fun subLastString(str: String): String {
 
 fun subGetLastString(str: String, c: String): String {
     val s1 = str.substringAfterLast(c, "")
-    LogUtil.i("s1=$s1")
+    i("s1=$s1")
     return s1
 }
 
@@ -219,6 +240,6 @@ fun ping(): Boolean {
     val runtime = Runtime.getRuntime()
     val progress = runtime.exec("ping -c 3 www.baidu.com")
     val ret = progress.waitFor()
-    LogUtil.i("ping: $ret")
+    i("ping: $ret")
     return ret == 0
 }

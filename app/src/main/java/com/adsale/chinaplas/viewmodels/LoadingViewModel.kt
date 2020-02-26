@@ -75,12 +75,16 @@ class LoadingViewModel(
 
 //            downloadAllRegOptions()
 
-            downloadAllCountries()
+//            downloadAllCountries()
             downMainIcons()
             downWebContent()
             downFileControl()
             downConcorrentEvent()
+            downEventApplication()
 
+            // todo 之后删除，仅测试
+            updateSeminarCsv()
+//            updateNewtechCsv()
 
             i("-------------   finish download  ---------------")
         }
@@ -174,6 +178,18 @@ class LoadingViewModel(
     private suspend fun getConcurrentEventUpdateTime(): String {
         return withContext(Dispatchers.IO) {
             val updatedAt = eventRepo.getLastUpdateTime()
+            i("getFileControlUpdateTime updatedAt =$updatedAt")
+            if (!TextUtils.isEmpty(updatedAt)) {
+                timeAddOneSecond(updatedAt)
+            } else {
+                FIRST_TIME_BMOB
+            }
+        }
+    }
+
+    private suspend fun getEventApplicationUpdateTime(): String {
+        return withContext(Dispatchers.IO) {
+            val updatedAt = eventRepo.getEVLastUpdateTime()
             i("getFileControlUpdateTime updatedAt =$updatedAt")
             if (!TextUtils.isEmpty(updatedAt)) {
                 timeAddOneSecond(updatedAt)
@@ -359,6 +375,14 @@ class LoadingViewModel(
         }
     }
 
+    private fun downEventApplication() {
+        uiScope.launch {
+            val time = getEventApplicationUpdateTime()
+            i("getFileControlUpdateTime=$time")
+            getEventApplicationFromBmob(time)
+        }
+    }
+
 
     /**
      * 分页查询
@@ -517,6 +541,37 @@ class LoadingViewModel(
         }
     }
 
+    private fun getEventApplicationFromBmob(updatedAt: String) {
+        uiScope.launch {
+            val startMill = System.currentTimeMillis()
+            val getDeferred =
+                CpsApi.retrofitService.getEventApplicationAsync(
+                    "{\"updatedAt\":{\"\$gte\":{\"__type\":\"Date\",\"iso\":\"$updatedAt\"}}}",
+                    500
+                )
+            try {
+                val content = getDeferred.await().string().replace("{\"results\":", "")
+                    .substringBeforeLast("}", "")
+                i("getEventApplicationFromBmob :$content")
+                val concurrentEvents: List<EventApplication>? =
+                    parseListJson(EventApplication::class.java, content)
+                withContext(Dispatchers.IO) {
+                    concurrentEvents?.let {
+                        i("getEventApplicationFromBmob,,, ${it.toString()}")
+                        eventRepo.insertEVAll(it)
+                    }
+                }
+                val endMill = System.currentTimeMillis()
+                i("getEventApplicationFromBmob spend Time :${endMill - startMill} ms")
+                sendBroadcast("event app succ")
+            } catch (e: Exception) {
+                LogUtil.e("getEventApplicationFromBmob::Failure: ${e.message} ")
+                LogUtil.e(e)
+                sendBroadcast("eventapp bmob fail")
+            }
+        }
+    }
+
     /**
      * 下载，将更新时间插入数据库
      */
@@ -546,7 +601,10 @@ class LoadingViewModel(
 //                        entity.updatedAt = FIRST_TIME_BMOB
 //                        webContentRepo.updateFileControlItemTime(entity)
                     }
-//                    "Seminar"
+                    "Seminar" -> {
+                        updateSeminarCsv()
+                    }
+                    "NewTechContent" -> updateNewtechCsv()
                     else -> {
                     }
                 }
@@ -569,7 +627,9 @@ class LoadingViewModel(
                 database.industryDao(),
                 database.regionDao(),
                 database.hallDao(),
-                database.zoneDao()
+                database.zoneDao(),
+                database.seminarDao(),
+                database.newtechDao()
             )
         }
     }
@@ -580,7 +640,26 @@ class LoadingViewModel(
     private fun updateExhibitorData() {
         initCsvHelper()
         uiScope.launch {
+            LogUtil.i("♥♥♥♥♥♥ updateExhibitorData")
             csvHelper!!.processExhibitorCsv()
+        }
+    }
+
+    private fun updateSeminarCsv() {
+        initCsvHelper()
+        uiScope.launch {
+            val list = csvHelper!!.getSeminars()
+            if (list.isEmpty())
+                LogUtil.i("♥♥♥♥♥♥ updateSeminarCsv")
+            csvHelper!!.parseSeminarCsv()
+        }
+    }
+
+    private fun updateNewtechCsv() {
+        initCsvHelper()
+        uiScope.launch {
+            LogUtil.i("♥♥♥♥♥♥ updateNewtechCsv")
+            csvHelper!!.parseNewTechCsv()
         }
     }
 

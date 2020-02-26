@@ -6,16 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.util.Log;
 
-import com.adsale.chinaplas.APP;
-import com.adsale.chinaplas.utils.AppUtilKt;
-import com.adsale.chinaplas.utils.LogUtil;
-
-import kotlin.reflect.jvm.internal.impl.load.java.Constant;
-
-import static com.adsale.chinaplas.utils.AppUtilKt.getCountDownFinish;
-import static com.adsale.chinaplas.utils.AppUtilKt.getIntentImmediately;
 import static com.adsale.chinaplas.utils.ConstantKt.LOADING_D1_FINISH;
-import static com.adsale.chinaplas.utils.ConstantKt.LOADING_SIZE;
 import static com.adsale.chinaplas.utils.ConstantKt.LOADING_TXT_FINISH;
 import static com.adsale.chinaplas.utils.ConstantKt.SP_CONFIG;
 
@@ -29,8 +20,9 @@ public class LoadingReceiver extends BroadcastReceiver {
             "ad.txt",
             "pdf.txt",
 //            todo "mainBanner",
-            "regOptions",
-            "country",
+//            "regOptions",
+            "event",
+            "event application",
             "webContent",
             "fileControl",
             "mainIcon"

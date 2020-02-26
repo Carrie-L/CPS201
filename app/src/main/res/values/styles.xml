@@ -449,7 +449,7 @@
 
     <style name="event_date_tab_style">
         <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">32dp</item>
+        <item name="android:layout_height">36dp</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:background">@color/purple_200</item>
         <item name="android:gravity">center</item>
@@ -473,6 +473,36 @@
         <item name="android:layout_marginTop">8dp</item>
     </style>
 
+    <style name="event_list_line_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0.7dp</item>
+        <item name="android:background">@color/grey_300</item>
+    </style>
+
+    <style name="seminaldtl_tv">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="seminal_dtl_bar_style">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">32dp</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:background">#EEE9E9</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingStart">16dp</item>
+    </style>
+
+    <style name="seminal_dtl_text_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">16dp</item>
+        <item name="android:lineSpacingExtra">4sp</item>
+    </style>
 
 
 </resources>

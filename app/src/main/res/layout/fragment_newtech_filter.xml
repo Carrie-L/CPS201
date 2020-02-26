@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.adsale.chinaplas.viewmodels.FilterViewModel" />
+
+    </data>
+
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/grey_200">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- 产品 -->
+            <com.adsale.chinaplas.ui.view.FilterView
+                android:id="@+id/filter_view_product"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!--应用行业-->
+            <com.adsale.chinaplas.ui.view.FilterView
+                android:id="@+id/filter_view_application"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/filter_view_product" />
+
+            <!--主题专集-->
+            <com.adsale.chinaplas.ui.view.FilterView
+                android:id="@+id/filter_view_theme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/filter_view_application" />
+
+            <!--新品技术-->
+            <com.adsale.chinaplas.ui.view.FilterView
+                android:id="@+id/filter_view_new_tech"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/filter_view_theme" />
+
+            <TextView
+                android:id="@+id/tv_filter_highlight"
+                style="@style/filter_item_style"
+                android:layout_marginTop="32dp"
+                android:text="@string/filter_new_tec"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/filter_view_new_tech" />
+
+            <TextView
+                android:id="@+id/btn_filter_clear"
+                style="@style/btn_grey_style"
+                android:layout_marginTop="56dp"
+                android:layout_marginBottom="56dp"
+                android:onClick="@{()->viewModel.onClear()}"
+                android:text="@string/filter_clear_all"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/btn_filter_ok"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_filter_highlight"
+                app:layout_constraintVertical_bias="0" />
+
+            <TextView
+                android:id="@+id/btn_filter_ok"
+                style="@style/btn_red_style"
+                android:onClick="@{()->viewModel.onFilter()}"
+                android:text="@string/filter_ok"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/btn_filter_clear"
+                app:layout_constraintTop_toTopOf="@id/btn_filter_clear" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</layout>

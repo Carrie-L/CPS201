@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.adsale.chinaplas.data.dao.ConcurrentEvent
 import com.adsale.chinaplas.data.dao.EventRepository
+import com.adsale.chinaplas.utils.getSPEventFilter
 import com.baidu.speech.utils.LogUtil
 import kotlinx.coroutines.*
 
@@ -16,7 +17,6 @@ class EventViewModel(private val eventRepository: EventRepository) : ViewModel()
     var tabClickIndex = MutableLiveData(1)  // 左边1，右边2
     var barClick = MutableLiveData(0)
     var events = MutableLiveData<List<ConcurrentEvent>>()
-
 
     fun getOverallEvents() {
         uiScope.launch {
@@ -32,16 +32,25 @@ class EventViewModel(private val eventRepository: EventRepository) : ViewModel()
         }
     }
 
-
     private suspend fun getOverallEventsFromDB(): List<ConcurrentEvent> {
         return withContext(Dispatchers.IO) {
-            eventRepository.getOverallList()
+            val filter = getSPEventFilter()
+            if (filter.isEmpty()) {
+                eventRepository.getOverallList()
+            } else {
+                eventRepository.getFilterOverallList(filter)
+            }
         }
     }
 
     private suspend fun getDateEventsFromDB(date: String): List<ConcurrentEvent> {
         return withContext(Dispatchers.IO) {
-            eventRepository.getDateEventList(date)
+            val filter = getSPEventFilter()
+            if (filter.isEmpty()) {
+                eventRepository.getDateEventList(date)
+            } else {
+                eventRepository.getFilterDateEventList(filter, date)
+            }
         }
     }
 
