@@ -7,13 +7,13 @@ import androidx.sqlite.db.SupportSQLiteQuery
 interface NewtechDao {
 
 
-    @Query("select N.RID,N.CompanyID,N.BoothNo,N.CompanyNameSc,N.Product_Name_SC,I.Image_File AS imageName from NewtechProductInfo N, NewtechProductImage I WHERE N.RID=I.RID and N.Product_Name_SC IS NOT NULL and N.Product_Name_SC<>'' order by N.RID")
+    @Query("select N.RID,N.CompanyID,N.BoothNo,N.CompanyNameSc,N.Product_Name_SC,N.Rroduct_Description_SC,I.Image_File AS imageName from NewtechProductInfo N, NewtechProductImage I WHERE N.RID=I.RID and N.Product_Name_SC IS NOT NULL and N.Product_Name_SC<>'' order by N.RID")
     fun getAllProductInfoListSC(): MutableList<NewtechProductInfo>
 
-    @Query("select N.RID,N.CompanyID,N.BoothNo,N.CompanyNameTc,N.Product_Name_TC,I.Image_File AS imageName from NewtechProductInfo N, NewtechProductImage I WHERE N.RID=I.RID and N.Product_Name_TC IS NOT NULL and N.Product_Name_TC<>'' order by N.RID")
+    @Query("select N.RID,N.CompanyID,N.BoothNo,N.CompanyNameTc,N.Product_Name_TC,N.Rroduct_Description_TC,I.Image_File AS imageName from NewtechProductInfo N, NewtechProductImage I WHERE N.RID=I.RID and N.Product_Name_TC IS NOT NULL and N.Product_Name_TC<>'' order by N.RID")
     fun getAllProductInfoListTC(): MutableList<NewtechProductInfo>
 
-    @Query("select N.RID,N.CompanyID,N.BoothNo,N.CompanyNameEn,N.Product_Name_EN,I.Image_File AS imageName from NewtechProductInfo N, NewtechProductImage I WHERE N.RID=I.RID and N.Product_Name_EN IS NOT NULL and N.Product_Name_EN<>'' order by N.RID")
+    @Query("select N.RID,N.CompanyID,N.BoothNo,N.CompanyNameEn,N.Product_Name_EN,N.Rroduct_Description_EN,I.Image_File AS imageName from NewtechProductInfo N, NewtechProductImage I WHERE N.RID=I.RID and N.Product_Name_EN IS NOT NULL and N.Product_Name_EN<>'' order by N.RID")
     fun getAllProductInfoListEN(): MutableList<NewtechProductInfo>
 
     /*filter*/

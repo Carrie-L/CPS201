@@ -554,6 +554,9 @@
         <action
             android:id="@+id/action_newtechListFragment_to_newtechDetailFragment"
             app:destination="@id/newtechDetailFragment" />
+        <action
+            android:id="@+id/action_newtechListFragment_to_newtechDetailADFragment"
+            app:destination="@id/newtechDetailADFragment" />
         <argument
             android:name="filter"
             app:argType="string"
@@ -568,6 +571,21 @@
         <argument
             android:name="id"
             app:argType="string" />
+        <action
+            android:id="@+id/action_to_imageFragment"
+            app:destination="@id/imageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newtechDetailADFragment"
+        android:name="com.adsale.chinaplas.ui.newtech.NewtechDetailADFragment"
+        android:label="@string/filter_new_tec"
+        tools:layout="@layout/fragment_newtech_detail_ad">
+        <argument
+            android:name="id"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_to_imageFragment"
+            app:destination="@id/imageFragment" />
     </fragment>
     <fragment
         android:id="@+id/newtechFilterFragment"
@@ -581,11 +599,17 @@
             android:id="@+id/action_newtechFilterFragment_to_newtechListFragment"
             app:destination="@id/newtechListFragment" />
     </fragment>
-    <!--    <activity-->
-    <!--        android:id="@+id/main2Activity"-->
-    <!--        android:name="com.adsale.chinaplas.ui.test.Main2Activity"-->
-    <!--        android:label="activity_main2"-->
-    <!--        tools:layout="@layout/activity_main2" />-->
+    <fragment
+        android:id="@+id/imageFragment"
+        android:name="com.adsale.chinaplas.ui.others.ImageFragment"
+        android:label=""
+        tools:layout="@layout/fragment_image">
+
+        <argument
+            android:name="image"
+            app:argType="string" />
+
+    </fragment>
 
 
 </navigation>

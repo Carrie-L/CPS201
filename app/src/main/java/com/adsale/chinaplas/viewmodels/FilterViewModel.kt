@@ -529,7 +529,7 @@ class FilterViewModel(
                 if (industriesStr.size == 0) {
                     industriesStr.add(" select RID from NewtechCategoryID where Category = '" + filter.id + "' ")
                 } else {
-                    industriesStr.add("  and Category = '" + filter.id + "' ")
+                    industriesStr.add("  or Category = '" + filter.id + "' ")
                 }
 //            } else if (newtechType == TYPE_NEW_TEC_APPLICATIONS) { // 应用
             } else if (index == FILTER_INDEX_NEWTECH_APPL) { // 应用

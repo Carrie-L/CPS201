@@ -452,7 +452,8 @@ class MainActivity : AppCompatActivity() {
                     R.id.newtechListFragment,
                     R.id.newtechFilterFragment,
                     R.id.newtechDetailFragment,
-                    R.id.newtechDetailFragment
+                    R.id.newtechDetailADFragment,
+                    R.id.imageFragment
                 ), drawerLayout
             )
         setupActionBarWithNavController(navController, appBarConfiguration)

@@ -18,6 +18,7 @@ class NewtechCategorySub {
 
 
     fun parser(strings: Array<String>) {
+        /*      ShowId|MainTypeId|NameEn|NameTc|NameSc|OrderId|UpdateDate   */
         this.MainTypeId = strings[0]
         this.SubNameEn = strings[1]
         this.SubNameTc = strings[2]

@@ -55,6 +55,7 @@
             android:layout_below="@id/line"
             android:layout_toStartOf="@id/iv_product_pic"
             android:gravity="center_vertical"
+            android:layout_marginTop="8dp"
             android:text="@{obj.productName}"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
             android:textColor="@color/grey11"
@@ -67,7 +68,7 @@
             android:layout_height="22dp"
             android:layout_below="@id/tv_product_title"
             android:layout_alignStart="@id/tv_product_title"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="12dp"
             android:background="@drawable/ic_location_purple"
             android:gravity="center_vertical" />
 

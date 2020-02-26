@@ -64,6 +64,7 @@ class NewtechListFragment : Fragment() {
 
         adHelper = ADHelper.getInstance(requireActivity().application)
         d7List = adHelper.d7List()
+        LogUtil.i("d7List= ${d7List.size}")
 
         initViewModel()
 
@@ -72,12 +73,15 @@ class NewtechListFragment : Fragment() {
             viewModel.getFilterList(filter)
             viewModel.getAllProductInfoList(false)
         } else {
+            LogUtil.i("非筛选，getAllProductInfoList")
             viewModel.getAllProductInfoList(true)
         }
 
         viewModel.list.observe(this, Observer {
+            LogUtil.i("list.observe= ${it.size}")
             val size = it.size
-            if (adHelper.isD7Open() && d7List.isNotEmpty() && size > 0) {
+            if (adHelper.isD7Open() && d7List.isNotEmpty()
+                && size > 0 && (size > 2 && !it[2].isAder)) {
                 var d7NewtechEntity: NewtechProductInfo
                 for ((i, d7Item) in d7List.withIndex()) {
                     d7NewtechEntity = adHelper.getADProductEntity(d7Item)
@@ -153,8 +157,14 @@ class NewtechListFragment : Fragment() {
     private val itemClickListener = OnItemClickListener { entity, pos ->
         entity as NewtechProductInfo
         LogUtil.i("itemClickListener: ${entity.toString()}")
-        findNavController().navigate(NewtechListFragmentDirections.actionNewtechListFragmentToNewtechDetailFragment(
-            entity.RID))
+        if (entity.isAder) {
+            findNavController().navigate(NewtechListFragmentDirections.actionNewtechListFragmentToNewtechDetailADFragment(
+                entity.RID))
+        } else {
+            findNavController().navigate(NewtechListFragmentDirections.actionNewtechListFragmentToNewtechDetailFragment(
+                entity.RID))
+        }
+
     }
 
     private fun getFilterArgs() {

@@ -134,6 +134,16 @@ class ADHelper(private val app: Application) {
             true)
     }
 
+    fun getD7(rid: String): D7? {
+        val list = d7List()
+        for (item in list) {
+            if (item.RID == rid) {
+                return item
+            }
+        }
+        return null
+    }
+
 
     // ※※※※※※※※※※※※※※※ D8 技术交流会  ※※※※※※※※※※※※※※※※※※※※※※
 

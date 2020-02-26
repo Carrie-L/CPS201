@@ -23,7 +23,7 @@ class NewtechViewModel(val newtechRepository: NewtechRepository) : ViewModel() {
     private val products = mutableListOf<NewtechProductInfo>()  /*  没有广告的、从数据库取出的 产品列表, 用于 搜索 时判断 */
     private val productCaches = mutableListOf<NewtechProductInfo>() /*  没有广告的、从数据库取出的 产品列表缓存，当返回筛选结果时，在这个列表里选择符合条件的数据 */
     private val listCaches = mutableListOf<NewtechProductInfo>()  /* 包含产品和广告的全部列表缓存，用于清空搜索时还原列表 */
-    private val listCaches0 = mutableListOf<NewtechProductInfo>()  /* 包含产品和广告的全部列表缓存. 一開始的全部列表 */
+    val listCaches0 = mutableListOf<NewtechProductInfo>()  /* 包含产品和广告的全部列表缓存. 一開始的全部列表 */
     private val searchList = mutableListOf<NewtechProductInfo>()
     private val filterList = mutableListOf<NewtechProductInfo>()
     var list = MutableLiveData<MutableList<NewtechProductInfo>>()  /*  交给adapter的列表（可能有产品和广告） */
@@ -117,7 +117,23 @@ class NewtechViewModel(val newtechRepository: NewtechRepository) : ViewModel() {
         }
     }
 
+    var imageClick = MutableLiveData("")
+    var boothClick = MutableLiveData("")
+
+    fun onImageClick(image: String) {
+        LogUtil.i("  onImageClick= $image ")
+        imageClick.value = image
+    }
+
+    fun onBoothClick(booth: String) {
+        LogUtil.i("  onBoothClick= $booth ")
+        boothClick.value = booth
+    }
+
+
     fun resetClickState() {
         clickState.value = 0
     }
+
+
 }

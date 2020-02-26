@@ -250,7 +250,7 @@
             "Description_SC": "天诗推出了在工程塑料耐磨性提升上非常好的PTFE微粉产品，主要用于PA、POM、PPS等产品中，降低摩擦系数，有效提高耐磨耗性能，对改性塑料的机械性能基本没有影响，在耐热要求非常高的场合中达到了日本同类产品的性能。",
             "Description_EN": "Tianshi launched PTFE micropowders in order to improve the wear resistance of engineering plastics, including PA, POM, PPS etc. It help to reduce the friction coefficient, improve the wear resistance performance, having no impact on the mechanical properties of the modified plastics, and meeting the performance of similar products in Japan in the occasion of very high heat resistance requirements.",
             "Description_TC": "天詩推出了在工程塑料耐磨性提升上非常好的PTFE微粉產品，主要用於PA、POM、PPS等產品中，降低摩擦系數，有效提高耐磨耗性能，對改性塑料的機械性能基本沒有影響，在耐熱要求非常高的場合中達到了日本同類產品的性能。",
-            "videoLink": "http://cdn.adsalecdn.com/App/2019/EPO/video/d11_tianshi_video.mp4",
+            "videoLink": "https://cdn.adsalecdn.com/App/2020/EPO/video/d11_tianshi_video.mp4",
             "CompanyName_SC": "南京天诗新材料科技有限公司",
             "CompanyName_TC": "南京天诗新材料科技有限公司",
             "CompanyName_EN": "Nanjing Tianshi New Material Technologies Co.,Ltd"

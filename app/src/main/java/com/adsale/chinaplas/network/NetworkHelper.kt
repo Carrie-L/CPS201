@@ -13,7 +13,7 @@ const val PAY_URL = "https://www.chinaplasonline.com/CPS20/PreRegSuccessPay/%s/?
 
 const val SYNC_URL = ""
 
-const val NEW_TECH_BASE_URL = "http://cdn.adsalecdn.com/App/2019/NewTech/"
+const val NEW_TECH_BASE_URL = "http://cdn.adsalecdn.com/App/2020/NewTech/images/"
 
 /* 展会亮点 */
 const val HIGHLIGHT_URL = "https://www.chinaplasonline.com/CPS20/techshowsdetail/%s/1-min_tech_shows?type=3&sid=393"
