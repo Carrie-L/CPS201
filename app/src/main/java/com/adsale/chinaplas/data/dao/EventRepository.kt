@@ -30,7 +30,7 @@ class EventRepository private constructor(private val eventDao: EventDao,
     }
 
     private fun filterSql(eventFilter: String, date: String): String {
-        val filters: List<String> = eventFilter.replace("[", "".replace("]", "")).split(",")
+        val filters: List<String> = eventFilter.replace("[", "").replace("]", "").split(",")
         LogUtil.i("filters=${filters.size}, $filters")
         val sb = StringBuilder()
         sb.append("select * from ConcurrentEvent ")

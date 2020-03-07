@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -19,9 +18,7 @@ import com.adsale.chinaplas.data.dao.ConcurrentEvent
 import com.adsale.chinaplas.data.dao.CpsDatabase
 import com.adsale.chinaplas.data.dao.EventRepository
 import com.adsale.chinaplas.helper.ADHelper
-import com.adsale.chinaplas.helper.D5_GENERATION
-import com.adsale.chinaplas.helper.D5_MYCHINAPLAS
-import com.adsale.chinaplas.utils.getScreenWidth
+import com.adsale.chinaplas.helper.D5_EVENT
 import com.adsale.chinaplas.utils.setItemEventID
 import com.adsale.chinaplas.viewmodels.EventViewModel
 import com.adsale.chinaplas.viewmodels.EventViewModelFactory
@@ -94,7 +91,9 @@ class EventAllFragment : Fragment() {
     }
 
     private val itemClickListener = OnItemClickListener { entity, pos ->
-
+        entity as ConcurrentEvent
+        findNavController().navigate(EventSeminarFragmentDirections.actionToEventDetailFragment(entity.EventID!!,
+            entity.getTitle()))
     }
 
 
@@ -109,18 +108,15 @@ class EventAllFragment : Fragment() {
     }
 
     private fun showD5() {
-        val adHelper = ADHelper.getInstance(requireActivity().application)
-        val property = adHelper.d5Property(D5_MYCHINAPLAS)
+        val adHelper = ADHelper.getInstance()
+        val property = adHelper.d5Property(D5_EVENT)
         if (property.pageID.isEmpty() || !adHelper.isD5Open()) {
             ivD5.visibility = View.GONE
             return
         }
-        val params = ConstraintLayout.LayoutParams(getScreenWidth(), adHelper.getADHeight())
-        params.bottomToBottom = ConstraintLayout.LayoutParams.MATCH_CONSTRAINT
-        ivD5.layoutParams = params
-
+        ivD5.visibility = View.GONE
         val options = RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.RESOURCE)
-        Glide.with(this).load(adHelper.d5ImageUrl(D5_GENERATION)).apply(options).into(ivD5)
+        Glide.with(this).load(adHelper.d5ImageUrl(D5_EVENT)).apply(options).into(ivD5)
 
         ivD5.setOnClickListener {
             when (property.function) {
@@ -131,7 +127,8 @@ class EventAllFragment : Fragment() {
                 )
                 2 -> { // 同期活动
                     setItemEventID(property.pageID)
-                    findNavController().navigate(R.id.eventDetailFragment)
+                    findNavController().navigate(EventSeminarFragmentDirections.actionToEventDetailFragment(property.pageID,
+                        getString(R.string.title_concurrent_event)))
                 }
             }
         }

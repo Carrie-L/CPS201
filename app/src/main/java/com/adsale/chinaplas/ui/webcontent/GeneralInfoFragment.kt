@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.webkit.WebView
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
@@ -22,11 +21,8 @@ import com.adsale.chinaplas.data.dao.MainIconRepository
 import com.adsale.chinaplas.data.dao.WebContentRepository
 import com.adsale.chinaplas.helper.ADHelper
 import com.adsale.chinaplas.helper.D5_GENERATION
-import com.adsale.chinaplas.rootDir
 import com.adsale.chinaplas.utils.LogUtil
-import com.adsale.chinaplas.utils.LogUtil.i
-import com.adsale.chinaplas.utils.getHtmName
-import com.adsale.chinaplas.utils.getScreenWidth
+import com.adsale.chinaplas.utils.getWebContentHtmlPath
 import com.adsale.chinaplas.utils.setItemEventID
 import com.adsale.chinaplas.viewmodels.MainViewModel
 import com.adsale.chinaplas.viewmodels.MainViewModelFactory
@@ -35,7 +31,6 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.tencent.bugly.Bugly
 import kotlinx.coroutines.*
-import java.io.File
 
 /**
  * A simple [Fragment] subclass.
@@ -113,7 +108,7 @@ class GeneralInfoFragment : Fragment() {
         }
 
         val layoutManager = LinearLayoutManager(context!!, LinearLayoutManager.HORIZONTAL, false)
-        list.observe(this, Observer {
+        list.observe(viewLifecycleOwner, Observer {
             rvHtml.layoutManager = layoutManager
             rvHtml.setHasFixedSize(true)
             rvHtml.adapter = HorizontalAdapter(it)
@@ -124,8 +119,6 @@ class GeneralInfoFragment : Fragment() {
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 super.onScrollStateChanged(recyclerView, newState)
                 if (newState == RecyclerView.SCROLL_STATE_IDLE) {
-
-
                     val firstItem = layoutManager.findFirstVisibleItemPosition()
                     val firstItem2 = layoutManager.findFirstCompletelyVisibleItemPosition()
                     val lastItem = layoutManager.findLastVisibleItemPosition()
@@ -152,16 +145,13 @@ class GeneralInfoFragment : Fragment() {
     }
 
     private fun showD5() {
-        val adHelper = ADHelper.getInstance(requireActivity().application)
+        val adHelper = ADHelper.getInstance()
         val property = adHelper.d5Property(D5_GENERATION)
         if (property.pageID.isEmpty() || !adHelper.isD5Open()) {
             ivD5.visibility = View.GONE
+            LogUtil.i("D5_GENERATION gone")
             return
         }
-        val params = ConstraintLayout.LayoutParams(getScreenWidth(), adHelper.getADHeight())
-        params.bottomToBottom = ConstraintLayout.LayoutParams.MATCH_CONSTRAINT
-        params.topToBottom = R.id.rv_general_info
-        ivD5.layoutParams = params
 
         val options = RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.RESOURCE)
         Glide.with(this).load(adHelper.d5ImageUrl(D5_GENERATION)).apply(options).into(ivD5)
@@ -171,7 +161,8 @@ class GeneralInfoFragment : Fragment() {
                 1 -> findNavController().navigate(GeneralInfoFragmentDirections.actionToExhibitorDetailFragment(property.pageID))
                 2 -> { // 同期活动
                     setItemEventID(property.pageID)
-                    findNavController().navigate(R.id.eventDetailFragment)
+                    findNavController().navigate(GeneralInfoFragmentDirections.actionToEventDetailFragment(property.pageID,
+                        getString(R.string.title_concurrent_event)))
                 }
             }
         }
@@ -214,15 +205,20 @@ class GeneralInfoFragment : Fragment() {
         }
 
         override fun onBindViewHolder(holder: HorizontalViewHolder, position: Int) {
-            val sdPath = "file://${rootDir}WebContent/${list[position]}/${getHtmName()}"
-            if (File(sdPath).exists()) {
-                i("sdPath=$sdPath")
-                holder.itemView.findViewById<WebView>(R.id.wv_html).loadUrl(sdPath)
-            } else {
-                val assetPath = "file:///android_asset/WebContent/${list[position]}/${getHtmName()}"
-                i("assetPath=$assetPath")
-                holder.itemView.findViewById<WebView>(R.id.wv_html).loadUrl(assetPath)
-            }
+
+            val path = getWebContentHtmlPath(list[position])
+            holder.itemView.findViewById<WebView>(R.id.wv_html).loadUrl(path)
+
+//            val path = "WebContent/${list[position]}/${getHtmName()}"
+//            val sdPath = "${rootDir}WebContent/${list[position]}/${getHtmName()}"
+//            i("sdPath=$sdPath")
+//            if (File("${rootDir}$path").exists()) {
+//                i("sdPath exists")
+//                holder.itemView.findViewById<WebView>(R.id.wv_html).loadUrl("file://${rootDir}$path")
+//            } else {
+//                i("open asset")
+//                holder.itemView.findViewById<WebView>(R.id.wv_html).loadUrl("file:///android_asset/$path")
+//            }
         }
     }
 

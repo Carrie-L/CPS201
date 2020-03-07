@@ -1,22 +1,18 @@
 package com.adsale.chinaplas.ui.webcontent
 
 
-import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.text.TextUtils
 import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.webkit.WebResourceRequest
 import android.webkit.WebView
+import android.webkit.WebViewClient
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
-
+import androidx.navigation.fragment.findNavController
 import com.adsale.chinaplas.R
 import com.adsale.chinaplas.base.BaseFragment
-import com.adsale.chinaplas.data.dao.CpsDatabase
-import com.adsale.chinaplas.data.dao.MainIconRepository
-import com.adsale.chinaplas.rootDir
-import com.adsale.chinaplas.utils.getHtmName
-import com.adsale.chinaplas.viewmodels.MainViewModel
-import com.adsale.chinaplas.viewmodels.MainViewModelFactory
+import com.adsale.chinaplas.utils.LogUtil
+import com.adsale.chinaplas.utils.getWebContentHtmlPath
 import com.adsale.chinaplas.viewmodels.WebContentViewModel
 
 /**
@@ -50,8 +46,25 @@ class WebContentFragment : BaseFragment() {
 
         viewModel = ViewModelProviders.of(this).get(WebContentViewModel::class.java)
 
-        webview.loadUrl(String.format(viewModel.htmlPath.value!!, pageID))
+//        webview.loadUrl(String.format(viewModel.htmlPath.value!!, pageID))
+        webview.loadUrl(getWebContentHtmlPath(pageID!!))
+
+        webview.webViewClient = object : WebViewClient() {
+            override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean {
+                val url = request?.url.toString()
+                LogUtil.i("url = $url")
+                if (!TextUtils.isEmpty(url)) {
+                    if (url == "next://Prereg-Yes") {
+                        findNavController().navigate(R.id.myChinaplasLoginFragment)
+                    } else if (url == "next://Prereg-No") {
+                        findNavController().navigate(R.id.registerPreFragment)
+                    }
+                }
+                return true
+            }
+        }
     }
+
 
     override fun back() {
     }

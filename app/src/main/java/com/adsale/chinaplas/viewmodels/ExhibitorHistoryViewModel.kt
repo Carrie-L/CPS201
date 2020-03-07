@@ -38,14 +38,14 @@ class ExhibitorHistoryViewModel(private val exhibitorDao: ExhibitorDao) : ViewMo
             i("todayList=${todayList.size}")
             yesterdaylist = getYesterdayFromDB()
             i("yesterdaylist=${yesterdaylist.size}")
-            pastList = getPastFromDB()
+//            pastList = getPastFromDB()
+            pastList = listOf()
             i("pastList=${pastList.size}")
 
 //            for(entity in todayList){
 //                entity.isTypeLabel.set(1)
 //                todayList[]
 //            }
-
 
 
             todayList.addAll(yesterdaylist)
@@ -74,10 +74,10 @@ class ExhibitorHistoryViewModel(private val exhibitorDao: ExhibitorDao) : ViewMo
         }
     }
 
-    private suspend fun getPastFromDB(): List<ExhibitorHistory> {
-        return withContext(Dispatchers.IO) {
-            exhibitorDao.getPastHistories(getYesterdayDate())
-        }
-    }
+//    private suspend fun getPastFromDB(): List<ExhibitorHistory> {
+//        return withContext(Dispatchers.IO) {
+//            exhibitorDao.getPastHistories(getYesterdayDate())
+//        }
+//    }
 
 }

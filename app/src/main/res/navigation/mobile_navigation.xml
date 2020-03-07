@@ -40,13 +40,16 @@
         <action
             android:id="@+id/action_to_exhibitorDetailFragment"
             app:destination="@id/exhibitorDetailFragment" />
+        <action
+            android:id="@+id/action_to_webContentFragment"
+            app:destination="@id/webContentFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/nav_download_center"
         android:name="com.adsale.chinaplas.ui.drawer.DownloadCenterFragment"
         android:label="@string/menu_download_center"
-        tools:layout="@layout/fragment_gallery" />
+        tools:layout="@layout/fragment_gallery"></fragment>
 
     <fragment
         android:id="@+id/nav_subscribe"
@@ -96,6 +99,9 @@
         <action
             android:id="@+id/action_exhibitorDetailFragment_to_exhibitorListFragment"
             app:destination="@id/exhibitorListFragment" />
+        <action
+            android:id="@+id/action_to_scheduleEditFragment"
+            app:destination="@id/scheduleEditFragment" />
     </fragment>
     <fragment
         android:id="@+id/menu_exhibitors"
@@ -234,12 +240,38 @@
         <action
             android:id="@+id/action_to_eventDetailFragment"
             app:destination="@id/eventDetailFragment" />
+        <action
+            android:id="@+id/action_myChinaplasFragment_to_webContentFragment"
+            app:destination="@id/webContentFragment" />
     </fragment>
     <fragment
         android:id="@+id/globalSearchFragment"
         android:name="com.adsale.chinaplas.ui.GlobalSearchFragment"
         android:label="全局搜索"
-        tools:layout="@layout/fragment_global_search" />
+        tools:layout="@layout/fragment_global_search">
+
+        <action
+            android:id="@+id/action_to_webContentFragment"
+            app:destination="@id/webContentFragment" />
+        <action
+            android:id="@+id/action_to_exhibitorDetailFragment"
+            app:destination="@id/exhibitorDetailFragment" />
+        <action
+            android:id="@+id/action_to_eventDetailFragment"
+            app:destination="@id/eventDetailFragment" />
+        <action
+            android:id="@+id/action_to_seminarDetailFragment"
+            app:destination="@id/seminarDetailFragment" />
+        <action
+            android:id="@+id/action_to_newtechDetailFragment"
+            app:destination="@id/newtechDetailFragment" />
+        <action
+            android:id="@+id/action_to_newtechDetailADFragment"
+            app:destination="@id/newtechDetailADFragment" />
+
+
+    </fragment>
+
     <fragment
         android:id="@+id/generalInfoFragment"
         android:name="com.adsale.chinaplas.ui.webcontent.GeneralInfoFragment"
@@ -427,16 +459,7 @@
             android:id="@+id/action_myExhibitorFragment_to_filterHallFragment"
             app:destination="@id/filterHallFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/editScheduleFragment"
-        android:name="com.adsale.chinaplas.ui.tools.EditScheduleFragment"
-        android:label="@string/edit_schedule"
-        tools:layout="@layout/fragment_edit_schedule" />
-    <fragment
-        android:id="@+id/myScheduleFragment"
-        android:name="com.adsale.chinaplas.ui.tools.MyScheduleFragment"
-        android:label="@string/tool_my_schedule"
-        tools:layout="@layout/my_schedule_fragment" />
+
     <fragment
         android:id="@+id/exhibitorHistotyFragment"
         android:name="com.adsale.chinaplas.ui.tools.ExhibitorHistoryFragment"
@@ -524,6 +547,12 @@
         <action
             android:id="@+id/action_to_eventDetailFragment"
             app:destination="@id/eventDetailFragment" />
+        <action
+            android:id="@+id/action_to_seminarDetailFragment"
+            app:destination="@id/seminarDetailFragment" />
+        <action
+            android:id="@+id/action_to_imageFragment"
+            app:destination="@id/imageFragment" />
     </fragment>
     <fragment
         android:id="@+id/seminarFragment"
@@ -541,12 +570,30 @@
         android:id="@+id/seminarDetailFragment"
         android:name="com.adsale.chinaplas.ui.events.SeminarDetailFragment"
         android:label="@string/title_technical_seminar"
-        tools:layout="@layout/fragment_seminar_detail" />
+        tools:layout="@layout/fragment_seminar_detail">
+        <action
+            android:id="@+id/action_to_exhibitorDetailFragment"
+            app:destination="@id/exhibitorDetailFragment" />
+        <argument
+            android:name="id"
+            app:argType="integer" />
+    </fragment>
     <fragment
         android:id="@+id/eventDetailFragment"
         android:name="com.adsale.chinaplas.ui.events.EventDetailFragment"
         android:label="@string/title_concurrent_event"
-        tools:layout="@layout/fragment_event_detail" />
+        tools:layout="@layout/fragment_event_detail">
+
+        <argument
+            android:name="eventID"
+            app:argType="string" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_to_scheduleEditFragment"
+            app:destination="@id/scheduleEditFragment" />
+    </fragment>
     <fragment
         android:id="@+id/newtechListFragment"
         android:name="com.adsale.chinaplas.ui.newtech.NewtechListFragment"
@@ -608,6 +655,32 @@
         <argument
             android:name="image"
             app:argType="string" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/scheduleEditFragment"
+        android:name="com.adsale.chinaplas.ui.tools.schedule.ScheduleEditFragment"
+        android:label="@string/edit_schedule">
+
+        <argument
+            android:name="isAdd"
+            app:argType="boolean" />
+        <argument
+            android:name="info"
+            app:argType="com.adsale.chinaplas.data.dao.ScheduleInfo" />
+        <action
+            android:id="@+id/action_to_exhibitorDetailFragment"
+            app:destination="@id/exhibitorDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/scheduleFragment"
+        android:name="com.adsale.chinaplas.ui.tools.schedule.ScheduleFragment"
+        android:label="@string/tool_my_schedule">
+
+        <action
+            android:id="@+id/action_to_scheduleEditFragment"
+            app:destination="@id/scheduleEditFragment" />
 
     </fragment>
 

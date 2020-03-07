@@ -255,13 +255,13 @@
         </androidx.core.widget.NestedScrollView>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/btn_my_exhibitor"
+            android:id="@+id/fab_add_schedule"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end|bottom"
             android:layout_margin="16dp"
-            android:src="@drawable/ic_dtl_company"
-            android:visibility="gone"
+            android:src="@drawable/sidebar_4_white"
+            android:visibility="visible"
             app:backgroundTint="@color/colorAccent"
             app:fabSize="normal" />
 

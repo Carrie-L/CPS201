@@ -39,14 +39,22 @@
             app:layout_constraintTop_toTopOf="parent"
            />
 
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/ad_pager"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
-            android:scaleType="fitXY"
-            app:layout_constraintTop_toBottomOf="@+id/viewPager" />
+        <!--        <androidx.viewpager.widget.ViewPager-->
+        <!--            android:id="@+id/ad_pager"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:background="@color/colorPrimary"-->
+        <!--            android:scaleType="fitXY"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/viewPager" />-->
 <!--        android:layout_marginBottom="56dp"-->
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_d2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="@string/ad_ratio"
+            app:layout_constraintTop_toBottomOf="@id/viewPager" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

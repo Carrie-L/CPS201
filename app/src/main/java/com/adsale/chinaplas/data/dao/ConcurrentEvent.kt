@@ -4,7 +4,7 @@ import androidx.databinding.ObservableInt
 import androidx.room.Entity
 import androidx.room.Ignore
 import androidx.room.PrimaryKey
-import com.adsale.chinaplas.utils.getName
+import com.adsale.chinaplas.utils.*
 
 /**
  * Created by Carrie on 2020/2/10.
@@ -18,7 +18,7 @@ data class ConcurrentEvent(
     val TitleTC: String?,
     val TitleSC: String?,
     val TitleEN: String?,
-    val Date: String?,
+    var Date: String?,
     val duration: String?,
     val VenueSC: String?,
     val isFree: Boolean? = false,
@@ -45,6 +45,25 @@ data class ConcurrentEvent(
 
     fun getVenue(): String {
         return getName(VenueTC!!, VenueEN!!, VenueSC!!)
+    }
+
+    fun getDateStr(): String {
+        val sb = StringBuilder()
+        if (Date == "ALL") {
+            return sb.append(String.format(EVENT_DATE, DATE_1)).append(",")
+                .append(String.format(EVENT_DATE, DATE_2)).append(",")
+                .append(String.format(EVENT_DATE, DATE_3)).append(",")
+                .append(String.format(EVENT_DATE, DATE_4)).toString()
+        } else if (Date!!.contains("$DATE_1")) {
+            sb.append(String.format(EVENT_DATE, DATE_1)).append(",")
+        } else if (Date!!.contains("$DATE_2")) {
+            sb.append(String.format(EVENT_DATE, DATE_2)).append(",")
+        } else if (Date!!.contains("$DATE_3")) {
+            sb.append(String.format(EVENT_DATE, DATE_3)).append(",")
+        } else if (Date!!.contains("$DATE_4")) {
+            sb.append(String.format(EVENT_DATE, DATE_4)).append(",")
+        }
+        return subLastString(sb.toString())
     }
 
 }

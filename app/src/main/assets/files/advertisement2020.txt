@@ -1,260 +1,259 @@
 {
-    "base": {
-        "baseUrl": "https://cdn.adsalecdn.com/App/2020/EPO/",
-        "startTime": "2020/02/01",
-        "endTime": "2021/05/01",
-        "isOpenCN": [
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1
-        ],
-        "isOpenEN": [
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1
-        ]
-    },
-    "D1": {
-        "image_cn": "arburg_cn.jpg",
-        "image_en": "arburg_en.jpg",
-        "company_id_cn": "259905",
-        "company_id_en": "259905"
-    },
-    "D2": {
-        "cn": [
-            {
-                "image": "d2_yuchang_cn.jpg",
-                "function": 1,
-                "pageID": "259905"
-            },
-            {
-                "image": "d2_yuchang_cn.jpg",
-                "function": 1,
-                "pageID": "259509"
-            }
-        ],
-        "en": [
-            {
-                "image": "d2_yuchang_en.jpg",
-                "function": 1,
-                "pageID": "261128"
-            },
-            {
-                "image": "d2_yuchang_cn.jpg",
-                "function": 1,
-                "pageID": "258223"
-            },
-            {
-                "image": "d3_lianyungangjiling_cn.jpg",
-                "function": 1,
-                "pageID": "258223"
-            }
-        ]
-    },
-    "D3": {
-        "cn": [
-            {
-                "image": "d3_lianyungangjiling_cn.jpg",
-                "function": 1,
-                "pageID": "261290"
-            },
-            {
-                "image": "d3_jinhuayonghe_cn.jpg",
-                "function": 1,
-                "pageID": "260899"
-            }
-        ],
-        "en": [
-            {
-                "image": "d3_jam_en.jpg",
-                "function": 1,
-                "pageID": "258943"
-            },
-            {
-                "image": "d3_tianshi_en.jpg",
-                "function": 1,
-                "pageID": "260464"
-            }
-        ]
-    },
-    "D4": {
-        "cn": [
-            {
-                "image": "d3_lianyungangjiling_cn.jpg",
-                "function": 1,
-                "pageID": "258494"
-            },
-            {
-                "image": "d4_Borouge_cn.jpg",
-                "function": 1,
-                "pageID": "257435"
-            }
-        ],
-        "en": [
-            {
-                "image": "d3_jam_en.jpg",
-                "function": 1,
-                "pageID": "258288"
-            },
-            {
-                "image": "d4_yangyi_en.jpg",
-                "function": 1,
-                "pageID": "261307"
-            }
-        ]
-    },
-    "D5": {
-        "cn": [
-            {
-                "image": "d3_lianyungangjiling_cn.jpg",
-                "function": 1,
-                "pageID": "258427"
-            },
-            {
-                "image": "",
-                "function": 1,
-                "pageID": ""
-            },
-            {
-                "image": "d3_lianyungangjiling_cn.jpg",
-                "function": 2,
-                "pageID": "DXI"
-            },
-            {
-                "image": "d3_lianyungangjiling_cn.jpg",
-                "function": 2,
-                "pageID": "DXI"
-            }
-        ],
-        "en": [
-            {
-                "image": "d3_jam_en.jpg",
-                "function": 1,
-                "pageID": "261128"
-            },
-            {
-                "image": "d4_yangyi_en.jpg",
-                "function": 1,
-                "pageID": "DXI"
-            },
-             {
-                            "image": "d3_lianyungangjiling_cn.jpg",
-                            "function": 2,
-                            "pageID": "DXI"
-                        },
-                        {
-                            "image": "d3_lianyungangjiling_cn.jpg",
-                            "function": 2,
-                            "pageID": "DXI"
-                        }
-        ]
-    },
-    "D6": [
-        {
-            "companyID": "258907",
-            "logo": "d6_yunding_logo.jpg",
-            "products": [
-                "d6_yunding_product_1.jpg",
-                "d6_yunding_product_2.jpg",
-                "d6_yunding_product_3.jpg"
-            ],
-            "about_sc": "云鼎天然纤维复合材料是将天然植物长纤维如椰丝，黄麻和聚丙烯，聚乳酸等树脂混炼的注塑级复合材料，可以回收或堆肥处理，重量更轻，更加低碳和环保，极大地取代了现有的合成石油基聚合物或玻璃纤维增强材料。",
-            "about_tc": "雲鼎天然纖維復合材料是將天然植物長纖維如椰絲，黃麻和聚丙烯，聚乳酸等樹脂混煉的註塑級復合材料，可以回收或堆肥處理，重量更輕，更加低碳和環保，極大地取代了現有的合成石油基聚合物或玻璃纖維增強材料。",
-            "about_en": "Yunding biobased natural fiber composites comes from natural fiber like coconut, jute compounded with polymer like PP, PLA, PVC to create new generation material, which is recyclable or compostable, light weight, low carbon emission and eco-friendly,   It can replace existing fossil based polymer or glass fiber reinforced materials in huge. ",
-            "website": "",
-            "videoCover": "https://cdn.adsalecdn.com/App/2020/EPO/d6_yunding_video_cover.jpg",
-            "videoLink": "https://cdn.adsalecdn.com/App/2020/EPO/video/d6_yunding_video.mp4"
-        },
-        {
-            "companyID": "258943",
-            "logo": "d6_jam_logo.jpg",
-            "products": [
-                "d6_jam_product_1.jpg",
-                "d6_jam_product_2.jpg",
-                "d6_jam_product_3.jpg"
-            ],
-            "about_sc": "Jam Petrochemical Company, the largest Petrochemical Company in Iran, produces various grades of polymeric and petrochemical materials and sells them in domestic and global markets. This Petrochemical Company with its slogan \"globalanddistinguished\" stands in the first place among petrochemical companies in Iran.",
-            "about_tc": "Jam Petrochemical Company, the largest Petrochemical Company in Iran, produces various grades of polymeric and petrochemical materials and sells them in domestic and global markets. This Petrochemical Company with its slogan \"globalanddistinguished\" stands in the first place among petrochemical companies in Iran.",
-            "about_en": "Jam Petrochemical Company, the largest Petrochemical Company in Iran, produces various grades of polymeric and petrochemical materials and sells them in domestic and global markets. This Petrochemical Company with its slogan \"globalanddistinguished\" stands in the first place among petrochemical companies in Iran.",
-            "website": "",
-            "videoCover": "https://cdn.adsalecdn.com/App/2020/EPO/d6_jam_video_cover.png",
-            "videoLink": "https://cdn.adsalecdn.com/App/2020/EPO/video/d6_jam_video.mp4"
-        },
-        {
-            "companyID": "260464",
-            "logo": "d6_tianshi_logo.jpg",
-            "products": [
-                "d6_tainshi_product_1.jpg",
-                "d6_tainshi_product_2.jpg",
-                "d6_tainshi_product_3.jpg"
-            ],
-            "about_sc": "天诗推出了在工程塑料耐磨性提升上非常好的PTFE微粉产品，主要用于PA、POM、PPS等产品中，降低摩擦系数，有效提高耐磨耗性能，对改性塑料的机械性能基本没有影响，在耐热要求非常高的场合中达到了日本同类产品的性能。",
-            "about_tc": "天詩推出了在工程塑料耐磨性提升上非常好的PTFE微粉產品，主要用於PA、POM、PPS等產品中，降低摩擦系數，有效提高耐磨耗性能，對改性塑料的機械性能基本沒有影響，在耐熱要求非常高的場合中達到了日本同類產品的性能。",
-            "about_en": "Tianshi launched PTFE micropowders in order to improve the wear resistance of engineering plastics, including PA, POM, PPS etc. It help to reduce the friction coefficient, improve the wear resistance performance, having no impact on the mechanical properties of the modified plastics, and meeting the performance of similar products in Japan in the occasion of very high heat resistance requirements.",
-            "website": "",
-            "videoCover": "https://cdn.adsalecdn.com/App/2020/EPO/d6_tianshi_video_cover.jpg",
-            "videoLink": "https://cdn.adsalecdn.com/App/2020/EPO/video/d6_tianshi_video.mp4"
-        },
-        {
-            "companyID": "260899",
-            "logo": "d6_jinhuayonghe_logo.jpg",
-            "products": [
-                "d6_jinhuayonghe_product_1.jpg",
-                "d6_jinhuayonghe_product_2.jpg",
-                "d6_jinhuayonghe_product_3.jpg"
-            ],
-            "about_sc": "金华永和氟化工有限公司是国家高新技术企业，下属的永和氟材料企业研究院为浙江省省级企业研究院。公司主要从事氟化学品的研发、生产和销售，主要产品有FEP透明料、FEP彩色料、FEP分散液、PTFE分散液等。",
-            "about_tc": "金華永和氟化工有限公司是國家高新技術企業，下屬的永和氟材料企業研究院為浙江省省級企業研究院。公司主要從事氟化學品的研發、生產和銷售，主要產品有FEP透明料、FEP彩色料、FEP分散液、PTFE分散液等。",
-            "about_en": "Jinhua Yonghe Fluorochemical Co., Ltd is acknowledged as a National High-Tech Enterprise.Its research institute is named the provincial enterprise research institute in Zhejiang. Jinhua Yonghe is mainly engaged in fluorine chemical research, production and sales.Our main products are FEP resin, Pre-colored FEP, FEP Dispersion, PTFE Dispersion ETC.",
-            "website": "",
-            "videoCover": "https://cdn.adsalecdn.com/App/2020/EPO/d6_yunding_video_cover.jpg",
-            "videoLink": "https://cdn.adsalecdn.com/App/2020/EPO/video/d6_jinhuayonghe_video.mp4"
-        },
-        {
-            "companyID": "261290",
-            "logo": "d6_jiling_logo.jpg",
-            "products": [
-                "d6_jiling_product_1.jpg",
-                "d6_jiling_product_1.jpg",
-                "d6_jiling_product_2.jpg"
-            ],
-            "about_sc": "公司主营产品有：荧光增白剂OB，OB-1，FP-127，KCB，KSN，ER系列等，以及DBH系列、PF系列、KB系列、洗涤类增白剂、造纸类增白剂、印染类增白剂等，广泛应用在塑料、印染、造纸等行业。",
-            "about_tc": "公司主營產品有：熒光增白劑OB，OB-1，FP-127，KCB，KSN，ER系列等，以及DBH系列、PF系列、KB系列、洗滌類增白劑、造紙類增白劑、印染類增白劑等，廣泛應用在塑料、印染、造紙等行業。",
-            "about_en": "Main products include optical brightener OB, OB-1, FP-127, KCB, KSN, ER series, and DBH series, PF series, KB series, brightener for detergent, printing and dyeing, paper and pulp, etc.",
-            "website": "www.jilingchem.com",
-            "videoCover": "https://cdn.adsalecdn.com/App/2020/EPO/d6_jiling_video_cover.jpg",
-            "videoLink": "https://cdn.adsalecdn.com/App/2020/EPO/video/d6_lianyungangjiling_video.mp4"
-        }
-    ],
-    "D7": [
-        {
-            "RID":"20235",
-            "CompanyID": "260464",
-            "BoothNo": "8.2D143",
-            "FirstPageImage": "http://cdn.adsalecdn.com/App/2020/EPO/d11_tianshi_video_cover.jpg",
-            "LogoImageLink": "http://cdn.adsalecdn.com/App/2020/EPO/d11_tianshi_logo.jpg",
-            "ImageLinks": [],
-            "ProductName_SC": "工程塑料用 PTFE 微粉",
-            "ProductName_EN": "Micronized PTFE for Engineering Plastics",
-            "ProductName_TC": "工程塑料用 PTFE 微粉",
-            "Description_SC": "天诗推出了在工程塑料耐磨性提升上非常好的PTFE微粉产品，主要用于PA、POM、PPS等产品中，降低摩擦系数，有效提高耐磨耗性能，对改性塑料的机械性能基本没有影响，在耐热要求非常高的场合中达到了日本同类产品的性能。",
-            "Description_EN": "Tianshi launched PTFE micropowders in order to improve the wear resistance of engineering plastics, including PA, POM, PPS etc. It help to reduce the friction coefficient, improve the wear resistance performance, having no impact on the mechanical properties of the modified plastics, and meeting the performance of similar products in Japan in the occasion of very high heat resistance requirements.",
-            "Description_TC": "天詩推出了在工程塑料耐磨性提升上非常好的PTFE微粉產品，主要用於PA、POM、PPS等產品中，降低摩擦系數，有效提高耐磨耗性能，對改性塑料的機械性能基本沒有影響，在耐熱要求非常高的場合中達到了日本同類產品的性能。",
-            "videoLink": "https://cdn.adsalecdn.com/App/2020/EPO/video/d11_tianshi_video.mp4",
-            "CompanyName_SC": "南京天诗新材料科技有限公司",
-            "CompanyName_TC": "南京天诗新材料科技有限公司",
-            "CompanyName_EN": "Nanjing Tianshi New Material Technologies Co.,Ltd"
-        }
-    ],
-    "D8": {}
+	"base": {
+		"baseUrl": "https://cdn.adsalecdn.com/App/2020/EPO/",
+		"startTime": "2020/02/01",
+		"endTime": "2021/05/01",
+		"isOpenCN": [
+			1,
+			1,
+			1,
+			1,
+			1,
+			1,
+			1,
+			1
+		],
+		"isOpenEN": [
+			1,
+			1,
+			1,
+			1,
+			1,
+			1,
+			1,
+			1
+		]
+	},
+	"D1": {
+		"image_cn": "arburg_cn.jpg",
+		"image_en": "arburg_en.jpg",
+		"company_id_cn": "259905",
+		"company_id_en": "259905"
+	},
+	"D2": {
+		"cn": [{
+				"image": "d2_yuchang_cn.jpg",
+				"function": 1,
+				"pageID": "259905"
+			},
+			{
+				"image": "d2_yuchang_cn.jpg",
+				"function": 1,
+				"pageID": "259509"
+			}
+		],
+		"en": [{
+				"image": "d2_yuchang_en.jpg",
+				"function": 1,
+				"pageID": "261128"
+			},
+			{
+				"image": "d2_yuchang_cn.jpg",
+				"function": 1,
+				"pageID": "258223"
+			},
+			{
+				"image": "d3_lianyungangjiling_cn.jpg",
+				"function": 1,
+				"pageID": "258223"
+			}
+		]
+	},
+	"D3": {
+		"cn": [{
+				"image": "d3_lianyungangjiling_cn.jpg",
+				"function": 1,
+				"pageID": "261290"
+			},
+			{
+				"image": "d3_jinhuayonghe_cn.jpg",
+				"function": 1,
+				"pageID": "260899"
+			}
+		],
+		"en": [{
+				"image": "d3_jam_en.jpg",
+				"function": 1,
+				"pageID": "258943"
+			},
+			{
+				"image": "d3_tianshi_en.jpg",
+				"function": 1,
+				"pageID": "260464"
+			}
+		]
+	},
+	"D4": {
+		"cn": [{
+				"image": "d3_lianyungangjiling_cn.jpg",
+				"function": 1,
+				"pageID": "258494"
+			},
+			{
+				"image": "d4_Borouge_cn.jpg",
+				"function": 1,
+				"pageID": "257435"
+			}
+		],
+		"en": [{
+				"image": "d3_jam_en.jpg",
+				"function": 1,
+				"pageID": "258288"
+			},
+			{
+				"image": "d4_yangyi_en.jpg",
+				"function": 1,
+				"pageID": "261307"
+			}
+		]
+	},
+	"D5": {
+		"cn": [{
+				"image": "d3_lianyungangjiling_cn.jpg",
+				"function": 1,
+				"pageID": "258427"
+			},
+			{
+				"image": "",
+				"function": 1,
+				"pageID": ""
+			},
+			{
+				"image": "d3_lianyungangjiling_cn.jpg",
+				"function": 2,
+				"pageID": "DXI"
+			},
+			{
+				"image": "d3_lianyungangjiling_cn.jpg",
+				"function": 2,
+				"pageID": "DXI"
+			}
+		],
+		"en": [{
+				"image": "d3_jam_en.jpg",
+				"function": 1,
+				"pageID": "261128"
+			},
+			{
+				"image": "d4_yangyi_en.jpg",
+				"function": 1,
+				"pageID": "DXI"
+			},
+			{
+				"image": "d3_lianyungangjiling_cn.jpg",
+				"function": 2,
+				"pageID": "DXI"
+			},
+			{
+				"image": "d3_lianyungangjiling_cn.jpg",
+				"function": 2,
+				"pageID": "DXI"
+			}
+		]
+	},
+	"D6": [{
+			"companyID": "258907",
+			"logo": "d6_yunding_logo.jpg",
+			"products": [
+				"d6_yunding_product_1.jpg",
+				"d6_yunding_product_2.jpg",
+				"d6_yunding_product_3.jpg"
+			],
+			"about_sc": "云鼎天然纤维复合材料是将天然植物长纤维如椰丝，黄麻和聚丙烯，聚乳酸等树脂混炼的注塑级复合材料，可以回收或堆肥处理，重量更轻，更加低碳和环保，极大地取代了现有的合成石油基聚合物或玻璃纤维增强材料。",
+			"about_tc": "雲鼎天然纖維復合材料是將天然植物長纖維如椰絲，黃麻和聚丙烯，聚乳酸等樹脂混煉的註塑級復合材料，可以回收或堆肥處理，重量更輕，更加低碳和環保，極大地取代了現有的合成石油基聚合物或玻璃纖維增強材料。",
+			"about_en": "Yunding biobased natural fiber composites comes from natural fiber like coconut, jute compounded with polymer like PP, PLA, PVC to create new generation material, which is recyclable or compostable, light weight, low carbon emission and eco-friendly,   It can replace existing fossil based polymer or glass fiber reinforced materials in huge. ",
+			"website": "",
+			"videoCover": "https://cdn.adsalecdn.com/App/2020/EPO/d6_yunding_video_cover.jpg",
+			"videoLink": "https://cdn.adsalecdn.com/App/2020/EPO/video/d6_yunding_video.mp4"
+		},
+		{
+			"companyID": "258943",
+			"logo": "d6_jam_logo.jpg",
+			"products": [
+				"d6_jam_product_1.jpg",
+				"d6_jam_product_2.jpg",
+				"d6_jam_product_3.jpg"
+			],
+			"about_sc": "Jam Petrochemical Company, the largest Petrochemical Company in Iran, produces various grades of polymeric and petrochemical materials and sells them in domestic and global markets. This Petrochemical Company with its slogan \"globalanddistinguished\" stands in the first place among petrochemical companies in Iran.",
+			"about_tc": "Jam Petrochemical Company, the largest Petrochemical Company in Iran, produces various grades of polymeric and petrochemical materials and sells them in domestic and global markets. This Petrochemical Company with its slogan \"globalanddistinguished\" stands in the first place among petrochemical companies in Iran.",
+			"about_en": "Jam Petrochemical Company, the largest Petrochemical Company in Iran, produces various grades of polymeric and petrochemical materials and sells them in domestic and global markets. This Petrochemical Company with its slogan \"globalanddistinguished\" stands in the first place among petrochemical companies in Iran.",
+			"website": "",
+			"videoCover": "https://cdn.adsalecdn.com/App/2020/EPO/d6_jam_video_cover.png",
+			"videoLink": "https://cdn.adsalecdn.com/App/2020/EPO/video/d6_jam_video.mp4"
+		},
+		{
+			"companyID": "260464",
+			"logo": "d6_tianshi_logo.jpg",
+			"products": [
+				"d6_tainshi_product_1.jpg",
+				"d6_tainshi_product_2.jpg",
+				"d6_tainshi_product_3.jpg"
+			],
+			"about_sc": "天诗推出了在工程塑料耐磨性提升上非常好的PTFE微粉产品，主要用于PA、POM、PPS等产品中，降低摩擦系数，有效提高耐磨耗性能，对改性塑料的机械性能基本没有影响，在耐热要求非常高的场合中达到了日本同类产品的性能。",
+			"about_tc": "天詩推出了在工程塑料耐磨性提升上非常好的PTFE微粉產品，主要用於PA、POM、PPS等產品中，降低摩擦系數，有效提高耐磨耗性能，對改性塑料的機械性能基本沒有影響，在耐熱要求非常高的場合中達到了日本同類產品的性能。",
+			"about_en": "Tianshi launched PTFE micropowders in order to improve the wear resistance of engineering plastics, including PA, POM, PPS etc. It help to reduce the friction coefficient, improve the wear resistance performance, having no impact on the mechanical properties of the modified plastics, and meeting the performance of similar products in Japan in the occasion of very high heat resistance requirements.",
+			"website": "",
+			"videoCover": "https://cdn.adsalecdn.com/App/2020/EPO/d6_tianshi_video_cover.jpg",
+			"videoLink": "https://cdn.adsalecdn.com/App/2020/EPO/video/d6_tianshi_video.mp4"
+		},
+		{
+			"companyID": "260899",
+			"logo": "d6_jinhuayonghe_logo.jpg",
+			"products": [
+				"d6_jinhuayonghe_product_1.jpg",
+				"d6_jinhuayonghe_product_2.jpg",
+				"d6_jinhuayonghe_product_3.jpg"
+			],
+			"about_sc": "金华永和氟化工有限公司是国家高新技术企业，下属的永和氟材料企业研究院为浙江省省级企业研究院。公司主要从事氟化学品的研发、生产和销售，主要产品有FEP透明料、FEP彩色料、FEP分散液、PTFE分散液等。",
+			"about_tc": "金華永和氟化工有限公司是國家高新技術企業，下屬的永和氟材料企業研究院為浙江省省級企業研究院。公司主要從事氟化學品的研發、生產和銷售，主要產品有FEP透明料、FEP彩色料、FEP分散液、PTFE分散液等。",
+			"about_en": "Jinhua Yonghe Fluorochemical Co., Ltd is acknowledged as a National High-Tech Enterprise.Its research institute is named the provincial enterprise research institute in Zhejiang. Jinhua Yonghe is mainly engaged in fluorine chemical research, production and sales.Our main products are FEP resin, Pre-colored FEP, FEP Dispersion, PTFE Dispersion ETC.",
+			"website": "",
+			"videoCover": "https://cdn.adsalecdn.com/App/2020/EPO/d6_yunding_video_cover.jpg",
+			"videoLink": "https://cdn.adsalecdn.com/App/2020/EPO/video/d6_jinhuayonghe_video.mp4"
+		},
+		{
+			"companyID": "261290",
+			"logo": "d6_jiling_logo.jpg",
+			"products": [
+				"d6_jiling_product_1.jpg",
+				"d6_jiling_product_1.jpg",
+				"d6_jiling_product_2.jpg"
+			],
+			"about_sc": "公司主营产品有：荧光增白剂OB，OB-1，FP-127，KCB，KSN，ER系列等，以及DBH系列、PF系列、KB系列、洗涤类增白剂、造纸类增白剂、印染类增白剂等，广泛应用在塑料、印染、造纸等行业。",
+			"about_tc": "公司主營產品有：熒光增白劑OB，OB-1，FP-127，KCB，KSN，ER系列等，以及DBH系列、PF系列、KB系列、洗滌類增白劑、造紙類增白劑、印染類增白劑等，廣泛應用在塑料、印染、造紙等行業。",
+			"about_en": "Main products include optical brightener OB, OB-1, FP-127, KCB, KSN, ER series, and DBH series, PF series, KB series, brightener for detergent, printing and dyeing, paper and pulp, etc.",
+			"website": "www.jilingchem.com",
+			"videoCover": "https://cdn.adsalecdn.com/App/2020/EPO/d6_jiling_video_cover.jpg",
+			"videoLink": "https://cdn.adsalecdn.com/App/2020/EPO/video/d6_lianyungangjiling_video.mp4"
+		}
+	],
+	"D7": [{
+		"RID": "20235",
+		"CompanyID": "260464",
+		"BoothNo": "8.2D143",
+		"FirstPageImage": "http://cdn.adsalecdn.com/App/2020/EPO/d11_tianshi_video_cover.jpg",
+		"LogoImageLink": "http://cdn.adsalecdn.com/App/2020/EPO/d11_tianshi_logo.jpg",
+		"ImageLinks": [],
+		"ProductName_SC": "工程塑料用 PTFE 微粉",
+		"ProductName_EN": "Micronized PTFE for Engineering Plastics",
+		"ProductName_TC": "工程塑料用 PTFE 微粉",
+		"Description_SC": "天诗推出了在工程塑料耐磨性提升上非常好的PTFE微粉产品，主要用于PA、POM、PPS等产品中，降低摩擦系数，有效提高耐磨耗性能，对改性塑料的机械性能基本没有影响，在耐热要求非常高的场合中达到了日本同类产品的性能。",
+		"Description_EN": "Tianshi launched PTFE micropowders in order to improve the wear resistance of engineering plastics, including PA, POM, PPS etc. It help to reduce the friction coefficient, improve the wear resistance performance, having no impact on the mechanical properties of the modified plastics, and meeting the performance of similar products in Japan in the occasion of very high heat resistance requirements.",
+		"Description_TC": "天詩推出了在工程塑料耐磨性提升上非常好的PTFE微粉產品，主要用於PA、POM、PPS等產品中，降低摩擦系數，有效提高耐磨耗性能，對改性塑料的機械性能基本沒有影響，在耐熱要求非常高的場合中達到了日本同類產品的性能。",
+		"videoLink": "https://cdn.adsalecdn.com/App/2020/EPO/video/d11_tianshi_video.mp4",
+		"CompanyName_SC": "南京天诗新材料科技有限公司",
+		"CompanyName_TC": "南京天诗新材料科技有限公司",
+		"CompanyName_EN": "Nanjing Tianshi New Material Technologies Co.,Ltd"
+	}],
+	"D8": [{
+		"date": "4",
+		"isAm": 1,
+		"companyID": "257437",
+		"pageID":"2574372",
+		"function": 3,
+		"image_logo": "d8_logo_test.jpg",
+		"image_bottom_banner": ["d8_bottom_cn_test.jpg", "d8_bottom_en_test.jpg"],
+		"image_top_banner": ["d8_top_cn_test.jpg", "d8_top_en_test.jpg"],
+		"description": ["", ""]
+	}]
 }

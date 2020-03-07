@@ -73,6 +73,14 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+            <!--百度统计无埋点圈选schema-->
+            <!--            <intent-filter>-->
+            <!--                <action android:name="android.intent.action.VIEW"/>-->
+            <!--                <category android:name="android.intent.category.DEFAULT"/>-->
+            <!--                <category android:name="android.intent.category.BROWSABLE"/>-->
+            <!--                <data android:scheme="mtja32cc268e2"/>  &lt;!&ndash;mtj+appkey&ndash;&gt;-->
+            <!--            </intent-filter>-->
         </activity>
 
         <meta-data

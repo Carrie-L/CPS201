@@ -1,7 +1,6 @@
 package com.adsale.chinaplas.data.dao
 
 import androidx.room.*
-import com.adsale.chinaplas.data.entity.CountryJson
 
 /**
  * Created by Carrie on 2019/11/1.
@@ -39,13 +38,13 @@ interface RegOptionDataDao {
     fun getFunction(text:String): RegOptionData
 
 
-    @Query("select objectId,NameSC,GroupCode,DetailCode,OrderSC from RegOptionData where PartName='ProductList' Order by OrderSC")
+    @Query("select * from RegOptionData where PartName='ProductList' Order by OrderSC")
     fun getProductsSC(): MutableList<RegOptionData>
 
-    @Query("select objectId,NameTC,GroupCode,DetailCode,OrderTC from RegOptionData where PartName='ProductList' Order by OrderTC")
+    @Query("select * from RegOptionData where PartName='ProductList' Order by OrderTC")
     fun getProductsTC(): MutableList<RegOptionData>
 
-    @Query("select objectId,NameEN,GroupCode,DetailCode,OrderEN from RegOptionData where PartName='ProductList' Order by OrderEN")
+    @Query("select * from RegOptionData where PartName='ProductList' Order by OrderEN")
     fun getProductsEN(): MutableList<RegOptionData>
 
     @Query("select Max(updatedAt) from RegOptionData")

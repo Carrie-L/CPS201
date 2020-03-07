@@ -1,14 +1,12 @@
 package com.adsale.chinaplas.data.entity
 
-import android.annotation.SuppressLint
-import android.text.TextUtils
 import androidx.databinding.ObservableField
-import androidx.lifecycle.MutableLiveData
 import androidx.room.Entity
 import androidx.room.Ignore
-import androidx.room.PrimaryKey
-import com.adsale.chinaplas.utils.*
-
+import com.adsale.chinaplas.utils.LANG_EN
+import com.adsale.chinaplas.utils.LANG_TC
+import com.adsale.chinaplas.utils.getCurrLanguage
+import com.adsale.chinaplas.utils.getFirstChar
 import java.util.*
 
 /**

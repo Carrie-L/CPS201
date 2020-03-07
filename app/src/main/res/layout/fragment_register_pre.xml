@@ -2,121 +2,135 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <ScrollView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+
+        <!--        <WebView-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="match_parent"/>-->
+
+
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="16dp"
-            android:padding="16dp">
+            android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/tv_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/reg_pre_1"
-                android:textSize="12sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="16dp"
+                android:padding="16dp">
 
-            <TextView
-                android:id="@+id/tv_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:lineSpacingMultiplier="1.3"
-                android:text="@string/reg_pre_2"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_1" />
+                <TextView
+                    android:id="@+id/tv_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/reg_pre_1"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <!--手机号码-->
-            <TextView
-                android:id="@+id/tv_phone"
-                style="@style/reg_tv_style"
-                android:layout_marginTop="32dp"
-                android:text="@string/reg_pre_phone"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_2" />
+                <TextView
+                    android:id="@+id/tv_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:lineSpacingMultiplier="1.3"
+                    android:text="@string/reg_pre_2"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_1" />
 
-            <EditText
-                android:id="@+id/et_phone"
-                style="@style/reg_et_style"
-                textHintSize="@{@string/reg_hint_tell_no}"
-                android:inputType="phone"
-                android:nextFocusDown="@+id/et_email"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_phone" />
+                <!--手机号码-->
+                <TextView
+                    android:id="@+id/tv_phone"
+                    style="@style/reg_tv_style"
+                    android:layout_marginTop="32dp"
+                    android:text="@string/reg_pre_phone"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_2" />
 
-            <TextView
-                android:id="@+id/tv_hint_phone"
-                style="@style/reg_tv_help_style"
-                android:layout_width="0dp"
-                android:paddingStart="3dp"
-                android:text="@string/reg_pre_hint_phone"
-                android:textSize="13sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@id/et_phone"
-                app:layout_constraintTop_toBottomOf="@id/et_phone" />
+                <EditText
+                    android:id="@+id/et_phone"
+                    style="@style/reg_et_style"
+                    textHintSize="@{@string/reg_hint_tell_no}"
+                    android:inputType="phone"
+                    android:nextFocusDown="@+id/et_email"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_phone" />
 
-            <!--邮箱-->
-            <TextView
-                android:id="@+id/tv_email"
-                style="@style/reg_tv_style"
-                android:layout_marginTop="32dp"
-                android:text="@string/reg_pre_email"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_hint_phone" />
+                <TextView
+                    android:id="@+id/tv_hint_phone"
+                    style="@style/reg_tv_help_style"
+                    android:layout_width="0dp"
+                    android:paddingStart="3dp"
+                    android:text="@string/reg_pre_hint_phone"
+                    android:textSize="13sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/et_phone"
+                    app:layout_constraintTop_toBottomOf="@id/et_phone" />
 
-            <EditText
-                android:id="@+id/et_email"
-                style="@style/reg_et_style"
-                textHintSize="@{@string/email}"
-                android:imeOptions="actionDone"
-                android:inputType="textEmailAddress"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_email" />
+                <!--邮箱-->
+                <TextView
+                    android:id="@+id/tv_email"
+                    style="@style/reg_tv_style"
+                    android:layout_marginTop="32dp"
+                    android:text="@string/reg_pre_email"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_hint_phone" />
 
-            <TextView
-                android:id="@+id/tv_3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:text="@string/reg_pre_3"
-                android:textColor="#ff0000"
-                android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/et_email" />
+                <EditText
+                    android:id="@+id/et_email"
+                    style="@style/reg_et_style"
+                    textHintSize="@{@string/email}"
+                    android:imeOptions="actionDone"
+                    android:inputType="textEmailAddress"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_email" />
 
-            <TextView
-                android:id="@+id/tv_next"
-                android:layout_width="180dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="24dp"
-                android:background="@drawable/bg_button_pink"
-                android:gravity="center"
-                android:text="@string/reg_next"
-                android:textColor="#fff"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_3" />
+                <TextView
+                    android:id="@+id/tv_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:text="@string/reg_pre_3"
+                    android:textColor="#ff0000"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/et_email" />
 
-            <TextView
-                android:id="@+id/tv_4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:text="@string/reg_pre_4"
-                android:textColor="@color/grey_700"
-                android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_next" />
+                <TextView
+                    android:id="@+id/tv_next"
+                    android:layout_width="180dp"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="24dp"
+                    android:background="@drawable/bg_button_pink"
+                    android:gravity="center"
+                    android:text="@string/reg_next"
+                    android:textColor="#fff"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_3" />
+
+                <TextView
+                    android:id="@+id/tv_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:text="@string/reg_pre_4"
+                    android:textColor="@color/grey_700"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_next" />
 
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </ScrollView>
+        </ScrollView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

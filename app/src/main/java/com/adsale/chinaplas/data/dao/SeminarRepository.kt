@@ -16,6 +16,7 @@ class SeminarRepository private constructor(private val seminarDao: SeminarDao) 
             seminarDao.getSeminarPmList(langId, date)
         }
 
+
     fun getFilterSeminars(langId: String, date: String, isAm: Boolean, filterStr: String): MutableList<SeminarInfo> =
         run {
             val query = SimpleSQLiteQuery(getFilterSql(langId, date, isAm, filterStr))
@@ -47,7 +48,7 @@ class SeminarRepository private constructor(private val seminarDao: SeminarDao) 
 
     fun getSpeakInfoItem(eventId: Int, langId: String) = seminarDao.getSpeakInfoItem(eventId, langId)
     fun getSeminarSpeakerItem(eventId: Int, langId: String) = seminarDao.getSeminarSpeakerItem(eventId, langId)
-
+    fun getSeminars() = seminarDao.getSeminars()
 
     companion object {
         @Volatile

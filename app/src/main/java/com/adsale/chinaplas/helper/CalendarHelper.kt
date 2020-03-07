@@ -8,9 +8,11 @@ import android.content.Context
 import android.net.Uri
 import android.provider.CalendarContract.*
 import com.adsale.chinaplas.R
+import com.adsale.chinaplas.utils.DATE_1
 import com.adsale.chinaplas.utils.LogUtil.i
-import com.adsale.chinaplas.utils.PermissionUtil
 import com.adsale.chinaplas.utils.PermissionUtil.*
+import com.adsale.chinaplas.utils.SHOW_MONTH
+import com.adsale.chinaplas.utils.SHOW_YEAR
 import com.adsale.chinaplas.utils.alertDialogSingleConfirm
 import java.util.*
 
@@ -18,9 +20,9 @@ import java.util.*
  * Created by Carrie on 2020/1/15.
  */
 class CalendarHelper private constructor(private val activity: Activity) {
-    private val YEAR = 2020
-    private val MONTH = 3 // 月份-1
-    private val START_DAY = 21
+    private val YEAR = SHOW_YEAR
+    private val MONTH = SHOW_MONTH - 1 // 月份-1
+    private val START_DAY = DATE_1
     private val ACCOUNT_NAME = "ChinaPlas@gmail.com"
     private val CALENDAR_DISPLAY_NAME = "ChinaPlas20"
 

@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="zh-TW">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <style>
+* {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+*, *::before, *::after {
+	box-sizing: border-box;
+}
+.i_content_bg {
+	background: #f2f3f5;
+}
+.col_full {
+	width: 100%;
+}
+.postcontent, .sidebar, .col_full, .col_half, .col_one_third, .col_two_third, .col_three_fourth, .col_one_fourth, .col_one_fifth, .col_two_fifth, .col_three_fifth, .col_four_fifth, .col_one_sixth, .col_five_sixth {
+	display: block;
+	position: relative;
+	margin-right: 4%;
+	margin-bottom: 50px;
+	float: left;
+}
+.col_full {
+	clear: both;
+	float: none;
+	margin-right: 0px;
+}
+/* @media all and (max-width:1249px) */
+.postcontent, .postcontent.bothsidebar, .sidebar, .col_full, .col_half, .col_one_third, .col_two_third, .col_three_fourth, .col_one_fourth, .col_one_fifth, .col_two_fifth, .col_three_fifth, .col_four_fifth, .col_one_sixth, .col_five_sixth {
+	width: 100%;
+	margin-right: 0px;
+	float: none;
+	margin-bottom: 50px !important;
+}
+/* @media all and (max-width:768px) */
+.postcontent, .postcontent.bothsidebar, .sidebar, .col_full, .col_half, .col_one_third, .col_two_third, .col_three_fourth, .col_one_fourth, .col_one_fifth, .col_two_fifth, .col_three_fifth, .col_four_fifth, .col_one_sixth, .col_five_sixth {
+	width: 100%;
+	margin-right: 0px;
+	float: none;
+	margin-bottom: 50px !important;
+}
+.row {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	margin-right: -15px;
+	margin-left: -15px;
+}
+.col-1, .col-2, .col-3, .col-4, .col-5, .col-s5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12, .col, .col-auto, .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm, .col-sm-auto, .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12, .col-md, .col-md-auto, .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg, .col-lg-auto, .col-xl-1, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl, .col-xl-auto {
+	position: relative;
+	width: 100%;
+	min-height: 1px;
+	padding-right: 15px;
+	padding-left: 15px;
+}
+.col-12 {
+	-webkit-box-flex: 0;
+	-ms-flex: 0 0 100%;
+	flex: 0 0 100%;
+	max-width: 100%;
+}
+.justify-content-center {
+	-webkit-box-pack: center !important;
+	-ms-flex-pack: center !important;
+	justify-content: center !important;
+}
+.row {
+	margin-left: 0px;
+	margin-right: 0px;
+}
+p {
+	margin-top: 0px;
+	margin-bottom: 1rem;
+}
+p, pre, ul, ol, dl, dd, blockquote, address, table, fieldset, form {
+	margin-bottom: 30px;
+}
+p {
+	margin-bottom: 0px;
+}
+p {
+	margin-bottom: 0px;
+}
+.p_top_10 {
+	padding-top: 10px;
+}
+.d_theme_bg {
+	background: #402656;
+	font-size: 18px;
+	font-weight: bold;
+}
+.m_top_20 {
+	margin-top: 20px;
+}
+.i_tit_18 {
+	font-size: 18px;
+	font-weight: bold;
+	color: #2e2e2e;
+}
+ul {
+	margin-bottom: 0px;
+}
+.p_top_20 {
+	padding-top: 20px;
+}
+.p_bottom_10 {
+	padding-bottom: 10px;
+}
+.m_bottom_20 {
+	margin-bottom: 20px;
+}
+.d_p_bottom_2 {
+	padding-bottom: 2px;
+}
+.align-self-center {
+	-ms-flex-item-align: center !important;
+	align-self: center !important;
+}
+.d_design-date {
+	background-color: #472583;
+	color: white;
+	text-align: center;
+	padding: 20px;
+	border: 1px solid white;
+}
+div[class*='col'] {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+.container {
+	width: 100%;
+	padding-right: 15px;
+	padding-left: 15px;
+	margin-right: auto;
+	margin-left: auto;
+}
+/* @media all and (max-width:576px) */
+.container, .full-header#header .container, .container-fullwidth {
+	width: 100% !important;
+}
+.container {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+.i_bg_fff {
+	background: #ffffff;
+	border-radius: 4px;
+}
+#content .container {
+	position: relative;
+}
+article, aside, dialog, figcaption, figure, footer, header, hgroup, main, nav, section {
+	display: block;
+}
+.p_top_30 {
+	padding-top: 30px;
+}
+#content {
+	position: relative;
+	overflow: hidden;
+	background-color: #f2f3f5;
+}
+#wrapper {
+	position: relative;
+	float: none;
+	width: 1220px;
+	margin: 0 auto;
+	box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+	-moz-box-shadow: 0 0 10px rgba(0,0,0,0.1);
+	-webkit-box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+/* @media all and (max-width:992px) */
+#wrapper {
+	width: 100%;
+	margin: 0;
+	box-shadow: none;
+}
+/* @media all and (max-width:768px) */
+#wrapper {
+	width: 100% !important;
+}
+.stretched #wrapper {
+	width: 100%;
+	margin: 0;
+	box-shadow: none;
+}
+body:not(.no-transition) #wrapper, .animsition-overlay {
+	position: relative;
+	opacity: 0;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+}
+.wsmenucontainer {
+	background-size: cover;
+	overflow: hidden;
+	background-attachment: fixed;
+	background-position: 50% 0;
+	background-repeat: no-repeat;
+}
+/* @media only screen and (max-width:1255px) */
+.wsmenucontainer {
+	background-attachment: local;
+	background-position: 33% 0%;
+}
+/* @media only screen and (max-width:1255px) */
+.wsmenucontainer {
+	-webkit-transition: all 0.25s ease-in-out;
+	-moz-transition: all 0.25s ease-in-out;
+	-o-transition: all 0.25s ease-in-out;
+	-ms-transition: all 0.25s ease-in-out;
+	transition: all 0.25s ease-in-out;
+}
+.wsmenucontainer {
+	background-color: #fff;
+}
+body {
+	margin: 0;
+	font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.5;
+	color: #212529;
+	text-align: left;
+	background-color: #fff;
+}
+body, .dropdown-menu {
+	font-size: 0.87rem;
+}
+body {
+	line-height: 1.5;
+	color: #000;
+	font-family: "Lato","Arial",sans-serif;
+}
+/* @media all and (max-width:768px) */
+body {
+	padding: 0 !important;
+}
+/* @media only screen and (max-width:1255px) */
+body {
+	height: 100%;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+body {
+	font-family: "Microsoft Yahei",Arial,Helvetica,Arial,sans-serif !important;
+	color: #2e2e2e !important;
+	font-size: 16px;
+}
+body, small, #primary-menu ul ul li > a, .wp-caption, .feature-box.fbox-center.fbox-italic p, .skills li .progress-percent .counter, .nav-tree ul ul a {
+	font-family: "Microsoft Yahei",Arial,Helvetica,Arial,sans-serif !important;
+	color: #2e2e2e;
+	font-size: 16px;
+}
+body {
+	line-height: 1.5;
+	font-size: 1rem;
+}
+body.is-canvi-ready {
+	overflow-x: hidden;
+}
+html {
+	font-family: sans-serif;
+	line-height: 1.15;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	-ms-overflow-style: scrollbar;
+	-webkit-tap-highlight-color: transparent;
+}
+/* @media only screen and (max-width:1255px) */
+html {
+	-webkit-overflow-scrolling: touch;
+}
+:root {
+	--blue:  #007bff;
+	--indigo:  #6610f2;
+	--purple:  #6f42c1;
+	--pink:  #e83e8c;
+	--red:  #dc3545;
+	--orange:  #fd7e14;
+	--yellow:  #ffc107;
+	--green:  #28a745;
+	--teal:  #20c997;
+	--cyan:  #17a2b8;
+	--white:  #fff;
+	--gray:  #6c757d;
+	--gray-dark:  #343a40;
+	--primary:  #007bff;
+	--secondary:  #6c757d;
+	--success:  #28a745;
+	--info:  #17a2b8;
+	--warning:  #ffc107;
+	--danger:  #dc3545;
+	--light:  #f8f9fa;
+	--dark:  #343a40;
+	--breakpoint-xs:  0;
+	--breakpoint-sm:  576px;
+	--breakpoint-md:  768px;
+	--breakpoint-lg:  1250px;
+	--font-family-sans-serif:  -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+	--font-family-monospace:  SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+:root {
+	--home:  #FF8600;
+	--travel:  #6f42c1;
+	--tech:  #007bff;
+	--fashion:  #e83e8c;
+	--sports:  #dc3545;
+	--lifestyle:  #13a774;
+	--food:  #17a2b8;
+	--market:  #ffc107
+;
+}
+.m_left_10 {
+	margin-left: 10px;
+}
+.m_right_10 {
+	margin-right: 10px;
+}
+.m_bottom_30 {
+	margin-bottom: 30px;
+}
+h3 {
+	font-size: 24px;
+}
+/* @media all and (max-width:768px) */
+h3 {
+	font-size: 20px;
+}
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+	margin-bottom: 0px !important;
+}
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+	margin-bottom: 0px;
+}
+h1, h2, h3, h4, h5, h6, #logo, #primary-menu ul li > a, #primary-menu ul li .mega-menu-content.style-2 ul.mega-menu-column > li.mega-menu-title > a, #top-search form input, .entry-link, .entry.entry-date-section span, .button.button-desc, .counter, label, .nav-tree li a, .wedding-head .first-name, .wedding-head .last-name {
+	font-family: "Microsoft Yahei",Arial,Helvetica,Arial,sans-serif !important;
+	color: #2e2e2e;
+	font-size: 16px;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-weight: 600;
+	line-height: 1.5;
+}
+.p_bottom_20 {
+	padding-bottom: 20px;
+}
+.m_top_10 {
+	margin-top: 10px;
+}
+.d_bgf3 {
+	background: #f3f3f5;
+}
+h1, h2, h3, h4, h5, h6 {
+	margin-top: 0px;
+	margin-bottom: 0.5rem;
+}
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+	margin-bottom: 0.5rem;
+	font-family: inherit;
+	font-weight: 500;
+	line-height: 1.2;
+	color: inherit;
+}
+h3, .h3 {
+	font-size: 1.75rem;
+}
+h1, h2, h3, h4, h5, h6 {
+	color: #444;
+	font-weight: 600;
+	line-height: 1.5;
+	margin: 0 0 30px 0;
+	font-family: "Raleway","Arial",sans-serif;
+}
+.m_top_30 {
+	margin-top: 30px;
+}
+a {
+	color: #007bff;
+	text-decoration: none;
+	background-color: transparent;
+	-webkit-text-decoration-skip: objects;
+}
+a {
+	text-decoration: none !important;
+	color: #000;
+}
+a {
+	text-decoration: none !important;
+}
+a {
+	-webkit-transition: 0.2s;
+	transition: 0.2s;
+}
+a {
+	text-decoration: none;
+}
+img {
+	vertical-align: middle;
+	border-style: none;
+}
+img {
+	max-width: 100%;
+}
+a, img {
+	border: 0;
+}
+a {
+	color: #e7380d;
+}
+a img {
+	border: none;
+}
+.i_inner_li div {
+	font-size: 16px;
+	line-height: 26px;
+}
+ol, ul, dl {
+	margin-top: 0px;
+	margin-bottom: 1rem;
+}
+dl, dt, dd, ol, ul, li {
+	margin: 0;
+	padding: 0;
+}
+.i_inner_li ul {
+	margin-bottom: 0px;
+	padding-left: 0px;
+}
+li {
+	list-style-type: none;
+}
+[class^='icon-'], [class*=' icon-'], [class^='icon-line-'], [class*=' icon-line-'], [class^='icon-line2-'], [class*=' icon-line2-'], .side-header #primary-menu ul > li.sub-menu > a::after {
+	display: inline-block;
+	font-family: "font-icons";
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: inherit;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+.i_contact_icon {
+	position: relative;
+	top: 2px;
+}
+.c_icon_li {
+	font-size: 14px;
+	padding: 5px 5px 0 0;
+	height: 100%;
+	float: left;
+}
+.i_tit_icon_14 {
+	font-size: 14px;
+	color: #999999;
+}
+.c_icon_li {
+	padding-right: 10px;
+}
+[class^='icon-'], [class*=' icon-'] {
+	font-family: "lined-icons-CPS20" !important;
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+.i_cms_a {
+	color: #402656;
+	font-weight: bold;
+}
+.img-fluid {
+	max-width: 100%;
+	height: auto;
+}
+.i_industry_logo {
+	max-height: 60px;
+	padding: 5px;
+}
+.d_bgff {
+	background: #ffffff;
+	border-radius: 4px;
+}
+.text-center {
+	text-align: center !important;
+}
+.g_p {
+	line-height: 26px;
+	font-size: 16px;
+}
+.p_left_10 {
+	padding-left: 10px;
+}
+.p_right_10 {
+	padding-right: 10px;
+}
+.d_bgf3_tit {
+	font-size: 18px;
+	color: #2e2e2e;
+}
+.d_theme {
+	padding: 10px 10px;
+	color: #ffffff;
+}
+#content p {
+	line-height: 1.8;
+}
+#content p {
+	line-height: 1.5;
+}
+/* @media screen and (max-width:991px) */
+.d_pbottom_5 {
+	padding-bottom: 5px;
+}
+.font-weight-bold {
+	font-weight: 700 !important;
+}
+.d_bgf3_span {
+	padding-left: 10px;
+}
+.d_bgf3_span_3 {
+	float: left;
+	width: 120px;
+}
+/* @media screen and (max-width:991px) */
+.d_bgf3_span_3 {
+	display: block;
+	width: 100%;
+}
+/* @media screen and (max-width:991px) */
+.d_moblie_left10 {
+	padding-left: 10px;
+	float: left;
+}
+.c_width_100 {
+	width: 100%;
+}
+.i_news_list {
+	font-size: 16px;
+	padding: 5px 0;
+	line-height: 26px;
+}
+.i_news_list {
+	color: #2e2e2e;
+	font-size: 14px;
+}
+.d_bgf3 .i_news_list {
+	font-size: 16px;
+	color: #2e2e2e;
+}
+.d_bgf3 .i_tit_icon_14 {
+	font-size: 16px;
+	color: #564162;
+}
+.d_bgf3 .c_icon_li {
+	padding-right: 0px;
+}
+.d_title {
+	font-size: 20px;
+	color: #402656;
+	padding-bottom: 10px;
+	padding-top: 10px;
+}
+.d_icon_diamond2 {
+	padding-right: 10px;
+}
+h1 > span:not(.nocolor):not(.badge), h2 > span:not(.nocolor):not(.badge), h3 > span:not(.nocolor):not(.badge), h4 > span:not(.nocolor):not(.badge), h5 > span:not(.nocolor):not(.badge), h6 > span:not(.nocolor):not(.badge) {
+	color: #6b6969;
+}
+.d_icon_diamond2 img {
+	width: 22px;
+	height: 22px;
+}
+.d_bgf3_span_2 {
+	float: left;
+	width: 120px;
+}
+/* @media screen and (max-width:991px) */
+.d_bgf3_span_2 {
+	display: block;
+	width: 100%;
+}
+.d_bgf3_span_1 {
+	float: left;
+	width: 80px;
+}
+/* @media screen and (max-width:991px) */
+.d_bgf3_span_1 {
+	display: block;
+	width: 100%;
+}
+.i_tit_22 {
+	font-size: 22px;
+	font-weight: bold;
+	color: #ffffff;
+}
+
+    </style>
+</head>
+<body class="stretched is-canvi-ready gototop-active device-xs" data-loader-timeout="2000"
+      id="body">
+<div class="wsmenucontainer" style="min-width: 393px;">
+    <div class="clearfix i_content_bg" id="wrapper" style="opacity: 1; animation-duration: 1500ms;">
+        <section class="p_top_30" id="content" style="margin-bottom: 0px;">
+            <div class="container clearfix topmargin-sm" style="margin-bottom:20px;">
+                <div class="col_full ">
+                    <div class="i_industry_banner">
+                        <div class="i_content_bg ">
+                            <div class="m_left_10 m_right_10">
+                                <div class="container m_bottom_30 i_bg_fff">
+                                    <div class=" m_left_10 m_right_10 ">
+                                        <!--banner-->
+                                        <div class="col-12 p_top_10" style="text-align:center; ">
+                                            <img alt="" src="images/d_event_banner.jpg"
+                                                 style="width: 100%;"/>
+                                        </div>
+                                        <!--end-->
+                                        <!--theme-->
+                                        <div class="row col-12 d_theme_bg justify-content-center m_top_10">
+                                            <p class="d_theme i_tit_22 text-center">設計 x 創新<br/>
+                                                <span style="font-weight:normal; font-size:18px">三大活動連繫塑料及設計行業</span>
+                                            </p>
+                                        </div>
+                                        <!--end-->
+                                        <!--title-->
+                                        <div class="col-12 p_top_10">
+                                            <h3 class="font-weight-bold d_title"><span
+                                                    class="d_icon_diamond2"><img alt=""
+                                                                                 src="images/d_diamond2.png"/></span>創新設計廊
+                                            </h3>
+                                        </div>
+                                        <!--end-->
+                                        <!--section1-->
+                                        <div class="d_bgf3">
+                                            <div class="row p_top_20 p_bottom_10">
+                                                <div class="col-lg-4 align-self-center ">
+                                                    <div class="m_left_10 m_right_10">
+                                                        <img alt="" class="img-fluid"
+                                                             src="images/d_section_1.jpg"/>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-8 align-self-center ">
+                                                    <div class="m_left_10 m_right_10">
+                                                        <p class="d_bgf3_tit p_top_10">展品聚焦三大主題：</p>
+                                                        <div class="row p_top_10 p_bottom_10">
+                                                            <div class="i_news_list c_width_100 ">
+                                                                <span class="icon-diamond c_icon_li i_tit_icon_14">&nbsp;</span>CMF
+                                                                設計與科技
+                                                            </div>
+                                                            <div class="i_news_list c_width_100 ">
+                                                                <span class="icon-diamond c_icon_li i_tit_icon_14">&nbsp;</span>環保設計及塑料升級再造
+                                                            </div>
+                                                            <div class="i_news_list c_width_100 ">
+                                                                <span class="icon-diamond c_icon_li i_tit_icon_14">&nbsp;</span>運動休閒
+                                                                x 塑料
+                                                            </div>
+                                                        </div>
+                                                        <div class="row col-12">
+                                                            <p class="g_p">
+                                                                展示由創新材料、工藝製作而成的產品，為設計創意增添靈感、打開思路；</p>
+                                                        </div>
+                                                        <div class="row col-12">
+                                                            <p class="g_p">
+                                                                展示設計師創意作品，觀眾可以近距離觀察、觸摸，走進創意暢想世界。</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12 d_p_bottom_2">
+                                                    <div class="g_p d_pbottom_5">
+                                                        <span class="font-weight-bold d_bgf3_span d_bgf3_span_1">地點 ：</span>
+                                                        <span class="d_moblie_left10">6.2G01展台</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 d_p_bottom_2">
+                                                    <div class="g_p d_pbottom_5">
+                                                        <span class="font-weight-bold d_bgf3_span d_bgf3_span_1">查詢 ：</span>
+                                                        <span class="d_moblie_left10">李冉女</span>士
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 d_p_bottom_2">
+                                                    <div class="g_p d_pbottom_5">
+                                                        <span class="font-weight-bold d_bgf3_span d_bgf3_span_1">電郵 ：</span>
+                                                        <a class="i_cms_a d_moblie_left10"
+                                                           href="mailto: chinaplas@sh.adsale.com.hk">chinaplas@sh.adsale.com.hk</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row justify-content-center m_top_10">
+                                                <div class="col-lg-12 col-12 m_bottom_20 ">
+                                                    <div class="m_left_10 m_right_10 d_bgff p_top_10 p_bottom_10">
+                                                        <p class="g_p text-center p_left_10 p_right_10">
+                                                            少量展示席位剩餘<br/> 加入&quot;亞洲創意力量@CHINAPLAS
+                                                            2020&quot;，就是現在！</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--end section-->
+                                        <!--title-->
+                                        <div class="col-12 p_top_10">
+                                            <h3 class="font-weight-bold d_title"><span
+                                                    class="d_icon_diamond2"><img alt=""
+                                                                                 src="images/d_diamond2.png"/></span>設計論壇
+                                            </h3>
+                                        </div>
+                                        <!--end-->
+                                        <!--section2-->
+                                        <div class="d_bgf3 ">
+                                            <div class="row p_top_20 p_bottom_10">
+                                                <div class="col-lg-4 align-self-center ">
+                                                    <div class="m_left_10 m_right_10">
+                                                        <img alt="" class="img-fluid"
+                                                             src="images/d_section_2.jpg"/>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-8 align-self-center ">
+                                                    <div class="m_left_10 m_right_10">
+                                                        <p class="d_bgf3_tit p_top_10">這裏會分享：</p>
+                                                        <div class="row p_top_10 p_bottom_10">
+                                                            <div class="i_news_list c_width_100 ">
+                                                                <span class="icon-diamond c_icon_li i_tit_icon_14">&nbsp;</span>創新材料、科技如何爲産品設計提供靈感及解决方案
+                                                            </div>
+                                                            <div class="i_news_list c_width_100 ">
+                                                                <span class="icon-diamond c_icon_li i_tit_icon_14">&nbsp;</span>設計大師開拓新品的經驗分享
+                                                            </div>
+                                                            <div class="i_news_list c_width_100 ">
+                                                                <span class="icon-diamond c_icon_li i_tit_icon_14">&nbsp;</span>未來産品設計趨勢
+                                                            </div>
+                                                            <div class="i_news_list c_width_100 ">
+                                                                <span class="icon-diamond c_icon_li i_tit_icon_14">&nbsp;</span>設計師如何領導實踐環保
+                                                            </div>
+                                                        </div>
+                                                        <div class="row col-12">
+                                                            <p class="g_p">設計大師和成功品牌案例分享和暢談未來趨勢</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12 d_p_bottom_2">
+                                                    <div class="g_p d_pbottom_5">
+                                                        <span class="font-weight-bold d_bgf3_span d_bgf3_span_2">語言 ：</span>
+                                                        <span class="d_moblie_left10">普通話，設中英同聲傳譯</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 d_p_bottom_2">
+                                                    <div class="g_p d_pbottom_5">
+                                                        <span class="font-weight-bold d_bgf3_span d_bgf3_span_2">形式 ：</span>
+                                                        <span class="d_moblie_left10">公開論壇，免費入場</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 d_p_bottom_2">
+                                                    <div class="g_p d_pbottom_5">
+                                                        <span class="font-weight-bold d_bgf3_span d_bgf3_span_2">對象 ：</span>
+                                                        <span class="d_moblie_left10">來自各塑料應用行業的産品 / 工業設計師、工程師及産品研發人員</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 d_p_bottom_2">
+                                                    <div class="g_p d_pbottom_5">
+                                                        <span class="font-weight-bold d_bgf3_span d_bgf3_span_2">觀衆人數：</span>
+                                                        <span class="d_moblie_left10">150人</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 d_p_bottom_2">
+                                                    <div class="g_p d_pbottom_5">
+                                                        <span class="font-weight-bold d_bgf3_span d_bgf3_span_2">地點：</span>
+                                                        <span class="d_moblie_left10">8.2F151展台</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 d_p_bottom_2">
+                                                    <div class="g_p d_pbottom_5">
+                                                        <span class="font-weight-bold d_bgf3_span d_bgf3_span_2">日期及時間：</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class=" row m_top_10 p_bottom_20 justify-content-center">
+                                                <div class="col-lg-12">
+                                                    <div class="m_left_10 m_right_10">
+                                                        <div class="row">
+                                                            <div class="col-lg-4 col-md-4 col-12 d_design-date ">
+                                                                運動休閒 x 塑料
+                                                                <br/> 2020.8.4 10:00-12:30
+                                                            </div>
+                                                            <div class="col-lg-4 col-md-4 col-12 d_design-date ">
+                                                                CMF 設計與科技
+                                                                <br/> 2020.8.4 13:30-15:45
+                                                            </div>
+                                                            <div class="col-lg-4 col-md-4 col-12 d_design-date ">
+                                                                環保設計及塑料升級再造
+                                                                <br/> 2020.8.5 10:00-12:30
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--end section-->
+                                        <!--title-->
+                                        <div class="col-12 p_top_10">
+                                            <h3 class="font-weight-bold d_title"><span
+                                                    class="d_icon_diamond2"><img alt=""
+                                                                                 src="images/d_diamond2.png"/></span>亞洲創意力量
+                                                @ CPS 2020 酒會</h3>
+                                        </div>
+                                        <!--end-->
+                                        <!--section3-->
+                                        <div class="d_bgf3">
+                                            <div class="row p_top_20 p_bottom_10">
+                                                <div class="col-lg-4 align-self-center ">
+                                                    <div class="m_left_10 m_right_10">
+                                                        <img alt="" class="img-fluid"
+                                                             src="images/d_section_3.jpg"/>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-8 align-self-center ">
+                                                    <div class="m_left_10 m_right_10">
+                                                        <p class="d_bgf3_tit p_top_10">
+                                                            讓您拓展業內人脈，這裡會匯集：</p>
+                                                        <div class="row p_top_10 p_bottom_10">
+                                                            <div class="i_news_list c_width_100 ">
+                                                                <span class="icon-diamond c_icon_li i_tit_icon_14">&nbsp;</span>滿腹才華、尋找靈感的產品設計師
+                                                            </div>
+                                                            <div class="i_news_list c_width_100 ">
+                                                                <span class="icon-diamond c_icon_li i_tit_icon_14">&nbsp;</span>為設計提供無限可能的創新材料、工藝供應商
+                                                            </div>
+                                                        </div>
+                                                        <div class="row col-12">
+                                                            <p class="g_p">
+                                                                讓產品設計師輕鬆暢聚，觀賞創意作品，交換心得，互相啟發。</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12 d_p_bottom_2">
+                                                    <div class="g_p d_pbottom_5">
+                                                        <span class="font-weight-bold d_bgf3_span d_bgf3_span_3">日期 ：</span>
+                                                        <span class="d_moblie_left10">2020.8.4 （展會第二天）</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 d_p_bottom_2">
+                                                    <div class="g_p d_pbottom_5">
+                                                        <span class="font-weight-bold d_bgf3_span d_bgf3_span_3">時間 ：</span>
+                                                        <span class="d_moblie_left10">16:00 – 17:30</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 d_p_bottom_2">
+                                                    <div class="g_p d_pbottom_5">
+                                                        <span class="font-weight-bold d_bgf3_span d_bgf3_span_3">地點 ：</span>
+                                                        <span class="d_moblie_left10">6.2G01展台 （創新設計廊）</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 d_p_bottom_2">
+                                                    <div class="g_p d_pbottom_5">
+                                                        <span class="font-weight-bold d_bgf3_span d_bgf3_span_3">邀請對象 ：</span>
+                                                        <span class="d_moblie_left10">來自汽車、電子、包裝、日化、運動、休閒、時尚、家品等行業的產品設計師、產品研發人員、CHINAPLAS參展商</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row justify-content-center m_top_10">
+                                                <div class="col-lg-12 col-12 m_bottom_20 ">
+                                                    <div class="m_left_10 m_right_10 d_bgff p_top_10 p_bottom_10">
+                                                        <p class="g_p text-center p_left_10 p_right_10">
+                                                            線上報名將於稍後開通</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--end section-->
+                                        <!--logo-->
+                                        <h3 class="i_tit_18 m_top_20">主辦單位</h3>
+                                        <div>
+                                            <img alt="" class="img-fluid i_industry_logo"
+                                                 src="images/industry_logo1_1.jpg"/>
+                                        </div>
+                                        <h3 class="i_tit_18 m_top_10">支持單位</h3>
+                                        <div>
+                                            <img alt="" class="img-fluid" src="images/HKDC.png"
+                                                 style="padding: 10px; margin: 20px 30px; max-height: 100px;"/>
+                                            <img alt="" class="img-fluid" id="imgJIDA"
+                                                 src="images/JIDA.png"
+                                                 style="padding: 10px; margin: 15px 30px; max-width: 165px;"/>
+                                            <img alt="" class="img-fluid" src="images/logo_SIDA.png"
+                                                 style="padding: 10px; margin: 20px 30px; max-height: 100px;"/>
+                                            <img alt="" class="img-fluid" src="images/TDRI.png"
+                                                 style="padding-bottom: 5px; margin: 15px 30px; padding-left: 15px; padding-right: 15px; max-height: 100px; max-width: 200px; padding-top: 10px"/>
+                                        </div>
+                                        <h3 class="i_tit_18 m_top_10">合作夥伴</h3>
+                                        <div>
+                                            <img alt="" class="logoImg" height="100"
+                                                 src="images/logo_covestro.jpg"
+                                                 style="padding:10px 10px 0 10px;"/>
+                                        </div>
+                                        <h3 class="i_tit_18 m_top_30">支持媒體</h3>
+                                        <div>
+                                            <a href="http://www.ip1689.com/"
+                                               t_lable="link_401_ip1689"> <img alt=""
+                                                                               class="logoImg"
+                                                                               src="images/plastic.gif"
+                                                                               style="padding:15px 10px; margin: 5px 20px;"/></a>
+                                            <a href="http://www.pack168.com/"
+                                               t_lable="link_401_pack168"> <img alt=""
+                                                                                class="logoImg"
+                                                                                height="50"
+                                                                                src="images/logo_packagingforefront.jpg"
+                                                                                style="margin:5px 20px"/>
+                                            </a>
+                                        </div>
+                                        <!--end logo-->
+                                        <!--Contact us-->
+                                        <div class="container i_bg_fff">
+                                            <div class="row">
+                                                <div class="row col-12 i_tit_18 p_top_20">
+                                                    查詢
+                                                </div>
+                                                <div class="row inner_contact_bg p_top_10 col-12">
+                                                    <div class="col-lg-12 col-12 i_inner_li">
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                <ul class="p_bottom_10">
+                                                                    <li><span
+                                                                            class="icon-uniE6C3 i_contact_icon">&nbsp;&nbsp;</span>羅灝欣女士
+                                                                        / 李冉女士
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="col-12 p_bottom_10">
+                                                                <ul>
+                                                                    <li><span
+                                                                            class="icon-uniE74B i_contact_icon">&nbsp;&nbsp;</span>(852)
+                                                                        2516 3503 / (86) 21 33255648
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="col-12 p_bottom_10">
+                                                                <ul>
+                                                                    <li><span
+                                                                            class="icon-uniE866 i_contact_icon">&nbsp;</span>
+                                                                        <a class="i_cms_a"
+                                                                           href="mailto:chinaplas@adsale.com.hk"
+                                                                           t_label="ContactUs_Email_HK">chinaplas@adsale.com.hk</a>&nbsp;&nbsp;/&nbsp;&nbsp;
+                                                                        <a class="i_cms_a"
+                                                                           href="mailto:chinaplas@sh.adsale.com.hk"
+                                                                           id="aSHEmail"
+                                                                           t_label="ContactUs_Email_SH">chinaplas@sh.adsale.com.hk</a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--Contact us-->
+
+                                            <!--end-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,9 @@
+{
+"id":"Scope",
+"title_sc":"展品范围",
+"title_tc":"展品範圍",
+"title_en":"Scope",
+"groupID":"GeneralInformation",
+"group_title":"展會概覽,General Info,展会概览",
+"text":"展品範圍 機械設備 3D技術 輔助設備 吹塑機 擠出機及擠出生產線 注塑機 綜合自動化設備 預加工、回收利用機械及設備 修飾、裝潢、印刷及印標機械及設備 泡沫、反應或增強樹脂機械 測量及試驗設備 模具、热流道 零部件 其他加工設備 後加工設備 壓機 焊機  原料丶輔料 添加劑、粘合劑和膠、填料 生物塑料及降解塑料 塗布用配混料、泡沫塑料及中間體 顏料及色母粒 工程塑料 通用塑料 再生塑料 增強纤維 / 材料及複合材料 橡膠及熱塑性彈性體 半製成品展品范围 机械设备 3D技术 辅助设备 吹塑机  挤出机及挤出生产线 注塑机 综合自动化设备 预加工、回收利用机械及设备 修饰、装潢、印刷及印标机械及设备 泡沫、反应或增强树脂机械 测量及试验设备 模具、热流道 零部件 其他加工设备 后加工设备 压机、焊机 焊机  原料丶辅料 添加剂、粘合剂和胶、填料 生物塑料及降解塑料 涂布用配混料、泡沫塑料及中间体  颜料及色母粒 工程塑料 通用塑料 再生塑料 增强䊹维 / 材料及复合材料 橡胶及热塑性弹性体 半制成品Scope of Exhibits Machinery & Equipment 3D Technologies Ancillary Equipment Blow Molding Machines Extruders & Extrusion Lines Injection Molding Machines Integrated Automation Machines & Equipment for Preprocessing and Recycling Machinery & Plant for Finishing, Decorating, Printing & Marking Machinery for Foam, Reactive or Reinforced Resins Measuring & Testing Equipment Mould & Die, Hot Runner Other Processing Machines Parts & Components Post Processing Machines Presses Machines Welding Machines  Raw Materials, Auxiliaries Additives, Adhesives & Glues, Fillers Bioplastics & Degradable Coating Compounds, Foams & Intermediates Colour Pigments & Masterbatches Engineering Plastics General Plastics Recy"
+}

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * A very simple CSV reader released under a commercial-friendly license.
+ * A very simple csv reader released under a commercial-friendly license.
  *
  * @author Glen Smith
  *
@@ -54,7 +54,7 @@ public class CSVReader {
      * Constructs CSVReader using a comma for the separator.
      *
      * @param reader
-     *            the reader to an underlying CSV source.
+     *            the reader to an underlying csv source.
      */
     public CSVReader(Reader reader) {
         this(reader, DEFAULT_SEPARATOR, DEFAULT_QUOTE_CHARACTER,
@@ -65,7 +65,7 @@ public class CSVReader {
      * Constructs CSVReader with supplied separator and quote char.
      *
      * @param reader
-     *            the reader to an underlying CSV source.
+     *            the reader to an underlying csv source.
      * @param separator
      *            the delimiter to use for separating entries
      * @param quotechar

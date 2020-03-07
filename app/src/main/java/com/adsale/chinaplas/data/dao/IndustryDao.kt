@@ -17,22 +17,22 @@ interface IndustryDao {
     @Query("DELETE FROM ExhIndustry")
     fun deleteIndustryAll()
 
-    @Query("select CatalogProductSubID,CatTC,TCStroke from ExhIndustry order by CAST(TCStroke AS INT) ")
+    @Query("select * from ExhIndustry order by CAST(TCStroke AS INT) ")
     fun getAllIndustriesTC(): MutableList<ExhIndustry>
 
-    @Query("select CatalogProductSubID,CatSC,SCPY from ExhIndustry order by SCPY")
+    @Query("select * from ExhIndustry order by SCPY")
     fun getAllIndustriesSC(): MutableList<ExhIndustry>
 
-    @Query("select CatalogProductSubID,CatEng,SortEN from ExhIndustry order by SortEN")
+    @Query("select * from ExhIndustry order by SortEN")
     fun getAllIndustriesEN(): MutableList<ExhIndustry>
 
-    @Query("select A.CatalogProductSubID,A.CatEng from ExhIndustry A, CompanyProduct CA where A.CatalogProductSubID = CA.CatalogProductSubID AND CA.CompanyID = :companyID ORDER BY SortEN")
+    @Query("select A.* from ExhIndustry A, CompanyProduct CA where A.CatalogProductSubID = CA.CatalogProductSubID AND CA.CompanyID = :companyID ORDER BY SortEN")
     fun getIndustriesEN(companyID: String): MutableList<ExhIndustry>
 
-    @Query("select A.CatalogProductSubID,A.CatSC from ExhIndustry A, CompanyProduct CA where A.CatalogProductSubID = CA.CatalogProductSubID AND CA.CompanyID = :companyID ORDER BY SCPY")
+    @Query("select A.* from ExhIndustry A, CompanyProduct CA where A.CatalogProductSubID = CA.CatalogProductSubID AND CA.CompanyID = :companyID ORDER BY SCPY")
     fun getIndustriesSC(companyID: String): MutableList<ExhIndustry>
 
-    @Query("select A.CatalogProductSubID,A.CatTC from ExhIndustry A, CompanyProduct CA where A.CatalogProductSubID = CA.CatalogProductSubID AND CA.CompanyID = :companyID ORDER BY TCStroke")
+    @Query("select A.* from ExhIndustry A, CompanyProduct CA where A.CatalogProductSubID = CA.CatalogProductSubID AND CA.CompanyID = :companyID ORDER BY TCStroke")
     fun getIndustriesTC(companyID: String): MutableList<ExhIndustry>
 
 

@@ -49,8 +49,8 @@ android {
         release {
             keyAlias 'chinaplas'
             keyPassword 'adsalepeople'
-//            storeFile file('E:/项目文档/CPS19/logo/adsale.DS_Store')
-            storeFile file('F:/CPS20/adsale.DS_Store')
+            storeFile file('E:/项目文档/CPS19/logo/adsale.DS_Store')
+//            storeFile file('F:/CPS20/adsale.DS_Store')
             storePassword 'adsalepeople'
         }
     }
@@ -125,8 +125,6 @@ dependencies {
     implementation 'androidx.room:room-runtime:2.2.1'
     kapt 'androidx.room:room-compiler:2.2.1'
 
-    implementation 'com.github.chrisbanes:PhotoView:2.3.0'
-
     // coroutines for getting off the UI thread
     def coroutines = "1.0.1"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines"
@@ -181,5 +179,7 @@ dependencies {
     // MAP
     implementation(name: "h5calllibpalmap-release", ext: "aar")
     implementation 'org.altbeacon:android-beacon-library:2.9.2'
+
+    implementation 'com.github.chrisbanes:PhotoView:2.3.0'
 
 }

@@ -8,7 +8,6 @@ import androidx.room.PrimaryKey
 import com.adsale.chinaplas.utils.SELECT_TITLE_EN
 import com.adsale.chinaplas.utils.SELECT_TITLE_SC
 import com.adsale.chinaplas.utils.SELECT_TITLE_TC
-import com.adsale.chinaplas.viewmodels.RegisterViewModel
 
 /**
  * Created by Carrie on 2019/11/1.

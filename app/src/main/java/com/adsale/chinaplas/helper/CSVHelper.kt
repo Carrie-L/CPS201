@@ -525,8 +525,8 @@ class CSVHelper private constructor(private val exhibitorDao: ExhibitorDao,
 
     suspend fun parseSeminarCsv() {
         withContext(Dispatchers.IO) {
-            readSeminarInfoCSV("TechnicalSeminar/SeminarInfo.csv")
-            readSeminarSpeakCSV("TechnicalSeminar/SeminarSpeaker.csv")
+            readSeminarInfoCSV("csv/SeminarInfo.csv")
+            readSeminarSpeakCSV("csv/SeminarSpeaker.csv")
         }
     }
 
@@ -613,7 +613,7 @@ class CSVHelper private constructor(private val exhibitorDao: ExhibitorDao,
         seminarDao.deleteSeminarSpeakerAll()
         seminarDao.insertSeminarSpeakAll(entities)
 
-        i("readSeminarSpeakCSV 花费时间: ${(endTime - startTime)} ms , ${entities.size} ")
+        i("readSeminarSpeakCSV 花费时间: ${(endTime - startTime)} ms , ${entities.size} ,, ${entities.toString()}")
     }
 
 

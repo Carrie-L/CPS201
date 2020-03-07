@@ -141,7 +141,7 @@ class NewtechFilterFragment : Fragment() {
         NavHostFragment.findNavController(this).navigate(
             NewtechFilterFragmentDirections.actionNewtechFilterFragmentToNewtechListFragment(viewModel.newtechFilterSql())
         )
-        viewModel.onClear()
+//        viewModel.onClear()
     }
 
     private fun clearAll() {
@@ -187,8 +187,8 @@ class NewtechFilterFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         LogUtil.i("onDestroy~~~")
-        clearAll()
-        viewModel.onClear()
+//        clearAll()
+//        viewModel.onClear()
     }
 
 

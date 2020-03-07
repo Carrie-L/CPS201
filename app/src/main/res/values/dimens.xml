@@ -34,7 +34,7 @@
 
 
     <!-- text size -->
-    <dimen name="top_title_text_size">18sp</dimen>
+    <dimen name="top_title_text_size">16sp</dimen>
 
     <dimen name="btn_round_size">40dp</dimen>
 

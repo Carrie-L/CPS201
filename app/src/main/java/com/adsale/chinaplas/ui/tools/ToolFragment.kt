@@ -1,16 +1,11 @@
 package com.adsale.chinaplas.ui.tools
 
 
-import android.os.Bundle
-import android.text.Html
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
-
 import com.adsale.chinaplas.R
 import com.adsale.chinaplas.base.BaseFragment
 import com.adsale.chinaplas.databinding.FragmentToolBinding
@@ -50,7 +45,7 @@ class ToolFragment : BaseFragment() {
         binding.tvMySchedule.setOnClickListener {
             resetBackDefault()
             Toast.makeText(requireContext(), "TBC", Toast.LENGTH_SHORT).show()
-//            findNavController().navigate(R.id.myScheduleFragment)
+            findNavController().navigate(R.id.scheduleFragment)
         }
         binding.tvExhibitorHistory.setOnClickListener {
             resetBackDefault()

@@ -7,6 +7,7 @@ import com.adsale.chinaplas.data.dao.WebContentRepository
 import com.adsale.chinaplas.fileAbsPath
 import com.adsale.chinaplas.mAssetManager
 import com.adsale.chinaplas.moshi
+import com.adsale.chinaplas.rootDir
 import com.adsale.chinaplas.utils.LogUtil.e
 import com.adsale.chinaplas.utils.LogUtil.i
 import com.squareup.moshi.JsonAdapter
@@ -154,8 +155,9 @@ fun unpackZip(zipname: String,
 
                     if (filename.endsWith("txt")) {
                         i(" 插入数据库htmltxt: $pageID")
-                        val htmlText = HtmlText(pageID, sbTxt.toString())
-                        webContentRepository.insertItemHtmlText(htmlText)
+                        val htmlText = parseJson(HtmlText::class.java, sbTxt.toString())
+//                        val htmlText = HtmlText(pageID, sbTxt.toString())
+                        webContentRepository.insertItemHtmlText(htmlText!!)
                     }
 //                    LogUtil.i("sbTxt=\n ${sbTxt.toString()}")
                     zis.closeEntry()
@@ -187,6 +189,27 @@ fun createDir(path: String): Boolean {
         }
     } else false
 }
+
+fun getWebContentHtmlPath(pageID: String): String {
+    val path = "WebContent/$pageID/${getHtmName()}"
+    if (File("$rootDir$path").exists()) {
+        i("webContent open sd html")
+        return "file://$rootDir$path"
+    }
+    i("webContent open asset html")
+    return "file:///android_asset/$path"
+}
+
+fun getHtmlPath(name: String, pageID: String): String {
+    val path = "$name/$pageID/${getHtmName()}"
+    if (File("$rootDir$path").exists()) {
+        i(" $name open sd html")
+        return "file://$rootDir$path"
+    }
+    i("$name open asset html")
+    return "file:///android_asset/$path"
+}
+
 
 /*  ------------------------ Files  End --------------------------              */
 /*  ------------------------ MoShi Parse Json   --------------------------              */

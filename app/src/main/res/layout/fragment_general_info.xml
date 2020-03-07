@@ -63,8 +63,9 @@
         <ImageView
             android:id="@+id/iv_d5"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:scaleType="fitXY"
+            app:layout_constraintDimensionRatio="@string/ad_ratio"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/rv_general_info" />

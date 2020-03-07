@@ -58,11 +58,19 @@ class HelpView : ConstraintLayout {
 
     private fun getMenuImages(): Array<Int> {
         return when (getCurrLanguage()) {
-            LANG_SC -> arrayOf(R.drawable.help_1_tc, R.drawable.help_2_tc, R.drawable.help_3_tc, R.drawable.help_4_tc)
-            LANG_EN -> arrayOf(R.drawable.help_1_en, R.drawable.help_2_en, R.drawable.help_3_en, R.drawable.help_4_en)
-            else -> arrayOf(R.drawable.help_1_sc, R.drawable.help_2_sc, R.drawable.help_3_sc, R.drawable.help_4_sc)
+//            LANG_SC -> arrayOf(R.drawable.help_1_tc, R.drawable.help_2_tc, R.drawable.help_3_tc, R.drawable.help_4_tc)
+//            LANG_EN -> arrayOf(R.drawable.help_1_en, R.drawable.help_2_en, R.drawable.help_3_en, R.drawable.help_4_en)
+//            else -> arrayOf(R.drawable.help_1_sc, R.drawable.help_2_sc, R.drawable.help_3_sc, R.drawable.help_4_sc)
+            LANG_SC -> arrayOf(R.drawable.help_1_tc, R.drawable.help_2_tc)
+            LANG_EN -> arrayOf(R.drawable.help_1_en, R.drawable.help_2_en)
+            else -> arrayOf(R.drawable.help_1_sc, R.drawable.help_2_sc)
         }
     }
+
+    fun helperEventDtl() {
+
+    }
+
 
     private fun generatePage(context: Context) {
         val helpPages: MutableList<View> = ArrayList()

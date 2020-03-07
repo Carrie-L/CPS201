@@ -37,6 +37,8 @@ class NewtechRepository private constructor(private val newtechDao: NewtechDao) 
         newtechDao.getFilterList(query)
     }
 
+    fun searchNewtech(keyword: String) = newtechDao.searchNewtech("%$keyword%")
+
     companion object {
         @Volatile
         private var instance: NewtechRepository? = null

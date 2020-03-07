@@ -1,5 +1,7 @@
 package com.adsale.chinaplas
 
+//import com.baidu.mobstat.StatService
+//import com.bun.miitmdid.core.JLibrary
 import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
@@ -12,16 +14,13 @@ import android.net.NetworkInfo
 import android.net.NetworkRequest
 import android.os.Build
 import android.os.Environment
-import android.os.LocaleList
 import com.adsale.chinaplas.data.dao.CpsDatabase
 import com.adsale.chinaplas.utils.*
-import com.baidu.mobstat.StatService
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import com.tencent.bugly.Bugly
 import java.io.File
 import java.io.FileOutputStream
-import java.util.*
 import kotlin.properties.Delegates
 
 /**
@@ -66,9 +65,11 @@ class APP : Application() {
 
         initCrashHandler()
         // 百度移动统计，开启自动埋点。 第三个参数：autoTrackWebView：
-        StatService.autoTrace(this, true, true)
+//        StatService.autoTrace(this, true, true)
 
         LogUtil.i("======= onCreate ======")
+
+//        JLibrary.InitEntry(this)
 
     }
 
@@ -85,7 +86,17 @@ class APP : Application() {
         mAssetManager = assets
         fileAbsPath = filesDir.absolutePath
         rootDir = getDir("cps20", Context.MODE_PRIVATE).absolutePath + "/"
+
+//        rootDir ="/data/data/com.adsale.ChinaPlas/app_cps20/"
+        filesDir.absolutePath
+
+
         DB_PATH = "/data" + Environment.getDataDirectory().absolutePath + "/" + packageName + "/databases"
+        LogUtil.i("DB_PATH=$DB_PATH")
+        LogUtil.i("fileAbsPath=$fileAbsPath")
+        LogUtil.i("rootDir=$rootDir")
+
+
         confirmPdfPath = filesDir.absolutePath + "/${CONFIRM_PDF_REGISTER}.pdf"
     }
 

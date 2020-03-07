@@ -19,7 +19,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:paddingBottom="24dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
@@ -29,7 +30,9 @@
             <ImageView
                 android:id="@+id/iv_ad_banner"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:visibility="gone"
+                app:layout_constraintDimensionRatio="@string/ad_ratio_large"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -168,7 +171,7 @@
             <TextView
                 android:id="@+id/tv_seminar_language"
                 style="@style/seminal_dtl_text_style"
-                android:text="中文"
+                android:text="@{speaker.language}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_seminar_bar3" />
 
@@ -177,6 +180,7 @@
                 android:id="@+id/tv_seminar_bar4"
                 style="@style/seminal_dtl_bar_style"
                 android:text="@string/seminar_contact"
+                android:visibility="@{speaker.contactPerson.length()==0 ?View.GONE:View.VISIBLE}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_seminar_language" />
@@ -186,7 +190,6 @@
                 style="@style/seminal_dtl_text_style"
                 android:text="@{speaker.ContactPerson}"
                 android:visibility="@{speaker.contactPerson.length()==0 ?View.GONE:View.VISIBLE}"
-
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_seminar_bar4" />
             <!--            android:visibility="@{TextUtils.isEmpty(speaker.contactPerson) && }"-->

@@ -12,7 +12,7 @@
     <string name="calendar_description">第三十四届中国国际塑料橡胶工业展览会</string>
     <string name="calendar_location">中国‧上海‧虹桥‧国家会展中心(中国上海市青浦区崧泽大道33号)</string>
 
-    <string name="menu_download_center">下载中心</string>
+    <string name="menu_download_center">宣传资料下载</string>
     <string name="menu_subscribe">订阅电子快讯</string>
     <string name="menu_calendar">添加到日历</string>
     <string name="menu_follow">关注我们</string>
@@ -336,6 +336,7 @@
     <string name="event_tab_all">总览</string>
     <string name="seminar_pm">下午</string>
     <string name="seminar_am">上午</string>
+    <string name="seminar_room_btn">会议室位置图</string>
 
     <!-- 技術交流會詳情頁 -->
     <string name="title_technical_seminar">技术交流会</string>
@@ -357,5 +358,30 @@
     <string name="filter_product">产品</string>
     <string name="filter_applications">应用</string>
     <string name="new_tec_ad">广告商产品</string>
+    <string name="reg_service_select_title">请输入公司从事业务/行业为 (可选多项)</string>
 
+
+    <!-- 我的日程 -->
+    <string name="schedule_title">标题</string>
+    <string name="schedule_location">位置</string>
+    <string name="schedule_startTime">时间</string>
+    <string name="schedule_length">为时</string>
+    <string name="schedule_note">笔记</string>
+    <string name="schedule_hour">小时</string>
+    <string name="schedule_minute">分钟</string>
+    <string name="schedule_save">储存</string>
+    <string name="schedule_del">删除</string>
+    <string name="addScheduleInfo">新增议程</string>
+    <string name="btnSave">储存</string>
+    <string name="btnClear">清除所有</string>
+    <string name="btnDel">删除</string>
+
+    <!--  -->
+    <string name="note_successful">成功储存议程</string>
+    <string name="ask_clear_note">确定要清除笔记吗?</string>
+    <string name="ask_schedule">相同时间已储存了另一个议程，继续储存?</string>
+    <string name="not_title">标题不能为空</string>
+    <string name="schedule_label_exhibitor">展商</string>
+    <string name="schedule_label_event">活动</string>
+    <string name="global_head_tag">热门标签</string>
 </resources>

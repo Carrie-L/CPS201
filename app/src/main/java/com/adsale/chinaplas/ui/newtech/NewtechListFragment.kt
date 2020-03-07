@@ -62,7 +62,7 @@ class NewtechListFragment : Fragment() {
             }
         }
 
-        adHelper = ADHelper.getInstance(requireActivity().application)
+        adHelper = ADHelper.getInstance()
         d7List = adHelper.d7List()
         LogUtil.i("d7List= ${d7List.size}")
 
@@ -139,10 +139,6 @@ class NewtechListFragment : Fragment() {
         })
     }
 
-    private fun showD7() {
-        adHelper.d7List()
-    }
-
     private fun initView() {
         recyclerView = binding.rvNewTech
         recyclerView.setHasFixedSize(true)
@@ -164,10 +160,6 @@ class NewtechListFragment : Fragment() {
             findNavController().navigate(NewtechListFragmentDirections.actionNewtechListFragmentToNewtechDetailFragment(
                 entity.RID))
         }
-
-    }
-
-    private fun getFilterArgs() {
 
     }
 

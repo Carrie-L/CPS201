@@ -119,6 +119,10 @@ class MainActivity : AppCompatActivity() {
         initDrawer()
         bottomNav()
 
+        binding.main.etSearch.setOnClickListener {
+            navController.navigate(R.id.globalSearchFragment)
+        }
+
     }
 
 //    protected abstract fun initView()
@@ -443,8 +447,6 @@ class MainActivity : AppCompatActivity() {
                     R.id.filterZoneFragment,
                     R.id.myLoginedFragment,
                     R.id.myExhibitorFragment,
-                    R.id.myScheduleFragment,
-                    R.id.editScheduleFragment,
                     R.id.exhibitorHistotyFragment,
                     R.id.eventSeminarFragment,
                     R.id.seminarDetailFragment,
@@ -453,7 +455,9 @@ class MainActivity : AppCompatActivity() {
                     R.id.newtechFilterFragment,
                     R.id.newtechDetailFragment,
                     R.id.newtechDetailADFragment,
-                    R.id.imageFragment
+                    R.id.imageFragment,
+                    R.id.scheduleFragment,
+                    R.id.scheduleEditFragment
                 ), drawerLayout
             )
         setupActionBarWithNavController(navController, appBarConfiguration)

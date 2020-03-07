@@ -1,228 +1,112 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <meta charset="utf-8"/>
     <title></title>
     <style>
-	<link rel="stylesheet" type="text/css" href="../font-icons.css">
+
 * {
 	margin: 0;
 	padding: 0;
 	list-style-type: none;
 }
-*, *::before, *::after {
-	box-sizing: border-box;
+
+/* @media all and (min-width:576px) */
+.container {
+	max-width: 480px;
 }
 
-.container {
-	width: 100%;
-	padding-right: 15px;
-	padding-left: 15px;
-	margin-right: auto;
-	margin-left: auto;
-}
-
-.container {
+div[class*='col'] {
 	padding-left: 0px;
 	padding-right: 0px;
 }
-.p_top_20 {
-	padding-top: 20px;
+
+body {
+	margin: 0;
+	font-family: -apple-system,Roboto,Arial,sans-serif;
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.5;
+	color: #212529;
+	text-align: left;
+	background-color: #fff;
 }
-.p_bottom_20 {
-	padding-bottom: 20px;
+
+table {
+	border-collapse: collapse;
 }
+
+.table {
+	width: 100%;
+	max-width: 100%;
+	margin-bottom: 1rem;
+	background-color: transparent;
+}
+
+.table th, .table td {
+	padding: 0.75rem;
+	vertical-align: top;
+	border-top: 1px solid #dee2e6;
+}
+.i_info_tab td {
+	font-size: 18px;
+	color: #2e2e2e;
+	border-bottom: 1px solid #d3d3d6;
+}
+.i_info_tab {
+	border: 1px solid #d3d3d6;
+}
+.m_top_20 {
+	margin-top: 20px;
+}
+.m_left {
+	margin-left: 10px;
+}
+.i_info_td_left {
+	background: #e9e7ef;
+	font-weight: bold;
+}
+.i_info_tdtop_s {
+	padding-top: 10px !important;
+	padding-bottom: 0px !important;
+}
+
 .i_tit_24 {
-	font-size: 20px;
+	font-size: 24px;
 	font-weight: bold;
 	color: #402656;
 }
-.p_top_10 {
-	padding-top: 10px;
-}
-.c_width_100 {
-	width: 100%;
-}
-.i_news_list {
-	font-size: 16px;
-	padding: 5px 0;
-	line-height: 26px;
-}
-.i_news_list {
-	color: #2e2e2e;
-	font-size: 14px;
-}
-.i_tit_icon_16 {
-	font-size: 16px;
-	color: #666666;
-	padding-top: 8px;
-}
-.c_icon_li {
-	padding-right: 10px;
-}
-.i_color_purple {
-	color: #402656;
-}
-[class^='icon-'], [class*=' icon-'] {
-	font-family: "lined-icons-CPS20" !important;
-	speak: none;
-	font-style: normal;
-	font-weight: normal;
-	font-variant: normal;
-	text-transform: none;
-	line-height: 1;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-}
-.i_line_w {
-	width: 100%;
-	height: 1px;
-	display: block;
-}
-.i_bg_d5d5 {
-	background: #d5d5d6;
-}
-
-
-
 
 
     </style>
 </head>
 <body>
 
-<div class=" m_left_10 m_right_10">
-    <div class="row col-12 i_tit_24">
-        <div><span class="icon-uniE703 c_icon_li i_tit_icon_16 i_color_purple">&nbsp;</span>Machinery
-            &amp; Equipment
-        </div>
+
+<div class="i_tit_24 m_top_20 m_left">The 34th International Exhibition on Plastics and Rubber
+    Industries
     </div>
-    <div class="row p_top_10 ">
-        <div class="col-lg-4 col-md-6 col-12 ">
-            <div class="row">
-                <div class="i_news_list c_width_100 "><span
-                        class="icon-a-dot-mid c_icon_li">&nbsp;</span>3D Technologies
-                </div>
-                <div class="i_news_list c_width_100 "><span
-                        class="icon-a-dot-mid c_icon_li">&nbsp;</span>Ancillary Equipment
-                </div>
-                <div class="i_news_list c_width_100 "><span
-                        class="icon-a-dot-mid c_icon_li">&nbsp;</span>Blow Molding Machines
-                </div>
-                <div class="i_news_list c_width_100 "><span
-                        class="icon-a-dot-mid c_icon_li">&nbsp;</span>Extruders &amp; Extrusion
-                    Lines
-                </div>
-                <div class="i_news_list c_width_100 "><span
-                        class="icon-a-dot-mid c_icon_li">&nbsp;</span>Injection Molding Machines
-                </div>
-                <div class="i_news_list c_width_100 "><span
-                        class="icon-a-dot-mid c_icon_li">&nbsp;</span>Integrated Automation
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-6 col-12 ">
-            <div class="row">
-                <div class="i_news_list c_width_100 "><span
-                        class="icon-a-dot-mid c_icon_li">&nbsp;</span>Machines &amp; Equipment for
-                    Preprocessing and Recycling
-                </div>
-                <div class="i_news_list c_width_100 "><span
-                        class="icon-a-dot-mid c_icon_li">&nbsp;</span>Machinery &amp; Plant for
-                    Finishing, Decorating, Printing &amp; Marking
-                </div>
-                <div class="i_news_list c_width_100 "><span
-                        class="icon-a-dot-mid c_icon_li">&nbsp;</span>Machinery for Foam, Reactive
-                    or Reinforced Resins
-                </div>
-                <div class="i_news_list c_width_100 "><span
-                        class="icon-a-dot-mid c_icon_li">&nbsp;</span>Measuring &amp; Testing
-                    Equipment
-                </div>
-                <div class="i_news_list c_width_100 "><span
-                        class="icon-a-dot-mid c_icon_li">&nbsp;</span>Mould &amp; Die, Hot Runner
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-6 col-12 ">
-            <div class="row">
-                <div class="i_news_list c_width_100 "><span
-                        class="icon-a-dot-mid c_icon_li">&nbsp;</span>Other Processing Machines
-                </div>
-                <div class="i_news_list c_width_100 "><span
-                        class="icon-a-dot-mid c_icon_li">&nbsp;</span>Parts &amp; Components
-                </div>
-                <div class="i_news_list c_width_100 "><span
-                        class="icon-a-dot-mid c_icon_li">&nbsp;</span>Post Processing Machines
-                </div>
-                <div class="i_news_list c_width_100 "><span
-                        class="icon-a-dot-mid c_icon_li">&nbsp;</span>Presses Machines
-                </div>
-                <div class="i_news_list c_width_100 "><span
-                        class="icon-a-dot-mid c_icon_li">&nbsp;</span>Welding Machines
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row col-12 p_top_20 p_bottom_20"><span class="i_line_w i_bg_d5d5">&nbsp;</span>
-    </div>
-    <div class="row col-12 i_tit_24">
-        <div><span class="icon-uniE703 c_icon_li i_tit_icon_16 i_color_purple">&nbsp;</span>Raw
-            Materials, Auxiliaries
-        </div>
-    </div>
-    <div class="row p_top_10 ">
-        <div class="col-lg-4 col-md-6 col-12 ">
-            <div class="row">
-                <div class="i_news_list c_width_100 "><span
-                        class="icon-a-dot-mid c_icon_li">&nbsp;</span>Additives, Adhesives &amp;
-                    Glues, Fillers
-                </div>
-                <div class="i_news_list c_width_100 "><span
-                        class="icon-a-dot-mid c_icon_li">&nbsp;</span>Bioplastics &amp; Degradable
-                </div>
-                <div class="i_news_list c_width_100 "><span
-                        class="icon-a-dot-mid c_icon_li">&nbsp;</span>Coating Compounds, Foams &amp;
-                    Intermediates
-                </div>
-                <div class="i_news_list c_width_100 "><span
-                        class="icon-a-dot-mid c_icon_li">&nbsp;</span>Colour Pigments &amp;
-                    Masterbatches
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-6 col-12 ">
-            <div class="row">
-                <div class="i_news_list c_width_100 "><span
-                        class="icon-a-dot-mid c_icon_li">&nbsp;</span>Engineering Plastics
-                </div>
-                <div class="i_news_list c_width_100 "><span
-                        class="icon-a-dot-mid c_icon_li">&nbsp;</span>General Plastics
-                </div>
-                <div class="i_news_list c_width_100 "><span
-                        class="icon-a-dot-mid c_icon_li">&nbsp;</span>Recycled Plastics
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-6 col-12 ">
-            <div class="row">
-                <div class="i_news_list c_width_100 "><span
-                        class="icon-a-dot-mid c_icon_li">&nbsp;</span>Reinforced Fibres / Materials
-                    &amp; Composites
-                </div>
-                <div class="i_news_list c_width_100 "><span
-                        class="icon-a-dot-mid c_icon_li">&nbsp;</span>Rubbers &amp; TPE
-                </div>
-                <div class="i_news_list c_width_100 "><span
-                        class="icon-a-dot-mid c_icon_li">&nbsp;</span>Semi-finished Products
-                </div>
-            </div>
-        </div>
-    </div>
+<table class="table i_info_tab m_top_20">
+    <tbody>
+    <tr>
+        <td class="i_info_td_left i_info_tdtop_s">Date</td>
+        <td class="i_info_td_line">3-6 August, 2020</td>
+    </tr>
+    <tr>
+        <td class="i_info_td_left i_info_tdtop_s">Opening Hours</td>
+        <td class="i_info_td_line">09:30-17:30</td>
+    </tr>
+    <tr>
+        <td class="i_info_td_left i_info_tdtop_s">Venue</td>
+        <td class="i_info_td_line">National Exhibition and Convention Center, Hongqiao, Shanghai
+            (NECC) (No.333 Songze Avenue Road, Qingpu District, Shanghai, PR China)
+        </td>
+    </tr>
+    </tbody>
+</table>
 </div>
 
 
 </body>
+
 </html>

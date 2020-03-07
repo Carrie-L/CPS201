@@ -8,7 +8,6 @@ import androidx.room.PrimaryKey
  */
 @Entity
 class SeminarSpeaker {
-    @PrimaryKey
     var EventID: Int = 0
     var CompanyID: String? = ""
     var Seminarsummary: String? = ""
@@ -22,7 +21,10 @@ class SeminarSpeaker {
     var Email: String? = ""
     var Tel: String? = ""
     var LangID: String? = ""
-    var ID: Int? = 0
+    @PrimaryKey
+    var ID: Int = 0
+
+
 
     fun parser(strings: Array<String>) {
         this.EventID = Integer.valueOf(strings[0])
@@ -39,5 +41,9 @@ class SeminarSpeaker {
         this.Tel = strings[11]
         this.LangID = strings[12]
         this.ID = Integer.valueOf(strings[13])
+    }
+
+    override fun toString(): String {
+        return "SeminarSpeaker(EventID=$EventID, SpeakerName=$SpeakerName, Language=$Language)"
     }
 }

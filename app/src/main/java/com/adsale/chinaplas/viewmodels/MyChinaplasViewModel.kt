@@ -13,7 +13,6 @@ import kotlinx.coroutines.*
 import okhttp3.FormBody
 import okhttp3.MediaType
 import okhttp3.RequestBody
-import java.lang.Exception
 
 /**
  * Created by Carrie on 2019/12/31.
@@ -264,7 +263,7 @@ class MyChinaplasViewModel : ViewModel() {
                 .add("Handler", "GetCode")
                 .add("showid", "523")
                 .add("CellNum", phoneNo.value!!)
-                .add("RLang", getLangStr())
+                .add("RLang", getLangCode())
                 .build()
             val result = CpsApi.mcService.sendSmsCodeAsync(body).await().string()
             i("sendCode = $result")

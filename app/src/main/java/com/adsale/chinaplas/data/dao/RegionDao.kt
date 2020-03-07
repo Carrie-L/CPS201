@@ -17,14 +17,14 @@ interface RegionDao {
     fun deleteCountryAll()
 
     //    @Query("select CountryID,CountrySC,SortSC from Country order by SortSC")
-    @Query("SELECT C.CountryID,C.CountrySC,C.SortSC FROM Country C, EXHIBITOR E WHERE E.CountryID = C.CountryID GROUP BY C.CountryID ORDER BY SortSC")
+    @Query("SELECT C.* FROM Country C, EXHIBITOR E WHERE E.CountryID = C.CountryID GROUP BY C.CountryID ORDER BY SortSC")
     fun getAllCountriesSC(): MutableList<Country>
 
     //    @Query("select C.CountryID,C.CountryTC,C.SortTC from Country order by CAST(SortTC AS INT)")
-    @Query("SELECT C.CountryID,C.CountryTC,C.SortTC FROM Country C, EXHIBITOR E WHERE E.CountryID = C.CountryID GROUP BY C.CountryID ORDER BY CAST(SortTC AS INT)")
+    @Query("SELECT C.* FROM Country C, EXHIBITOR E WHERE E.CountryID = C.CountryID GROUP BY C.CountryID ORDER BY CAST(SortTC AS INT)")
     fun getAllCountriesTC(): MutableList<Country>
 
     //    @Query("select CountryID,CountryEng,SortEN from Country order by SortEN")
-    @Query("select C.CountryID,C.CountryEng,C.SortEN FROM Country C, EXHIBITOR E WHERE E.CountryID = C.CountryID GROUP BY C.CountryID order by SortEN")
+    @Query("select C.* FROM Country C, EXHIBITOR E WHERE E.CountryID = C.CountryID GROUP BY C.CountryID order by SortEN")
     fun getAllCountriesEN(): MutableList<Country>
 }

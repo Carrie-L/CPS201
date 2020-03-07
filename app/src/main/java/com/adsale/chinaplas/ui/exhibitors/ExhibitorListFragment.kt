@@ -9,7 +9,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.Observer
@@ -285,12 +284,12 @@ class ExhibitorListFragment : Fragment() {
         val snapHelper = PagerSnapHelper()
         snapHelper.attachToRecyclerView(rvD3)
 
-        val adHelper = ADHelper.getInstance(requireActivity().application)
+        val adHelper = ADHelper.getInstance()
 
-        val params = ConstraintLayout.LayoutParams(getScreenWidth(), adHelper.getADHeight())
-        params.bottomToBottom = ConstraintLayout.LayoutParams.MATCH_CONSTRAINT
-        params.topToBottom = R.id.rv_exhibitor
-        rvD3.layoutParams = params
+//        val params = ConstraintLayout.LayoutParams(getScreenWidth(), adHelper.getADHeight())
+//        params.bottomToBottom = ConstraintLayout.LayoutParams.MATCH_CONSTRAINT
+//        params.topToBottom = R.id.rv_exhibitor
+//        rvD3.layoutParams = params
 
         val list = adHelper.d3Property()
         val adapter = ADScrollAdapter(list, OnItemClickListener { entity, pos ->

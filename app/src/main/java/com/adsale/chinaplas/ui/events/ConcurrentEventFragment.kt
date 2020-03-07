@@ -15,8 +15,9 @@ import com.adsale.chinaplas.data.dao.CpsDatabase
 import com.adsale.chinaplas.data.dao.EventRepository
 import com.adsale.chinaplas.databinding.FragmentConcurrentEventBinding
 import com.adsale.chinaplas.ui.exhibitors.APPLICATION_EVENT
-import com.adsale.chinaplas.utils.getLangCode
-import com.adsale.chinaplas.utils.getSPEventFilter
+import com.adsale.chinaplas.ui.view.HELP_EVENT_LIST
+import com.adsale.chinaplas.ui.view.HelpDialog
+import com.adsale.chinaplas.utils.*
 import com.adsale.chinaplas.viewmodels.EventViewModel
 import com.adsale.chinaplas.viewmodels.EventViewModelFactory
 import com.baidu.speech.utils.LogUtil
@@ -27,6 +28,7 @@ import com.baidu.speech.utils.LogUtil
 class ConcurrentEventFragment : Fragment() {
     private lateinit var binding: FragmentConcurrentEventBinding
     private lateinit var eventViewModel: EventViewModel
+    //    private lateinit var recyclerView: RecyclerView
     private lateinit var viewPager: ViewPager
     private lateinit var mView: View
 
@@ -37,6 +39,13 @@ class ConcurrentEventFragment : Fragment() {
     ): View? {
         binding = FragmentConcurrentEventBinding.inflate(inflater, container, false)
         viewPager = binding.eventViewPager
+//        recyclerView = binding.eventTabRecyclerView
+//        val layoutManager = LinearLayoutManager(requireContext())
+//        layoutManager.orientation = LinearLayoutManager.HORIZONTAL
+//        recyclerView.layoutManager = layoutManager
+//        recyclerView.setHasFixedSize(true)
+//        val snapHelper = PagerSnapHelper()
+//        snapHelper.attachToRecyclerView(recyclerView)
         LogUtil.i("onCreateView")
         mView = binding.root
         return mView
@@ -47,8 +56,9 @@ class ConcurrentEventFragment : Fragment() {
         LogUtil.i("onActivityCreated")
         initedData()
 
-        eventViewModel.barClick.observe(this, Observer {
+        eventViewModel.barClick.observe(viewLifecycleOwner, Observer {
             viewPager.currentItem = it
+//            recyclerView.smoothScrollToPosition(it)
         })
 
         onFilter()
@@ -75,7 +85,6 @@ class ConcurrentEventFragment : Fragment() {
         fragments.add(threeFragment)
         fragments.add(fourFragment)
 
-        viewPager.offscreenPageLimit = 1
         val adapter = EventPagerAdapter(childFragmentManager, fragments)
         viewPager.adapter = adapter
         viewPager.currentItem = 0
@@ -92,13 +101,20 @@ class ConcurrentEventFragment : Fragment() {
             }
 
             override fun onPageSelected(position: Int) {
+                setEventTabIndex(position)
                 eventViewModel.barClick.value = position
             }
         })
+
+        helpPage()
     }
 
     private fun onFilter() {
         binding.ivFilter.setOnClickListener {
+            val barClickIndex = eventViewModel.barClick.value
+            LogUtil.i("barClickIndex=$barClickIndex")
+            setEventTabIndex(barClickIndex!!)
+
             val action = EventSeminarFragmentDirections.actionEventSeminarFragmentToFilterApplicationFragment(
                 APPLICATION_EVENT)
             Navigation.findNavController(mView).navigate(action)
@@ -109,11 +125,14 @@ class ConcurrentEventFragment : Fragment() {
         super.onResume()
         LogUtil.i("onResume")
 
+        val barClickIndex = getEventTabIndex()
+        LogUtil.i("onResume: barClickIndex=$barClickIndex")
+        eventViewModel.barClick.value = barClickIndex
+
         getLangCode()
-        val eventFilters = getSPEventFilter()
+        val eventFilters = getSPEventFilter().replace("[", "").replace("]", "")
         if (eventFilters.isNotEmpty()) {
             LogUtil.i("eventFilters=$eventFilters")
-
             eventViewModel.getOverallEvents()
         }
 
@@ -130,6 +149,12 @@ class ConcurrentEventFragment : Fragment() {
     }
 
 
+//    inner class EventTabAdapter(list: List<ConcurrentEvent>) : CpsBaseAdapter<Fragment>(list, null) {
+//        override fun getLayoutIdForPosition(position: Int): Int {
+//            return R.layout.item_event_wrap_list
+//        }
+//    }
+
     class EventPagerAdapter constructor(
         fm: FragmentManager,
         private val fragments: List<Fragment>
@@ -141,6 +166,15 @@ class ConcurrentEventFragment : Fragment() {
 
         override fun getCount(): Int {
             return fragments.size
+        }
+    }
+
+    private fun helpPage() {
+        binding.ivHelper.setOnClickListener {
+            val helpDialog = HelpDialog.getInstance(HELP_EVENT_LIST)
+            requireActivity().supportFragmentManager.inTransaction {
+                helpDialog.show(fragmentManager!!, "Help")
+            }
         }
     }
 

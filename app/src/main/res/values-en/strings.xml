@@ -12,7 +12,7 @@
     <string name="calendar_location">National Exhibition and Convention Center, Hongqiao, Shanghai (NECC) (No.333 Songze Avenue Road, Qingpu District, Shanghai, PR China)</string>
 
     <string name="menu_home">Home</string>
-    <string name="menu_download_center">Download Center</string>
+    <string name="menu_download_center">Show Booklets Download</string>
     <string name="menu_subscribe">Subscribe eNewsletter</string>
     <string name="menu_calendar">Add to Calendar</string>
     <string name="menu_follow">Follow Us</string>
@@ -74,7 +74,7 @@
     <string name="reg_next">Next</string>
     <string name="error_verify_code_incorrect">Code not correct</string>
     <string name="reg_product">Major Product / Service</string>
-    <string name="reg_service0">Category for Business Product/ Service</string>
+    <string name="reg_service0">Business Products / Services</string>
 
     <string name="reg_help_name">Please fill in your true identity information, otherwise your admission may be rejected.</string>
     <string name="reg_help_pwd">Your password should be 8 characters long and contain at least one English alphabet and one number.</string>
@@ -343,6 +343,7 @@ Adsale Exhibition Services Ltd., the Organiser, reserves the rights to issue the
     <string name="event_tab_all">All</string>
     <string name="seminar_pm">PM</string>
     <string name="seminar_am">AM</string>
+    <string name="seminar_room_btn">Location Map</string>
 
     <!-- 技術交流會詳情頁 -->
     <string name="title_technical_seminar">Technical Seminar</string>
@@ -365,5 +366,30 @@ Adsale Exhibition Services Ltd., the Organiser, reserves the rights to issue the
     <string name="filter_product">Product</string>
     <string name="filter_applications">Applications</string>
     <string name="new_tec_ad">Ad Product</string>
+    <string name="reg_service_select_title">请输入公司从事业务/行业为 (可选多项)</string>
 
+
+    <!-- 我的日程 -->
+    <!--    <string name="ScheduleInfo_lable">Agenda %1$s:</string>-->
+    <!--    <string name="ScheduleInfo_startTime">Date:%1$s</string>-->
+    <string name="schedule_title">Title</string>
+    <string name="schedule_location">Location</string>
+    <string name="schedule_startTime">Date</string>
+    <string name="schedule_length">Duration</string>
+    <string name="schedule_note">Note</string>
+    <string name="schedule_hour">hour</string>
+    <string name="schedule_minute">minutes</string>
+    <string name="schedule_save">Save</string>
+    <string name="schedule_del">Delete</string>
+    <string name="addScheduleInfo">Add Schedule</string>
+    <string name="btnSave">Save</string>
+    <string name="btnClear">Clear All</string>
+    <string name="btnDel">Delete</string>
+    <string name="note_successful">Schedule saved successfully</string>
+    <string name="ask_clear_note">Do you want to clear all notes?</string>
+    <string name="ask_schedule">Another meeting is saved at the same time. Continue to save?</string>
+    <string name="not_title">Title cannot be empty</string>
+    <string name="schedule_label_exhibitor">Exhibitor</string>
+    <string name="schedule_label_event">Event</string>
+    <string name="global_head_tag">Hot tag</string>
 </resources>

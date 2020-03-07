@@ -1,6 +1,5 @@
 package com.adsale.chinaplas.data.dao
 
-import androidx.databinding.ObservableBoolean
 import androidx.databinding.ObservableInt
 import androidx.room.Entity
 import androidx.room.Ignore
@@ -24,7 +23,11 @@ data class ExhibitorHistory(
     var time: String? = "",
     var count: Int? = 0
 ) {
+    @Transient
+    @Ignore
+    var frequency = 0
 
+    @Transient
     @Ignore
     var isTypeLabel = ObservableInt(-1)  // -1 不是label.  1 今天， 2 昨天， 3 过去
 

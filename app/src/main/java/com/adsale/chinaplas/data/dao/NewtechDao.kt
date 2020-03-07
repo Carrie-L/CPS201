@@ -7,18 +7,22 @@ import androidx.sqlite.db.SupportSQLiteQuery
 interface NewtechDao {
 
 
-    @Query("select N.RID,N.CompanyID,N.BoothNo,N.CompanyNameSc,N.Product_Name_SC,N.Rroduct_Description_SC,I.Image_File AS imageName from NewtechProductInfo N, NewtechProductImage I WHERE N.RID=I.RID and N.Product_Name_SC IS NOT NULL and N.Product_Name_SC<>'' order by N.RID")
+    @Query("select N.*,I.Image_File AS imageName from NewtechProductInfo N, NewtechProductImage I WHERE N.RID=I.RID and N.Product_Name_SC IS NOT NULL and N.Product_Name_SC<>'' order by N.RID")
     fun getAllProductInfoListSC(): MutableList<NewtechProductInfo>
 
-    @Query("select N.RID,N.CompanyID,N.BoothNo,N.CompanyNameTc,N.Product_Name_TC,N.Rroduct_Description_TC,I.Image_File AS imageName from NewtechProductInfo N, NewtechProductImage I WHERE N.RID=I.RID and N.Product_Name_TC IS NOT NULL and N.Product_Name_TC<>'' order by N.RID")
+    @Query("select N.*,I.Image_File AS imageName from NewtechProductInfo N, NewtechProductImage I WHERE N.RID=I.RID and N.Product_Name_TC IS NOT NULL and N.Product_Name_TC<>'' order by N.RID")
     fun getAllProductInfoListTC(): MutableList<NewtechProductInfo>
 
-    @Query("select N.RID,N.CompanyID,N.BoothNo,N.CompanyNameEn,N.Product_Name_EN,N.Rroduct_Description_EN,I.Image_File AS imageName from NewtechProductInfo N, NewtechProductImage I WHERE N.RID=I.RID and N.Product_Name_EN IS NOT NULL and N.Product_Name_EN<>'' order by N.RID")
+    @Query("select N.*,I.Image_File AS imageName from NewtechProductInfo N, NewtechProductImage I WHERE N.RID=I.RID and N.Product_Name_EN IS NOT NULL and N.Product_Name_EN<>'' order by N.RID")
     fun getAllProductInfoListEN(): MutableList<NewtechProductInfo>
 
     /*filter*/
     @RawQuery
     fun getFilterList(query: SupportSQLiteQuery): MutableList<NewtechProductInfo>
+
+    @Query("select RID,CompanyID,Product_Name_EN,Product_Name_SC,Product_Name_TC,CompanyNameEn,CompanyNameSc,CompanyNameTc,BoothNo FROM NewtechProductInfo where  Product_Name_EN like:keyword or  Product_Name_SC like:keyword or  Product_Name_TC like:keyword or  CompanyNameEn like:keyword or  CompanyNameTc like:keyword or  CompanyNameSc like:keyword or  BoothNo like:keyword or  Rroduct_Description_SC like:keyword or Rroduct_Description_EN like:keyword or  Rroduct_Description_TC like:keyword order by RID")
+    fun searchNewtech(keyword: String): MutableList<NewtechProductInfo>
+
 
     /* ------- Detail ---------- */
     @Query("select N.*,I.Image_File AS imageName from NewtechProductInfo N, NewtechProductImage I WHERE N.RID=:rid AND N.RID=I.RID and N.Product_Name_EN IS NOT NULL and N.Product_Name_EN<>''  order by N.RID")

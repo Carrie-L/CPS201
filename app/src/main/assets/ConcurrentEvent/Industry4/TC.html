@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="zh-TW">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <style>
+* {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+*, *::before, *::after {
+	box-sizing: border-box;
+}
+.container {
+	width: 100%;
+	padding-right: 15px;
+	padding-left: 15px;
+	margin-right: auto;
+	margin-left: auto;
+}
+.col-1, .col-2, .col-3, .col-4, .col-5, .col-s5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12, .col, .col-auto, .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm, .col-sm-auto, .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12, .col-md, .col-md-auto, .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg, .col-lg-auto, .col-xl-1, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl, .col-xl-auto {
+	position: relative;
+	width: 100%;
+	min-height: 1px;
+	padding-right: 15px;
+	padding-left: 15px;
+}
+.col-6 {
+	-webkit-box-flex: 0;
+	-ms-flex: 0 0 50%;
+	flex: 0 0 50%;
+	max-width: 50%;
+}
+.text-center {
+	text-align: center !important;
+}
+/* @media all and (max-width:576px) */
+.container, .full-header#header .container, .container-fullwidth {
+	width: 100% !important;
+}
+.container {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+.col-12 {
+	-webkit-box-flex: 0;
+	-ms-flex: 0 0 100%;
+	flex: 0 0 100%;
+	max-width: 100%;
+}
+.row {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	margin-right: -15px;
+	margin-left: -15px;
+}
+.row {
+	margin-left: 0px;
+	margin-right: 0px;
+}
+.p_top_20 {
+	padding-top: 20px;
+}
+.p_bottom_20 {
+	padding-bottom: 20px;
+}
+.m_bottom_30 {
+	margin-bottom: 30px;
+}
+.i_bg_fff {
+	background: #ffffff;
+	border-radius: 4px;
+}
+.i_vindustry_video {
+	background: #f8f8f6;
+}
+#content .container {
+	position: relative;
+}
+.m_left_10 {
+	margin-left: 10px;
+}
+.m_right_10 {
+	margin-right: 10px;
+}
+.i_content_bg {
+	background: #f2f3f5;
+}
+.col_full {
+	width: 100%;
+}
+.postcontent, .sidebar, .col_full, .col_half, .col_one_third, .col_two_third, .col_three_fourth, .col_one_fourth, .col_one_fifth, .col_two_fifth, .col_three_fifth, .col_four_fifth, .col_one_sixth, .col_five_sixth {
+	display: block;
+	position: relative;
+	margin-right: 4%;
+	margin-bottom: 50px;
+	float: left;
+}
+.col_full {
+	clear: both;
+	float: none;
+	margin-right: 0px;
+}
+/* @media all and (max-width:1249px) */
+.postcontent, .postcontent.bothsidebar, .sidebar, .col_full, .col_half, .col_one_third, .col_two_third, .col_three_fourth, .col_one_fourth, .col_one_fifth, .col_two_fifth, .col_three_fifth, .col_four_fifth, .col_one_sixth, .col_five_sixth {
+	width: 100%;
+	margin-right: 0px;
+	float: none;
+	margin-bottom: 50px !important;
+}
+/* @media all and (max-width:768px) */
+.postcontent, .postcontent.bothsidebar, .sidebar, .col_full, .col_half, .col_one_third, .col_two_third, .col_three_fourth, .col_one_fourth, .col_one_fifth, .col_two_fifth, .col_three_fifth, .col_four_fifth, .col_one_sixth, .col_five_sixth {
+	width: 100%;
+	margin-right: 0px;
+	float: none;
+	margin-bottom: 50px !important;
+}
+.m_bottom_10 {
+	margin-bottom: 10px;
+}
+.i_tit_18 {
+	font-size: 18px;
+	font-weight: bold;
+	color: #2e2e2e;
+}
+ol, ul, dl {
+	margin-top: 0px;
+	margin-bottom: 1rem;
+}
+dl, dt, dd, ol, ul, li {
+	margin: 0;
+	padding: 0;
+}
+p {
+	margin-top: 0px;
+	margin-bottom: 1rem;
+}
+p, pre, ul, ol, dl, dd, blockquote, address, table, fieldset, form {
+	margin-bottom: 30px;
+}
+ul {
+	margin-bottom: 0px;
+}
+.p_bottom_10 {
+	padding-bottom: 10px;
+}
+.align-self-center {
+	-ms-flex-item-align: center !important;
+	align-self: center !important;
+}
+.i_industry_sortbg {
+	padding-bottom: 20px;
+}
+.card-body {
+	-webkit-box-flex: 1;
+	-ms-flex: 1 1 auto;
+	flex: 1 1 auto;
+	padding: 1.25rem;
+}
+.card-body {
+	background: #e8e8e8;
+}
+.i_card_bgcolor {
+	background: #fff;
+	padding: 5px 0;
+}
+div[class*='col'] {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+article, aside, dialog, figcaption, figure, footer, header, hgroup, main, nav, section {
+	display: block;
+}
+.p_top_30 {
+	padding-top: 30px;
+}
+#content {
+	position: relative;
+	overflow: hidden;
+	background-color: #f2f3f5;
+}
+#wrapper {
+	position: relative;
+	float: none;
+	width: 1220px;
+	margin: 0 auto;
+	box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+	-moz-box-shadow: 0 0 10px rgba(0,0,0,0.1);
+	-webkit-box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+/* @media all and (max-width:992px) */
+#wrapper {
+	width: 100%;
+	margin: 0;
+	box-shadow: none;
+}
+/* @media all and (max-width:768px) */
+#wrapper {
+	width: 100% !important;
+}
+.stretched #wrapper {
+	width: 100%;
+	margin: 0;
+	box-shadow: none;
+}
+body:not(.no-transition) #wrapper, .animsition-overlay {
+	position: relative;
+	opacity: 0;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+}
+.wsmenucontainer {
+	background-size: cover;
+	overflow: hidden;
+	background-attachment: fixed;
+	background-position: 50% 0;
+	background-repeat: no-repeat;
+}
+/* @media only screen and (max-width:1255px) */
+.wsmenucontainer {
+	background-attachment: local;
+	background-position: 33% 0%;
+}
+/* @media only screen and (max-width:1255px) */
+.wsmenucontainer {
+	-webkit-transition: all 0.25s ease-in-out;
+	-moz-transition: all 0.25s ease-in-out;
+	-o-transition: all 0.25s ease-in-out;
+	-ms-transition: all 0.25s ease-in-out;
+	transition: all 0.25s ease-in-out;
+}
+.wsmenucontainer {
+	background-color: #fff;
+}
+body {
+	margin: 0;
+	font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.5;
+	color: #212529;
+	text-align: left;
+	background-color: #fff;
+}
+body, .dropdown-menu {
+	font-size: 0.87rem;
+}
+body {
+	line-height: 1.5;
+	color: #000;
+	font-family: "Lato","Arial",sans-serif;
+}
+/* @media all and (max-width:768px) */
+body {
+	padding: 0 !important;
+}
+/* @media only screen and (max-width:1255px) */
+body {
+	height: 100%;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+body {
+	font-family: "Microsoft Yahei",Arial,Helvetica,Arial,sans-serif !important;
+	color: #2e2e2e !important;
+	font-size: 16px;
+}
+body, small, #primary-menu ul ul li > a, .wp-caption, .feature-box.fbox-center.fbox-italic p, .skills li .progress-percent .counter, .nav-tree ul ul a {
+	font-family: "Microsoft Yahei",Arial,Helvetica,Arial,sans-serif !important;
+	color: #2e2e2e;
+	font-size: 16px;
+}
+body {
+	line-height: 1.5;
+	font-size: 1rem;
+}
+body.is-canvi-ready {
+	overflow-x: hidden;
+}
+html {
+	font-family: sans-serif;
+	line-height: 1.15;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	-ms-overflow-style: scrollbar;
+	-webkit-tap-highlight-color: transparent;
+}
+/* @media only screen and (max-width:1255px) */
+html {
+	-webkit-overflow-scrolling: touch;
+}
+:root {
+	--blue:  #007bff;
+	--indigo:  #6610f2;
+	--purple:  #6f42c1;
+	--pink:  #e83e8c;
+	--red:  #dc3545;
+	--orange:  #fd7e14;
+	--yellow:  #ffc107;
+	--green:  #28a745;
+	--teal:  #20c997;
+	--cyan:  #17a2b8;
+	--white:  #fff;
+	--gray:  #6c757d;
+	--gray-dark:  #343a40;
+	--primary:  #007bff;
+	--secondary:  #6c757d;
+	--success:  #28a745;
+	--info:  #17a2b8;
+	--warning:  #ffc107;
+	--danger:  #dc3545;
+	--light:  #f8f9fa;
+	--dark:  #343a40;
+	--breakpoint-xs:  0;
+	--breakpoint-sm:  576px;
+	--breakpoint-md:  768px;
+	--breakpoint-lg:  1250px;
+	--font-family-sans-serif:  -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+	--font-family-monospace:  SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+:root {
+	--home:  #FF8600;
+	--travel:  #6f42c1;
+	--tech:  #007bff;
+	--fashion:  #e83e8c;
+	--sports:  #dc3545;
+	--lifestyle:  #13a774;
+	--food:  #17a2b8;
+	--market:  #ffc107
+;
+}
+.justify-content-center {
+	-webkit-box-pack: center !important;
+	-ms-flex-pack: center !important;
+	justify-content: center !important;
+}
+.m_top_10 {
+	margin-top: 10px;
+}
+/* @media screen and (max-width:1199px) */
+.i_industry_rowbg {
+	background: #e9e9e9;
+}
+h1, h2, h3, h4, h5, h6 {
+	margin-top: 0px;
+	margin-bottom: 0.5rem;
+}
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+	margin-bottom: 0.5rem;
+	font-family: inherit;
+	font-weight: 500;
+	line-height: 1.2;
+	color: inherit;
+}
+h3, .h3 {
+	font-size: 1.75rem;
+}
+h5, .h5 {
+	font-size: 1.25rem;
+}
+h1, h2, h3, h4, h5, h6 {
+	color: #444;
+	font-weight: 600;
+	line-height: 1.5;
+	margin: 0 0 30px 0;
+	font-family: "Raleway","Arial",sans-serif;
+}
+h3 {
+	font-size: 24px;
+}
+/* @media all and (max-width:768px) */
+h3 {
+	font-size: 20px;
+}
+h5, h6 {
+	font-weight: bold;
+}
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+	margin-bottom: 0px !important;
+}
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+	margin-bottom: 0px;
+}
+h1, h2, h3, h4, h5, h6, #logo, #primary-menu ul li > a, #primary-menu ul li .mega-menu-content.style-2 ul.mega-menu-column > li.mega-menu-title > a, #top-search form input, .entry-link, .entry.entry-date-section span, .button.button-desc, .counter, label, .nav-tree li a, .wedding-head .first-name, .wedding-head .last-name {
+	font-family: "Microsoft Yahei",Arial,Helvetica,Arial,sans-serif !important;
+	color: #2e2e2e;
+	font-size: 16px;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-weight: 600;
+	line-height: 1.5;
+}
+.m_top_20 {
+	margin-top: 20px;
+}
+.i_inner_li div {
+	font-size: 16px;
+	line-height: 26px;
+}
+.i_inner_li ul {
+	margin-bottom: 0px;
+	padding-left: 0px;
+}
+li {
+	list-style-type: none;
+}
+[class^='icon-'], [class*=' icon-'], [class^='icon-line-'], [class*=' icon-line-'], [class^='icon-line2-'], [class*=' icon-line2-'], .side-header #primary-menu ul > li.sub-menu > a::after {
+	display: inline-block;
+	font-family: "font-icons";
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: inherit;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+.i_contact_icon {
+	position: relative;
+	top: 2px;
+}
+[class^='icon-'], [class*=' icon-'] {
+	font-family: "lined-icons-CPS20" !important;
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+a {
+	color: #007bff;
+	text-decoration: none;
+	background-color: transparent;
+	-webkit-text-decoration-skip: objects;
+}
+a {
+	text-decoration: none !important;
+	color: #000;
+}
+a {
+	text-decoration: none !important;
+}
+a {
+	-webkit-transition: 0.2s;
+	transition: 0.2s;
+}
+a {
+	text-decoration: none;
+}
+img {
+	vertical-align: middle;
+	border-style: none;
+}
+img {
+	max-width: 100%;
+}
+a, img {
+	border: 0;
+}
+a {
+	color: #e7380d;
+}
+.i_cms_a {
+	color: #402656;
+	font-weight: bold;
+}
+a img {
+	border: none;
+}
+.img-fluid {
+	max-width: 100%;
+	height: auto;
+}
+.i_industry_logo {
+	max-height: 60px;
+	padding: 5px;
+}
+.i_video_grid {
+	text-align: center;
+	padding-bottom: 20px;
+	padding-top: 20px;
+}
+.wsmenu img, object, embed, video {
+	border: 0 none;
+	max-width: 100%;
+}
+.vjs-fluid {
+	padding-top: initial;
+}
+.video-js {
+	width: initial;
+	height: initial;
+}
+#video_FOF_20 {
+	width: 70%;
+}
+/* @media screen and (max-width:991px) */
+#video_FOF_20 {
+	width: 95%;
+}
+.i_industry_sortbg {
+	background: url(images/sort_bg.jpg) no-repeat;
+	background-size: cover;
+}
+.p_left_20 {
+	padding-left: 20px;
+}
+.p_top_10 {
+	padding-top: 10px;
+}
+.p_right_20 {
+	padding-right: 20px;
+}
+p {
+	margin-bottom: 0px;
+}
+p {
+	margin-bottom: 0px;
+}
+.i_industry_sort_number {
+	font-size: 30px;
+	font-weight: bold;
+	color: #8e8e8e;
+}
+.i_industry_sort_titile {
+	font-size: 20px;
+	font-weight: bold;
+	color: #2e2e2e;
+	padding: 2px 0 5px 0;
+}
+.i_industry_sort_p {
+	font-size: 16px;
+	line-height: 26px;
+}
+:last-child.card-text {
+	margin-bottom: 0px;
+}
+#content p {
+	line-height: 1.8;
+}
+#content p {
+	line-height: 1.5;
+}
+.i_industry_iconline2 {
+	border-bottom: 1px solid #8e8e8e;
+	float: left;
+	position: relative;
+	bottom: 5px;
+	right: 5px;
+	width: 10px;
+}
+.i_industry_iconline {
+	border-bottom: 1px solid #8e8e8e;
+	float: left;
+	position: relative;
+	bottom: 15px;
+	width: 15px;
+}
+.focus {
+	position: relative;
+	overflow: hidden;
+}
+.focus .fbg {
+	bottom: 10px;
+	right: 10px;
+	position: absolute;
+	height: 21px;
+	text-align: center;
+	z-index: 10;
+}
+.focus .D1fBt {
+	overflow: hidden;
+	zoom: 1;
+	height: 16px;
+	z-index: 10;
+}
+.focus .fbg div {
+	margin: 4px auto 0;
+	overflow: hidden;
+	zoom: 1;
+	height: 14px;
+}
+.focus .D1fBt a {
+	position: relative;
+	display: inline;
+	width: 12px;
+	height: 12px;
+	border-radius: 7px;
+	margin: 0 5px;
+	color: #b0b0b0;
+	font: 12px/15px "\5B8B\4F53";
+	text-decoration: none;
+	text-align: center;
+	outline: 0;
+	float: left;
+	background: #D9D9D9;
+}
+.focus .D1fBt .current, .focus .D1fBt a:hover {
+	background: #e8340c;
+}
+.i, i {
+	background-repeat: no-repeat;
+}
+.focus .D1fBt i {
+	display: none;
+	font-style: normal;
+}
+a:not([href]):not([tabindex]) {
+	color: inherit;
+	text-decoration: none;
+}
+a:not([href]):not([tabindex]) {
+	color: none;
+}
+.focus .shadow {
+	width: 100%;
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	z-index: 10;
+	height: 40px;
+	line-height: 40px;
+	background: rgba(0,0,0,0.6);
+	filter: progid:DXImageTransform.Microsoft.gradient( GradientType = 0,startColorstr = '#80000000',endColorstr = '#80000000')\9;
+	display: block;
+	text-align: left;
+}
+.focus .shadow a {
+	text-decoration: none;
+	color: #fff;
+	font-size: 20px;
+	overflow: hidden;
+	margin-left: 10px;
+}
+.m_left_5 {
+	margin-left: 5px;
+}
+.m_right_5 {
+	margin-right: 5px;
+}
+h5, h6 {
+	margin-bottom: 20px;
+}
+h5 {
+	font-size: 14px;
+}
+.i_tit_24 {
+	font-size: 24px;
+	font-weight: bold;
+	color: #402656;
+}
+.i_color_2e2e2e {
+	color: #2e2e2e;
+}
+.i_industry_img_phone {
+	height: 50%;
+	width: 100%;
+}
+
+    </style>
+</head>
+<body class="stretched is-canvi-ready device-xs" data-loader-timeout="2000" id="body">
+<div class="wsmenucontainer" style="min-width: 358px;">
+    <div class="clearfix i_content_bg" id="wrapper" style="opacity: 1; animation-duration: 1500ms;">
+        <section class="p_top_30" id="content" style="margin-bottom: 0px;">
+            <div class="container clearfix topmargin-sm" style="margin-bottom:20px;">
+                <div class="col_full ">
+                    <div class="i_industry_banner">
+                        <div class="i_content_bg">
+                            <div class="m_left_10 m_right_10">
+                                <div class="container m_bottom_30 p_bottom_20 i_bg_fff">
+                                    <div class=" m_left_10 m_right_10 p_top_20">
+                                        <!--banner-->
+                                        <div class="row col-12">
+                                            <img alt="" class="img-fluid i_industry_img_phone"
+                                                 src="images/industry_banner.jpg"/>
+                                        </div>
+                                        <!--end banner-->
+                                        <!--icon-->
+                                        <div class="row col-12 justify-content-center m_top_10 m_bottom_10 text-center">
+                                            <h5 class="i_tit_24 i_color_2e2e2e">
+                                                展示工業4.0與數字生產帶來的各種效益</h5>
+                                        </div>
+                                        <div class="row ">
+                                            <div class="col-lg-3 col-6 text-center">
+                                                <div class="m_left_5 m_right_5">
+                                                    <img alt="Card image"
+                                                         src="images/i_industry_icon1.png"/>
+                                                    <div class="card-body i_card_bgcolor">
+                                                        <p class="card-text">增強客戶與供應商的緊密連繫</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-6 text-center">
+                                                <div class="m_left_5 m_right_5">
+                                                    <img alt="Card image"
+                                                         src="images/i_industry_icon2.png"/>
+                                                    <div class="card-body i_card_bgcolor">
+                                                        <p class="card-text">引進更多技術人才及提升管理能力</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-6 text-center">
+                                                <div class="m_left_5 m_right_5">
+                                                    <img alt="Card image"
+                                                         src="images/i_industry_icon3.png"/>
+                                                    <div class="card-body i_card_bgcolor">
+                                                        <p class="card-text">生產效率及工業利潤最大化</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-6 text-center">
+                                                <div class="m_left_5 m_right_5">
+                                                    <img alt="Card image"
+                                                         src="images/i_industry_icon4.png"/>
+                                                    <div class="card-body i_card_bgcolor">
+                                                        <p class="card-text">實現連續化生產、自動化過程監控及品管</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--icon-->
+                                        <!--sort-->
+                                        <div class="row i_industry_rowbg m_top_10">
+                                            <div class="col-lg-7 align-self-center">
+                                                <!-- 代码 开始 -->
+                                                <div class="focus" id="fsD1">
+                                                    <div class="fPic" id="D1pic1">
+                                                        <div class="fcon" style="display: block;">
+                                                            <a><img alt="" class="img-fluid"
+                                                                    src="images/sort_1.jpg"
+                                                                    style="opacity: 0.87;"/></a>
+                                                            <span class="shadow"><a>01 智人智造總控室</a></span>
+                                                        </div>
+                                                        <div class="fcon" style="display: none;">
+                                                            <a><img alt="" class="img-fluid"
+                                                                    src="images/sort_2.jpg"
+                                                                    style="opacity: 1;"/></a>
+                                                            <span class="shadow"><a>02 數智工廠</a></span>
+                                                        </div>
+                                                        <div class="fcon" style="display: none;">
+                                                            <a><img alt="" class="img-fluid"
+                                                                    src="images/sort_3.jpg"
+                                                                    style="opacity: 1;"/></a>
+                                                            <span class="shadow"><a>03 模擬場景及體驗工作坊</a></span>
+                                                        </div>
+                                                        <div class="fbg">
+                                                            <div class="D1fBt" id="D1fBt">
+                                                                <a class="current" hidefocus="true"
+                                                                   href="javascript:void(0)"
+                                                                   target="_self"><i>1</i></a>
+                                                                <a hidefocus="true"
+                                                                   href="javascript:void(0)"
+                                                                   target="_self"><i>2</i></a>
+                                                                <a hidefocus="true"
+                                                                   href="javascript:void(0)"
+                                                                   target="_self"><i>3</i></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!---->
+                                            </div>
+                                            <div class="col-lg-5 i_industry_sortbg">
+                                                <div class="i_industry_sort_1 p_top_10 p_left_20 p_right_20">
+                                                    <p class="i_industry_sort_number"><span
+                                                            class="i_industry_iconline">&nbsp;</span>01
+                                                    </p>
+                                                    <p class="i_industry_sort_titile">智人智造總控室</p>
+                                                    <p class="i_industry_sort_p ">
+                                                        連接不同展台的設備及位於展館外遠端站點的生產工廠</p>
+                                                </div>
+                                                <div class="i_industry_sort_1 p_top_10 p_left_20 p_right_20">
+                                                    <p class="i_industry_sort_number"><span
+                                                            class="i_industry_iconline">&nbsp;</span>02
+                                                    </p>
+                                                    <p class="i_industry_sort_titile">數智工廠</p>
+                                                    <p class="i_industry_sort_p ">展示數字化工廠的實際操作</p>
+                                                </div>
+                                                <div class="i_industry_sort_1 p_top_10 p_left_20 p_right_20">
+                                                    <p class="i_industry_sort_number"><span
+                                                            class="i_industry_iconline">&nbsp;</span>03
+                                                    </p>
+                                                    <p class="i_industry_sort_titile">模擬場景及體驗工作坊</p>
+                                                    <p class="i_industry_sort_p "><span
+                                                            class="i_industry_iconline2">&nbsp;</span>展示與<span
+                                                            style="font-weight:bold">智能模具、智能生產、智能品管、智能自動化</span>有關的模擬場景
+                                                    </p>
+                                                    <p class="i_industry_sort_p "><span
+                                                            class="i_industry_iconline2">&nbsp;</span>介紹開放平台通信統一架構
+                                                        （OPC UA）的應用</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--end sort-->
+                                        <!--video-->
+                                        <div class="container i_vindustry_video text-center p_top_20 p_bottom_20">
+                                            <div class="video-grid i_video_grid" style="">
+                                                <div class="video-player-div">
+                                                    <video class="video-js vjs-fluid vsg-player vjs-4-3 video-tracking"
+                                                           controls="" data-setup="{}"
+                                                           id="video_FOF_20" play_counted="false"
+                                                           poster="images/Industry40_video_fof.jpg"
+                                                           preload="metadata" vid="video_FOF_1252">
+                                                        <source src="https://cdn.adsalecdn.com/CPS20/Files/TechShow/CPS_FOF.m4v"
+                                                                type="video/mp4"></source>
+                                                    </video>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--video-->
+                                        <!--logo-->
+                                        <h3 class="i_tit_18 m_top_20">主辦單位</h3>
+                                        <div>
+                                            <a href="https://www.adsale.com.hk/corporate/idx/simp/%E9%9B%85%E5%BC%8F%E9%9B%86%E5%9B%A2"
+                                               target="_blank"> <img alt=""
+                                                                     class="img-fluid i_industry_logo"
+                                                                     src="images/industry_logo1_1.jpg"
+                                                                     style="max-height:80px"/> </a>
+                                            <img alt="" class="img-fluid i_industry_logo"
+                                                 src="images/industry_logo1_2.jpg"
+                                                 style="max-height:80px"/>
+                                        </div>
+                                        <h3 class="i_tit_18 m_top_20">協辦單位</h3>
+                                        <div>
+                                            <img alt="" class="img-fluid i_industry_logo"
+                                                 src="images/industry_logo2_1.png"/>
+                                            <img alt="" class="img-fluid i_industry_logo"
+                                                 src="images/industry_logo2_2.png"/>
+                                            <img alt="" class="img-fluid i_industry_logo"
+                                                 src="images/industry_logo2_3.jpg"/>
+                                        </div>
+                                        <h3 class="i_tit_18 m_top_20">支持單位</h3>
+                                        <div>
+                                            <img alt="" class="img-fluid i_industry_logo"
+                                                 src="images/industry_logo3_1.png"
+                                                 style="max-height:70px; margin-top:10px"/>
+                                        </div>
+                                        <h3 class="i_tit_18 m_top_20">鑽石合作夥伴</h3>
+                                        <div>
+                                            <img alt="" class="img-fluid i_industry_logo"
+                                                 src="images/industry_logo4_1.jpg"
+                                                 style="max-height:70px; margin-top:10px"/>
+                                            <img alt="" class="img-fluid i_industry_logo"
+                                                 src="images/industry_logo4_2.jpg"
+                                                 style="max-height:70px; margin-top:10px"/>
+                                            <img alt="" class="img-fluid i_industry_logo"
+                                                 src="images/industry_logo4_3.jpg"
+                                                 style="max-height:70px; margin-top:10px"/>
+                                            <img alt="" class="img-fluid i_industry_logo"
+                                                 src="images/industry_logo4_4.jpg"
+                                                 style="max-height:70px; margin-top:10px"/>
+                                            <img alt="" class="img-fluid i_industry_logo"
+                                                 src="images/industry_logo4_5.jpg"
+                                                 style="max-height:70px; margin-top:10px"/>
+                                            <img alt="" class="img-fluid i_industry_logo"
+                                                 src="images/industry_logo4_6.jpg"
+                                                 style="max-height:70px; margin-top:10px"/>
+                                            <img alt="" class="img-fluid i_industry_logo"
+                                                 src="images/industry_logo4_7.jpg"
+                                                 style="max-height:70px; margin-top:10px"/>
+                                            <img alt="" class="img-fluid i_industry_logo"
+                                                 src="images/industry_logo4_8.jpg"
+                                                 style="max-height:70px; margin-top:10px"/>
+                                        </div>
+                                        <!--end logo-->
+                                        <!--Contact us-->
+                                        <div class="container i_bg_fff">
+                                            <div class="row">
+                                                <div class="row col-12 i_tit_18 p_top_20">
+                                                    查詢請聯繫：
+                                                </div>
+                                                <div class="row inner_contact_bg p_top_20 col-12">
+                                                    <div class="col-lg-4 col-12 i_inner_li">
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                <ul class="p_bottom_10">
+                                                                    <li><span
+                                                                            class="icon-uniE6C3 i_contact_icon">&nbsp;&nbsp;</span>雅式
+                                                                        - 莊小姐
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="col-12 p_bottom_10">
+                                                                <ul>
+                                                                    <li><span
+                                                                            class="icon-uniE74B i_contact_icon">&nbsp;&nbsp;</span>(852)
+                                                                        2516 3397 / (852) 2811 8897
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="col-12 p_bottom_10">
+                                                                <ul>
+                                                                    <li><span
+                                                                            class="icon-uniE866 i_contact_icon">&nbsp;</span>
+                                                                        <a class="i_cms_a"
+                                                                           href="mailto:janetchong@adsale.com.hk">janetchong@adsale.com.hk</a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="col-12 p_bottom_10">
+                                                                <ul>
+                                                                    <li><span
+                                                                            class="icon-uniE866 i_contact_icon">&nbsp;</span>
+                                                                        <a class="i_cms_a"
+                                                                           href="mailto:chinaplas@adsale.com.hk">chinaplas@adsale.com.hk</a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6 col-12 i_inner_li">
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                <ul class="p_bottom_10">
+                                                                    <li><span
+                                                                            class="icon-uniE6C3 i_contact_icon">&nbsp;&nbsp;</span>iPlast
+                                                                        4.0 - Tober Sun
+                                                                        孫士博（智能成型事業部VP）
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                            <!--div class="col-12 p_bottom_10"> <ul> <li><span class="icon-uniE7F7 i_contact_icon">  </span>智能成型事業部VP</li> </ul> </div-->
+                                                            <div class="col-12 p_bottom_10">
+                                                                <ul>
+                                                                    <li><span
+                                                                            class="icon-uniE74B i_contact_icon">&nbsp;&nbsp;</span>+886
+                                                                        - 3582 9466
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="col-12 p_bottom_10">
+                                                                <ul>
+                                                                    <li><span
+                                                                            class="icon-uniE866 i_contact_icon">&nbsp;</span>
+                                                                        <a class="i_cms_a"
+                                                                           href="mailto:tober.s@i40.sg">tober.s@i40.sg</a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!--div class="col-lg-4 col-12 i_inner_li"> <div class="row"> <div class="col-12"> <ul class="p_bottom_10"> <li><span class="icon-uniE6C3 i_contact_icon">  </span>iPlast 4.0 - 方小姐</li> </ul> </div> <div class="col-12 p_bottom_10"> <ul> <li><span class="icon-uniE74B i_contact_icon">  </span>+49 - 1578 637 4938</li> </ul> </div> <div class="col-12 p_bottom_10"> <ul> <li><span class="icon-uniE866 i_contact_icon"> </span> <a href="mailto:phaedra.f@i40.sg" class="i_cms_a">phaedra.f@i40.sg</a></li> </ul> </div> </div> </div-->
+                                                </div>
+                                            </div>
+                                            <!--Contact us-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+</body>
+</html>

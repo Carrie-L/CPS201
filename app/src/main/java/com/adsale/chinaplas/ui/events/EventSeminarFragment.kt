@@ -13,8 +13,7 @@ import com.adsale.chinaplas.base.BaseFragment
 import com.adsale.chinaplas.data.dao.CpsDatabase
 import com.adsale.chinaplas.data.dao.EventRepository
 import com.adsale.chinaplas.databinding.FragmentEventSeminarBinding
-import com.adsale.chinaplas.utils.setSPEventFilter
-import com.adsale.chinaplas.utils.setSPSeminarFilter
+import com.adsale.chinaplas.utils.*
 import com.adsale.chinaplas.viewmodels.EventViewModel
 import com.adsale.chinaplas.viewmodels.EventViewModelFactory
 import com.baidu.speech.utils.LogUtil
@@ -53,10 +52,12 @@ class EventSeminarFragment : BaseFragment() {
 
         binding.viewModel = eventViewModel
         binding.lifecycleOwner = this
+
+        LogUtil.i("EventSeminarFragment  initedView~~~")
     }
 
     override fun initView() {
-
+        LogUtil.i("EventSeminarFragment  initView~~~")
     }
 
     private fun initContentFrame() {
@@ -66,16 +67,21 @@ class EventSeminarFragment : BaseFragment() {
 
         val fm = fragmentManager!!
 
+
+
         eventViewModel.tabClickIndex.observe(this, Observer {
             LogUtil.i("tabClickIndex observe=$it")
             when (it) {
                 1 -> {
                     val tr = fm.beginTransaction()
                     tr.replace(R.id.event_frame_content, eventFragment).commitAllowingStateLoss()
+
+//                    findNavController().navigate(R.id.action_eventSeminarFragment2_to_concurrentEventFragment2)
                 }
                 2 -> {
                     val tr = fm.beginTransaction()
                     tr.replace(R.id.event_frame_content, seminarFragment).commitAllowingStateLoss()
+//                    findNavController().navigate(R.id.action_eventSeminarFragment2_to_seminarFragment22)
                 }
             }
         })
@@ -130,7 +136,10 @@ class EventSeminarFragment : BaseFragment() {
         isAddedEvent = false
         isAddedSeminar = false
         setSPEventFilter("")
-        setSPSeminarFilter("")
+        setSPSeminarFilterEmpty("")
+        setEventTabIndex(0)
+        setSeminarTabIndex(1)
+        resetSeminarTimeIndex(0)
         LogUtil.i("onDetach")
     }
 

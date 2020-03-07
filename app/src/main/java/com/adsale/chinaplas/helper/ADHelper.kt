@@ -1,11 +1,7 @@
 package com.adsale.chinaplas.helper
 
-import android.app.Application
 import com.adsale.chinaplas.data.dao.NewtechProductInfo
-import com.adsale.chinaplas.data.entity.D6
-import com.adsale.chinaplas.data.entity.D7
-import com.adsale.chinaplas.data.entity.EPO
-import com.adsale.chinaplas.data.entity.Property
+import com.adsale.chinaplas.data.entity.*
 import com.adsale.chinaplas.utils.*
 
 const val D5_VISIT = 0
@@ -13,7 +9,7 @@ const val D5_GENERATION = 1
 const val D5_MYCHINAPLAS = 2
 const val D5_EVENT = 3
 
-class ADHelper(private val app: Application) {
+class ADHelper {
     val epo: EPO
     val baseUrl: String
 
@@ -146,7 +142,9 @@ class ADHelper(private val app: Application) {
 
 
     // ※※※※※※※※※※※※※※※ D8 技术交流会  ※※※※※※※※※※※※※※※※※※※※※※
-
+    fun d8List(): List<D8> {
+        return epo.D8
+    }
 
     fun getADHeight(): Int {
         return getScreenWidth() * IMG_HEIGHT / IMG_WIDTH
@@ -213,9 +211,9 @@ class ADHelper(private val app: Application) {
         @Volatile
         private var instance: ADHelper? = null
 
-        fun getInstance(app: Application) =
+        fun getInstance() =
             instance ?: synchronized(this) {
-                instance ?: ADHelper(app).also { instance = it }
+                instance ?: ADHelper().also { instance = it }
             }
     }
 

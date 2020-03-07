@@ -1,0 +1,29 @@
+[{
+		"id": "Opening",
+		"function":4,
+		"name_sc": "会刊",
+		"name_tc": "會刊",
+		"name_en": "catalogue"
+	},
+	{
+		"id": "Opening",
+		"function":4,
+		"name_sc": "用餐",
+		"name_tc": "用餐",
+		"name_en": "meal"
+	},
+	{
+		"id": "Opening",
+		"function":4,
+		"name_sc": "地铁站",
+		"name_tc": "地鐵站",
+		"name_en": "subway"
+	},
+	{
+		"id": "Opening",
+		"function":4,
+		"name_sc": "穿梭巴士路线时间",
+		"name_tc": "穿梭巴士路線時間",
+		"name_en": "bus route"
+	}
+]

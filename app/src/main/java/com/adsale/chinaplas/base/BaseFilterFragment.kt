@@ -1,24 +1,19 @@
 package com.adsale.chinaplas.base
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.adsale.chinaplas.R
-import com.adsale.chinaplas.adapters.OnItemClickListener
 import com.adsale.chinaplas.data.dao.CpsDatabase
 import com.adsale.chinaplas.data.dao.MainIconRepository
 import com.adsale.chinaplas.ui.view.RecyclerViewScrollTo
-import com.adsale.chinaplas.ui.view.SIDE_INDEUSTRY
 import com.adsale.chinaplas.ui.view.SideBarView
 import com.adsale.chinaplas.utils.BACK_DEFAULT
 import com.adsale.chinaplas.utils.LogUtil

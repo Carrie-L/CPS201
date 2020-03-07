@@ -157,6 +157,7 @@ class FilterViewModel(
     /* 同期活动 应用行业 筛选 */
     fun getEventApplications() {
         uiScope.launch {
+            tempApplicationList.clear()
             val eventApplications = getEventApplicationsFromDB()
             for (app in eventApplications) {
                 entity =
@@ -477,7 +478,7 @@ class FilterViewModel(
                 if (newTecStr.size == 0) {
                     sql = sql.append(" and CompanyID IN (%6\$s)")
                 }
-                newTecStr.add(" SELECT COMPANY_ID FROM NEW_PRODUCT_INFO WHERE RID IN (select RID from NEW_CATEGORY_ID) ") //  where CATEGORY='C'
+                newTecStr.add(" SELECT CompanyID FROM NewtechProductInfo WHERE RID IN (select RID from NewtechProductInfo) ") //  where CATEGORY='C'
             } else if (index == FILTER_INDEX_KEYWORD) { // keyword
                 keyword = filter.filter
                 sql = sql.append(" and (carriecps)")

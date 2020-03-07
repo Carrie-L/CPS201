@@ -12,6 +12,8 @@ import androidx.viewpager.widget.ViewPager
 import com.adsale.chinaplas.data.dao.CpsDatabase
 import com.adsale.chinaplas.data.dao.SeminarRepository
 import com.adsale.chinaplas.databinding.FragmentSeminarBinding
+import com.adsale.chinaplas.utils.LogUtil
+import com.adsale.chinaplas.utils.getSeminarTabIndex
 import com.adsale.chinaplas.viewmodels.SeminarViewModel
 import com.adsale.chinaplas.viewmodels.SeminarViewModelFactory
 
@@ -34,12 +36,8 @@ class SeminarFragment : Fragment() {
         initData()
         initViewPager()
 
-        seminarViewModel.btnClick.observe(this, Observer {
-            if (it in 1..3) {
-                viewPager.currentItem = it - 1
-            } else {
-
-            }
+        seminarViewModel.tabClick.observe(this, Observer {
+            viewPager.currentItem = it - 1
         })
     }
 
@@ -70,11 +68,18 @@ class SeminarFragment : Fragment() {
             }
 
             override fun onPageSelected(position: Int) {
-                seminarViewModel.btnClick.value = position + 1
+                seminarViewModel.tabClick.value = position + 1
             }
         })
     }
 
+    override fun onResume() {
+        super.onResume()
+        val seminarIndex = getSeminarTabIndex()
+        LogUtil.i("onResume: seminarIndex=$seminarIndex")
+        seminarViewModel.tabClick.value = seminarIndex
+
+    }
 
     companion object {
         @Volatile

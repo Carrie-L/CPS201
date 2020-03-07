@@ -22,6 +22,7 @@ import com.adsale.chinaplas.adapters.ExhibitorDtlAdapter
 import com.adsale.chinaplas.data.dao.CpsDatabase
 import com.adsale.chinaplas.data.dao.ExhibitorRepository
 import com.adsale.chinaplas.data.dao.MainIconRepository
+import com.adsale.chinaplas.data.dao.ScheduleInfo
 import com.adsale.chinaplas.data.entity.KV
 import com.adsale.chinaplas.databinding.FragmentExhibitorDetailBinding
 import com.adsale.chinaplas.helper.ADHelper
@@ -55,19 +56,19 @@ class ExhibitorDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         LogUtil.i("initedView")
-        adHelper = ADHelper.getInstance(requireActivity().application)
-//        arguments?.let {
-//            companyID = ExhibitorDetailFragmentArgs.fromBundle(it).companyID
-//            if (!TextUtils.isEmpty(companyID)) {
-//             val d6 =  adHelper.getD6(companyID)
+        adHelper = ADHelper.getInstance()
+        arguments?.let {
+            companyID = ExhibitorDetailFragmentArgs.fromBundle(it).companyID
+            if (!TextUtils.isEmpty(companyID)) {
+                val d6 = adHelper.getD6(companyID)
 //                if(d6==null || !adHelper.isD6Open()){
 //                    binding = FragmentExhibitorDetailBinding.inflate(inflater, container, false)
 //                }else{
 //                    binding = FragmentExhibitorDetailAdBinding.inflate(inflater, container, false)
 //                }
-//            }
-//        }
-
+                binding = FragmentExhibitorDetailBinding.inflate(inflater, container, false)
+            }
+        }
 
         pager = binding.viewPagerExhibitorDtl
         dtlPin = binding.dtlPin
@@ -118,6 +119,7 @@ class ExhibitorDetailFragment : Fragment() {
         getDataFromDB()
         setTitle()
         setDtlAdapter()
+
     }
 
     fun initData() {
@@ -156,6 +158,9 @@ class ExhibitorDetailFragment : Fragment() {
                 if (dtlViewModel.company.value != null) {
                     binding.obj = dtlViewModel.company.value
                     binding.executePendingBindings()
+
+                    addSchedule()
+
                     if (!TextUtils.isEmpty(dtlViewModel.company.value!!.getDescription())) descVisible()
                 }
                 if (dtlViewModel.industries.value?.isNotEmpty()!!) industryVisible()
@@ -329,7 +334,7 @@ class ExhibitorDetailFragment : Fragment() {
     private fun webIntent() {
         var url = dtlViewModel.company.value!!.Website
         if (!url!!.toLowerCase(Locale.US).startsWith("http"))
-            url = "https://$url"
+            url = "http://$url"
         LogUtil.i("url=$url")
         val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
         if (intent.resolveActivity(requireActivity().packageManager) != null) {
@@ -341,6 +346,24 @@ class ExhibitorDetailFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
+    }
+
+    private fun addSchedule() {
+        binding.fabAddSchedule.setOnClickListener {
+            val scheduleInfo =
+                ScheduleInfo(null,
+                    dtlViewModel.company.value!!.getCompanyName(),
+                    "",
+                    dtlViewModel.company.value!!.BoothNo,
+                    companyID,
+                    "",
+                    "",
+                    1,
+                    0,
+                    null)
+            findNavController().navigate(ExhibitorDetailFragmentDirections.actionToScheduleEditFragment(true,
+                scheduleInfo))
+        }
     }
 
 

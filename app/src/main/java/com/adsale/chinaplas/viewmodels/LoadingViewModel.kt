@@ -71,9 +71,10 @@ class LoadingViewModel(
             i("-------------   start download  ---------------")
             downloadTxt(TXT_AD)
             downloadTxt(TXT_PDF)
+            downloadTxt(TXT_SEARCH_TAG)
             // todo down mainBanner.txt
 
-//            downloadAllRegOptions()
+            downloadAllRegOptions()
 
 //            downloadAllCountries()
             downMainIcons()
@@ -83,7 +84,7 @@ class LoadingViewModel(
             downEventApplication()
 
             // todo 之后删除，仅测试
-            updateSeminarCsv()
+//            updateSeminarCsv()
 //            updateNewtechCsv()
 
             i("-------------   finish download  ---------------")
@@ -459,6 +460,14 @@ class LoadingViewModel(
                 withContext(Dispatchers.IO) {
                     webContents?.let {
                         i("insertWCAll,,, ${it.toString()}")
+//                        val list:MutableList<WebContent> = mutableListOf()
+//                        val entity
+//                        for(entity in it){
+//                            list.add(entity)
+//                        }
+
+
+
                         webContentRepo.insertWebContentAll(it)
                     }
                 }
@@ -563,7 +572,7 @@ class LoadingViewModel(
                 }
                 val endMill = System.currentTimeMillis()
                 i("getEventApplicationFromBmob spend Time :${endMill - startMill} ms")
-                sendBroadcast("event app succ")
+                sendBroadcast("event application succ")
             } catch (e: Exception) {
                 LogUtil.e("getEventApplicationFromBmob::Failure: ${e.message} ")
                 LogUtil.e(e)
@@ -648,10 +657,10 @@ class LoadingViewModel(
     private fun updateSeminarCsv() {
         initCsvHelper()
         uiScope.launch {
-            val list = csvHelper!!.getSeminars()
-            if (list.isEmpty())
-                LogUtil.i("♥♥♥♥♥♥ updateSeminarCsv")
+            //            val list = csvHelper!!.getSeminars()
+//            if (list.isEmpty())
             csvHelper!!.parseSeminarCsv()
+            LogUtil.i("♥♥♥♥♥♥ updateSeminarCsv")
         }
     }
 
@@ -748,7 +757,6 @@ class LoadingViewModel(
                 responseBody.close()
             } catch (e: Exception) {
                 LogUtil.e("downloadTxt::Failure: ${e.message}")
-                sendBroadcast("txt fail")
             }
             withContext(Dispatchers.Main) {
                 i("downloadTxt_end in uiScope:: $txt at ${Thread.currentThread()}")

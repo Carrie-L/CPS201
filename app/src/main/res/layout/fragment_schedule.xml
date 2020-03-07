@@ -1,4 +1,14 @@
-<layout>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.adsale.chinaplas.ui.tools.schedule.ScheduleViewModel" />
+
+        <import type="android.view.View" />
+    </data>
+
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
@@ -6,11 +16,74 @@
         android:layout_height="match_parent"
         tools:context="com.adsale.chinaplas.ui.tools.schedule.ScheduleFragment">
 
-        <!-- TODO: Update blank fragment layout -->
         <TextView
+            android:id="@+id/tv_tab_1"
+            style="@style/event_date_tab_style"
+            android:background="@{model.barClick.intValue()==0?@color/tab_color_2:@color/tab_color_1}"
+            android:onClick="@{()->model.onTabClick(0)}"
+            android:text="@string/event_date_1"
+            app:layout_constraintEnd_toStartOf="@+id/tv_tab_2"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_tab_2"
+            style="@style/event_date_tab_style"
+            android:background="@{model.barClick.intValue()==1?@color/tab_color_2:@color/tab_color_1}"
+            android:onClick="@{()->model.onTabClick(1)}"
+            android:text="@string/event_date_2"
+            app:layout_constraintEnd_toStartOf="@+id/tv_tab_3"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/tv_tab_1"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_tab_3"
+            style="@style/event_date_tab_style"
+            android:background="@{model.barClick.intValue()==2?@color/tab_color_2:@color/tab_color_1}"
+            android:onClick="@{()->model.onTabClick(2)}"
+            android:text="@string/event_date_3"
+            app:layout_constraintEnd_toStartOf="@+id/tv_tab_4"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/tv_tab_2"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_tab_4"
+            style="@style/event_date_tab_style"
+            android:background="@{model.barClick.intValue()==3?@color/tab_color_2:@color/tab_color_1}"
+            android:onClick="@{()->model.onTabClick(3)}"
+            android:text="@string/event_date_4"
+            app:layout_constraintEnd_toStartOf="@+id/iv_help"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/tv_tab_3"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_help"
+            android:layout_width="48dp"
+            android:layout_height="36dp"
+            android:background="@color/tab_color_1"
+            android:padding="3dp"
+            android:src="@drawable/ic_help_purple"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_schedule_pager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/hello_blank_fragment" />
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_tab_1" />
+
+        <TextView
+            android:id="@+id/tv_no_schedule"
+            style="@style/no_data_style"
+            android:visibility="@{model.isNoData()?View.VISIBLE:View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

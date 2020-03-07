@@ -1,12 +1,9 @@
 package com.adsale.chinaplas.data.dao
 
-import androidx.lifecycle.MutableLiveData
-import androidx.room.Insert
 import androidx.sqlite.db.SimpleSQLiteQuery
-import com.adsale.chinaplas.data.entity.ExhibitorFilter
-import com.adsale.chinaplas.utils.*
-import com.adsale.chinaplas.utils.LogUtil.i
-import java.util.*
+import com.adsale.chinaplas.utils.LANG_EN
+import com.adsale.chinaplas.utils.LANG_SC
+import com.adsale.chinaplas.utils.getCurrLanguage
 
 /**
  * Created by Carrie on 2020/1/3.
@@ -35,12 +32,14 @@ class ExhibitorRepository private constructor(
         else -> exhibitorDao.getMyExhibitorsTC()
     }
 
-
-//    fun queryExhibitors(text: String) = when (getCurrLanguage()) {
-//        LANG_SC -> exhibitorDao.querySearchSC(text)
-//        LANG_EN -> exhibitorDao.querySearchEN(text)
-//        else -> exhibitorDao.querySearchTC(text)
-//    }
+    /**
+     * 全局搜索
+     */
+    fun queryExhibitors(text: String) = when (getCurrLanguage()) {
+        LANG_SC -> exhibitorDao.querySearchSC(text)
+        LANG_EN -> exhibitorDao.querySearchEN(text)
+        else -> exhibitorDao.querySearchTC(text)
+    }
 
     fun filterExhibitors(filterSql: String) = run {
         val query = SimpleSQLiteQuery(filterSql)
@@ -63,6 +62,9 @@ class ExhibitorRepository private constructor(
         LANG_EN -> exhibitorDao.getIndustryInExhibitorsEN(id)
         else -> exhibitorDao.getIndustryInExhibitorsTC(id)
     }
+
+    /* 全局搜索 */
+
 
 
     /*  ==========  Application =============  */

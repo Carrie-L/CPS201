@@ -24,6 +24,7 @@ class NewtechProductInfo constructor() {
 
     var imageName: String? = ""
 
+    @Transient
     @Ignore
     var isAder = false
 

@@ -27,7 +27,7 @@
             style="@style/event_item_sub_style"
             android:layout_marginStart="16dp"
             android:drawableStart="@drawable/ic_event_date"
-            android:text="@{obj.date}"
+            android:text="@{obj.getDateStr()}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_event_title" />
 
@@ -35,7 +35,7 @@
             android:id="@+id/tv_event_time"
             style="@style/event_item_sub_style"
             android:layout_marginStart="16dp"
-            android:drawableStart="@drawable/ic_event_time"
+            android:drawableStart="@drawable/ic_event_time_dark_grey"
             android:text="@{obj.duration}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_event_date" />
@@ -44,7 +44,7 @@
             android:id="@+id/tv_event_location"
             style="@style/event_item_sub_style"
             android:layout_marginStart="16dp"
-            android:drawableStart="@drawable/ic_event_venue"
+            android:drawableStart="@drawable/ic_event_venue_dark_grey"
             android:text="@{obj.venue}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_event_time" />

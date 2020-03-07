@@ -1,6 +1,8 @@
 package com.adsale.chinaplas.data.entity
 
 import com.adsale.chinaplas.isTablet
+import com.adsale.chinaplas.utils.LANG_EN
+import com.adsale.chinaplas.utils.getCurrLanguage
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
@@ -12,6 +14,7 @@ class EPO(
     val D5: D3,
     val D6: List<D6>,
     val D7: List<D7>,
+    val D8: List<D8>,
     val base: Base
 ) {
     override fun toString(): String {
@@ -88,7 +91,29 @@ data class D7(
 
 @JsonClass(generateAdapter = true)
 class D8(
-)
+    val date: String,
+    val isAm: Int,
+    val companyID: String,
+    val function: Int,
+    val image_logo: String,
+    val image_bottom_banner: List<String>,
+    val image_top_banner: List<String>,
+    val description: List<String>
+) {
+    fun getBottomImage(): String {
+        if (getCurrLanguage() == LANG_EN)
+            return image_bottom_banner[1]
+        else
+            return image_bottom_banner[0]
+    }
+
+    fun getTopImage(): String {
+        if (getCurrLanguage() == LANG_EN)
+            return image_top_banner[1]
+        else
+            return image_top_banner[0]
+    }
+}
 
 @JsonClass(generateAdapter = true)
 class Base(

@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="scheduleModel"
+            type="com.adsale.chinaplas.ui.tools.schedule.ScheduleViewModel" />
+
+        <variable
+            name="obj"
+            type="com.adsale.chinaplas.data.dao.ScheduleInfo" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/sche_title"
+            android:layout_width="wrap_content"
+            android:layout_height="54dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:drawableLeft="@drawable/sche_title"
+            android:drawablePadding="8dp"
+            android:gravity="center"
+            android:text="@string/schedule_title" />
+
+        <ImageView
+            android:id="@+id/iv_help"
+            style="@style/help_btn_style"
+            android:layout_height="54dp"
+            android:layout_alignParentRight="true"
+            android:padding="8dp" />
+
+        <ImageView
+            android:id="@+id/imgExhibitor"
+            android:layout_width="wrap_content"
+            android:layout_height="54dp"
+            android:layout_toLeftOf="@id/iv_help"
+            android:scaleType="centerInside"
+            android:src="@drawable/sche_exhibitor" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_alignLeft="@+id/et_location"
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginBottom="12dp"
+            android:layout_toLeftOf="@id/imgExhibitor"
+            android:background="@drawable/edittext_bg"
+            android:text="@={scheduleModel.title}" />
+
+        <TextView
+            android:id="@+id/sche_location"
+            style="@style/schedule_edit_title_style"
+            android:layout_below="@id/sche_title"
+            android:drawableLeft="@drawable/sche_location"
+            android:drawablePadding="8dp"
+            android:text="@string/schedule_location" />
+
+        <EditText
+            android:id="@+id/et_location"
+            style="@style/schedule_edit_text_style"
+            android:layout_width="match_parent"
+            android:layout_below="@id/sche_title"
+            android:layout_toRightOf="@id/sche_location"
+            android:text="@={scheduleModel.location}" />
+
+        <TextView
+            android:id="@+id/sche_date"
+            style="@style/schedule_edit_title_style"
+            android:layout_below="@id/sche_location"
+            android:drawableLeft="@drawable/sche_date"
+            android:drawablePadding="8dp"
+            android:text="@string/schedule_startTime" />
+
+        <TextView
+            android:id="@+id/tv_start_date"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignBaseline="@id/sche_date"
+            android:layout_alignLeft="@id/et_location"
+            android:onClick="@{scheduleModel::onDateClick}"
+            android:text="@{scheduleModel.date}" />
+
+        <TextView
+            android:id="@+id/tv_start_time"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignBaseline="@id/sche_date"
+            android:layout_toRightOf="@id/tv_start_date"
+            android:onClick="@{scheduleModel::onTimeClick}"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:text="@{scheduleModel.startTime}" />
+
+        <TextView
+            android:id="@+id/sche_duration"
+            style="@style/schedule_edit_title_style"
+            android:layout_below="@id/sche_date"
+            android:drawableLeft="@drawable/sche_duration"
+            android:drawablePadding="8dp"
+            android:text="@string/schedule_length" />
+
+        <EditText
+            android:id="@+id/editHour"
+            style="@style/schedule_edit_text_style"
+            android:layout_width="50dp"
+            android:layout_below="@id/sche_date"
+            android:layout_alignLeft="@id/et_location"
+            android:gravity="center"
+            android:inputType="number"
+            android:text="@={scheduleModel.hour}" />
+
+        <TextView
+            android:id="@+id/lblHour"
+            android:layout_width="wrap_content"
+            android:layout_height="54dp"
+            android:layout_below="@id/sche_date"
+            android:layout_marginRight="16dp"
+            android:layout_toRightOf="@+id/editHour"
+            android:gravity="center"
+            android:text="@string/schedule_hour" />
+
+        <EditText
+            android:id="@+id/editMinute"
+            style="@style/schedule_edit_text_style"
+            android:layout_width="50dp"
+            android:layout_below="@id/sche_date"
+            android:layout_toRightOf="@id/lblHour"
+            android:gravity="center"
+            android:inputType="number"
+            android:text="@={scheduleModel.minute}" />
+
+        <TextView
+            android:id="@+id/lblMinute"
+            android:layout_width="wrap_content"
+            android:layout_height="54dp"
+            android:layout_below="@id/sche_date"
+            android:layout_toRightOf="@+id/editMinute"
+            android:gravity="center"
+            android:text="@string/schedule_minute" />
+
+        <TextView
+            android:id="@+id/sche_note"
+            style="@style/schedule_edit_title_style"
+            android:layout_below="@id/sche_duration"
+            android:drawableLeft="@drawable/sche_note"
+            android:drawablePadding="8dp"
+            android:text="@string/schedule_note" />
+
+        <ImageView
+            android:id="@+id/vertical_line"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:visibility="@{scheduleModel.isAdd?View.GONE:View.VISIBLE}" />
+
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="88dp"
+            android:layout_height="32dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="32dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="48dp"
+            android:layout_toLeftOf="@id/vertical_line"
+            android:background="@drawable/bg_btn_selected"
+            android:text="@string/btnSave"
+            android:textColor="#fff" />
+
+        <Button
+            android:id="@+id/btnDel"
+            android:layout_width="88dp"
+            android:layout_height="32dp"
+            android:layout_alignTop="@id/btnSave"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@id/vertical_line"
+            android:background="@drawable/bg_btn_not_selected"
+            android:text="@string/btnDel"
+            android:textColor="#fff"
+            android:visibility="@{scheduleModel.isAdd?View.GONE:View.VISIBLE}" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/btnSave"
+            android:layout_below="@id/sche_note"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/edittext_bg"
+            android:gravity="top|left"
+            android:padding="3dp"
+            android:text="@={scheduleModel.note}"
+            android:textSize="14sp" />
+        <!--        android:text="@={scheduleModel.etNote}"-->
+
+
+    </RelativeLayout>
+
+
+</layout>

@@ -177,7 +177,7 @@ class HomeViewModel() : ViewModel() {
                     adIndex = 0
                 }
                 d2RollIndex.value = adIndex
-                LogUtil.i("*****adIndex=$adIndex")
+//                LogUtil.i("*****adIndex=$adIndex")
 
                 addD2CountDownTime()  // 无限轮播
             }

@@ -1,24 +1,25 @@
 package com.adsale.chinaplas.ui.tools
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.adsale.chinaplas.R
 import com.adsale.chinaplas.adapters.MyExhibitorAdapter
 import com.adsale.chinaplas.adapters.OnItemClickListener
 import com.adsale.chinaplas.data.dao.Exhibitor
 import com.adsale.chinaplas.databinding.MyExhibitorFragmentBinding
 import com.adsale.chinaplas.helper.InjectionUtils
+import com.adsale.chinaplas.ui.view.HELP_MY_EXHIBITOR
+import com.adsale.chinaplas.ui.view.HelpDialog
 import com.adsale.chinaplas.utils.LogUtil.i
 import com.adsale.chinaplas.utils.alertDialogProgress
+import com.adsale.chinaplas.utils.inTransaction
 import com.adsale.chinaplas.viewmodels.MyExhibitorViewModel
 
 
@@ -53,6 +54,7 @@ class MyExhibitorFragment : Fragment() {
         })
 
         onFABClick()
+        helpPage()
     }
 
     private fun onFABClick() {
@@ -70,6 +72,15 @@ class MyExhibitorFragment : Fragment() {
         findNavController().navigate(
             MyExhibitorFragmentDirections.actionMyExhibitorFragmentToExhibitorDetailFragment(
                 (entity as Exhibitor).CompanyID))
+    }
+
+    private fun helpPage() {
+        binding.ivHelp.setOnClickListener {
+            val helpDialog = HelpDialog.getInstance(HELP_MY_EXHIBITOR)
+            requireActivity().supportFragmentManager.inTransaction {
+                helpDialog.show(fragmentManager!!, "Help")
+            }
+        }
     }
 
 }

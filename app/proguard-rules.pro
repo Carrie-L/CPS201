@@ -27,6 +27,7 @@
 -keep class com.adsale.chinaplas.utils.**{*;}
 -keep class com.adsale.chinaplas.helper.**{*;}
 #-keep class com.adsale.chinaplas.**{*;}
+-keep class com.adsale.chinaplas.data.dao.**{*;} # 自定义数据模型的bean目录
 
 -keep public class * extends android.app.Activity
 -keep public class * extends android.app.Application
@@ -119,3 +120,6 @@
     public <methods>;
 }
 #-------------------  Moshi End-------------------------
+
+#OAID
+-keep class com.bun.miitmdid.core.** {*;}

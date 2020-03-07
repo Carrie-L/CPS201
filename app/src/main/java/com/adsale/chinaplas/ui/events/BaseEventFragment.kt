@@ -61,7 +61,11 @@ abstract class BaseEventFragment : BaseFragment() {
     private val itemClickListener = OnItemClickListener { entity, pos ->
         entity as ConcurrentEvent
         setItemEventID(entity.EventID!!)
-        findNavController().navigate(R.id.eventDetailFragment)
+//        findNavController().navigate(R.id.eventDetailFragment)
+
+        findNavController().navigate(EventSeminarFragmentDirections.actionToEventDetailFragment(entity.EventID,
+            entity.getTitle()))
+
     }
 
     inner class EventAdapter(

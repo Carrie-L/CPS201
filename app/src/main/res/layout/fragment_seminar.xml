@@ -16,7 +16,7 @@
         <TextView
             android:id="@+id/tv_tab_1"
             style="@style/event_date_tab_style"
-            android:background="@{model.btnClick.intValue()==1?@color/tab_color_2:@color/tab_color_1}"
+            android:background="@{model.tabClick.intValue()==1?@color/tab_color_2:@color/tab_color_1}"
             android:onClick="@{()->model.onFunctionClick(1)}"
             android:text="@string/event_date_1"
             app:layout_constraintEnd_toStartOf="@+id/tv_tab_2"
@@ -27,7 +27,7 @@
         <TextView
             android:id="@+id/tv_tab_2"
             style="@style/event_date_tab_style"
-            android:background="@{model.btnClick.intValue()==2?@color/tab_color_2:@color/tab_color_1}"
+            android:background="@{model.tabClick.intValue()==2?@color/tab_color_2:@color/tab_color_1}"
             android:onClick="@{()->model.onFunctionClick(2)}"
             android:text="@string/event_date_2"
             app:layout_constraintEnd_toStartOf="@+id/tv_tab_3"
@@ -38,7 +38,7 @@
         <TextView
             android:id="@+id/tv_tab_3"
             style="@style/event_date_tab_style"
-            android:background="@{model.btnClick.intValue()==3?@color/tab_color_2:@color/tab_color_1}"
+            android:background="@{model.tabClick.intValue()==3?@color/tab_color_2:@color/tab_color_1}"
             android:onClick="@{()->model.onFunctionClick(3)}"
             android:text="@string/event_date_3"
             app:layout_constraintEnd_toEndOf="parent"

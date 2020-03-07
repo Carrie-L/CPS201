@@ -14,7 +14,7 @@ interface EventDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(list: List<ConcurrentEvent>)
 
-    @Query("select * from ConcurrentEvent group by EventID order by seq")
+    @Query("select * from ConcurrentEvent order by seq")
     fun getEventList(): MutableList<ConcurrentEvent>
 
 

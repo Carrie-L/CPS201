@@ -52,7 +52,8 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view_d2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="@string/ad_ratio"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/rv_menu" />
 

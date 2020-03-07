@@ -19,18 +19,19 @@
         <TextView
             android:id="@+id/tv_event_time"
             style="@style/event_item_sub_style"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
             android:layout_marginTop="16dp"
             android:text="@{obj.duration}"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/guideline"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/iv_circle"
             android:layout_width="6dp"
             android:layout_height="6dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="13.5dp"
             android:background="@drawable/circle_event"
             app:layout_constraintBottom_toBottomOf="@+id/tv_event_time"
             app:layout_constraintStart_toStartOf="parent"
@@ -41,7 +42,7 @@
             android:id="@+id/iv_line1"
             android:layout_width="0.5dp"
             android:layout_height="0dp"
-            android:layout_marginStart="10.5dp"
+            android:layout_marginStart="16.5dp"
             android:background="@color/grey_500"
             app:layout_constraintBottom_toTopOf="@id/iv_circle"
             app:layout_constraintStart_toStartOf="parent"
@@ -51,62 +52,89 @@
             android:id="@+id/iv_line2"
             android:layout_width="0.5dp"
             android:layout_height="0dp"
-            android:layout_marginStart="10.5dp"
+            android:layout_marginStart="16.5dp"
             android:background="@color/grey_500"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/iv_circle" />
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="32dp" />
+
+
         <TextView
             android:id="@+id/tv_event_title"
             style="@style/item_title_18sp_style"
-            android:layout_marginStart="24dp"
+            android:layout_width="0dp"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
             android:text="@{obj.title}"
             android:textColor="@color/colorPrimaryDark"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/guideline"
             app:layout_constraintTop_toBottomOf="@id/tv_event_time" />
 
         <TextView
             android:id="@+id/tv_event_location"
             style="@style/event_item_sub_style"
-            android:layout_marginStart="24dp"
+            android:layout_width="0dp"
+            android:drawableStart="@drawable/ic_event_venue_dark_grey"
             android:maxLines="1"
-            android:drawableStart="@drawable/ic_event_venue"
             android:text="@{obj.venue}"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/tv_event_title"
+            app:layout_constraintStart_toStartOf="@id/tv_event_title"
             app:layout_constraintTop_toBottomOf="@id/tv_event_title" />
 
         <ImageView
             android:id="@+id/iv_event_pay"
-            android:layout_width="12dp"
-            android:layout_height="12dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:layout_marginTop="6dp"
             android:layout_marginEnd="16dp"
+            android:paddingEnd="16dp"
             android:visibility="@{obj.isFree?View.GONE:View.VISIBLE}"
             app:layout_constraintEnd_toStartOf="@+id/iv_event_reg"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@id/tv_event_title"
             app:layout_constraintTop_toBottomOf="@id/tv_event_location"
             app:srcCompat="@drawable/ic_event_pay" />
 
         <ImageView
             android:id="@+id/iv_event_reg"
-            android:layout_width="12dp"
-            android:layout_height="14dp"
-            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="16dp"
             android:visibility="@{obj.isPreReg?View.VISIBLE:View.GONE}"
-            app:layout_constraintStart_toEndOf="@id/iv_event_pay"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toEndOf="@+id/iv_event_pay"
             app:layout_constraintTop_toBottomOf="@id/tv_event_location"
-            app:srcCompat="@drawable/ic_event_reg" />
+            app:srcCompat="@drawable/ic_event_registe" />
+
+        <!--        <ImageView-->
+        <!--            android:id="@+id/iv_event_translate"-->
+        <!--            android:layout_width="12dp"-->
+        <!--            android:layout_height="18dp"-->
+        <!--            android:layout_marginTop="10dp"-->
+        <!--            android:visibility="@{obj.isPreReg()?View.VISIBLE:View.GONE}"-->
+        <!--            app:layout_constraintHorizontal_bias="0"-->
+        <!--            app:layout_constraintStart_toEndOf="@+id/iv_event_reg"-->
+        <!--            app:layout_constraintTop_toBottomOf="@id/tv_event_location"-->
+        <!--            app:srcCompat="@drawable/ic_event_translate" />-->
 
         <ImageView
-            android:layout_marginStart="24dp"
             style="@style/event_list_line_style"
-            android:layout_marginEnd="16dp"
+            android:layout_width="0dp"
             android:layout_marginTop="29dp"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/guideline"
             app:layout_constraintTop_toBottomOf="@id/tv_event_location" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

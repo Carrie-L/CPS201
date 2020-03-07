@@ -1,9 +1,10 @@
 package com.adsale.chinaplas.data.dao
 
-import androidx.lifecycle.LiveData
-import androidx.room.*
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
 import com.adsale.chinaplas.data.entity.CountryJson
-import com.adsale.chinaplas.utils.LogUtil
 
 /**
  * Created by Carrie on 2019/11/1.
@@ -14,31 +15,31 @@ interface CountryJsonDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(list: List<CountryJson>)
 
-    @Query("SELECT Code,Name_Tc,Country,Province,AdcCountryId,CountryTelCode,Tel_area,Level,DisplayOrder from CountryJson where Level='1' order by DisplayOrder desc,OrderTC")
+    @Query("SELECT * from CountryJson where Level='1' order by DisplayOrder desc,OrderTC")
     fun getCountriesTC(): MutableList<CountryJson>
 
-    @Query("SELECT Code,Name_Eng,Country,Province,AdcCountryId,CountryTelCode,Tel_area,Level,DisplayOrder from CountryJson where Level='1' order by DisplayOrder desc,OrderEN")
+    @Query("SELECT * from CountryJson where Level='1' order by DisplayOrder desc,OrderEN")
     fun getCountriesEN(): MutableList<CountryJson>
 
-    @Query("SELECT Code,Name_Sc,Country,Province,AdcCountryId,CountryTelCode,Tel_area,Level,DisplayOrder from CountryJson where Level='1' order by DisplayOrder desc,OrderSC")
+    @Query("SELECT * from CountryJson where Level='1' order by DisplayOrder desc,OrderSC")
     fun getCountriesSC(): List<CountryJson>
 
-    @Query("SELECT Code,Name_Tc,Country,Province,AdcCountryId,CountryTelCode,Tel_area,Level,DisplayOrder from CountryJson where Level='2' ")
+    @Query("SELECT * from CountryJson where Level='2' ")
     fun getProvincesTC(): List<CountryJson>
 
-    @Query("SELECT Code,Name_Eng,Country,Province,AdcCountryId,CountryTelCode,Tel_area,Level,DisplayOrder from CountryJson where Level='2' ")
+    @Query("SELECT * from CountryJson where Level='2' ")
     fun getProvincesEN(): List<CountryJson>
 
-    @Query("SELECT Code,Name_Sc,Country,Province,AdcCountryId,CountryTelCode,Tel_area,Level,DisplayOrder from CountryJson where Level='2' ")
+    @Query("SELECT * from CountryJson where Level='2' ")
     fun getProvincesSC(): List<CountryJson>
 
-    @Query("SELECT Code,Name_Tc,Country,Province,AdcCountryId,CountryTelCode,Tel_area,Level,DisplayOrder from CountryJson where Level='3' and Province=:province ")
+    @Query("SELECT * from CountryJson where Level='3' and Province=:province ")
     fun getCitiesTC(province: String): List<CountryJson>
 
-    @Query("SELECT Code,Name_Eng,Country,Province,AdcCountryId,CountryTelCode,Tel_area,Level,DisplayOrder from CountryJson where Level='3' and Province=:province ")
+    @Query("SELECT * from CountryJson where Level='3' and Province=:province ")
     fun getCitiesEN(province: String): List<CountryJson>
 
-    @Query("SELECT Code,Name_Sc,Country,Province,AdcCountryId,CountryTelCode,Tel_area,Level,DisplayOrder from CountryJson where Level='3' and Province=:province ")
+    @Query("SELECT * from CountryJson where Level='3' and Province=:province ")
     fun getCitiesSC(province: String): List<CountryJson>
 
     @Query("delete from CountryJson")

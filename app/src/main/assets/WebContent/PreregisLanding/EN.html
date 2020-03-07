@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="zh-CN">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+    <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+          name="viewport"/>
+    <meta charset="utf-8"/>
+    <script src="./jquery-1.10.2.min.js"></script>
+    <script>
+      function preClick_Yes(){
+     window.location.href = "next://Prereg-Yes";
+
+    }
+     function preClick_No(){
+     window.location.href = "next://Prereg-No";
+
+    }
+
+
+    </script>
+
+</head>
+<body class="stretched" id="body">
+<link href="./bootstrap.css" rel="stylesheet" type="text/css"/>
+
+<div class="clearfix i_content_bg " id="wrapper">
+
+    <section id="content">
+        <div class="container clearfix topmargin-sm" style="margin-bottom:20px;">
+            <div class="col_full ">
+                <style type="text/css">
+    :-moz-autofill, :-moz-autofill-preview {
+        filter: grayscale(21%) brightness(88%) contrast(161%) invert(10%) sepia(40%) saturate(206%);
+    }
+
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active {
+        -webkit-box-shadow: 0 0 0 30px #F8F8F8 inset !important;
+        bottom: 30px;
+    }
+
+    #content {
+        position: relative;
+        overflow: hidden;
+        background-color: #f2f3f5;
+    }
+
+    .col_full {
+        clear: both;
+        float: none;
+        margin-right: 0;
+    }
+    .container {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+
+    #content .container {
+    position: relative;
+    }
+
+    .stretched #wrapper {
+        width: 100%;
+        margin: 0;
+        box-shadow: none;
+    }
+
+    .p_top_30 {
+    padding-top: 30px;
+    }
+
+    .input_alert_msg{
+        margin-right: -30px;
+    }
+
+    #PreregLand_Header_div {
+        padding: 30px;
+        background-color: #fff;
+    }
+
+    #PreregLand_Header_title {
+        color: #402656;
+    }
+
+    .PreregLand_ul {
+        list-style: none;
+    }
+
+        .PreregLand_ul > li {
+            line-height: 28px;
+            display: flex;
+        }
+
+        .PreregLand_ul li:before {
+            content: "•";
+            font-size: 200%; /* or whatever */
+            padding-right: 5px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .PreregLand_ul > li > span {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+    #PreregLand_YesNo_div {
+        background-color: #402656;
+        padding: 25px
+    }
+
+    .PreregLand_YesNo_btn {
+        color: #fff;
+        padding: 5px;
+        border: 1px solid white;
+        border-radius: 10px;
+        background-color: #564162;
+        width: 200px;
+        cursor: pointer;
+        transition-duration: 0.4s;
+    }
+
+        .PreregLand_YesNo_btn:hover {
+            background-color: #fff;
+            color: #564162;
+        }
+
+
+        #PreregLand_MyChinaplas_BG_div {
+            background: #402656;
+            background: url('/CPS20/Files//Image/Content/PreregLand_login_bg.jpg');
+        }
+
+        #div_MyChinaplas {
+            padding: 0px 30px 30px;
+        }
+
+        #div_MyChinaplas_Tips {
+            padding: 30px 50px;
+            font-size: 20px;
+        }
+
+        #div_MyChinaplas_Tabs {
+            background-color: #fff;
+            padding: 25px 20px 0px 15px;
+        }
+
+        .div_MyChinaplas_Tab_ul {
+            border-bottom: 0px;
+            padding-left: 30px;
+        }
+
+            .div_MyChinaplas_Tab_ul > li > a.active > div {
+                border-bottom: 3px solid #402655;
+                font-weight: bold;
+                padding-bottom: 20px;
+            }
+
+            .div_MyChinaplas_Tab_ul > li > a {
+                color: #402655;
+            }
+
+        .div_MyChinaplas_Tab_li {
+            width: 50%;
+            font-size: 24px;
+        }
+
+        .div_MyChinaplas_pane {
+            background-color: #F8F8F8;
+            padding: 50px 45px 5px;
+            min-height: 404px;
+        }
+
+        .input_animation {
+            background-color: #F8F8F8;
+            filter: none;
+        }
+
+        .input_animation_placeholder {
+            margin: 0px 25px;
+        }
+
+        .input_animation_placeholder > i {
+            font-size: 18px;
+        }
+
+        .div_MyChinaplas_MobileTips{
+            color:#808080;
+            font-size:16px;
+            margin-bottom: 40px;
+            margin-left: 50px;
+            margin-top: -2px;
+        }
+
+        .div_MyChinaplas_MobileTips_SMS{
+            color:#808080;
+            font-size:16px;
+            margin-bottom: 40px;
+            margin-left: 50px;
+            margin-top: -2px;
+            position: relative;
+        }
+
+        .div_withSMSBtn {
+            margin-bottom: 5px;
+        }
+
+        .btn_SendSMS {
+            background-color: #402656 !important;
+            color: #fff;
+            border: 0px;
+            text-shadow: initial;
+            border-radius: 5px;
+            z-index: 1;
+        }
+
+        .btn_Submit {
+            width: 100%;
+            font-size: 24px;
+            border-radius: 35px;
+            height: 50px;
+            background-color: #402656 !important;
+            border-radius: 30px !important;
+        }
+
+        #div_MyChinaplas_ForgotPassword {
+            background-color: #DDDEF3;
+            padding: 15px 50px 20px;
+        }
+
+        #ReEmail {
+            width: 86%;
+            height: 55px;
+            border: 0px;
+            padding: 15px;
+        }
+
+        #btn_MemberEmailSend {
+            right: 10px;
+            top: 7px;
+            background-color: #F2F3F5 !important;
+            color: #E7380D;
+            border: 0px;
+            text-shadow: initial;
+        }
+
+        #PreregLand_Reg_BG_div {
+            background-color: #402656;
+            text-align: center;
+            justify-content: center;
+            //align-items: center;
+        }
+
+        #PreregLand_Reg_BG_div_Mobile {
+            background-color: #402656;
+            text-align: center;
+            padding: 30px;
+        }
+
+        #PreregLand_Reg_Btn_div{
+        }
+
+        .PreregLand_Reg_btn{
+            width: 425px;
+        }
+
+        .Lbl_PreregLand_NewReg_Tips1{
+            font-size: 20px;
+        }
+
+        @media (max-width: 1250px) {
+            #div_MyChinaplas_Tips {
+                padding: 30px 40px;
+            }
+
+            #div_MyChinaplas {
+                padding: 0px 40px 60px;
+            }
+
+            .div_MyChinaplas_pane {
+                padding: 60px 65px 15px;
+            }
+
+            #ReEmail {
+                max-width: 475px;
+            }
+
+            #div_MyChinaplas_ForgotPassword {
+                background-color: #DDDEF3;
+                padding: 15px 120px 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .tab-content > .div_MyChinaplas_pane {
+                display: none;
+            }
+
+                .tab-content > .div_MyChinaplas_pane.active {
+                    display: block;
+                }
+
+            .div_MyChinaplas_pane {
+                padding: 60px 20px 15px;
+            }
+
+            .div_withSMSBtn {
+                margin-bottom: 15px;
+            }
+
+            .div_MyChinaplas_Tab_ul {
+                padding-left: 0px;
+            }
+
+            .div_MyChinaplas_MobileTips_SMS{
+                margin-bottom: 15px;
+                margin-top: -10px;
+            }
+
+            #div_MyChinaplas_ForgotPassword {
+                padding: 15px 30px;
+            }
+
+            #ReEmail {
+                max-width: 265px;
+            }
+
+            .PreregLand_Reg_btn {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            #div_MyChinaplas_Tips {
+                padding: 15px 20px;
+            }
+
+            #div_MyChinaplas {
+                padding: 0px;
+            }
+
+            #MyChinaplas_Header {
+                font-size: 18px;
+            }
+
+            .PreregLand_YesNo_btn {
+                width: 105px;
+            }
+
+            .div_MyChinaplas_Tab_ul > li {
+                padding-right: 5px;
+            }
+
+                .div_MyChinaplas_Tab_ul > li > a.active {
+                    border-bottom: 0px;
+                }
+
+            .div_MyChinaplas_pane {
+                padding: 60px 5px 45px;
+            }
+
+            #div_MyChinaplas_ForgotPassword {
+                padding: 15px 20px;
+            }
+
+            #ReEmail {
+                max-width: 77%;
+            }
+        }
+
+                </style>
+                <div class="clearfix">
+                    <!-- Start of Header -->
+                    <div class="col-12 mb-4" id="PreregLand_Header_div">
+                        <h3 class="font-weight-normal mb-3"
+                            data-webres="Lbl_PreregLand_Header_Title" id="PreregLand_Header_title"
+                            style="line-height: normal;">Visitors who successfully pre-register
+                            online will enjoy following privileges:</h3>
+                        <ul class="PreregLand_ul mb-3 pl-1 pl-sm-4 pl-md-4">
+                            <li><span data-webres="Lbl_PreregLand_Header_Tips1">An early bird discount for a 4-day pass (fare discount: RMB ¥50 or USD $7.5, original price: RMB ¥80);</span>
+                            </li>
+                            <li><span data-webres="Lbl_PreregLand_Header_Tips2">Bookmark interested exhibitors and create tailor-made visiting route with the MyCHINAPLAS account;</span>
+                            </li>
+                            <li><span data-webres="Lbl_PreregLand_Header_Tips3">Be automatically enrolled into a pre-registration monthly lucky draw</span>
+                            </li>
+                        </ul>
+                        <p class="pl-1" data-webres="Lbl_PreregLand_Deadline">Visitor
+                            pre-registration deadline: <span class="font-weight-bold"
+                                                             style="color: #FC9D0B;">July 24, 2020, 5pm</span>
+                            (GMT + 8:00) <br/><span class="font-weight-bold"
+                                                    style="color: #E7380D;">As the show has been postponed, the organizer will re-schedule the pre-registration deadline in due course.</span>Please
+                            stay tuned!</p>
+                    </div>
+
+                    <div class="col-12 text-center mb-4 d-block d-sm-block d-lg-none"
+                         id="PreregLand_YesNo_div">
+                        <h3 class="text-white mb-3" data-webres="Lbl_PreregLand_Q_Preregistered">
+                            Have you pre-registered for CHINAPLAS 2019?</h3>
+                        <div class="mb-1">
+                            <button class="PreregLand_YesNo_btn mr-2"
+                                    data-webres="Lbl_PreregLand_Yes" id="PreregLand_Yes_btn"
+                                    onclick="preClick_Yes()" t_label="PreregLand_Btn_Yes"><i
+                                    class="fas fa-long-arrow-alt-down mr-2"></i>Yes
+                            </button>
+                            <button class="PreregLand_YesNo_btn" data-webres="Lbl_PreregLand_No"
+                                    id="PreregLand_No_btn" onclick="preClick_No()"
+                                    t_label="PreregLand_Btn_No"><i
+                                    class="fas fa-long-arrow-alt-down mr-2"></i>No
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <style>
+    .rel_Tag {
+        height: auto;
+        background-color: #402656 !important;
+        white-space: initial;
+        line-height: 26px;
+        padding: 10px 18px;
+    }
+
+        .rel_Tag:hover {
+            color: #CCC;
+        }
+
+    .div_RelatedEvents_border {
+        border: 1px solid #CCC;
+        height: 100%;
+    }
+
+    .img_RelatedEvents_thumbnail {
+        width: 100%;
+    }
+
+    .rel_News_SubDiv, .rel_Events_SubDiv {
+        border: 2px solid #CCC;
+        height: 100%;
+    }
+
+    .rel_News_Link {
+        color: #444;
+        width: 100%;
+    }
+
+    .rel_News_Index {
+        padding: 0px 7px;
+        background-color: #e8340c;
+        color: #fff;
+        align-self: baseline;
+    }
+
+    .rel_span {
+        color: #444;
+    }
+
+    .rel_span:hover {
+        color: #E7380D;
+    }
+
+    </style>
+
+</div>
+
+<!-- <script src="https://www.chinaplasonline.com/CPS20/Files//js/functions.js"></script>  -->
+
+
+</body>
+</html>

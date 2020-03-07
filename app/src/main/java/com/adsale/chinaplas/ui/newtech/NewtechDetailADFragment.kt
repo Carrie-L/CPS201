@@ -47,7 +47,7 @@ class NewtechDetailADFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         initViewModel()
 
-        adHelper = ADHelper.getInstance(requireActivity().application)
+        adHelper = ADHelper.getInstance()
         arguments?.let {
             val rid = NewtechDetailFragmentArgs.fromBundle(it).id
             LogUtil.i("rid=$rid")

@@ -7,10 +7,7 @@ import android.view.ViewGroup
 import android.webkit.WebView
 import androidx.fragment.app.Fragment
 import com.adsale.chinaplas.R
-import com.adsale.chinaplas.rootDir
-import com.adsale.chinaplas.utils.LogUtil
-import com.adsale.chinaplas.utils.getHtmName
-import java.io.File
+import com.adsale.chinaplas.utils.getWebContentHtmlPath
 
 class FollowFragment : Fragment() {
     private lateinit var webView: WebView
@@ -28,17 +25,20 @@ class FollowFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        val sdPath = "file://${rootDir}WebContent1/%s/${getHtmName()}"
-        val assetPath = "file:///android_asset/WebContent/%s/${getHtmName()}"
-        val path:String
-        if (File(sdPath).exists()) {
-            path = sdPath
-            LogUtil.i("sdPath exists = $sdPath")
-        } else {
-            path = assetPath
-            LogUtil.i("assetPath exists = $sdPath")
-        }
+        val path = getWebContentHtmlPath("S005")
         webView.loadUrl(String.format(path, "S005"))
+
+//        val sdPath = "file://${rootDir}WebContent1/%s/${getHtmName()}"
+//        val assetPath = "file:///android_asset/WebContent/%s/${getHtmName()}"
+//        val path:String
+//        if (File(sdPath).exists()) {
+//            path = sdPath
+//            LogUtil.i("sdPath exists = $sdPath")
+//        } else {
+//            path = assetPath
+//            LogUtil.i("assetPath exists = $sdPath")
+//        }
+
 
     }
 }

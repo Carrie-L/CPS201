@@ -1,0 +1,8 @@
+{
+"id":"Opening",
+"title_sc":"展品范围",
+"title_tc":"展品範圍",
+"title_en":"Scope",
+"text":""
+
+}

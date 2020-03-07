@@ -19,3 +19,5 @@ const val NEW_TECH_BASE_URL = "http://cdn.adsalecdn.com/App/2020/NewTech/images/
 const val HIGHLIGHT_URL = "https://www.chinaplasonline.com/CPS20/techshowsdetail/%s/1-min_tech_shows?type=3&sid=393"
 
 const val AD_BASE_URL = "https://cdn.adsalecdn.com/App/2020/EPO/"
+
+const val SEMINAR_ROOM_MAP = "https://cdn.adsalecdn.com/App/2020/images/seminar_room.jpg"

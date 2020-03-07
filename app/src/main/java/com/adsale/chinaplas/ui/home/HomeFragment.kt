@@ -66,7 +66,6 @@ class HomeFragment : Fragment() {
     private lateinit var vpindicator: LinearLayout
     private lateinit var recyclerView: RecyclerView
     //    private lateinit var ivAd: ImageView
-    private lateinit var adPager: ViewPager
     private lateinit var d2RecyclerView: RecyclerView
 
     private lateinit var mainViewModel: MainViewModel
@@ -169,7 +168,6 @@ class HomeFragment : Fragment() {
         viewPager = tabletBinding.viewPager
         vpindicator = tabletBinding.llIndicator
         recyclerView = tabletBinding.rvMenu
-        adPager = tabletBinding.adPager
 
         initPadTopBannerSize()
     }
@@ -205,16 +203,8 @@ class HomeFragment : Fragment() {
     private fun processMenuIntent(entity: MainIcon) {
         i("processMenuIntent:${entity.BaiDu_TJ}")
         when (entity.BaiDu_TJ) {
-//            BD_VISITOR -> NavHostFragment.findNavController(this).navigate(HomeFragmentDirections.actionNavHomeToRegisterFragment())  // todo register
-//            BD_VISITOR -> NavHostFragment.findNavController(this).navigate(HomeFragmentDirections.actionNavHomeToRegisterPreFragment())   // todo registerPre
-            BD_VISITOR -> intentToRegister()  // todo registerPre
-//            BD_VISITOR -> NavHostFragment.findNavController(requireParentFragment()).navigate(
-//                HomeFragmentDirections.actionNavHomeToRegisterWebsiteFragment(
-//                    ""))   // todo registerWebview
-//            BD_VISITOR ->  requireActivity().showFragment<RegisterWebsiteFragment>(R.id.nav_host_fragment)
-//            BD_VISITOR -> NavHostFragment.findNavController(this).navigate(R.id.registerWebsiteFragment)  // todo registerWebview
-//                        BD_VISITOR -> NavHostFragment.findNavController(this).navigate(HomeFragmentDirections.actionNavHomeToRegisterActivity())  /
-//            BD_EXHIBITOR_LIST -> NavHostFragment.findNavController(this).navigate(HomeFragmentDirections.actionNavHomeToMenuExhibitors())
+            BD_VISITOR -> intentToRegister()
+
             BD_EXHIBITOR_LIST -> NavHostFragment.findNavController(this).navigate(
                 HomeFragmentDirections.actionNavHomeToMenuExhibitors()
             )
@@ -266,9 +256,14 @@ class HomeFragment : Fragment() {
                     )
             }
         } else {
-            /* 预登记前置页，检测账户是否存在 */
             NavHostFragment.findNavController(this)
-                .navigate(HomeFragmentDirections.actionNavHomeToRegisterPreFragment())
+                .navigate(HomeFragmentDirections.actionToWebContentFragment("PreregisLanding",
+                    getString(R.string.title_register)))
+
+
+            /* 预登记前置页，检测账户是否存在 */
+//            NavHostFragment.findNavController(this)
+//                .navigate(HomeFragmentDirections.actionNavHomeToRegisterPreFragment())
         }
     }
 
@@ -413,19 +408,19 @@ class HomeFragment : Fragment() {
     }
 
     private fun bottomAd() {
-        val adHeight = getScreenWidth() * IMG_HEIGHT / IMG_WIDTH
-        i("adHeight=$adHeight,,, d1Height= ${mainViewModel.d1Height.value!!}")
-        val params = ConstraintLayout.LayoutParams(getScreenWidth(), mainViewModel.d1Height.value!!)
-        if (isTablet()) {
-            params.topToBottom = R.id.viewPager
-            adPager.layoutParams = params
-        } else {
-            params.topToBottom = R.id.rv_menu
-            if (mainViewModel.dlMargin > 0) {
-                params.topMargin = mainViewModel.dlMargin / 2
-            }
-            d2RecyclerView.layoutParams = params
-        }
+//        val adHeight = getScreenWidth() * IMG_HEIGHT / IMG_WIDTH
+//        i("adHeight=$adHeight,,, d1Height= ${mainViewModel.d1Height.value!!}")
+//        val params = ConstraintLayout.LayoutParams(getScreenWidth(), mainViewModel.d1Height.value!!)
+//        if (isTablet()) {
+//            params.topToBottom = R.id.viewPager
+//            adPager.layoutParams = params
+//        } else {
+//            params.topToBottom = R.id.rv_menu
+//            if (mainViewModel.dlMargin > 0) {
+//                params.topMargin = mainViewModel.dlMargin / 2
+//            }
+//            d2RecyclerView.layoutParams = params
+//        }
 
         initAdView()
     }
@@ -443,7 +438,7 @@ class HomeFragment : Fragment() {
         val pagerSnapHelper = PagerSnapHelper()
         pagerSnapHelper.attachToRecyclerView(d2RecyclerView)
 
-        val adHelper = ADHelper.getInstance(requireActivity().application)
+        val adHelper = ADHelper.getInstance()
         val list = adHelper.d2Property()
         i("ad list = ${list.size}")
 

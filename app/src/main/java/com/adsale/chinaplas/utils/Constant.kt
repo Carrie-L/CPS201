@@ -4,11 +4,15 @@ package com.adsale.chinaplas.utils
  * Created by Carrie on 2019/10/16.
  */
 // 2020.4.21-24  展会日期
-const val SHOW_DATE_1ST = "2020-4-21"
-const val DATE_1 = 21
-const val DATE_2 = 22
-const val DATE_3 = 23
-const val DATE_4 = 24
+const val SHOW_DATE_1ST = "2020-08-03"
+const val SHOW_YEAR = 2020
+const val SHOW_MONTH = 8
+const val DATE_1 = 3
+const val DATE_2 = 4
+const val DATE_3 = 5
+const val DATE_4 = 6
+
+val EVENT_DATE = if (getCurrLanguage() == 1) "%d Aug" else "8月%d日"
 
 const val DATABASE_NAME = "cps20.db"
 
@@ -101,6 +105,7 @@ const val TXT_AD = "advertisement.txt"
 const val TXT_MAIN_BANNER = "MainBannerInfo.txt"
 const val TXT_NEW_TECH_AD = "NewTechInfo.txt"
 const val TXT_PDF = "PDFCenterInfo.txt"
+const val TXT_SEARCH_TAG = "SearchTag.txt"
 
 /* 预登记Data Part Name */
 const val REG_JOB_TITLE = "JobTitleList"
@@ -218,5 +223,9 @@ const val EXHIBITOR_APPLICATION = "application"
 const val EXHIBITOR_INDUSTRY = "industry"
 const val EXHIBITOR_SCHEDULE = "schedule"
 
-
-
+/*   全局搜索 */
+const val SEARCH_GROUP_EXHIBITOR = "Exhibitor"
+const val SEARCH_GROUP_EVENT = "CurrentEvents"
+const val SEARCH_GROUP_NEW_TECH = "NewTech"
+const val SEARCH_GROUP_WEB_CONTENT = "GeneralInformation"
+const val SEARCH_GROUP_SEMINAR = "Seminar"

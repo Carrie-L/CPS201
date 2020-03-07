@@ -1,7 +1,6 @@
 package com.adsale.chinaplas.data.dao
 
 import android.text.TextUtils
-import androidx.databinding.ObservableBoolean
 import androidx.room.Entity
 import androidx.room.Ignore
 import androidx.room.PrimaryKey
@@ -50,7 +49,9 @@ class SeminarInfo {
     }
 
     @Ignore
-    var isAder = ObservableBoolean(false)
+    var isAder = false
+    @Ignore
+    var logoImage = ""
 
     fun parser(strings: Array<String>) {
         this.ID = Integer.valueOf(strings[0])

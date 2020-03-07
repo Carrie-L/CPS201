@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
@@ -20,9 +19,7 @@ import com.adsale.chinaplas.data.dao.CpsDatabase
 import com.adsale.chinaplas.data.dao.WebContent
 import com.adsale.chinaplas.data.dao.WebContentRepository
 import com.adsale.chinaplas.helper.ADHelper
-import com.adsale.chinaplas.helper.D5_GENERATION
 import com.adsale.chinaplas.helper.D5_VISIT
-import com.adsale.chinaplas.utils.getScreenWidth
 import com.adsale.chinaplas.utils.getSpanCount
 import com.adsale.chinaplas.utils.setItemEventID
 import com.bumptech.glide.Glide
@@ -36,7 +33,7 @@ import kotlinx.coroutines.*
  */
 class VisitorTipFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
-    private var baiduTJ: String? = "GeneralInformation"
+    private var baiduTJ: String? = "Opening"
     private var job = Job()
     private var list = MutableLiveData<List<WebContent>>()
     private val uiScope = CoroutineScope(job + Dispatchers.Main)
@@ -91,26 +88,23 @@ class VisitorTipFragment : Fragment() {
     }
 
     private fun showD5() {
-        val adHelper = ADHelper.getInstance(requireActivity().application)
+        val adHelper = ADHelper.getInstance()
         val property = adHelper.d5Property(D5_VISIT)
         if (property.pageID.isEmpty() || !adHelper.isD5Open()) {
             ivD5.visibility = View.GONE
             return
         }
-        val params = ConstraintLayout.LayoutParams(getScreenWidth(), adHelper.getADHeight())
-        params.bottomToBottom = ConstraintLayout.LayoutParams.MATCH_CONSTRAINT
-        params.topToBottom = R.id.rv_tips
-        ivD5.layoutParams = params
 
         val options = RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.RESOURCE)
-        Glide.with(this).load(adHelper.d5ImageUrl(D5_GENERATION)).apply(options).into(ivD5)
+        Glide.with(this).load(adHelper.d5ImageUrl(D5_VISIT)).apply(options).into(ivD5)
 
         ivD5.setOnClickListener {
             when (property.function) {
                 1 -> findNavController().navigate(VisitorTipFragmentDirections.actionToExhibitorDetailFragment(property.pageID))
                 2 -> { // 同期活动
                     setItemEventID(property.pageID)
-                    findNavController().navigate(R.id.eventDetailFragment)
+                    findNavController().navigate(VisitorTipFragmentDirections.actionToEventDetailFragment(property.pageID,
+                        getString(R.string.title_concurrent_event)))
                 }
             }
         }

@@ -14,6 +14,8 @@ import android.view.LayoutInflater
 import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import androidx.annotation.RequiresApi
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import com.adsale.chinaplas.R
 import com.adsale.chinaplas.mResources
 import com.adsale.chinaplas.mSPConfig
@@ -249,6 +251,27 @@ fun getYesterdayDate(): String {
         .format(calendar.time)
 }
 
+fun dateToString(date: Date?): String? {
+    val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.CHINA)
+    return sdf.format(date)
+}
+
+fun stringToDate(time: String?): Date? {
+    val sdf = SimpleDateFormat("HH:mm", Locale.CHINA)
+    try {
+        return sdf.parse(time)
+    } catch (e: ParseException) {
+        e.printStackTrace()
+    }
+    return Date()
+}
+
+fun timeToString(date: Date?): String? {
+    val sdf = SimpleDateFormat("HH:mm", Locale.CHINA)
+    return sdf.format(date)
+}
+
+
 /**
  * 比较三个date的值  ,是否 date1 < date < date2
  * ad.txt
@@ -361,6 +384,7 @@ fun setName(name: String) {
 fun getName(): String {
     return mSPReg.getString(REG_FORM_NAME, "")!!
 }
+
 
 fun setGender(gender: String) {
     mSPReg.edit().putString(REG_FORM_GENDER, gender).apply()
@@ -966,6 +990,18 @@ fun getSpanCount(): Int {
     return if (isTablet()) 3 else 2
 }
 
+fun getExhibitorTitle(): String {
+    return getName("展商列表", "Exhibitor List", "展商列表")
+}
+
+fun getNewtechTitle(): String {
+    return getName("新品及熱點技術", "New & Hot Tech", "新品及热点技术")
+}
+
+fun getSeminarTitle(): String {
+    return getName("技術交流會", "Technical Seminar", "技术交流会")
+}
+
 /**
  * @param windowToken binding.root.windowToken
  */
@@ -1001,14 +1037,52 @@ fun getSPEventFilter(): String {
     return mSPConfig.getString("event_filter", "")!!
 }
 
-fun setSPSeminarFilter(filter: String) {
-    mSPConfig.edit().putString("seminar_filter", filter).apply()
+fun setSPSeminarFilterEmpty(filter: String) {
+    mSPConfig.edit().putString("seminar_filter_%3%", filter).apply()
+    mSPConfig.edit().putString("seminar_filter_%4%", filter).apply()
+    mSPConfig.edit().putString("seminar_filter_%5%", filter).apply()
 }
 
-fun getSPSeminarFilter(): String {
-    return mSPConfig.getString("seminar_filter", "")!!
+fun setSPSeminarFilter(date: String, filter: String) {
+    mSPConfig.edit().putString("seminar_filter_$date", filter).apply()
 }
 
+fun getSPSeminarFilter(date: String): String {
+    return mSPConfig.getString("seminar_filter_$date", "")!!
+}
+
+
+/*同期活動 点击筛选前的bar index*/
+fun setEventTabIndex(index: Int) {
+    mSPConfig.edit().putInt("concurrent_event_tab_index", index).apply()
+}
+
+fun getEventTabIndex(): Int {
+    return mSPConfig.getInt("concurrent_event_tab_index", 0)
+}
+
+fun setSeminarTabIndex(index: Int) {
+    mSPConfig.edit().putInt("seminar_tab_index", index).apply()
+}
+
+fun getSeminarTabIndex(): Int {
+    return mSPConfig.getInt("seminar_tab_index", 1)
+}
+
+// 上午 0 下午 1
+fun setSeminarTimeIndex(date: String, index: Int) {
+    mSPConfig.edit().putInt("seminar_time_index_$date", index).apply()
+}
+
+fun getSeminarTimeIndex(date: String): Int {
+    return mSPConfig.getInt("seminar_time_index_$date", 0)
+}
+
+fun resetSeminarTimeIndex(index: Int) {
+    mSPConfig.edit().putInt("seminar_time_index_%3%", index).apply()
+    mSPConfig.edit().putInt("seminar_time_index_%4%", index).apply()
+    mSPConfig.edit().putInt("seminar_time_index_%5%", index).apply()
+}
 
 /*  ========== 广告次序  ============    */
 /**
@@ -1020,5 +1094,11 @@ fun setD3CurrentIndex(currentIndex: Int) {
 
 fun getD3CurrentIndex(): Int {
     return mSPConfig.getInt("d3_current_index", -1)
+}
+
+inline fun FragmentManager.inTransaction(func: FragmentTransaction.() -> Unit) {
+    val fragmentTransaction = beginTransaction()
+    fragmentTransaction.func()
+    fragmentTransaction.commit()
 }
 

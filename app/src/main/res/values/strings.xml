@@ -12,7 +12,7 @@
     <string name="ok">確定</string>
 
     <string name="menu_home">主頁</string>
-    <string name="menu_download_center">下載中心</string>
+    <string name="menu_download_center">宣傳資料下載</string>
     <string name="menu_subscribe">訂閱電子快訊</string>
     <string name="menu_calendar">添加到日曆</string>
     <string name="menu_follow">關注我們</string>
@@ -245,15 +245,15 @@
     <string name="toast_code_empty">請輸入驗證碼</string>
     <string name="toast_phone_empty">請輸入中國手機號碼</string>
     <string name="toast_phone_empty2">請輸入手機號碼</string>
-    <string name="toast_sms_error">手机号验证码不正确，请重新输入</string>
+    <string name="toast_sms_error">手機號驗證碼不正確，請重新輸入</string>
     <!--smd code-->
-    <string name="sms_response_0">发送失败，请勿多次提交</string>
-    <string name="sms_response_1">发送失败，请稍后再试</string>
-    <string name="sms_response_2">手机号码不正确，请输入中国国内有效的手机号码</string>
-    <string name="sms_response_3">验证码发送成功，请查收短信。</string>
-    <string name="send_countdown">%d秒后重新获取</string>
+    <string name="sms_response_0">發送失敗，請勿多次提交</string>
+    <string name="sms_response_1">發送失敗，請稍後再試</string>
+    <string name="sms_response_2">手機號碼不正確，請輸入中國國內有效的手機號碼</string>
+    <string name="sms_response_3">驗證碼發送成功，請查收短信。</string>
+    <string name="send_countdown">%d秒後重新獲取</string>
 
-    <string name="toast_login_failed">登入名称或密码不正确，请重新输入。</string>
+    <string name="toast_login_failed">登入名稱或密碼不正確，請重新輸入。</string>
     <string name="title_my_chinaplas">MyCHINAPLAS</string>
 
 
@@ -279,11 +279,7 @@
     <string name="filter_hall">展館</string>
     <string name="filter_booth">專區</string>
     <string name="filter_keyword">關鍵字</string>
-    <string name="filter_topic_collection">主題專集</string>
-    <string name="filter_new_tech">新品技術</string>
-    <string name="filter_new_tec">新品及熱點技術</string>
     <string name="filter_keyword_hint">輸入關鍵字</string>
-    <string name="filter_highlights">展會亮點</string>
     <string name="hall_exhibitor_count">家展商</string>
 
     <string name="filter_clear_all">清空篩選條件</string>
@@ -347,13 +343,14 @@
     <string name="past_records">過去</string>
 
     <!-- 同期活动 -->
-    <string name="event_date_1" translatable="false">4.21</string>
-    <string name="event_date_2" translatable="false">4.22</string>
-    <string name="event_date_3" translatable="false">4.23</string>
-    <string name="event_date_4" translatable="false">4.24</string>
+    <string name="event_date_1" translatable="false">8.3</string>
+    <string name="event_date_2" translatable="false">8.4</string>
+    <string name="event_date_3" translatable="false">8.5</string>
+    <string name="event_date_4" translatable="false">8.6</string>
     <string name="event_tab_all">總覽</string>
     <string name="seminar_pm">下午</string>
     <string name="seminar_am">上午</string>
+    <string name="seminar_room_btn">會議室位置圖</string>
 
     <!--技术交流会-->
     <!--技术交流会-->
@@ -376,6 +373,40 @@
     <!--新技术产品-->
     <string name="filter_product">產品</string>
     <string name="filter_applications">應用</string>
+    <string name="filter_topic_collection">主題專集</string>
+    <string name="filter_new_tech">新品技術</string>
+    <string name="filter_new_tec">新品及熱點技術</string>
+    <string name="filter_highlights">展會亮點</string>
     <string name="new_tec_ad">廣告商產品</string>
+
+    <string name="ad_ratio" translatable="false">h,1920:346</string>
+    <string name="ad_ratio_large" translatable="false">h,1080:331</string>
+    <string name="reg_service_select_title">请输入公司从事业务/行业为 (可选多项)</string>
+
+    <!--  日程表-->
+    <string name="schedule_title">標題</string>
+    <string name="schedule_location">位置</string>
+    <string name="schedule_startTime">時間</string>
+    <string name="schedule_length">為時</string>
+    <string name="schedule_note">筆記</string>
+    <string name="schedule_hour">小時</string>
+    <string name="schedule_minute">分鐘</string>
+    <string name="schedule_save">儲存</string>
+    <string name="schedule_del">刪除</string>
+    <string name="btnSave">儲存</string>
+    <string name="btnClear">清除所有</string>
+    <string name="btnDel">删除</string>
+    <string name="addScheduleInfo">新增議程</string>
+    <string name="note_successful">成功儲存議程</string>
+    <string name="ask_clear_note">你確定想清除筆記?</string>
+    <string name="ask_schedule">相同時間已儲存了另一個議程，繼續儲存?</string>
+    <string name="not_title">標題不能為空</string>
+
+    <string name="schedule_label_exhibitor">展商</string>
+    <string name="schedule_label_event">活動</string>
+    <string name="global_head_tag">熱門標籤</string>
+
+    <!--    <string name="ScheduleInfo_lable">議程%1$s:</string>-->
+    <!--    <string name="ScheduleInfo_startTime">時間:%1$s</string>-->
 
 </resources>

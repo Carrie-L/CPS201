@@ -9,7 +9,6 @@ import com.adsale.chinaplas.utils.getCurrLanguage
 /**
  * Created by Carrie on 2019/10/16.
  */
-
 @Entity(tableName = "MainIcon")
 class MainIcon {
 

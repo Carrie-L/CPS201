@@ -1,0 +1,33 @@
+{
+"id":"Opening",
+"title_sc":"展会概览",
+"title_tc":"展會概覽",
+"title_en":"Generation Info",
+"groupID":"GeneralInformation",
+"group_title":"展會概覽,General Info,展会概览",
+"text":"第三十四屆中國國際塑料橡膠工業展覽會
+日期
+2020年4月21-24日
+開放時間
+09:30-17:30
+地點
+中國‧上海‧虹橋‧國家會展中心(中國上海市青浦區崧澤大道333號)
+
+The 34th International Exhibition on Plastics and Rubber Industries
+Date
+April 21-24, 2020
+Opening Hours
+09:30-17:30
+Venue
+National Exhibition and Convention Center, Hongqiao, Shanghai (NECC) (No.333 Songze Avenue Road, Qingpu District, Shanghai, PR China)
+
+第三十四届中国国际塑料橡胶工业展览会
+日期
+2020年4月21-24日
+开放时间
+09:30-17:30
+地点
+中国‧上海‧虹桥‧国家会展中心(中国上海市青浦区崧泽大道33号)"
+
+
+}

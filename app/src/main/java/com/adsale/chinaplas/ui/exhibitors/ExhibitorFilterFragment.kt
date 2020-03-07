@@ -10,7 +10,6 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
 import android.widget.ScrollView
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -240,20 +239,12 @@ class ExhibitorFilterFragment : Fragment() {
     }
 
     private fun showD3() {
-        d3Height()
+        ivD3 = binding.ivD3
         generateD3()
     }
 
-    private fun d3Height() {
-        ivD3 = binding.ivD3
-        val adHeight = getScreenWidth() * IMG_HEIGHT / IMG_WIDTH
-        val params = ConstraintLayout.LayoutParams(getScreenWidth(), adHeight)
-        params.bottomToBottom = ConstraintLayout.LayoutParams.MATCH_CONSTRAINT
-        ivD3.layoutParams = params
-    }
-
     private fun generateD3() {
-        val adHelper = ADHelper.getInstance(requireActivity().application)
+        val adHelper = ADHelper.getInstance()
         val d3 = adHelper.getCurrentD3()
 
         val options = RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.RESOURCE)
@@ -263,7 +254,6 @@ class ExhibitorFilterFragment : Fragment() {
         ivD3.setOnClickListener {
             findNavController().navigate(ExhibitorFilterFragmentDirections.actionToExhibitorDetailFragment(d3.pageID))
         }
-
     }
 
     override fun onDestroy() {

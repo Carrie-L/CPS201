@@ -1,4 +1,6 @@
 <resources>
     <bool name="isTablet">true</bool>
+    <string name="ad_ratio" translatable="false">h,1636:138</string>
+    <string name="ad_ratio_large" translatable="false">h,1080:331</string>
 </resources>
 

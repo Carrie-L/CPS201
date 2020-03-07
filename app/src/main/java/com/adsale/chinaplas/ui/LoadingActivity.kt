@@ -31,6 +31,7 @@ import com.adsale.chinaplas.utils.*
 import com.adsale.chinaplas.utils.LogUtil.i
 import com.adsale.chinaplas.viewmodels.LoadingViewModel
 import com.adsale.chinaplas.viewmodels.LoadingViewModelFactory
+//import com.baidu.mobstat.StatService
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -38,6 +39,10 @@ import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.Target
+//import com.bun.miitmdid.core.JLibrary.context
+//import com.bun.miitmdid.core.MdidSdkHelper
+//import com.bun.supplier.IIdentifierListener
+//import com.bun.supplier.IdSupplier
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -165,7 +170,7 @@ class LoadingActivity : AppCompatActivity() {
             )
                 .get(LoadingViewModel::class.java)
         binding.viewModel = viewModel
-        binding.executePendingBindings()
+//        binding.executePendingBindings()
 
         setDeviceType()
         setFullScreen()
@@ -220,6 +225,14 @@ class LoadingActivity : AppCompatActivity() {
             }
 
         })
+
+
+//        MdidSdkHelper.InitSdk(this, true) { b, idSupplier ->
+//            if (idSupplier != null && idSupplier.isSupported){
+//                StatService.setOaid(context, idSupplier.oaid)
+//                i("oaid=${ idSupplier.oaid}")
+//            }
+//        }
 
     }
 
@@ -290,9 +303,9 @@ class LoadingActivity : AppCompatActivity() {
                 .putFloat("PadHeightRate", heightRate).apply()
         } else {
             val rio: Float = 1080f / 1920f
-            LogUtil.i("rio=$rio")
+            i("rio=$rio")
             val rio2 = width.toFloat() / height.toFloat()
-            LogUtil.i("rio2=$rio2")
+            i("rio2=$rio2")
             if (rio2 < rio) {
                 binding.layoutBg.setBackgroundResource(R.drawable.loadingx2)
             } else {
@@ -483,8 +496,8 @@ class LoadingActivity : AppCompatActivity() {
     }
 
     private fun showD1() {
-        LogUtil.i("=============showD1================")
-        val adHelper = ADHelper.getInstance(application)
+        i("=============showD1================")
+        val adHelper = ADHelper.getInstance()
         val options = RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.RESOURCE)
         Glide.with(applicationContext).load(adHelper.d1ImageUrl()).apply(options).into(binding.d1)
 //        val animation = AnimationUtils.loadAnimation(applicationContext, R.anim.bottom_to_top)
@@ -500,7 +513,7 @@ class LoadingActivity : AppCompatActivity() {
                 val animEnd = AnimationUtils.loadAnimation(applicationContext, R.anim.fade_out)
                 binding.d1.startAnimation(animEnd)
 //                viewModel.sendBroadcast()
-                LogUtil.i("adCountDownFinish d1 finish")
+                i("adCountDownFinish d1 finish")
             }
         })
     }

@@ -16,8 +16,10 @@ import com.adsale.chinaplas.utils.DATABASE_NAME
         CompanyApplication::class, CompanyProduct::class, ExhApplication::class, ExhIndustry::class, ExhibitorZone::class, Zone::class, Country::class, Hall::class, ExhibitorHistory::class,
         ConcurrentEvent::class, SeminarInfo::class, SeminarSpeaker::class, EventApplication::class,
         NewtechProductImage::class, NewtechProductInfo::class, NewtechCategoryID::class, NewtechCategorySub::class, NewtechProductsID::class, NewtechArea::class
+        , ScheduleInfo::class
+
     ],
-    version = 1,
+    version = 10,
     exportSchema = false
 )
 abstract class CpsDatabase : RoomDatabase() {
@@ -37,6 +39,7 @@ abstract class CpsDatabase : RoomDatabase() {
     abstract fun seminarDao(): SeminarDao
     abstract fun eventApplicationDao(): EventApplicationDao
     abstract fun newtechDao(): NewtechDao
+    abstract fun scheduleDao(): ScheduleInfoDao
 
     companion object {
         @Volatile

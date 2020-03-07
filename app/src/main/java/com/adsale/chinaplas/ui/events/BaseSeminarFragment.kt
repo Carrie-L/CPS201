@@ -18,11 +18,16 @@ import com.adsale.chinaplas.data.dao.CpsDatabase
 import com.adsale.chinaplas.data.dao.SeminarInfo
 import com.adsale.chinaplas.data.dao.SeminarRepository
 import com.adsale.chinaplas.databinding.FragmentBaseSeminarBinding
+import com.adsale.chinaplas.helper.ADHelper
+import com.adsale.chinaplas.network.SEMINAR_ROOM_MAP
 import com.adsale.chinaplas.ui.exhibitors.APPLICATION_SEMINAR
+import com.adsale.chinaplas.utils.getSPSeminarFilter
+import com.adsale.chinaplas.utils.getSeminarTimeIndex
 import com.adsale.chinaplas.utils.setItemSeminarEventID
 import com.adsale.chinaplas.utils.setSPSeminarFilter
 import com.adsale.chinaplas.viewmodels.*
 import com.baidu.speech.utils.LogUtil
+import com.bumptech.glide.Glide
 
 /**
  * A simple [Fragment] subclass.
@@ -32,20 +37,33 @@ abstract class BaseSeminarFragment : Fragment() {
     protected lateinit var seminarViewModel: SeminarViewModel
     protected lateinit var adapter: SeminarAdapter
     protected lateinit var binding: FragmentBaseSeminarBinding
-    protected var CURRENT_DATE_INDEX: Int = 1  // 1:第一天，2 第二天, 3 第三天
+    protected var CURRENT_DATE_INDEX: Int = 1  //     1:第一天，2 第二天, 3 第三天
     private lateinit var mView: View
+    private var lastView: View? = null
+    private var isInited = false
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        binding = FragmentBaseSeminarBinding.inflate(inflater)
-        recyclerView = binding.seminarRecyclerViewBase
-        mView = binding.root
-        return mView
+        if (lastView == null) {
+            LogUtil.i("---lastView == null---")
+            binding = FragmentBaseSeminarBinding.inflate(inflater)
+            recyclerView = binding.seminarRecyclerViewBase
+            mView = binding.root
+            lastView = mView
+        }
+        LogUtil.i("---lastView!= null---")
+        return lastView
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        initView()
+        if (!isInited) {
+            LogUtil.i("---not isInited---")
+            initView()
+            initedData()
+            isInited = true
+        }
         initData()
+        LogUtil.i("--- isInited---")
     }
 
     private fun initView() {
@@ -54,7 +72,7 @@ abstract class BaseSeminarFragment : Fragment() {
         recyclerView.adapter = adapter
     }
 
-    private fun initData() {
+    private fun initedData() {
         seminarViewModel = ViewModelProviders.of(this, SeminarViewModelFactory(
             SeminarRepository.getInstance(CpsDatabase.getInstance(requireContext()).seminarDao())
         )).get(SeminarViewModel::class.java)
@@ -64,8 +82,10 @@ abstract class BaseSeminarFragment : Fragment() {
         init()
 
         seminarViewModel.currentDateSelect.value = CURRENT_DATE_INDEX
-        seminarViewModel.getSeminarTimeList(true)
+        seminarViewModel.getSeminarList()
+    }
 
+    private fun initData() {
         seminarViewModel.seminarList.observe(this, Observer {
             adapter.setList(it)
         })
@@ -73,6 +93,7 @@ abstract class BaseSeminarFragment : Fragment() {
         seminarViewModel.btnClick.observe(this, Observer {
             when (it) {
                 SEMINAR_FILTER -> {
+//                    setSPSeminarFilter("")
                     val currentDes = findNavController().currentDestination!!
                     if (currentDes.id == R.id.eventSeminarFragment) {
                         Navigation.findNavController(mView)
@@ -82,27 +103,53 @@ abstract class BaseSeminarFragment : Fragment() {
                         LogUtil.i("!   currentDes=${currentDes.label}")
                     }
                 }
-                SEMINAR_MAP -> ""
+                SEMINAR_MAP -> {
+                    findNavController().navigate(EventSeminarFragmentDirections.actionToImageFragment(
+                        SEMINAR_ROOM_MAP))
+                }
                 SEMINAR_RESET -> {
-                    setSPSeminarFilter("")
-                    seminarViewModel.getSeminarTimeList(true)
+                    setSPSeminarFilter(seminarViewModel.getCurrentDate(), "")
+                    seminarViewModel.resetList()
                 }
             }
         })
+
+        val adHelper = ADHelper.getInstance()
+        val d8List = adHelper.d8List()
+        seminarViewModel.currentIsAm.observe(this, Observer {
+            binding.ivD8Bottom.visibility = View.GONE
+            for (d8 in d8List) {
+                if (seminarViewModel.getCurrentDate().contains(d8.date)
+                    && (it) == (d8.isAm == 1)
+                ) {
+                    Glide.with(requireContext()).load(adHelper.baseUrl + d8.getBottomImage()).into(binding.ivD8Bottom)
+                    binding.ivD8Bottom.visibility = View.VISIBLE
+//                binding.ivD8Bottom.setOnClickListener {
+//                    setItemSeminarEventID(d8.companyID)
+//                    findNavController().navigate(R.id.seminarDetailFragment)
+//                }
+                    break
+                }
+            }
+        })
+
+
     }
 
-//    override fun onResume() {
-//        super.onResume()
-//        LogUtil.i("onResume")
-//
-//        val filters = getSPSeminarFilter()
-//        if (filters.isNotEmpty()) {
-//            LogUtil.i("getSPSeminarFilter=$filters")
-//
-//            seminarViewModel.getOverallEvents()
-//        }
-//
-//    }
+    override fun onResume() {
+        super.onResume()
+
+        val index = getSeminarTimeIndex(seminarViewModel.getCurrentDate())
+        seminarViewModel.currentIsAm.value = index == 0
+        LogUtil.i("getSeminarTimeIndex=$index")
+
+        val filter = getSPSeminarFilter(seminarViewModel.getCurrentDate())
+        if (filter.isNotEmpty()) {
+            LogUtil.i(" onResume--getFilterSeminars")
+            seminarViewModel.getFilterSeminars(filter)
+        }
+
+    }
 
     abstract fun init()
 

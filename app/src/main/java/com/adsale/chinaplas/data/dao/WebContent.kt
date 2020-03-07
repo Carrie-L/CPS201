@@ -7,7 +7,6 @@ import com.adsale.chinaplas.utils.getName
 /**
  * Created by Carrie on 2019/10/24.
  */
-
 @Entity
  class WebContent {
     var ParentID: String = ""

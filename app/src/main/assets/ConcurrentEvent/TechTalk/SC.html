@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="zh-CN">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <style>
+* {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+*, *::before, *::after {
+	box-sizing: border-box;
+}
+.container {
+	width: 100%;
+	padding-right: 15px;
+	padding-left: 15px;
+	margin-right: auto;
+	margin-left: auto;
+}
+/* @media all and (max-width:576px) */
+.container, .full-header#header .container, .container-fullwidth {
+	width: 100% !important;
+}
+.container {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+.row {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	margin-right: -15px;
+	margin-left: -15px;
+}
+.col-1, .col-2, .col-3, .col-4, .col-5, .col-s5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12, .col, .col-auto, .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm, .col-sm-auto, .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12, .col-md, .col-md-auto, .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg, .col-lg-auto, .col-xl-1, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl, .col-xl-auto {
+	position: relative;
+	width: 100%;
+	min-height: 1px;
+	padding-right: 15px;
+	padding-left: 15px;
+}
+.col-12 {
+	-webkit-box-flex: 0;
+	-ms-flex: 0 0 100%;
+	flex: 0 0 100%;
+	max-width: 100%;
+}
+.justify-content-center {
+	-webkit-box-pack: center !important;
+	-ms-flex-pack: center !important;
+	justify-content: center !important;
+}
+.align-self-center {
+	-ms-flex-item-align: center !important;
+	align-self: center !important;
+}
+.row {
+	margin-left: 0px;
+	margin-right: 0px;
+}
+.p_bottom_20 {
+	padding-bottom: 20px;
+}
+.m_bottom_30 {
+	margin-bottom: 30px;
+}
+.i_bg_fff {
+	background: #ffffff;
+	border-radius: 4px;
+}
+#content .container {
+	position: relative;
+}
+/* @media all and (max-width:768px) */
+h4 {
+	font-size: 16px;
+}
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+	margin-bottom: 0px !important;
+}
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+	margin-bottom: 0px;
+}
+h1, h2, h3, h4, h5, h6, #logo, #primary-menu ul li > a, #primary-menu ul li .mega-menu-content.style-2 ul.mega-menu-column > li.mega-menu-title > a, #top-search form input, .entry-link, .entry.entry-date-section span, .button.button-desc, .counter, label, .nav-tree li a, .wedding-head .first-name, .wedding-head .last-name {
+	font-family: "Microsoft Yahei",Arial,Helvetica,Arial,sans-serif !important;
+	color: #2e2e2e;
+	font-size: 16px;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-weight: 600;
+	line-height: 1.5;
+}
+.col-3 {
+	-webkit-box-flex: 0;
+	-ms-flex: 0 0 25%;
+	flex: 0 0 25%;
+	max-width: 25%;
+}
+.align-self-start {
+	-ms-flex-item-align: start !important;
+	align-self: flex-start !important;
+}
+.text-center {
+	text-align: center !important;
+}
+.font-weight-bold {
+	font-weight: 700 !important;
+}
+.p_bottom_10 {
+	padding-bottom: 10px;
+}
+img {
+	max-width: 100%;
+}
+a, img {
+	border: 0;
+}
+a {
+	color: #e7380d;
+}
+.m_left_10 {
+	margin-left: 10px;
+}
+.m_right_10 {
+	margin-right: 10px;
+}
+.col_full {
+	width: 100%;
+}
+.postcontent, .sidebar, .col_full, .col_half, .col_one_third, .col_two_third, .col_three_fourth, .col_one_fourth, .col_one_fifth, .col_two_fifth, .col_three_fifth, .col_four_fifth, .col_one_sixth, .col_five_sixth {
+	display: block;
+	position: relative;
+	margin-right: 4%;
+	margin-bottom: 50px;
+	float: left;
+}
+.col_full {
+	clear: both;
+	float: none;
+	margin-right: 0px;
+}
+/* @media all and (max-width:1249px) */
+.postcontent, .postcontent.bothsidebar, .sidebar, .col_full, .col_half, .col_one_third, .col_two_third, .col_three_fourth, .col_one_fourth, .col_one_fifth, .col_two_fifth, .col_three_fifth, .col_four_fifth, .col_one_sixth, .col_five_sixth {
+	width: 100%;
+	margin-right: 0px;
+	float: none;
+	margin-bottom: 50px !important;
+}
+/* @media all and (max-width:768px) */
+.postcontent, .postcontent.bothsidebar, .sidebar, .col_full, .col_half, .col_one_third, .col_two_third, .col_three_fourth, .col_one_fourth, .col_one_fifth, .col_two_fifth, .col_three_fifth, .col_four_fifth, .col_one_sixth, .col_five_sixth {
+	width: 100%;
+	margin-right: 0px;
+	float: none;
+	margin-bottom: 50px !important;
+}
+.form-row {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	margin-right: -5px;
+	margin-left: -5px;
+}
+.p_top_10 {
+	padding-top: 10px;
+}
+.descriptionDiv {
+	text-align: left;
+	background-color: #dbdcdc;
+	padding: 20px;
+}
+.eventDateTimeDiv {
+	background-color: #de6632;
+	margin: 20px auto;
+	padding: 0px;
+}
+.eventForumDiv {
+	padding: 0px 10px;
+	margin: 25px auto 0px auto;
+}
+.normalDiv {
+	margin: 20px auto 0px auto;
+	padding: 0px 10px;
+}
+/* @media all and (max-width:1249px) */
+.wh_0 {
+	width: 0px;
+	height: 0px;
+}
+.p_top_20 {
+	padding-top: 20px;
+}
+.speech_padding {
+	padding: 0px 5px 0px 5px;
+}
+.speech_bgtitle {
+	color: #ffffff;
+	font-size: 16px;
+	padding: 5px 0;
+	line-height: 26px;
+	margin-bottom: 10px;
+}
+.speech_bgb {
+	background: #e28157;
+}
+.speech_h4 {
+	background: #e5e7e6;
+	color: #000000;
+	padding: 10px 0 !important;
+}
+.speech_line {
+	display: block;
+	height: 1px;
+	background: #ebedec;
+	margin-bottom: 10px;
+}
+.col-9 {
+	-webkit-box-flex: 0;
+	-ms-flex: 0 0 75%;
+	flex: 0 0 75%;
+	max-width: 75%;
+}
+.padleft20 {
+	padding-left: 20px;
+}
+.speech_bga {
+	background: #564162;
+}
+.eventDateTimeSpanDiv {
+	padding: 15px 15px;
+	color: white;
+	margin: auto;
+}
+/* @media all and (max-width:1249px) */
+.eventDateTimeSpanDiv {
+	border-bottom: 1px solid #f3a381;
+}
+.eventDateTimeSpan {
+	padding-left: 0px;
+}
+.eventDateTimeSpanLine {
+	padding-left: 0px;
+	border-right: 1px solid #ffffff;
+}
+/* @media all and (max-width:1249px) */
+.eventDateTimeSpanLine {
+	padding-left: 0px;
+	border-right: 0px solid white;
+}
+div[class*='col'] {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+article, aside, dialog, figcaption, figure, footer, header, hgroup, main, nav, section {
+	display: block;
+}
+.p_top_30 {
+	padding-top: 30px;
+}
+#content {
+	position: relative;
+	overflow: hidden;
+	background-color: #f2f3f5;
+}
+.i_content_bg {
+	background: #f2f3f5;
+}
+#wrapper {
+	position: relative;
+	float: none;
+	width: 1220px;
+	margin: 0 auto;
+	box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+	-moz-box-shadow: 0 0 10px rgba(0,0,0,0.1);
+	-webkit-box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+/* @media all and (max-width:992px) */
+#wrapper {
+	width: 100%;
+	margin: 0;
+	box-shadow: none;
+}
+/* @media all and (max-width:768px) */
+#wrapper {
+	width: 100% !important;
+}
+.stretched #wrapper {
+	width: 100%;
+	margin: 0;
+	box-shadow: none;
+}
+body:not(.no-transition) #wrapper, .animsition-overlay {
+	position: relative;
+	opacity: 0;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+}
+.wsmenucontainer {
+	background-size: cover;
+	overflow: hidden;
+	background-attachment: fixed;
+	background-position: 50% 0;
+	background-repeat: no-repeat;
+}
+/* @media only screen and (max-width:1255px) */
+.wsmenucontainer {
+	background-attachment: local;
+	background-position: 33% 0%;
+}
+/* @media only screen and (max-width:1255px) */
+.wsmenucontainer {
+	-webkit-transition: all 0.25s ease-in-out;
+	-moz-transition: all 0.25s ease-in-out;
+	-o-transition: all 0.25s ease-in-out;
+	-ms-transition: all 0.25s ease-in-out;
+	transition: all 0.25s ease-in-out;
+}
+.wsmenucontainer {
+	background-color: #fff;
+}
+body {
+	margin: 0;
+	font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.5;
+	color: #212529;
+	text-align: left;
+	background-color: #fff;
+}
+body, .dropdown-menu {
+	font-size: 0.87rem;
+}
+body {
+	line-height: 1.5;
+	color: #000;
+	font-family: "Lato","Arial",sans-serif;
+}
+/* @media all and (max-width:768px) */
+body {
+	padding: 0 !important;
+}
+/* @media only screen and (max-width:1255px) */
+body {
+	height: 100%;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+body {
+	font-family: "Microsoft Yahei",Arial,Helvetica,Arial,sans-serif !important;
+	color: #2e2e2e !important;
+	font-size: 16px;
+}
+body, small, #primary-menu ul ul li > a, .wp-caption, .feature-box.fbox-center.fbox-italic p, .skills li .progress-percent .counter, .nav-tree ul ul a {
+	font-family: "Microsoft Yahei",Arial,Helvetica,Arial,sans-serif !important;
+	color: #2e2e2e;
+	font-size: 16px;
+}
+body {
+	line-height: 1.5;
+	font-size: 1rem;
+}
+body.is-canvi-ready {
+	overflow-x: hidden;
+}
+html {
+	font-family: sans-serif;
+	line-height: 1.15;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	-ms-overflow-style: scrollbar;
+	-webkit-tap-highlight-color: transparent;
+}
+/* @media only screen and (max-width:1255px) */
+html {
+	-webkit-overflow-scrolling: touch;
+}
+:root {
+	--blue:  #007bff;
+	--indigo:  #6610f2;
+	--purple:  #6f42c1;
+	--pink:  #e83e8c;
+	--red:  #dc3545;
+	--orange:  #fd7e14;
+	--yellow:  #ffc107;
+	--green:  #28a745;
+	--teal:  #20c997;
+	--cyan:  #17a2b8;
+	--white:  #fff;
+	--gray:  #6c757d;
+	--gray-dark:  #343a40;
+	--primary:  #007bff;
+	--secondary:  #6c757d;
+	--success:  #28a745;
+	--info:  #17a2b8;
+	--warning:  #ffc107;
+	--danger:  #dc3545;
+	--light:  #f8f9fa;
+	--dark:  #343a40;
+	--breakpoint-xs:  0;
+	--breakpoint-sm:  576px;
+	--breakpoint-md:  768px;
+	--breakpoint-lg:  1250px;
+	--font-family-sans-serif:  -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+	--font-family-monospace:  SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+:root {
+	--home:  #FF8600;
+	--travel:  #6f42c1;
+	--tech:  #007bff;
+	--fashion:  #e83e8c;
+	--sports:  #dc3545;
+	--lifestyle:  #13a774;
+	--food:  #17a2b8;
+	--market:  #ffc107
+;
+}
+.p_left_10 {
+	padding-left: 10px;
+}
+.p_right_10 {
+	padding-right: 10px;
+}
+.border-bottom {
+	border-bottom: 1px solid #dee2e6 !important;
+}
+.d-none {
+	display: none !important;
+}
+.d-block {
+	display: block !important;
+}
+.signup {
+	position: relative;
+}
+ol, ul, dl {
+	margin-top: 0px;
+	margin-bottom: 1rem;
+}
+dl, dt, dd, ol, ul, li {
+	margin: 0;
+	padding: 0;
+}
+table {
+	border-collapse: collapse;
+}
+p {
+	margin-top: 0px;
+	margin-bottom: 1rem;
+}
+p, pre, ul, ol, dl, dd, blockquote, address, table, fieldset, form {
+	margin-bottom: 30px;
+}
+ul {
+	margin-bottom: 0px;
+}
+.nav {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	padding-left: 0px;
+	margin-bottom: 0px;
+	list-style: none;
+}
+.nav-tabs {
+	border-bottom: 1px solid #dee2e6;
+}
+.nav-tabs {
+	margin-top: 20px;
+}
+.tab-content {
+	border: 1px solid #dbdbdb;
+	margin-bottom: 25px;
+}
+h1, h2, h3, h4, h5, h6 {
+	margin-top: 0px;
+	margin-bottom: 0.5rem;
+}
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+	margin-bottom: 0.5rem;
+	font-family: inherit;
+	font-weight: 500;
+	line-height: 1.2;
+	color: inherit;
+}
+h3, .h3 {
+	font-size: 1.75rem;
+}
+h4, .h4 {
+	font-size: 1.5rem;
+}
+h1, h2, h3, h4, h5, h6 {
+	color: #444;
+	font-weight: 600;
+	line-height: 1.5;
+	margin: 0 0 30px 0;
+	font-family: "Raleway","Arial",sans-serif;
+}
+h3 {
+	font-size: 24px;
+}
+/* @media all and (max-width:768px) */
+h3 {
+	font-size: 20px;
+}
+h4 {
+	font-size: 18px;
+}
+h4 {
+	font-weight: 600;
+}
+.i_tit_18 {
+	font-size: 18px;
+	font-weight: bold;
+	color: #2e2e2e;
+}
+.titleLabel {
+	margin-bottom: 0px;
+	width: 100%;
+}
+.contactDiv {
+	margin-bottom: 5px;
+}
+img {
+	vertical-align: middle;
+	border-style: none;
+}
+a {
+	color: #007bff;
+	text-decoration: none;
+	background-color: transparent;
+	-webkit-text-decoration-skip: objects;
+}
+a {
+	text-decoration: none !important;
+	color: #000;
+}
+a {
+	text-decoration: none !important;
+}
+a {
+	-webkit-transition: 0.2s;
+	transition: 0.2s;
+}
+a {
+	text-decoration: none;
+}
+.contactSpan {
+	margin-left: 10px;
+}
+.i_cms_a {
+	color: #402656;
+	font-weight: bold;
+}
+/* @media all and (max-width:768px) */
+.logoBrandDiv {
+	flex: 0 0 100%;
+	max-width: 100%;
+}
+/* @media all and (max-width:768px) */
+.logoNonFirstBrandDiv {
+	margin-top: 10px;
+}
+a img {
+	border: none;
+}
+.border {
+	border: 1px solid #dee2e6 !important;
+}
+.logoImg {
+	padding: 10px 15px;
+	max-width: 220px;
+}
+.logoImgBig {
+	padding: 10px 15px;
+	max-width: 320px;
+}
+.img-fluid {
+	max-width: 100%;
+	height: auto;
+}
+.i_industry_logo {
+	max-height: 60px;
+	padding: 5px;
+}
+table {
+	margin-bottom: 0px;
+}
+input, button, select, optgroup, textarea {
+	margin: 0;
+	font-family: inherit;
+	font-size: inherit;
+	line-height: inherit;
+}
+button, input {
+	overflow: visible;
+}
+hr {
+	box-sizing: content-box;
+	height: 0px;
+	overflow: visible;
+}
+hr {
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+	border: 0;
+	border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+.m_top_20 {
+	margin-top: 20px;
+}
+.form-row > .col, .form-row > [class*='col-'] {
+	padding-right: 5px;
+	padding-left: 5px;
+}
+.btn {
+	display: inline-block;
+	font-weight: 400;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	border: 1px solid transparent;
+	padding: 0.375rem 0.75rem;
+	font-size: 1rem;
+	line-height: 1.5;
+	border-radius: 0.25rem;
+	transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.btn-danger {
+	color: #fff;
+	background-color: #dc3545;
+	border-color: #dc3545;
+}
+.btn-lg, .btn-group-lg > .btn {
+	padding: 0.5rem 1rem;
+	font-size: 1.25rem;
+	line-height: 1.5;
+	border-radius: 0.3rem;
+}
+.btn-block {
+	display: block;
+	width: 100%;
+}
+.btn-danger {
+	color: #fff;
+	background-color: #e8340c;
+	border-color: #e8340c;
+}
+button, html [type='button'], [type='reset'], [type='submit'] {
+	-webkit-appearance: button;
+}
+input[type='submit'].btn-block, input[type='reset'].btn-block, input[type='button'].btn-block {
+	width: 100%;
+}
+:not(:disabled):not(.disabled).btn {
+	cursor: pointer;
+}
+.m_bottom_5 {
+	margin-bottom: 5px;
+}
+.m_bottom_20 {
+	margin-bottom: 20px;
+}
+.i_select_left {
+	float: left;
+	width: 100px;
+}
+/* @media all and (max-width:768px) */
+.i_select_left {
+	padding-bottom: 6px;
+}
+input[type='radio'], input[type='checkbox'] {
+	box-sizing: border-box;
+	padding: 0;
+}
+.i_select_line {
+	width: 2px;
+	background: #2e2e2e;
+	position: relative;
+	width: 3px;
+	background: #2e2e2e;
+	position: relative;
+	height: 16px;
+	float: left;
+	top: 4px;
+	margin-right: 5px;
+}
+.m_bottom_10 {
+	margin-bottom: 10px;
+}
+p {
+	margin-bottom: 0px;
+}
+p {
+	margin-bottom: 0px;
+}
+.i_input_checkbox {
+	float: left;
+	margin: 0 10px;
+}
+/* @media all and (max-width:768px) */
+.i_input_checkbox {
+	padding: 6px 0;
+}
+.m_top_10 {
+	margin-top: 10px;
+}
+.speech_list_theme {
+	color: #402656;
+	margin-bottom: 5px;
+}
+.speech_list_company {
+	color: #000000;
+	margin-bottom: 5px;
+}
+.tech_talk_time {
+	display: inline-block;
+	padding: 4px 40px;
+	margin: 0 5px;
+	color: #2e2e2e;
+	border-radius: 4px;
+	font-size: 18px;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+#content p {
+	line-height: 1.8;
+}
+#content p {
+	line-height: 1.5;
+}
+.form-control {
+	display: block;
+	width: 100%;
+	padding: 0.375rem 0.75rem;
+	font-size: 1rem;
+	line-height: 1.5;
+	color: #495057;
+	background-color: #fff;
+	background-clip: padding-box;
+	border: 1px solid #ced4da;
+	border-radius: 0.25rem;
+	transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.form-control {
+	border-radius: 3px;
+}
+.form-control {
+	font-size: 1rem;
+}
+.form-control {
+	width: 80%;
+	display: inline-block;
+}
+.i_input_checkbox_another {
+	display: block;
+	width: 100% !important;
+	position: relative;
+	top: 5px;
+}
+/* @media all and (max-width:768px) */
+.form-control {
+	width: 100%;
+}
+input[type=text] {
+	border: 1px solid grey;
+	border-radius: 5px;
+}
+:disabled.form-control, [readonly].form-control {
+	background-color: #e9ecef;
+	opacity: 1;
+}
+b, strong {
+	font-weight: bolder;
+}
+.fade {
+	opacity: 0;
+	transition: opacity 0.15s linear;
+}
+.fade.show {
+	opacity: 1;
+}
+.tab-content > .tab-pane {
+	display: none;
+}
+.tab-content > .active {
+	display: block;
+}
+.speech {
+	background: #f5f7f6;
+	padding: 20px 0;
+}
+.speech_number {
+	color: #c3c1c2;
+	font-size: 36px;
+}
+[class^='icon-'], [class*=' icon-'], [class^='icon-line-'], [class*=' icon-line-'], [class^='icon-line2-'], [class*=' icon-line2-'], .side-header #primary-menu ul > li.sub-menu > a::after {
+	display: inline-block;
+	font-family: "font-icons";
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: inherit;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+[class^='icon-'], [class*=' icon-'] {
+	font-family: "lined-icons-CPS20" !important;
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+.tech_talk_icon {
+	font-size: 20px;
+	position: relative;
+	top: 2px;
+}
+li {
+	list-style-type: none;
+}
+.nav-item {
+	background: #f0f0f0;
+	margin-right: 6px;
+}
+.nav-tabs .nav-item {
+	margin-bottom: -1px;
+}
+/* @media screen and (max-width:767px) */
+.nav-tabs .nav-item {
+	width: 100%;
+}
+/* @media screen and (max-width:767px) */
+.nav-tabs .nav-item {
+	width: auto;
+}
+.nav-link {
+	display: block;
+	padding: 0.5rem 1rem;
+}
+.nav-item a {
+	color: #000000;
+}
+.nav-tabs .nav-link {
+	border: 1px solid transparent;
+	border-top-left-radius: 0.25rem;
+	border-top-right-radius: 0.25rem;
+}
+.nav-tabs .nav-link {
+	color: #212529 !important;
+	background: #ffffff !important;
+	font-size: 20px;
+	border: 2px solid transparent !important;
+}
+.nav-tabs .nav-link {
+	color: #ffffff !important;
+	background: #838383 !important;
+	padding: .5rem 1.2rem;
+	border: 1px solid #f2f3f5;
+	border: none !important;
+}
+/* @media screen and (max-width:767px) */
+.nav-tabs .nav-link {
+	font-size: 16px;
+	padding: .5rem 1rem;
+}
+.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+	color: #495057;
+	background-color: #fff;
+	border-color: #dee2e6 #dee2e6 #fff;
+}
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+	color: #d8541a !important;
+	background: #ffffff !important;
+	font-size: 20px;
+	font-weight: bold;
+}
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+	border-bottom-color: #d8541a !important;
+	border-top-color: #ffffff !important;
+	border-right-color: #ffffff !important;
+	border-left-color: #ffffff !important;
+}
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+	color: #ffffff !important;
+	background: #402656 !important;
+	border: none !important;
+}
+/* @media screen and (max-width:767px) */
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+	font-size: 16px;
+	font-weight: bold;
+}
+.signup .signuptxtphone {
+	top: 0px;
+	height: 100%;
+	right: 0px;
+	padding-top: 10px;
+}
+.signup .signuptxtphone {
+	position: absolute;
+	width: 100%;
+	color: #fff;
+}
+.signupbtn {
+	font-size: 24px;
+	background: #5876cb;
+	padding: 10px 40px;
+	border-radius: 5px;
+	max-width: 400px;
+	text-align: center;
+	color: #ffffff;
+	text-decoration: none;
+	display: block;
+}
+h1 > span:not(.nocolor):not(.badge), h2 > span:not(.nocolor):not(.badge), h3 > span:not(.nocolor):not(.badge), h4 > span:not(.nocolor):not(.badge), h5 > span:not(.nocolor):not(.badge), h6 > span:not(.nocolor):not(.badge) {
+	color: #6b6969;
+}
+.signup .signuptxt {
+	background: url(images/techtalk_bg2.png) right center no-repeat;
+	top: 0px;
+	height: 100%;
+	right: 0px;
+}
+.signup .signuptxt {
+	position: absolute;
+	width: 621px;
+	color: #fff;
+}
+.signup .signuptxt h3 {
+	font-size: 24px;
+	margin: 40px 0 0 140px;
+}
+.g_p {
+	line-height: 26px;
+	font-size: 16px;
+}
+.descriptionTitle {
+	margin-bottom: 15px;
+}
+
+    </style>
+</head>
+<body class="stretched is-canvi-ready gototop-active device-xs" data-loader-timeout="2000"
+      id="body">
+<div class="wsmenucontainer" style="min-width: 358px;">
+    <div class="clearfix i_content_bg" id="wrapper" style="opacity: 1; animation-duration: 1500ms;">
+        <section class="p_top_30" id="content" style="margin-bottom: 0px;">
+            <div class="container clearfix topmargin-sm" style="margin-bottom:20px;">
+                <div class="col_full ">
+                    <div class=" m_left_10 m_right_10 ">
+                        <div class="container m_bottom_30 p_bottom_20 i_bg_fff">
+                            <div class=" p_left_10 p_right_10 ">
+                                <!--teachtalk top-->
+                                <script src="https://www.chinaplasonline.com/CPS19/Scripts/jquery-ui/jquery-ui.js"></script>
+                                <div>
+                                    <style type="text/css">
+                                         /* Tech Talk Style*/ .phone1 { display: flex; margin-right: 15px; padding-right: 10px; margin-left: 15px; } .phone2 { display: flex; margin-right: 15px; padding-right: 10px; margin-left: 15px; } .phone3 { display: flex; margin-right: 5px; margin-left: 5px; } .descriptionDiv { text-align: left; background-color: #DBDCDC; padding: 20px; } .descriptionTitle { margin-bottom: 15px; } .eventForumDiv { padding: 0px 10px; margin: 25px auto 0px auto; } .eventDateTimeDiv { background-color: #DE6632; margin: 20px auto; padding: 0px; } .eventDateTimeSpanDiv { padding: 15px 15px; color: white; margin: auto; } .eventDateTimeSpan { padding-left: 0px; } .eventDateTimeSpanLine { padding-left: 0px; ; border-right: 1px solid #ffffff; } .titleLabel { margin-bottom: 0px; width: 100%; } .eventTimeTableDiv { margin: 20px auto; padding: 0px; } .eventAreaDiv { background-color: #F5F7F6; padding: 0px 5px 0px 5px; } .areaATitleDiv { background-color: #795EA3; color: white; padding: 15px; text-align: center; } .tech_talk_time{} .areaBTitleDiv { background-color: #E28156; color: white; padding: 15px; text-align: center; } .eventDescriptionDiv { padding: 15px; } .eventDateDiv { text-align: center; color: #A2A2A2; background-color: white; padding: 10px; width: 85px; margin: auto; } .eventDaySpan { font-size: 24px; font-weight: 600; } .eventTimeSpan { color: #E28156; } .normalDiv { margin: 20px auto 0px auto; padding: 0px 10px; } .logoImg { padding: 10px 15px; max-width: 220px; } .logoImgBig { padding: 10px 15px; max-width: 320px; } .contactSpan { margin-left: 10px; } .contactDiv { margin-bottom: 5px; } input[type=text] { border: 1px solid grey; border-radius: 5px; } @media (max-width: 1249px) { .eventDateTimeSpanDiv { border-bottom: 1px solid #f3a381; } .eventDateTimeSpanLine { padding-left: 0px; border-right: 0px solid white; } } @media (max-width: 768px) { .logoBrandDiv { flex: 0 0 100%; max-width: 100%; } .logoNonFirstBrandDiv { margin-top: 10px; } } . { margin-left: 0; margin-right: 0; } .signup { position: relative; } .signup .signuptxt { background: url(images/techtalk_bg2.png) right center no-repeat; top: 0; height: 100%; right: 0; } .signup .signuptxt { position: absolute; width: 621px; color: #fff; } .signup .signuptxt h3 { font-size: 24px; margin: 40px 0 0 140px; } .signupbtn { font-size: 24px; background: #5876cb; padding: 10px 40px; border-radius: 5px; max-width: 400px; text-align: center; color: #ffffff; text-decoration: none; display: block; } .signupbtn:hover { color: #ffffff; text-decoration: none; background: #889dda; } .signup .signuptxtphone { top: 0; height: 100%; right: 0; padding-top: 10px; } .signup .signuptxtphone { position: absolute; width: 100%; color: #fff; } .nav-item { background: #f0f0f0; margin-right: 6px; } .nav-item a { color: #000000; } .nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover { color: #ffffff !important; border: none; } .nav-tabs .nav-link { color: #ffffff !important; background: #838383 !important; padding: .5rem 1.2rem; border: 1px solid #f2f3f5; border:none !important; } .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active { color: #ffffff !important; background: #402656 !important; border: none !important; } .tab-content { border: 1px solid #dbdbdb; margin-bottom: 25px; } .speech { background: #f5f7f6; padding: 20px 0; } @media (min-width: 1249px) { .text_center_web{ text-align:left;} } .speech_bgtitle { color: #ffffff; font-size: 16px; padding: 5px 0; line-height: 26px; margin-bottom: 10px; } .speech_bga { background: #564162; } . { margin-left: 0; margin-right: 0; } .speech_padding { padding: 0px 5px 0px 5px; } .tech_talk_time{ display: inline-block; padding: 4px 40px; margin:0 5px; color: #2e2e2e; border-radius:4px; font-size:18px; font-weight: bold; margin-bottom:10px;} .tech_talk_icon{ font-size:20px; position:relative; top:2px;} .speech_h4 { background: #e5e7e6; color: #000000; padding: 10px 0 !important; } .speech_number { color: #c3c1c2; font-size: 36px; } .speech_list_theme { color: #402656; margin-bottom: 5px; } .speech_list_company { color: #000000; margin-bottom: 5px; } .nav-tabs { margin-top: 20px; } .speech_line { display: block; height: 1px; background: #ebedec; margin-bottom: 10px; } .padleft20 { padding-left: 20px; } .speech_bgb { background: #e28157; } .close_bg { background: #dddbdb; } @media screen and (max-width: 767px){ .nav-tabs .nav-item { width: auto; } .nav-tabs .nav-link{ font-size:16px; padding: .5rem 1rem;} .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active{ font-size:16px; font-weight:bold;}
+                                    </style>
+                                </div>
+                                <div class="col-12 p_top_10" style="text-align:center;">
+                                    <img alt=""
+                                         src="https://www.chinaplasonline.com//CPS20/Files/Image/Content/CPS20_TechTalk_v3.jpg"
+                                         style="width: 100%;"/>
+                                </div>
+                                <div class="descriptionDiv col-12">
+                                    <div style="padding-left:20px; padding-right:20px;">
+                                        <div class="m_bottom_10">
+                                            <h4 class="font-weight-bold descriptionTitle text-center"
+                                                style="font-size:24px;">科技讲台 ─ 跳出橡塑行业新脉搏</h4>
+                                        </div>
+                                        <span class="g_p text-center" style="display:block">科技讲台涵盖各种塑料及橡胶机械和原材料的创新科技，包括5G相关应用技术，汽车环保材料，绿色包装方案，3D打印，复合材料和生物塑料科技。</span>
+                                        <span class="g_p text-center" style="display:block">您绝对不能错过科技讲台2020！</span>
+                                    </div>
+                                </div>
+                                <!-- 日期 -->
+                                <div class="eventDateTimeDiv row col-12 text_center_web">
+                                    <div class="col-12 col-sm-12 col-md-12 col-lg-3 eventDateTimeSpanDiv row">
+                                        <div class="col-3">
+                                            <div class=" p_left_10 p_right_10">
+                                                <span>日期: </span>
+                                            </div>
+                                        </div>
+                                        <div class="col-9 eventDateTimeSpanLine">
+                                            <span>2020 年 8 月3 至5 日</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-12 col-lg-3 eventDateTimeSpanDiv row">
+                                        <div class="col-3 " style="margin: auto;">
+                                            <div class=" p_left_10 p_right_10">
+                                                <span>地点: </span>
+                                            </div>
+                                        </div>
+                                        <div class="col-9 eventDateTimeSpanLine">
+                                            <span>展位 1.2F161 及 展位8.2F151</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-12 col-lg-3 eventDateTimeSpanDiv row">
+                                        <div class="col-3 ">
+                                            <div class=" p_left_10 p_right_10">
+                                                <span>入场: </span>
+                                            </div>
+                                        </div>
+                                        <div class="col-9 eventDateTimeSpanLine"
+                                             id="forum_timetable">
+                                            <span>免费</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-12 col-lg-3 eventDateTimeSpanDiv row">
+                                        <div class="col-3">
+                                            <div class=" p_left_10 p_right_10">
+                                                <span>语言: </span>
+                                            </div>
+                                        </div>
+                                        <div class="col-9 eventDateTimeSpan">
+                                            <span>普通话/英语（实时传译）</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--teachtalk footer-->
+                                <!-- 主办单位 -->
+                                <div class="normalDiv col-12">
+                                    <h3 class="font-weight-bold titleLabel i_tit_18">主办单位</h3>
+                                </div>
+                                <div>
+                                    <a href="https://www.adsale.com.hk/corporate/idx/simp/%E9%9B%85%E5%BC%8F%E9%9B%86%E5%9B%A2"
+                                       target="_blank"> <img alt=""
+                                                             class="img-fluid i_industry_logo"
+                                                             src="images/industry_logo1_1.jpg"/>
+                                    </a>
+                                </div>
+                                <!-- 獨家贊助-->
+                                <div style="display:none">
+                                    <div class="normalDiv col-12">
+                                        <h3 class="font-weight-bold titleLabel i_tit_18">独家赞助</h3>
+                                    </div>
+                                    <div class="normalDiv col-12">
+                                        <img alt="" class="border logoImgBig"
+                                             src="images/ASCND_horizontal_rgb.png"/>
+                                    </div>
+                                </div>
+                                <!-- 支持媒体 -->
+                                <div>
+                                    <div class="normalDiv col-12" style="margin-top: 25px;">
+                                        <h3 class="font-weight-bold titleLabel i_tit_18">支持媒体</h3>
+                                    </div>
+                                    <div class="normalDiv col-12 row">
+                                        <div class="logoBrandDiv" style="padding: 0px;">
+                                            <a href="https://www.adsalecprj.com"><img alt=""
+                                                                                      class="border logoImg"
+                                                                                      src="images/logo_CPRJ_Int.jpg"
+                                                                                      style="margin-right: 10px;"/></a>
+                                        </div>
+                                        <div class="logoBrandDiv logoNonFirstBrandDiv"
+                                             style="padding: 0px;">
+                                            <a href="https://www.adsalecprj.com"><img alt=""
+                                                                                      class="border logoImg"
+                                                                                      src="images/logo_ePUB.jpg"
+                                                                                      style="margin-right: 10px;"/></a>
+                                        </div>
+                                        <div class="logoBrandDiv logoNonFirstBrandDiv"
+                                             style="padding: 0px;">
+                                            <a href="http://www.w7000.com/"><img alt=""
+                                                                                 class="border logoImg"
+                                                                                 src="images/logo_jfsl.gif"/></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 查询 -->
+                                <div class="normalDiv col-12" style="margin-top: 25px;">
+                                    <h3 class="font-weight-bold titleLabel i_tit_18 p_bottom_10 ">
+                                        查询</h3>
+                                </div>
+                                <div class="normalDiv col-12" style="margin-top: 5px;">
+                                    <span>雅式展览服务有限公司</span>
+                                </div>
+                                <div class="normalDiv col-12 row">
+                                    <!-- 香港办事处 -->
+                                    <div class="col-12 col-md-6"
+                                         style="padding: 0px; margin-top: 25px;">
+                                        <h3 class="font-weight-bold titleLabel "
+                                            style="margin-bottom: 10px; padding-bottom:15px">
+                                            香港办事处：</h3>
+                                        <div class="contactDiv">
+                                            <img alt="" src="images/icon_contact_person_b.png"/>
+                                            <span class="contactSpan font-weight-bold">黄卓蓉小姐 / 鄭凱瑜小姐</span>
+                                        </div>
+                                        <div class="contactDiv">
+                                            <img alt="" src="images/icon_phone_b.png"/>
+                                            <span class="contactSpan">(852) 2516 3304 / (852) 2516 3558</span>
+                                        </div>
+                                        <div class="contactDiv">
+                                            <img alt="" src="images/icon_email_b.png"/>
+                                            <span class="contactSpan"><a class="i_cms_a"
+                                                                         href="mailto:chinaplas@adsale.com.hk"
+                                                                         t_label="contactus_410_Email">chinaplas@adsale.com.hk</a></span>
+                                        </div>
+                                    </div>
+                                    <!-- 深圳办事处 -->
+                                    <div class="col-12 col-md-6"
+                                         style="padding: 0px; margin-top: 25px;">
+                                        <h3 class="font-weight-bold titleLabel "
+                                            style="margin-bottom: 10px; padding-bottom:15px">
+                                            深圳办事处：</h3>
+                                        <div class="contactDiv">
+                                            <img alt="" src="images/icon_contact_person_b.png"/>
+                                            <span class="contactSpan font-weight-bold">许娜小姐 / 王惠婷小姐</span>
+                                        </div>
+                                        <div class="contactDiv">
+                                            <img alt="" src="images/icon_phone_b.png"/>
+                                            <span class="contactSpan">(86) 755 2354 7154 / (86) 755 2354 7153</span>
+                                        </div>
+                                        <div class="contactDiv">
+                                            <img alt="" src="images/icon_email_b.png"/>
+                                            <span class="contactSpan"> <a class="i_cms_a"
+                                                                          href="mailto:chinaplas@sz.adsale.com.hk"
+                                                                          t_label="contactus_410_Email">chinaplas@sz.adsale.com.hk</a></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--teachtalk footer-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+</body>
+</html>

@@ -18,61 +18,64 @@
         <ImageView
             android:id="@+id/iv_ad"
             android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_height="0dp"
             android:layout_marginEnd="8dp"
-            android:background="@color/colorAccent"
+            android:scaleType="center"
+            app:adImageUrl="@{obj.logoImage}"
             android:visibility="@{obj.isAder?View.VISIBLE:View.GONE}"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="h,225:150"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tv_company"
+            android:id="@+id/tv_topic"
             style="@style/item_title_18sp_style"
             android:layout_width="0dp"
             android:layout_margin="16dp"
-            android:text="@{obj.presentCompany}"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="@{obj.getTopicR()}"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="16sp"
             app:layout_constraintEnd_toStartOf="@id/iv_ad"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tv_topic"
+            android:id="@+id/tv_company"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
-            android:lineSpacingExtra="1.3dp"
-            android:maxLines="3"
-            android:text="@{obj.getTopicR()}"
-            android:textSize="16sp"
+            android:maxLines="1"
+            android:text="@{obj.presentCompany}"
+            android:textColor="@color/textColor"
+            android:textSize="14sp"
             app:layout_constraintEnd_toStartOf="@id/iv_ad"
             app:layout_constraintHorizontal_bias="0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_company" />
+            app:layout_constraintTop_toBottomOf="@id/tv_topic" />
 
         <TextView
             android:id="@+id/tv_location"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="16dp"
-            android:background="@color/tab_color_4"
             android:drawableStart="@drawable/ic_seminar_location"
             android:drawablePadding="5dp"
-            android:paddingStart="5dp"
-            android:paddingTop="3dp"
-            android:paddingEnd="5dp"
-            android:paddingBottom="3dp"
+            android:paddingTop="1dp"
+            android:paddingBottom="1dp"
             android:text="@{obj.roomNo}"
-            android:textColor="#fff"
-            android:textSize="13sp"
+            android:textColor="@color/tab_color_3"
+            android:textSize="12sp"
             app:layout_constraintEnd_toStartOf="@id/iv_ad"
             app:layout_constraintHorizontal_bias="0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_topic" />
+            app:layout_constraintTop_toBottomOf="@id/tv_company" />
 
         <ImageView
             android:layout_width="match_parent"
